@@ -1,3 +1,13 @@
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+const SignInPage = lazy(() => import('../pages/'));
+
 export const App = () => {
-  
+  return (
+    <Routes>
+      <Route path="signin" element={<SignInPage />} />
+    </Routes>
+  );
 };
+export default App;
