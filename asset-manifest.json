@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/frontend-water/static/css/main.7acaea2f.css",
-    "main.js": "/frontend-water/static/js/main.5338173a.js",
+    "main.js": "/frontend-water/static/js/main.f05fa1f5.js",
     "index.html": "/frontend-water/index.html",
     "main.7acaea2f.css.map": "/frontend-water/static/css/main.7acaea2f.css.map",
-    "main.5338173a.js.map": "/frontend-water/static/js/main.5338173a.js.map"
+    "main.f05fa1f5.js.map": "/frontend-water/static/js/main.f05fa1f5.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.5338173a.js"
+    "static/js/main.f05fa1f5.js"
   ]
 }
