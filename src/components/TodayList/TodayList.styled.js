@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
+
+
 export const TodayListContainer = styled.div`
 /* padding-top: 24px;
 padding-left: 8px;
@@ -14,18 +16,31 @@ export const TodayTitle = styled.h3`
 `
 
 export const AddLink = styled(Link)`
+display: inline-block;
+height: 26px;
+width: 254px;
+padding: 12px 0;
+
 background-color: inherit;
 text-decoration: none;
 font-size: 16px;
 line-height: 1.25;
 color: #407BFF;
+stroke: currentColor;
 font-weight: 500;
+transition: color 250ms linear;
+
+&:hover {
+  color: #FF9D43;
+}
 `
 
 export const Svg = styled.svg`
 width: 8px;
 height: 8px;
 margin-right: 8px;
+
+
 `
 
 export const WaterList = styled.ul`
@@ -36,6 +51,8 @@ flex-direction: column;
 padding: 0;
 height: 212px;
 overflow-y: scroll;
+padding-left: 6px;
+padding-right: 6px; 
 
 
 &::-webkit-scrollbar {

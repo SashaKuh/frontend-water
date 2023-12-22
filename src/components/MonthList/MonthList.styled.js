@@ -23,6 +23,8 @@ border: 0;
 background-color: inherit;
 padding: 1px;
 padding-right: 12px;
+color: inherit;
+fill: currentColor;
 `
 
 export const RigthArrowButton = styled.button`
@@ -30,6 +32,12 @@ border: 0;
 background-color: inherit;
 padding: 1px;
 padding-left: 12px;
+color: inherit;
+fill: currentColor;
+
+&:disabled {
+  color: #ECF2FF;
+}
 `
 
 export const MonthHeader = styled.div`

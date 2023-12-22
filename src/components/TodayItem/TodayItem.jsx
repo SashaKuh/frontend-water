@@ -1,9 +1,24 @@
 import React from 'react';
-import { WaterItem, WaterText, TimeText } from './TodayItem.styled';
+import {
+  WaterItem,
+  WaterText,
+  TimeText,
+  ConfigIcons,
+  ButtonPen,
+  ButtonTrash,
+  SvgPen,
+  SvgTrash,
+} from './TodayItem.styled';
 import sprite from '../../icons/sprite.svg';
 
+const editIcon = `${sprite}#icon-pen`;
+const delIcon = `${sprite}#icon-trash`;
+
 const TodayItem = ({ water, date }) => {
-  const time = `${date.getHours()}:${date.getMinutes()}`;
+  const time = `${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, '0')}`;
 
   return (
     <WaterItem>
@@ -12,6 +27,19 @@ const TodayItem = ({ water, date }) => {
       </svg>
       <WaterText>{`${water} ml`}</WaterText>
       <TimeText>{time}</TimeText>
+
+      <ConfigIcons>
+        <ButtonPen>
+          <SvgPen>
+            <use href={editIcon}></use>
+          </SvgPen>
+        </ButtonPen>
+        <ButtonTrash>
+          <SvgTrash>
+            <use href={delIcon}></use>
+          </SvgTrash>
+        </ButtonTrash>
+      </ConfigIcons>
     </WaterItem>
   );
 };

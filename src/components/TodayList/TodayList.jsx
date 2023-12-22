@@ -6,9 +6,9 @@ import {
   WaterList,
   TodayListContainer,
 } from './TodayList.styled';
-import sprite from '../../icons/sprite.svg';
 import TodayItem from 'components/TodayItem/TodayItem';
 import { nanoid } from 'nanoid';
+import sprite from '../../icons/sprite.svg';
 
 const plusRef = `${sprite}#icon-plus`;
 
@@ -32,13 +32,13 @@ const TodayList = () => {
         {testArrayDayWater.map(item => (
           <TodayItem key={nanoid()} water={item.water} date={item.date} />
         ))}
+        <AddLink>
+          <Svg>
+            <use xlinkHref={plusRef}></use>
+          </Svg>
+          <span>Add water</span>
+        </AddLink>
       </WaterList>
-      <AddLink>
-        <Svg>
-          <use xlinkHref={plusRef}></use>
-        </Svg>
-        <span>Add water</span>
-      </AddLink>
     </TodayListContainer>
   );
 };
