@@ -1,14 +1,13 @@
-import { lazy } from "react";
-import { Route, Routes, Navigate } from 'react-router-dom';
+// import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 // const SignInPage = lazy(() => import(''));
 
-const App = () => {
+export const App = () => {
   return (
     <Routes>
-      <Route path="" />
+      <Route path="signin"  />
     </Routes>
-  )
+  );
 };
 
-export default App
