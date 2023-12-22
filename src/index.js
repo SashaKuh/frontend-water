@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle/>
     <BrowserRouter basename="/frontend-water">
-        <App />
-      </BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );

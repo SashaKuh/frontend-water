@@ -1,4 +1,4 @@
-// import { lazy } from "react";
+// import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // const SignInPage = lazy(() => import(''));
@@ -6,8 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 export const App = () => {
   return (
     <Routes>
-      <Route path="" />
+      <Route path="signin"  />
     </Routes>
-  )
+  );
 };
 
