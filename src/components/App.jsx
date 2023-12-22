@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 // const SignInPage = lazy(() => import(''));
 
-const App = () => {
+export const App = () => {
   return (
     <Routes>
       <Route path="" />
@@ -11,4 +11,3 @@ const App = () => {
   )
 };
 
-export default App
