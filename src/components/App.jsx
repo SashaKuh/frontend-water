@@ -1,5 +1,12 @@
-import TodayAndMonthLayout from './TodayAndMonthLayout/TodayAndMonthLayout';
+// import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+// const SignInPage = lazy(() => import(''));
 
 export const App = () => {
-  return <TodayAndMonthLayout />;
+  return (
+    <Routes>
+      <Route path="signin" />
+    </Routes>
+  );
 };
