@@ -40,8 +40,21 @@ code {
        
    
   }
- 
-  
+ //delete import 
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+button {
+    cursor: pointer;
+}
+p {
+  margin: 0;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+}
  
 `;
 
