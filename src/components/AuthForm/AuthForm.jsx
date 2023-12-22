@@ -1,10 +1,17 @@
 import React from 'react';
-import { Formik, Form } from 'formik';
-import { Title, MainForm, Input, SignInButton } from './AuthForm.styled';
+import { Formik } from 'formik';
+
+import {
+  Title,
+  MainForm,
+  Input,
+  SignInButton,
+  Label,
+  PageLink,
+} from './AuthForm.styled';
 
 const AuthForm = () => (
-  <MainForm>
-    <Title>Sign In</Title>
+  <>
     <Formik
       initialValues={{
         firstName: '',
@@ -16,17 +23,22 @@ const AuthForm = () => (
         alert(JSON.stringify(values, null, 2));
       }}
     >
-      <Form>
-        <label htmlFor="firstName">Enter your email</label>
-        <Input type="email" name="email" placeholder="E-mail" />
-
-        <label htmlFor="lastName">Enter your password </label>
-        <Input type="password" name="password" placeholder="Password" />
-
+      <MainForm>
+        <Title>Sign In</Title>
+        <div>
+          <Label htmlFor="firstName">Enter your email</Label>
+          <Input type="email" name="email" placeholder="E-mail" />
+        </div>
+        <div>
+          <Label htmlFor="lastName">Enter your password </Label>
+          <Input type="password" name="password" placeholder="Password" />
+        </div>
         <SignInButton type="submit">Sign In</SignInButton>
-      </Form>
+      </MainForm>
     </Formik>
-  </MainForm>
+    <PageLink to="/forgot-password">Forgot password?</PageLink>
+    <PageLink to="/signup">Sign Up</PageLink>
+  </>
 );
 
 export default AuthForm;
