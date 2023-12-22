@@ -1,5 +1,5 @@
 import ReactModal from 'react-modal'; 
-import { BtnSvg, ModalBackdrope, ModalWrap } from './DailyNormaModal.styled';
+import { BtnSvg, ModalBackdrope, ModalWrap } from './DailyNormaModal.styled.js';
 import { useEffect, useState } from 'react';
 ReactModal.setAppElement('#modal-root');
 
@@ -32,7 +32,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             <ModalBackdrope onClick={onBackdropeClick}>
                 <ModalWrap>
                     <h1>My daily norma</h1>
-                    <BtnSvg type="button">
+                    <BtnSvg type="button" onClick={closeModal}>
                         <svg width="24" height="24" fill="none">
                             <path stroke="#407BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18 18 6M6 6l12 12" />
                         </svg>
