@@ -51,6 +51,7 @@ flex-direction: column;
 padding: 0;
 height: 212px;
 overflow-y: scroll;
+overflow-x: hidden;
 padding-left: 6px;
 padding-right: 6px; 
 
@@ -67,5 +68,7 @@ padding-right: 6px;
   border-radius: 8px; 
     
 }
+
+
 
 `

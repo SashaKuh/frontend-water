@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const WaterItem = styled.li`
    display: flex;
    height: 26px;
-   width: 254px;
+   width: 100%;
    padding: 12px 0;
-   
    align-items: center;
    border-bottom: 1px solid #D7E3FF;
-
    gap: 12px;
+
+   @media screen and (min-width: 320px) {
+       width: 254px;
+        }
 
 `
 
