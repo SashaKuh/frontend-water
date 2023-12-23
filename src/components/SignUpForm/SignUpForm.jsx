@@ -12,7 +12,7 @@ import {
   MessageError,
   EyeIcon,
   InputContainer,
-} from './AuthForm.styled';
+} from './SignUpForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
 
 const SignUpForm = () => {
@@ -37,7 +37,7 @@ const SignUpForm = () => {
       >
         {({ isSubmitting, errors, touched }) => (
           <MainForm>
-            <Title>Sign In</Title>
+            <Title>Sign Up</Title>
             <div>
               <Label htmlFor="firstName">Enter your email</Label>
               <Input
@@ -77,14 +77,41 @@ const SignUpForm = () => {
               </InputContainer>
               <ErrorMessage name="password" component={MessageError} />
             </div>
+            <div>
+              <Label htmlFor="lastName">Repeat password </Label>
+              <InputContainer>
+                <Input
+                  type={passwordVisible ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  hasError={touched.password && errors.password}
+                  required
+                />
+                <span onClick={togglePasswordVisibility}>
+                  {passwordVisible ? (
+                    <EyeIcon>
+                      <svg>
+                        <use href={iconSprite + '#icon-eye'} />
+                      </svg>
+                    </EyeIcon>
+                  ) : (
+                    <EyeIcon>
+                      <svg>
+                        <use href={iconSprite + '#icon-eye-slash'} />
+                      </svg>
+                    </EyeIcon>
+                  )}
+                </span>
+              </InputContainer>
+              <ErrorMessage name="password" component={MessageError} />
+            </div>
             <SignInButton type="submit" disabled={isSubmitting}>
               Sign In
             </SignInButton>
           </MainForm>
         )}
       </Formik>
-      <PageLink to="/forgot-password">Forgot password?</PageLink>
-      <PageLink to="/signup">Sign Up</PageLink>
+      <PageLink to="/signin">Sign In</PageLink>
     </>
   );
 };
