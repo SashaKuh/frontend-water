@@ -14,8 +14,7 @@ export const ModalBackdrope = styled.div`
 
 export const ModalWrap = styled.div`
 background-color: #FFFFFF;
-/* font-family: 'Roboto', sans-serif; */
-font-family: ‘Roboto-regular’;
+font-family: 'Roboto-regular';
 color: #2F2F2F;
 padding: 24px 12px;
 border-radius: 10px;
@@ -97,8 +96,7 @@ export const StyledRadioText = styled.span`
 
 export const TitleText = styled.div`
 font-size: 26px;
-/* font-weight: 600; */
-font-family: ‘Roboto-Medium’;
+font-family: 'Roboto-Medium';
 line-height: 1.2;
 margin-bottom: 24px;
 `;
@@ -118,7 +116,7 @@ margin-bottom: 12px;
 export const FormulaText = styled.span`
 color: #407BFF;
 font-size: 18px;
-line-height: 1.3;
+line-height: 1.2;
 `;
 
 export const WrapFormula = styled.div`
@@ -130,10 +128,12 @@ export const WrapFormula = styled.div`
   margin-bottom: 24px;
 `;
 
-export const AboutFormula = styled.span`
+export const AboutFormula = styled.p`
 color: #8F8F8F;
 font-size: 12px;
-line-height: 1.3;
+line-height: 1.35;
+font-family: 'Roboto-regular';
+box-sizing: border-box;
 `;
 
 export const AboutFormulaColor = styled.span`
@@ -142,8 +142,6 @@ color: #407BFF;
 
 export const Text = styled.h2`
 font-size: 18px;
-/* font-weight: 600; */
-font-family: ‘Roboto-Medium’;
 line-height: 1.1;
 margin-bottom: 16px;
 `;
@@ -181,8 +179,7 @@ export const AmountNumberInfo = styled.span`
 margin-left: 6px;
 color: #407BFF;
 font-size: 18px;
-/* font-weight: 700; */
-font-family: ‘Roboto-Bold’;
+font-family: 'Roboto-Bold';
 line-height: 1.3;
 `;
 
@@ -194,7 +191,7 @@ width: 100%;
 height: 36px;
 color: #FFFFFF;
 font-size: 16px;
-font-weight: 500;
+font-family: 'Roboto-Medium';
 line-height: 1.3;
 border-radius: 10px;
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);

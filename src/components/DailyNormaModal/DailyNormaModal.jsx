@@ -32,8 +32,6 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             default: return;
         }
 
-        console.log(result)
-
         setAmount(result)
     }, [gender, time, weight]);
 
@@ -52,6 +50,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
     const onBackdropeClick = (evt) => {
         if (evt.target === evt.currentTarget) {
             closeModal();
+            resetForm();
         }
     }
 
@@ -67,17 +66,25 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         setDailyNorma(evt.target.value)
     }
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        // patch на оновлення,
-        // якщо OK то get або dispatch, closeModal();
-        // якщо ті якесь пуш повідомлення
+    const resetForm = () => {
         setGender('');
         setFormula('');
         setWeight(0);
         setAmount(0);
         setDailyNorma(0);
         setTime(0);
+    }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        // patch на оновлення,
+        // якщо OK то get або dispatch, closeModal();
+        // якщо ті якесь пуш повідомлення
+        handleCloseModal()
+    }
+
+    const handleCloseModal = () => {
+        resetForm();
         closeModal();
     }
 
@@ -89,7 +96,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             <ModalBackdrope onClick={onBackdropeClick}>
                 <ModalWrap>
                     <TitleText>My daily norma</TitleText>
-                    <BtnSvg type="button" onClick={closeModal}>
+                    <BtnSvg type="button" onClick={handleCloseModal}>
                         <svg width="24" height="24" fill="none">
                             <path stroke="#407BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18 18 6M6 6l12 12" />
                         </svg>

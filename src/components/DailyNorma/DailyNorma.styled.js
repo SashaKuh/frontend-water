@@ -8,8 +8,7 @@ height: 76px;
 border-radius: 10px;
 border: 1px solid #ECF2FF;
 box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
-/* font-family: 'Roboto', sans-serif; */
-font-family: ‘Roboto-regular’;
+font-family: 'Roboto-regular';
 
 @media (min-width: 320px) and (max-width: 767px){
     height: 74px;
@@ -19,16 +18,14 @@ font-family: ‘Roboto-regular’;
 export const Text = styled.p`
 margin-bottom: 12px;
 font-size: 18px;
-/* font-weight: 600; */
-font-family: ‘Roboto-Medium’;
+font-family: 'Roboto-Medium';
 line-height: 1.3;
 color: #2F2F2F;
 `;
 
 export const TextWater = styled.p`
 font-size: 24px;
-/* font-weight: 700; */
-font-family: ‘Roboto-Bold’;
+font-family: 'Roboto-Bold';
 line-height: 1;
 color: #407BFF;
 `;
@@ -36,8 +33,7 @@ color: #407BFF;
 export const Button = styled.button`
 padding: 0;
 font-size: 16px;
-/* font-weight: 400; */
-font-family: ‘Roboto-regular’;
+font-family: 'Roboto-regular';
 line-height: 1.3;
 color: #8BAEFF;
 border: none;

@@ -1,6 +1,7 @@
 // import { lazy, useEffect } from 'react';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { DailyNorma } from './DailyNorma/DailyNorma';
 
 // const HomePage = lazy(() => import(''));
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
@@ -10,6 +11,7 @@ const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 export const App = () => {
   return (
     <>
+      <DailyNorma/>
       <Routes>
         <Route path="/">{/* SharedLayout */}
           <Route index /> {/* MainPage */}
