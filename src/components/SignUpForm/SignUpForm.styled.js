@@ -14,10 +14,9 @@ export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 384px;
-  height: 312px;
   align-content: flex-start;
   margin-top: 40px;
+  margin-bottom: 16px;
 `;
 
 export const Input = styled(Field)`

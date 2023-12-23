@@ -13,23 +13,30 @@ import {
   EyeIcon,
   InputContainer,
 } from './SignUpForm.styled';
-import { signInSchema } from 'schemas/SignInSchema';
+import { signUpSchema } from 'schemas/SignUpSchema';
 
 const SignUpForm = () => {
   const initialValues = {
     email: '',
     password: '',
+    repeatPassword: '',
   };
 
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  const togglePasswordVisibility = field => {
+    if (field === 'password') {
+      setPasswordVisible(!passwordVisible);
+    } else if (field === 'repeatPassword') {
+      setRepeatPasswordVisible(!repeatPasswordVisible);
+    }
   };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={signInSchema}
+        validationSchema={signUpSchema}
         onSubmit={async values => {
           await new Promise(r => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
@@ -39,7 +46,7 @@ const SignUpForm = () => {
           <MainForm>
             <Title>Sign Up</Title>
             <div>
-              <Label htmlFor="firstName">Enter your email</Label>
+              <Label htmlFor="email">Enter your email</Label>
               <Input
                 type="email"
                 name="email"
@@ -50,7 +57,7 @@ const SignUpForm = () => {
               <ErrorMessage name="email" component={MessageError} />
             </div>
             <div>
-              <Label htmlFor="lastName">Enter your password </Label>
+              <Label htmlFor="password">Enter your password </Label>
               <InputContainer>
                 <Input
                   type={passwordVisible ? 'text' : 'password'}
@@ -59,7 +66,7 @@ const SignUpForm = () => {
                   hasError={touched.password && errors.password}
                   required
                 />
-                <span onClick={togglePasswordVisibility}>
+                <span onClick={() => togglePasswordVisibility('password')}>
                   {passwordVisible ? (
                     <EyeIcon>
                       <svg>
@@ -78,17 +85,19 @@ const SignUpForm = () => {
               <ErrorMessage name="password" component={MessageError} />
             </div>
             <div>
-              <Label htmlFor="lastName">Repeat password </Label>
+              <Label htmlFor="repeatPassword">Repeat password </Label>
               <InputContainer>
                 <Input
-                  type={passwordVisible ? 'text' : 'password'}
-                  name="password"
-                  placeholder="Password"
-                  hasError={touched.password && errors.password}
+                  type={repeatPasswordVisible ? 'text' : 'password'}
+                  name="repeatPassword"
+                  placeholder="Repeat password"
+                  hasError={touched.repeatPassword && errors.repeatPassword}
                   required
                 />
-                <span onClick={togglePasswordVisibility}>
-                  {passwordVisible ? (
+                <span
+                  onClick={() => togglePasswordVisibility('repeatPassword')}
+                >
+                  {repeatPasswordVisible ? (
                     <EyeIcon>
                       <svg>
                         <use href={iconSprite + '#icon-eye'} />
@@ -103,10 +112,10 @@ const SignUpForm = () => {
                   )}
                 </span>
               </InputContainer>
-              <ErrorMessage name="password" component={MessageError} />
+              <ErrorMessage name="repeatPassword" component={MessageError} />
             </div>
             <SignInButton type="submit" disabled={isSubmitting}>
-              Sign In
+              Sign Up
             </SignInButton>
           </MainForm>
         )}
@@ -115,4 +124,5 @@ const SignUpForm = () => {
     </>
   );
 };
+
 export default SignUpForm;
