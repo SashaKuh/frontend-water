@@ -32,6 +32,11 @@ export const Input = styled(Field)`
   &::placeholder {
     color: #9ebbff;
   }
+
+  &:focus {
+    color: #407bff;
+    outline: none;
+  }
 `;
 
 export const SignInButton = styled.button`
@@ -63,4 +68,32 @@ export const PageLink = styled(Link)`
   line-height: 20px;
   text-decoration: none;
   margin-bottom: 6px;
+`;
+
+export const MessageError = styled.div`
+  color: #ef5050;
+  margin-bottom: 8px;
+  margin-top: -10px;
+`;
+
+export const EyeIcon = styled.svg`
+  cursor: pointer;
+  color: #407bff;
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  fill: none;
+  width: 16px;
+  height: 16px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: #407bff;
+  }
+`;
+
+export const InputContainer = styled.div`
+  position: relative;
 `;
