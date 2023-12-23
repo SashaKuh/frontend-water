@@ -10,13 +10,6 @@ border: 1px solid #ECF2FF;
 box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
 font-family: 'Roboto', sans-serif;
 
-@media (min-width: 1440px) {
-    /* height: 76px; */
-  }
-
-@media (min-width: 768px) and (max-width: 1439px){
-    /* height: 76px; */
-  }
 @media (min-width: 320px) and (max-width: 767px){
     height: 74px;
   }

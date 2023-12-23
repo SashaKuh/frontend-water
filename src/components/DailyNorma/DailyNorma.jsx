@@ -1,5 +1,5 @@
 import { DailyNormaModal } from "components/DailyNormaModal/DailyNormaModal";
-import { Button, Text, TextWater, Wrap, BtnWrap } from "./MyDailyNorma.styled.js";
+import { Button, Text, TextWater, Wrap, BtnWrap } from "./DailyNorma.styled.js";
 import { useState } from 'react';
 
 export const DailyNorma = () => {
