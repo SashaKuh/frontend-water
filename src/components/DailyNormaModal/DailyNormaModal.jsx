@@ -4,7 +4,6 @@ import {
     WrapFormula, AboutFormula, AboutFormulaColor, WrapFormulaText, CircleColor, TextInfo, Input, AmountText, AmountTextInfo, AmountNumberInfo, Button
 } from './DailyNormaModal.styled.js';
 import { useEffect, useState } from 'react';
-import { Form, Formik } from 'formik';
 ReactModal.setAppElement('#modal-root');
 
 export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
@@ -32,6 +31,8 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                 break;
             default: return;
         }
+
+        console.log(result)
 
         setAmount(result)
     }, [gender, time, weight]);
@@ -66,6 +67,20 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         setDailyNorma(evt.target.value)
     }
 
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        // patch на оновлення,
+        // якщо OK то get або dispatch, closeModal();
+        // якщо ті якесь пуш повідомлення
+        setGender('');
+        setFormula('');
+        setWeight(0);
+        setAmount(0);
+        setDailyNorma(0);
+        setTime(0);
+        closeModal();
+    }
+
     return (
         <ReactModal
             isOpen={modalIsOpen}
@@ -79,22 +94,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                             <path stroke="#407BFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </BtnSvg>
-                    <Formik
-                        initialValues={{dailyNorma: 1}}
-                        onSubmit={() => {
-                            console.log("dailyNorma", dailyNorma)
-                            //відправляємо dailyNorma,
-                            //якщо ОК робимо get запит, щоб оновилася норма води на home page або dispatch
-                            //прибрати console.log(dailyNorma)
-                            // setAmount(0);
-                            // setDailyNorma(0);
-                            // setTime(0);
-                            // setGender('');
-                            // setFormula('');
-                            // setWeight(0);
-                        }}
-                    >
-                        <Form>
+                        <form onSubmit={handleSubmit}>
                             <WrapFormulaText>
                                 <p>For girl: <FormulaText>{girlFormula}</FormulaText></p>
                                 <p>For man: <FormulaText>{ manFromula}</FormulaText></p>
@@ -123,10 +123,9 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                             </label>
                             <AmountText><AmountTextInfo>The required amount of water in liters per day:</AmountTextInfo><AmountNumberInfo>{amount} L</AmountNumberInfo></AmountText>
                             <Text>Write down how much water you will drink:</Text>
-                            <Input name="dailyNorma" type="text" value={dailyNorma > 0 ? dailyNorma : amount} onChange={handleAmountChange} />
+                            <Input name="amount" type="text" value={dailyNorma > 0 ? dailyNorma : amount} onChange={handleAmountChange} />
                             <Button type="submit">Save</Button>
-                        </Form>
-                    </Formik>
+                        </form>
                 </ModalWrap>
             </ModalBackdrope>
         </ReactModal>

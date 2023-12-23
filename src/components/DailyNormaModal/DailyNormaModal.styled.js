@@ -1,4 +1,3 @@
-import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const ModalBackdrope = styled.div`
@@ -15,7 +14,8 @@ export const ModalBackdrope = styled.div`
 
 export const ModalWrap = styled.div`
 background-color: #FFFFFF;
-font-family: 'Roboto', sans-serif;
+/* font-family: 'Roboto', sans-serif; */
+font-family: ‘Roboto-regular’;
 color: #2F2F2F;
 padding: 24px 12px;
 border-radius: 10px;
@@ -64,7 +64,7 @@ export const StyledRadioLabel = styled.label`
   margin-right: 24px;
 `;
 
-export const StyledRadioInput = styled(Field)`
+export const StyledRadioInput = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -97,7 +97,8 @@ export const StyledRadioText = styled.span`
 
 export const TitleText = styled.div`
 font-size: 26px;
-font-weight: 600;
+/* font-weight: 600; */
+font-family: ‘Roboto-Medium’;
 line-height: 1.2;
 margin-bottom: 24px;
 `;
@@ -141,7 +142,8 @@ color: #407BFF;
 
 export const Text = styled.h2`
 font-size: 18px;
-font-weight: 600;
+/* font-weight: 600; */
+font-family: ‘Roboto-Medium’;
 line-height: 1.1;
 margin-bottom: 16px;
 `;
@@ -150,7 +152,7 @@ margin-bottom: 8px;
 margin-top: 16px;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #D7E3FF;
@@ -179,7 +181,8 @@ export const AmountNumberInfo = styled.span`
 margin-left: 6px;
 color: #407BFF;
 font-size: 18px;
-font-weight: 700;
+/* font-weight: 700; */
+font-family: ‘Roboto-Bold’;
 line-height: 1.3;
 `;
 
