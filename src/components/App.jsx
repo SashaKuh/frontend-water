@@ -11,9 +11,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/">
-          {' '}
-          {/* SharedLayout */}
+        <Route path="/">{/* SharedLayout */}
           <Route index /> {/* MainPage */}
           <Route path="signin" element={<SignInPage />} />
           <Route path="signup" /> {/* SignUpPage */}
