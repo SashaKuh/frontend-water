@@ -3,6 +3,8 @@ import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 
 export const Title = styled.h1`
+  font-family: 'Roboto-Medium';
+  color: var(--primaryBlack);
   font-size: 26px;
   display: block;
   line-height: 32px;
@@ -20,34 +22,34 @@ export const MainForm = styled(Form)`
 `;
 
 export const Input = styled(Field)`
+  font-family: 'Roboto-regular';
   border-radius: 6px;
   border: 1px solid rgb(215, 227, 255);
   min-width: 384px;
   font-size: 16px;
-  font-weight: 400;
   padding: 12px 10px;
   line-height: 20px;
   margin-bottom: 16px;
   &::placeholder {
-    color: #9ebbff;
+    color: var(--secondaryBlue);
   }
 
   &:focus {
-    color: #407bff;
+    color: var(--primaryBlue);
     outline: none;
   }
 `;
 
 export const SignInButton = styled.button`
-  background-color: rgba(64, 123, 255, 1);
+  font-family: 'Roboto-Medium';
+  background-color: var(--primaryBlue);
   min-width: 384px;
   border-radius: 10px;
   border: none;
   font-size: 18px;
   line-height: 24px;
-  font-weight: 500;
   padding: 10px 30px;
-  color: rgba(255, 255, 255, 1);
+  color: var(--primaryWhite);
   cursor: pointer;
 `;
 
@@ -60,9 +62,9 @@ export const Label = styled.label`
 `;
 
 export const PageLink = styled(Link)`
-  color: #407bff;
+  font-family: 'Roboto-regular';
+  color: var(--primaryBlue);
   display: block;
-  font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
@@ -70,14 +72,14 @@ export const PageLink = styled(Link)`
 `;
 
 export const MessageError = styled.div`
-  color: #ef5050;
+  color: var(--secondaryRed);
   margin-bottom: 8px;
   margin-top: -10px;
 `;
 
 export const EyeIcon = styled.svg`
   cursor: pointer;
-  color: #407bff;
+  color: var(--primaryBlue);
   position: absolute;
   right: 10px;
   top: 40%;
@@ -89,10 +91,18 @@ export const EyeIcon = styled.svg`
   svg {
     width: 100%;
     height: 100%;
-    fill: #407bff;
+    fill: var(--primaryBlue);
   }
 `;
 
 export const InputContainer = styled.div`
   position: relative;
+`;
+
+export const Background = styled.section`
+  background-size: cover;
+ min-height: 100vh
+  background-position: center bottom;
+  background-repeat: no-repeat;
+
 `;
