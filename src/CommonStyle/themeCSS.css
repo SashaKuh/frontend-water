@@ -1,0 +1,21 @@
+:root {
+  --primaryWhite: #ffffff;
+  --primaryBlack: #2f2f2f;
+  --primaryBlue: #407bff;
+  --secondaryGrey: #ecf2ff;
+  --secondaryDarkGrey: #d7e3ff;
+  --secondaryRed: #ef5050;
+  --secondaryOrange: #ff9d43;
+  --secondaryBlue: #9ebbff;
+
+  --fontSizesTiny: 12px;
+  --fontSizesSmall: 16px;
+  --fontSizesMedium: 18px;
+  --fontSizesLarge: 26px;
+
+  --animationDuration: 0.3s;
+  --animationCubicBezier: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+
+  --ident: 26px;
+  --items: 5;
+}
