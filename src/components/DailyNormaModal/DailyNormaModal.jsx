@@ -27,7 +27,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             timeNumber = 24
         }
 
-        if (gender === "" || isNaN(weightNumber) || weightNumber === 0) {
+        if (gender === "" || isNaN(weightNumber) || weightNumber < 0 || timeNumber < 0) {
             return
         }
 
