@@ -2,16 +2,38 @@ import styled from "styled-components";
 
 export const WaterItem = styled.li`
    display: flex;
-   height: 26px;
+   height: 50px;
    width: 100%;
    padding: 12px 0;
    align-items: center;
    border-bottom: 1px solid #D7E3FF;
-   gap: 12px;
+ 
+ 
 
    @media screen and (min-width: 320px) {
        width: 254px;
         }
+
+        @media screen and (min-width: 768px) {
+        width: 646px;
+        }
+
+    @media screen and (min-width: 1440px) {
+        width: 534px;
+    }
+
+`
+
+export const GlassIcon = styled.svg`
+   width: 17px;
+   height: 22px;
+
+  @media screen and (min-width: 768px) {
+       width: 23px;
+   height: 30px;
+        }
+
+
 
 `
 
@@ -20,6 +42,7 @@ export const WaterText = styled.p`
   line-height: 1.33;
   font-weight: 400;
   color: #407BFF;
+  margin-left: 12px;
 
 `
 
@@ -28,13 +51,18 @@ font-size: 12px;
   line-height: 2;
   font-weight: 400;
   color: #2F2F2F;
-  
+  margin-left: 12px;
+
+   @media screen and (min-width: 768px) {
+       margin-left: 16px;
+        }
 
 `
 
 export const SvgPen = styled.svg`
 width: 16px;
 height: 16px;
+fill: currentColor;
 
 
 
@@ -43,11 +71,12 @@ height: 16px;
 export const SvgTrash = styled.svg`
 width: 16px;
 height: 16px;
-
+fill: currentColor;
 `
 
 export const ConfigIcons = styled.div`
 display: flex;
+width: 50px;
 margin-left: auto;
 gap: 18px;
 `
@@ -58,6 +87,9 @@ export const ButtonPen = styled.button`
    margin: 0;
    padding: 0;
    position: relative;
+   color: var(--secondaryBlue);
+   width: 16px;
+height: 16px;
 
    &::before {
   content: "";
@@ -65,7 +97,7 @@ export const ButtonPen = styled.button`
   width: 16px;
   height: 1px;
   background-color: #9EBBFF;
-  bottom: 1px;
+  bottom: -3px;
   opacity: 0;
   transition: opacity 200ms ease-in;
 }
@@ -84,7 +116,9 @@ export const ButtonTrash = styled.button`
    margin: 0;
    padding: 0;
    position: relative;
-   
+   color: var(--secondaryRed);
+   width: 16px;
+height: 16px;
 
 
    &::before {
@@ -93,7 +127,7 @@ export const ButtonTrash = styled.button`
   width: 16px;
   height: 1px;
   background-color: #EF5050;
-  bottom: 1px;
+  bottom: -3px;
   opacity: 0;
   transition: opacity 200ms ease-in;
 }

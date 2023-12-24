@@ -5,6 +5,7 @@ export const MonthTitle = styled.h3`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
+ 
 `
 
 export const DatePicker = styled.div`
@@ -13,9 +14,16 @@ export const DatePicker = styled.div`
   align-items: center;
 `
 
-export const Svg = styled.svg`
+export const SvgLeft = styled.svg`
 width: 14px;
 height: 14px;
+transform: rotate(90deg);
+`
+
+export const SvgRight = styled.svg`
+width: 14px;
+height: 14px;
+transform: rotate(-90deg);
 `
 
 export const LeftArrowButton = styled.button`
@@ -25,6 +33,7 @@ padding: 1px;
 padding-right: 12px;
 color: inherit;
 fill: currentColor;
+
 `
 
 export const RigthArrowButton = styled.button`
@@ -34,6 +43,7 @@ padding: 1px;
 padding-left: 12px;
 color: inherit;
 fill: currentColor;
+
 
 &:disabled {
   color: #ECF2FF;

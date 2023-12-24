@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import {
   MonthTitle,
   DatePicker,
-  Svg,
+  SvgLeft,
+  SvgRight,
   LeftArrowButton,
   RigthArrowButton,
   MonthHeader,
 } from './MonthList.styled';
-import sprite from '../../icons/sprite.svg';
+import sprite from '../../images/SVG/symbol-defs.svg';
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
@@ -19,18 +20,18 @@ const MonthList = () => {
       <MonthTitle>Month</MonthTitle>
       <DatePicker>
         <LeftArrowButton onClick={() => downMonth(date, setDate)}>
-          <Svg>
-            <use href={`${sprite}#icon-left-arrow`}></use>
-          </Svg>
+          <SvgLeft>
+            <use href={`${sprite}#icon-chevron-double-up`}></use>
+          </SvgLeft>
         </LeftArrowButton>
         <p>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</p>
         <RigthArrowButton
           onClick={() => upMonth(date, setDate)}
           disabled={isCurrentMonth}
         >
-          <Svg>
-            <use href={`${sprite}#icon-right-arrow`}></use>
-          </Svg>
+          <SvgRight>
+            <use href={`${sprite}#icon-chevron-double-up`}></use>
+          </SvgRight>
         </RigthArrowButton>
       </DatePicker>
     </MonthHeader>

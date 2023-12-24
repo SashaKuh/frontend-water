@@ -12,24 +12,31 @@ import {
   MessageError,
   EyeIcon,
   InputContainer,
-} from './AuthForm.styled';
-import { signInSchema } from 'schemas/SignInSchema';
+} from './SignUpForm.styled';
+import { signUpSchema } from 'schemas/SignUpSchema';
 
-const AuthForm = () => {
+const SignUpForm = () => {
   const initialValues = {
     email: '',
     password: '',
+    repeatPassword: '',
   };
 
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  const togglePasswordVisibility = field => {
+    if (field === 'password') {
+      setPasswordVisible(!passwordVisible);
+    } else if (field === 'repeatPassword') {
+      setRepeatPasswordVisible(!repeatPasswordVisible);
+    }
   };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={signInSchema}
+        validationSchema={signUpSchema}
         onSubmit={async values => {
           await new Promise(r => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
@@ -37,9 +44,9 @@ const AuthForm = () => {
       >
         {({ isSubmitting, errors, touched }) => (
           <MainForm>
-            <Title>Sign In</Title>
+            <Title>Sign Up</Title>
             <div>
-              <Label htmlFor="firstName">Enter your email</Label>
+              <Label htmlFor="email">Enter your email</Label>
               <Input
                 type="email"
                 name="email"
@@ -50,7 +57,7 @@ const AuthForm = () => {
               <ErrorMessage name="email" component={MessageError} />
             </div>
             <div>
-              <Label htmlFor="lastName">Enter your password </Label>
+              <Label htmlFor="password">Enter your password </Label>
               <InputContainer>
                 <Input
                   type={passwordVisible ? 'text' : 'password'}
@@ -59,7 +66,7 @@ const AuthForm = () => {
                   hasError={touched.password && errors.password}
                   required
                 />
-                <span onClick={togglePasswordVisibility}>
+                <span onClick={() => togglePasswordVisibility('password')}>
                   {passwordVisible ? (
                     <EyeIcon>
                       <svg>
@@ -77,15 +84,45 @@ const AuthForm = () => {
               </InputContainer>
               <ErrorMessage name="password" component={MessageError} />
             </div>
+            <div>
+              <Label htmlFor="repeatPassword">Repeat password </Label>
+              <InputContainer>
+                <Input
+                  type={repeatPasswordVisible ? 'text' : 'password'}
+                  name="repeatPassword"
+                  placeholder="Repeat password"
+                  hasError={touched.repeatPassword && errors.repeatPassword}
+                  required
+                />
+                <span
+                  onClick={() => togglePasswordVisibility('repeatPassword')}
+                >
+                  {repeatPasswordVisible ? (
+                    <EyeIcon>
+                      <svg>
+                        <use href={iconSprite + '#icon-eye'} />
+                      </svg>
+                    </EyeIcon>
+                  ) : (
+                    <EyeIcon>
+                      <svg>
+                        <use href={iconSprite + '#icon-eye-slash'} />
+                      </svg>
+                    </EyeIcon>
+                  )}
+                </span>
+              </InputContainer>
+              <ErrorMessage name="repeatPassword" component={MessageError} />
+            </div>
             <SignInButton type="submit" disabled={isSubmitting}>
-              Sign In
+              Sign Up
             </SignInButton>
           </MainForm>
         )}
       </Formik>
-      <PageLink to="/forgot-password">Forgot password?</PageLink>
-      <PageLink to="/signup">Sign Up</PageLink>
+      <PageLink to="/signin">Sign In</PageLink>
     </>
   );
 };
-export default AuthForm;
+
+export default SignUpForm;

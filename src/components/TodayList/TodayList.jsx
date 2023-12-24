@@ -2,27 +2,21 @@ import React from 'react';
 import {
   TodayTitle,
   AddLink,
-  Svg,
+  SvgPlus,
   WaterList,
   TodayListContainer,
 } from './TodayList.styled';
 import TodayItem from 'components/TodayItem/TodayItem';
 import { nanoid } from 'nanoid';
-import sprite from '../../icons/sprite.svg';
+import sprite from '../../images/SVG/symbol-defs.svg';
 
-const plusRef = `${sprite}#icon-plus`;
+const plusIcon = `${sprite}#icon-plus-small`;
 
-const testArrayDayWater = [
-  { water: 200, date: new Date() },
-  { water: 400, date: new Date() },
-  { water: 350, date: new Date() },
-  { water: 200, date: new Date() },
-  { water: 400, date: new Date() },
-  { water: 350, date: new Date() },
-  { water: 200, date: new Date() },
-  { water: 400, date: new Date() },
-  { water: 350, date: new Date() },
-];
+const testArrayDayWater = [];
+
+for (let i = 0; i <= 10; i += 1) {
+  testArrayDayWater[i] = { id: nanoid(), water: 200, date: new Date() };
+}
 
 const TodayList = () => {
   return (
@@ -33,9 +27,9 @@ const TodayList = () => {
           <TodayItem key={nanoid()} water={item.water} date={item.date} />
         ))}
         <AddLink>
-          <Svg>
-            <use xlinkHref={plusRef}></use>
-          </Svg>
+          <SvgPlus>
+            <use xlinkHref={plusIcon}></use>
+          </SvgPlus>
           <span>Add water</span>
         </AddLink>
       </WaterList>

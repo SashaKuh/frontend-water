@@ -8,11 +8,14 @@ import {
   ButtonTrash,
   SvgPen,
   SvgTrash,
+  GlassIcon,
 } from './TodayItem.styled';
-import sprite from '../../icons/sprite.svg';
+import spriteDel from '../../icons/sprite.svg';
+import sprite from '../../images/SVG/symbol-defs.svg';
 
-const editIcon = `${sprite}#icon-pen`;
+const editIcon = `${sprite}#icon-pencil`;
 const delIcon = `${sprite}#icon-trash`;
+const glassIcon = `${spriteDel}#icon-glass`;
 
 const TodayItem = ({ water, date }) => {
   const time = `${date.getHours()}:${date
@@ -22,9 +25,9 @@ const TodayItem = ({ water, date }) => {
 
   return (
     <WaterItem>
-      <svg width={26} height={26}>
-        <use href={`${sprite}#icon-glass`}></use>
-      </svg>
+      <GlassIcon>
+        <use href={glassIcon}></use>
+      </GlassIcon>
       <WaterText>{`${water} ml`}</WaterText>
       <TimeText>{time}</TimeText>
 

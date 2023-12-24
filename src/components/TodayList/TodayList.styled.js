@@ -4,41 +4,81 @@ import { Link } from 'react-router-dom';
 
 
 export const TodayListContainer = styled.div`
-/* padding-top: 24px;
-padding-left: 8px;
-padding-right: 8px; */
+  @media screen and (min-width: 320px) {
+       width: 264px;
+        }
+
+        @media screen and (min-width: 768px) {
+        width: 656px;
+        }
+
+    @media screen and (min-width: 1440px) {
+        width: 544px;
+    }
 `
 
 export const TodayTitle = styled.h3`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+        font-size: 26px
+        }
+
+    @media screen and (min-width: 1440px) {
+       
+    }
 `
 
 export const AddLink = styled(Link)`
 display: inline-block;
-height: 26px;
-width: 254px;
+/* width: 254px; */
+/* height: 26px; */
 padding: 12px 0;
 
 background-color: inherit;
 text-decoration: none;
 font-size: 16px;
 line-height: 1.25;
-color: #407BFF;
+color: var(--primaryBlue);
 stroke: currentColor;
 font-weight: 500;
 transition: color 250ms linear;
 
 &:hover {
-  color: #FF9D43;
+  color: var(--secondaryOrange);
 }
+
+@media screen and (min-width: 320px) {
+       width: 254px;
+        }
+
+        @media screen and (min-width: 768px) {
+        width: 646px;
+        }
+
+    @media screen and (min-width: 1440px) {
+        width: 534px;
+    }
 `
 
-export const Svg = styled.svg`
+export const SvgPlus = styled.svg`
 width: 8px;
 height: 8px;
 margin-right: 8px;
+fill: currentColor;
+
+@media screen and (min-width: 768px) {
+       width: 12px;
+height: 12px;
+        }
+
+    @media screen and (min-width: 1440px) {
+        width: 12px;
+height: 12px;
+    }
 
 
 `
@@ -52,8 +92,9 @@ padding: 0;
 height: 212px;
 overflow-y: scroll;
 overflow-x: hidden;
-padding-left: 6px;
-padding-right: 6px; 
+
+
+
 
 
 &::-webkit-scrollbar {
@@ -61,13 +102,21 @@ padding-right: 6px;
  
 }
 
-&::-webkit-scrollbar-thumb {
-   width: 4px;
-  height: 100px;
-  background-color: #9EBBFF;
-  border-radius: 8px; 
-    
+&::-webkit-scrollbar-track {
+  /* width: 2px; */
+  background-color: var(--secondaryDarkGrey);
+ border: 1px solid transparent;
+    background-clip: content-box;
 }
+
+&::-webkit-scrollbar-thumb {
+  height: 100px;
+  background-color: var(--secondaryBlue);
+  border-radius: 8px; 
+}
+
+
+
 
 
 
