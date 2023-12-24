@@ -2,8 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import Regular from '../fonts/Regular.ttf';
 import Medium from '../fonts/Medium.ttf';
 import Bold from '../fonts/Bold.ttf';
+import modernNormalize from "modern-normalize";
 
 export const GlobalStyle = createGlobalStyle`
+${modernNormalize}
  :root {
     --primaryWhite: #FFFFFF;
     --primaryBlack: #2F2F2F;
