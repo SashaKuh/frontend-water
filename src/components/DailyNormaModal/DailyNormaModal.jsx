@@ -7,30 +7,37 @@ import { useEffect, useState } from 'react';
 ReactModal.setAppElement('#modal-root');
 
 export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
+
     const [gender, setGender] = useState('');
     const [formula, setFormula] = useState('');
     const [amount, setAmount] = useState(0);
     const [weight, setWeight] = useState('');
     const [time, setTime] = useState('');
     const [dailyNorma, setDailyNorma] = useState('');
+
     useEffect(() => {
         const weightNumber = Math.floor(weight);
         let timeNumber =Math.floor(time);
 
-        if (time === "") {
+        if (isNaN(timeNumber)) {
             timeNumber = 0
         } 
-        if (gender === "" || isNaN(weightNumber) || isNaN(timeNumber) || weightNumber === 0) {
+
+        if (timeNumber > 24) {
+            timeNumber = 24
+        }
+
+        if (gender === "" || isNaN(weightNumber) || weightNumber === 0) {
             return
         }
 
         let result;
         switch (gender) {
             case "girl":
-                result = ((weight * 0.03) + (time * 0.4)).toFixed(1);
+                result = ((weight * 0.03) + (timeNumber * 0.4)).toFixed(1);
                 break;
             case "man":
-                result = ((weight * 0.04) + (time * 0.6)).toFixed(1);
+                result = ((weight * 0.04) + (timeNumber * 0.6)).toFixed(1);
                 break;
             default: return;
         }
@@ -85,8 +92,8 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             return
         }
 
-        // patch на оновлення,
-        // якщо OK то get або dispatch, closeModal();
+        // patch на оновлення, метод patch має добавляти норму води у стейт
+        // якщо OK closeModal();
         // якщо ні якесь пуш повідомлення
 
         handleCloseModal()
