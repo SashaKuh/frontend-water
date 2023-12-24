@@ -4,6 +4,16 @@ import Medium from '../fonts/Medium.ttf';
 import Bold from '../fonts/Bold.ttf';
 
 export const GlobalStyle = createGlobalStyle`
+ :root {
+    --primaryWhite: #FFFFFF;
+    --primaryBlack: #2F2F2F;
+    --primaryBlue: #407BFF;
+    --secondaryGrey: #ECF2FF;
+    --secondaryDarkGrey: #D7E3FF;
+    --secondaryRed: #EF5050;
+    --secondaryOrange: #FF9D43;
+    --secondaryBlue: #9EBBFF;
+  }
 
 body {
   margin: 0;
