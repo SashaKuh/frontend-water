@@ -1,3 +1,4 @@
+import ReactModal from 'react-modal';
 import styled from 'styled-components';
 
 export const ModalBackdrope = styled.div`
@@ -12,15 +13,20 @@ export const ModalBackdrope = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
 `;
 
+export const StyledReactModal = styled(ReactModal)`
+  &.ReactModal__Overlay--after-open {
+    border: none;
+  }
+`;
+
 export const ModalWrap = styled.div`
-background-color: #FFFFFF;
+background-color: var(--primaryWhite);
 font-family: 'Roboto-regular';
-color: #2F2F2F;
+color: var(--primaryBlack);
 padding: 24px 12px;
 border-radius: 10px;
 position: relative;
 font-size: 16px;
-font-weight: 400;
 line-height: 1.2;
 box-sizing: border-box;
 
@@ -44,7 +50,7 @@ padding: 0;
 top: 28px; 
 right: 12px;
 border: none;
-background-color: #FFFFFF;
+background-color: var(--primaryWhite);
 
 @media (min-width: 768px) and (max-width: 1439px){
     top: 36px; 
@@ -114,7 +120,7 @@ margin-bottom: 12px;
 `;
 
 export const FormulaText = styled.span`
-color: #407BFF;
+color: var(--primaryBlue);
 font-size: 18px;
 line-height: 1.2;
 `;
@@ -122,7 +128,7 @@ line-height: 1.2;
 export const WrapFormula = styled.div`
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #D7E3FF;
+  border: 1px solid var(--secondaryDarkGrey);
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 24px;
@@ -137,7 +143,7 @@ box-sizing: border-box;
 `;
 
 export const AboutFormulaColor = styled.span`
-color: #407BFF;
+color: var(--primaryBlue);
 `;
 
 export const Text = styled.h2`
@@ -153,12 +159,16 @@ margin-top: 16px;
 export const Input = styled.input`
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #D7E3FF;
+  border: 1px solid var(--secondaryDarkGrey);
   border-radius: 8px;
   padding: 10px;
   outline: none;
   color: #407BFF;
   font-size: 16px;
+  &::placeholder {
+    color: var(--primaryBlue);
+    opacity: 1;
+  }
 `;
 
 export const AmountText = styled.div`
@@ -177,7 +187,7 @@ width: 190px;
 
 export const AmountNumberInfo = styled.span`
 margin-left: 6px;
-color: #407BFF;
+color: var(--primaryBlue);
 font-size: 18px;
 font-family: 'Roboto-Bold';
 line-height: 1.3;
@@ -185,11 +195,11 @@ line-height: 1.3;
 
 export const Button = styled.button`
 margin-top: 24px;
-background-color: #407BFF;
+background-color: var(--primaryBlue);
 border: none;
 width: 100%;
 height: 36px;
-color: #FFFFFF;
+color: var(--primaryWhite);
 font-size: 16px;
 font-family: 'Roboto-Medium';
 line-height: 1.3;

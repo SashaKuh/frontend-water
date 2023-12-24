@@ -6,7 +6,7 @@ padding-top: 8px;
 width: 164px;
 height: 76px;
 border-radius: 10px;
-border: 1px solid #ECF2FF;
+border: 1px solid var(--secondaryGrey);
 box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
 font-family: 'Roboto-regular';
 
@@ -20,14 +20,14 @@ margin-bottom: 12px;
 font-size: 18px;
 font-family: 'Roboto-Medium';
 line-height: 1.3;
-color: #2F2F2F;
+color: var(--primaryBlack);
 `;
 
 export const TextWater = styled.p`
 font-size: 24px;
 font-family: 'Roboto-Bold';
 line-height: 1;
-color: #407BFF;
+color: var(--primaryBlue);
 `;
 
 export const Button = styled.button`
@@ -37,7 +37,7 @@ font-family: 'Roboto-regular';
 line-height: 1.3;
 color: #8BAEFF;
 border: none;
-background-color:#FFFFFF;
+background-color:var(--primaryWhite);
 outline: none;
 `;
 
