@@ -2,7 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 import Regular from '../fonts/Regular.ttf';
 import Medium from '../fonts/Medium.ttf';
 import Bold from '../fonts/Bold.ttf';
-import modernNormalize from "modern-normalize";
+import modernNormalize from 'modern-normalize/modern-normalize.css';
+export const calculateLineHeight = (fontSize, lineHeight) => {
+  return fontSize / lineHeight;
+};
 
 export const GlobalStyle = createGlobalStyle`
 ${modernNormalize}
@@ -24,11 +27,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: 250ms linear;
 }
 .container {
   width: 100%;
   padding-left: 20px;
-  padding-left: 20px;
+  padding-right: 20px;
   margin-right: auto;
   margin-left: auto;
 
@@ -91,5 +95,3 @@ margin: 0
     src: url(${Bold}) format('truetype'),
     }
 `;
-
-
