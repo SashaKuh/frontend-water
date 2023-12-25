@@ -105,8 +105,8 @@ export const Background = styled.main`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 40px;
-  min-height: 100vh;
+  padding-bottom: 50px;
+  // min-height: 100vh;
 `;
 
 export const BottleBackground = styled.div`
@@ -114,6 +114,6 @@ export const BottleBackground = styled.div`
   margin-top: 0%;
   background-image: url(${bottleBackground});
   background-size: 70%;
-  background-position: top 0px left -81px;
+  background-position: top 10px left -100px;
   background-repeat: no-repeat;
 `;
