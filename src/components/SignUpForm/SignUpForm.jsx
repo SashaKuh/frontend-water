@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { ErrorMessage, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { Formik, ErrorMessage } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
-
+import { signUpSchema } from 'schemas/SignUpSchema';
+import { register } from '../../redux/users/usersOperations';
 import {
   Title,
   MainForm,
@@ -15,22 +17,39 @@ import {
   Background,
   BottleBackground,
 } from './SignUpForm.styled';
-import { signUpSchema } from 'schemas/SignUpSchema';
 
 const SignUpForm = () => {
-  const initialValues = {
-    email: '',
-    password: '',
-    repeatPassword: '',
-  };
-
+  const dispatch = useDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+
   const togglePasswordVisibility = field => {
     if (field === 'password') {
       setPasswordVisible(!passwordVisible);
     } else if (field === 'repeatPassword') {
       setRepeatPasswordVisible(!repeatPasswordVisible);
+    }
+  };
+
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+    repeatPassword: '',
+  };
+
+  const handleSubmit = async values => {
+    try {
+      await dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          repeatPassword: values.repeatPassword,
+        })
+      );
+    } catch (error) {
+      // Помилки
     }
   };
 
@@ -42,14 +61,22 @@ const SignUpForm = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={signUpSchema}
-              onSubmit={async values => {
-                await new Promise(r => setTimeout(r, 500));
-                alert(JSON.stringify(values, null, 2));
-              }}
+              onSubmit={handleSubmit}
             >
-              {({ isSubmitting, errors, touched }) => (
+              {({ isSubmitting, errors, touched, values }) => (
                 <MainForm>
                   <Title>Sign Up</Title>
+
+                  <Label htmlFor="name">Enter your name</Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    hasError={touched.name && errors.name}
+                    value={values.name}
+                    required
+                  />
+                  <ErrorMessage name="name" component={MessageError} />
 
                   <Label htmlFor="email">Enter your email</Label>
                   <Input
@@ -57,17 +84,19 @@ const SignUpForm = () => {
                     name="email"
                     placeholder="E-mail"
                     hasError={touched.email && errors.email}
+                    value={values.email}
                     required
                   />
                   <ErrorMessage name="email" component={MessageError} />
 
-                  <Label htmlFor="password">Enter your password </Label>
+                  <Label htmlFor="password">Enter your password</Label>
                   <InputContainer>
                     <Input
                       type={passwordVisible ? 'text' : 'password'}
                       name="password"
                       placeholder="Password"
                       hasError={touched.password && errors.password}
+                      value={values.password}
                       required
                     />
                     <span onClick={() => togglePasswordVisibility('password')}>
@@ -88,13 +117,14 @@ const SignUpForm = () => {
                   </InputContainer>
                   <ErrorMessage name="password" component={MessageError} />
 
-                  <Label htmlFor="repeatPassword">Repeat password </Label>
+                  <Label htmlFor="repeatPassword">Repeat password</Label>
                   <InputContainer>
                     <Input
                       type={repeatPasswordVisible ? 'text' : 'password'}
                       name="repeatPassword"
                       placeholder="Repeat password"
                       hasError={touched.repeatPassword && errors.repeatPassword}
+                      value={values.repeatPassword}
                       required
                     />
                     <span
