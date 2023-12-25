@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { signUpSchema } from 'schemas/SignUpSchema';
-import { register } from '../../redux/users/usersOperations';
 import {
   Title,
   MainForm,
@@ -18,38 +18,83 @@ import {
   BottleBackground,
 } from './SignUpForm.styled';
 
+import {
+  selectSuccessful,
+  selectError,
+} from '../../redux/users/usersSelectors';
+import Notiflix from 'notiflix';
+import { register } from '../../redux/users/usersOperations';
+
+const initialValues = {
+  email: '',
+  password: '',
+  repeatPassword: '',
+};
+
 const SignUpForm = () => {
-  const dispatch = useDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const successful = useSelector(selectSuccessful);
+  const error = useSelector(selectError);
+
+  const emailInLocalStorage = email => {
+    localStorage.setItem('registrationEmail', email);
+  };
+
+  const emailFromLocalStorage = () => {
+    return localStorage.getItem('registrationEmail') || '';
+  };
+
+  const storeEmail = emailFromLocalStorage();
+  const [setEmail] = useState(storeEmail);
+
+  useEffect(() => {
+    if (successful && !error) {
+      Notiflix.Notify.Success(
+        'Congratulations! Verify your email for confirmation.'
+      );
+      setTimeout(() => {
+        navigate('/signin');
+      }, 6000);
+    }
+
+    if (error) {
+      Notiflix.Notify.Failure(error);
+    }
+  }, [dispatch, successful, error, navigate]);
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      // Зберігаю меіл в LocalStorage
+      emailInLocalStorage(values.email);
+      // Меiл у станi
+      setEmail(values.email);
+      await dispatch(
+        register({ email: values.email, password: values.password })
+      );
+
+      Notiflix.Notify.Success(
+        'Registration successful! Please check your email for confirmation.'
+      );
+      setTimeout(() => {
+        navigate('/signin');
+      }, 6000);
+    } catch (error) {
+      console.error('Error during signup:', error);
+      Notiflix.Notify.Failure('Registration failed. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const togglePasswordVisibility = field => {
     if (field === 'password') {
       setPasswordVisible(!passwordVisible);
     } else if (field === 'repeatPassword') {
       setRepeatPasswordVisible(!repeatPasswordVisible);
-    }
-  };
-
-  const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-    repeatPassword: '',
-  };
-
-  const handleSubmit = async values => {
-    try {
-      await dispatch(
-        register({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-          repeatPassword: values.repeatPassword,
-        })
-      );
-    } catch (error) {
-      console.error('Registration failed:', error.message);
     }
   };
 
@@ -66,18 +111,6 @@ const SignUpForm = () => {
               {({ isSubmitting, errors, touched, values }) => (
                 <MainForm>
                   <Title>Sign Up</Title>
-
-                  <Label htmlFor="name">Enter your name</Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    hasError={touched.name && errors.name}
-                    value={values.name}
-                    required
-                  />
-                  <ErrorMessage name="name" component={MessageError} />
-
                   <Label htmlFor="email">Enter your email</Label>
                   <Input
                     type="email"

@@ -14,29 +14,25 @@ export const clearAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
   localStorage.removeItem('token');
 };
-export const register = createAsyncThunk(
-  '/auth/signup',
-  async (user, thunkAPI) => {
-    try {
-      const { data } = await axios.post('/users/signup', user);
-      setAuthHeader(data.token);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+
+export const register = createAsyncThunk('/auth/signup', async newUser => {
+  try {
+    const response = await instance.post('/users/signup', newUser);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
   }
-);
+});
 
 export const logIn = createAsyncThunk(
   '/auth/signin',
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post('/users/signin', user);
-
-      setAuthHeader(data.token);
-      return data;
+      const response = await instance.post('/users/signin', user);
+      setAuthHeader(response.data.token);
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
