@@ -49,7 +49,7 @@ const SignUpForm = () => {
         })
       );
     } catch (error) {
-      // Помилки
+      console.error('Registration failed:', error.message);
     }
   };
 
