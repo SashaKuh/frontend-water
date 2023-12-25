@@ -26,6 +26,13 @@ export const signin = async body => {
     return data
 };
 
+export const signup = async body => {
+    const { data } = await instance.post('api/auth/signup', body);
+    setAuthHeader(data.token);
+
+    return data;
+};
+
 export const signout = async () => {
     await instance.post('users/logout');
     removeToken()
