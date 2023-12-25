@@ -13,9 +13,9 @@ import {
   EyeIcon,
   InputContainer,
   Background,
+  BottleBackground,
 } from './SignUpForm.styled';
 import { signUpSchema } from 'schemas/SignUpSchema';
-import backgroundImg from '../../images/PNG/images-desktop/Optimized/Background element Main Page.png';
 
 const SignUpForm = () => {
   const initialValues = {
@@ -35,21 +35,22 @@ const SignUpForm = () => {
   };
 
   return (
-    <Background style={{ backgroundImage: `url(${backgroundImg})` }}>
+    <Background>
       <div className="container">
-        <div>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={signUpSchema}
-            onSubmit={async values => {
-              await new Promise(r => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            {({ isSubmitting, errors, touched }) => (
-              <MainForm>
-                <Title>Sign Up</Title>
-                <div>
+        <BottleBackground>
+          <div>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={signUpSchema}
+              onSubmit={async values => {
+                await new Promise(r => setTimeout(r, 500));
+                alert(JSON.stringify(values, null, 2));
+              }}
+            >
+              {({ isSubmitting, errors, touched }) => (
+                <MainForm>
+                  <Title>Sign Up</Title>
+
                   <Label htmlFor="email">Enter your email</Label>
                   <Input
                     type="email"
@@ -59,8 +60,7 @@ const SignUpForm = () => {
                     required
                   />
                   <ErrorMessage name="email" component={MessageError} />
-                </div>
-                <div>
+
                   <Label htmlFor="password">Enter your password </Label>
                   <InputContainer>
                     <Input
@@ -87,8 +87,7 @@ const SignUpForm = () => {
                     </span>
                   </InputContainer>
                   <ErrorMessage name="password" component={MessageError} />
-                </div>
-                <div>
+
                   <Label htmlFor="repeatPassword">Repeat password </Label>
                   <InputContainer>
                     <Input
@@ -120,15 +119,16 @@ const SignUpForm = () => {
                     name="repeatPassword"
                     component={MessageError}
                   />
-                </div>
-                <SignInButton type="submit" disabled={isSubmitting}>
-                  Sign Up
-                </SignInButton>
-              </MainForm>
-            )}
-          </Formik>
-          <PageLink to="/signin">Sign In</PageLink>
-        </div>
+
+                  <SignInButton type="submit" disabled={isSubmitting}>
+                    Sign Up
+                  </SignInButton>
+                  <PageLink to="/signin">Sign In</PageLink>
+                </MainForm>
+              )}
+            </Formik>
+          </div>
+        </BottleBackground>
       </div>
     </Background>
   );

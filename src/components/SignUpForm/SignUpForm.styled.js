@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
+import bottleBackground from '../../images/PNG/images-desktop/btl_for_sign_in.png';
+import backgroundImg from '../../images/PNG/images-desktop/bg_el_main_page.png';
 
 export const Title = styled.h1`
   font-family: 'Roboto-Medium';
@@ -16,7 +18,7 @@ export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: flex-start;
+  align-content: flex-end;
   margin-top: 40px;
   margin-bottom: 16px;
 `;
@@ -64,11 +66,10 @@ export const Label = styled.label`
 export const PageLink = styled(Link)`
   font-family: 'Roboto-regular';
   color: var(--primaryBlue);
-  display: block;
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
-  margin-bottom: 6px;
+  margin-top: 16px;
 `;
 
 export const MessageError = styled.div`
@@ -99,10 +100,20 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 
-export const Background = styled.section`
-  background-size: cover;
- min-height: 100vh
-  background-position: center bottom;
+export const Background = styled.main`
+  background-image: url(${backgroundImg});
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 40px;
+  min-height: 100vh;
+`;
 
+export const BottleBackground = styled.div`
+  min-height: calc(100vh - 68px);
+  margin-top: 0%;
+  background-image: url(${bottleBackground});
+  background-size: 70%;
+  background-position: top 0px left -81px;
+  background-repeat: no-repeat;
 `;
