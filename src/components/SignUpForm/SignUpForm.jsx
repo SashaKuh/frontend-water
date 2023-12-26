@@ -49,7 +49,7 @@ const SignUpForm = () => {
   };
 
   const storeEmail = emailFromLocalStorage();
-  const [setEmail] = useState(storeEmail);
+  const [email, setEmail] = useState(storeEmail);
 
   useEffect(() => {
     if (successful && !error) {
