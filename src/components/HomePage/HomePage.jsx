@@ -17,9 +17,9 @@ import {
   SvgButton,
   WrapHomePage,
 } from './HomePage.styled';
-import bottleMobile from '../../images/PNG/images-mobile/Optimized/Bottle home screen.png';
-import bottleTablet from '../../images/PNG/images-tablet/Optimized/Bottle Home Screen.png';
-import bottleDesktop from '../../images/PNG/images-desktop/Optimized/Botle Home screen.png';
+import bottleMobile from '../../images/PNG/images-mobile/btl_home_screen.png';
+import bottleTablet from '../../images/PNG/images-tablet/btl_home_screen.png';
+import bottleDesktop from '../../images/PNG/images-desktop/btl_home_screen.png';
 const value = 1.5;
 const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
