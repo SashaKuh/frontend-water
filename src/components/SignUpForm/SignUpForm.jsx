@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
@@ -22,7 +23,6 @@ import {
   selectSuccessful,
   selectError,
 } from '../../redux/users/usersSelectors';
-import Notiflix from 'notiflix';
 import { register } from '../../redux/users/usersOperations';
 
 const initialValues = {
@@ -53,16 +53,14 @@ const SignUpForm = () => {
 
   useEffect(() => {
     if (successful && !error) {
-      Notiflix.Notify.Success(
-        'Congratulations! Verify your email for confirmation.'
-      );
+      Notiflix.Notify.success('Congratulations! You are registered.');
       setTimeout(() => {
         navigate('/signin');
       }, 6000);
     }
 
     if (error) {
-      Notiflix.Notify.Failure(error);
+      Notiflix.Notify.failure(error);
     }
   }, [dispatch, successful, error, navigate]);
 
@@ -76,15 +74,13 @@ const SignUpForm = () => {
         register({ email: values.email, password: values.password })
       );
 
-      Notiflix.Notify.Success(
-        'Registration successful! Please check your email for confirmation.'
-      );
+      Notiflix.Notify.success('Registration successful!');
       setTimeout(() => {
         navigate('/signin');
       }, 6000);
     } catch (error) {
       console.error('Error during signup:', error);
-      Notiflix.Notify.Failure('Registration failed. Please try again.');
+      Notiflix.Notify.failure('Registration failed. Please try again.');
     } finally {
       setSubmitting(false);
     }

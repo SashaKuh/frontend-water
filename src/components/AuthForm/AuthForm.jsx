@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Notiflix from 'notiflix';
 import { ErrorMessage, Formik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 
 import {
@@ -14,26 +17,63 @@ import {
   InputContainer,
 } from './AuthForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
+import { logIn } from '../../redux/users/usersOperations';
+import {
+  selectError,
+  selectSuccessful,
+} from '../../redux/users/usersSelectors';
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 const AuthForm = () => {
-  const initialValues = {
-    email: '',
-    password: '',
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const error = useSelector(selectError);
+  const successful = useSelector(selectSuccessful);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (successful && !error) {
+      Notiflix.Notify.success('Success! You have successfully logged in.');
+      setTimeout(() => {
+        navigate('/homepage');
+      }, 6000);
+    }
+
+    if (error) {
+      Notiflix.Notify.failure(error);
+    }
+  }, [dispatch, successful, error, navigate]);
+
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      await dispatch(logIn({ email: values.email, password: values.password }));
+
+      Notiflix.Notify.success('Login successful!');
+      setTimeout(() => {
+        navigate('/homepage');
+      }, 6000);
+    } catch (error) {
+      console.error('Error during login:', error);
+      Notiflix.Notify.failure('Login failed. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={signInSchema}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={handleSubmit}
       >
         {({ isSubmitting, errors, touched }) => (
           <MainForm>
