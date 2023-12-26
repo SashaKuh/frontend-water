@@ -10,7 +10,7 @@ import {
   BoldPercentageOfRange,
   ButtonAddWater,
   SvgButton,
-} from './HomePage.styled';
+} from '../../pages/HomePage/HomePage.styled';
 export const WaterRatioPanel = () => {
   const [sliderValue, setSliderValue] = useState(0);
 

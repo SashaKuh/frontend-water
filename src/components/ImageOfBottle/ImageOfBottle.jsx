@@ -1,4 +1,4 @@
-import { ImgTumb } from './HomePage.styled';
+import { ImgTumb } from '../../pages/HomePage/HomePage.styled';
 import bottleMobile from '../../images/PNG/images-mobile/btl_home_screen.png';
 import bottleTablet from '../../images/PNG/images-tablet/btl_home_screen.png';
 import bottleDesktop from '../../images/PNG/images-desktop/btl_home_screen.png';
