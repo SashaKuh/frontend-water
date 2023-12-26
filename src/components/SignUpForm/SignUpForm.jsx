@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { signUpSchema } from 'schemas/SignUpSchema';
@@ -45,7 +45,7 @@ const SignUpForm = () => {
       Notiflix.Notify.success('Congratulations! You are registered.');
       setTimeout(() => {
         navigate('/signin');
-      }, 6000);
+      }, 3000);
     }
 
     if (error) {
@@ -62,7 +62,7 @@ const SignUpForm = () => {
       Notiflix.Notify.success('Registration successful!');
       setTimeout(() => {
         navigate('/signin');
-      }, 6000);
+      }, 3000);
     } catch (error) {
       console.error('Error during signup:', error);
       Notiflix.Notify.failure('Registration failed. Please try again.');
