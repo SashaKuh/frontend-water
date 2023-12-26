@@ -8,14 +8,14 @@ import {
   ButtonTrash,
   SvgPen,
   SvgTrash,
-  GlassIcon,
+  CupIcon,
 } from './TodayItem.styled';
-import spriteDel from '../../icons/sprite.svg';
+
 import sprite from '../../images/SVG/symbol-defs.svg';
 
 const editIcon = `${sprite}#icon-pencil`;
 const delIcon = `${sprite}#icon-trash`;
-const glassIcon = `${spriteDel}#icon-glass`;
+const glassIcon = `${sprite}#cup`;
 
 const TodayItem = ({ water, date }) => {
   const time = `${date.getHours()}:${date
@@ -25,9 +25,9 @@ const TodayItem = ({ water, date }) => {
 
   return (
     <WaterItem>
-      <GlassIcon>
+      <CupIcon>
         <use href={glassIcon}></use>
-      </GlassIcon>
+      </CupIcon>
       <WaterText>{`${water} ml`}</WaterText>
       <TimeText>{time}</TimeText>
 

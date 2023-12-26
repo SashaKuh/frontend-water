@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TaDLayout = styled.div`
-    background-color: #ECF2FF;
+    background-color: var(--secondaryGrey);
     padding: 24px 8px;
     border-radius: 10px;
     margin: 0 auto;

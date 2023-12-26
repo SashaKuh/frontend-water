@@ -6,7 +6,7 @@ export const WaterItem = styled.li`
    width: 100%;
    padding: 12px 0;
    align-items: center;
-   border-bottom: 1px solid #D7E3FF;
+   border-bottom: 1px solid var(--secondaryDarkGrey);
  
  
 
@@ -24,9 +24,10 @@ export const WaterItem = styled.li`
 
 `
 
-export const GlassIcon = styled.svg`
+export const CupIcon = styled.svg`
    width: 17px;
    height: 22px;
+   fill: var(--primaryBlue);
 
   @media screen and (min-width: 768px) {
        width: 23px;
@@ -41,7 +42,7 @@ export const WaterText = styled.p`
   font-size: 18px;
   line-height: 1.33;
   font-weight: 400;
-  color: #407BFF;
+  color: var(--primaryBlue);
   margin-left: 12px;
 
 `
@@ -50,7 +51,7 @@ export const TimeText = styled.p`
 font-size: 12px;
   line-height: 2;
   font-weight: 400;
-  color: #2F2F2F;
+  color: var(--primaryBlack);
   margin-left: 12px;
 
    @media screen and (min-width: 768px) {
@@ -96,7 +97,7 @@ height: 16px;
     position: absolute;
   width: 16px;
   height: 1px;
-  background-color: #9EBBFF;
+  background-color: var(--secondaryBlue);
   bottom: -3px;
   opacity: 0;
   transition: opacity 200ms ease-in;
@@ -126,7 +127,7 @@ height: 16px;
     position: absolute;
   width: 16px;
   height: 1px;
-  background-color: #EF5050;
+  background-color: var(--secondaryRed);
   bottom: -3px;
   opacity: 0;
   transition: opacity 200ms ease-in;
