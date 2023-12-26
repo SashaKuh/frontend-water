@@ -26,8 +26,7 @@ export const WrapHomePage = styled.div`
 `
 
 export const DailyNormaContainer = styled.div`
-width:124px;
-height:58px;
+max-width:164px;
 padding: 8px 20px 8px 20px;
 border-radius: 10px;
 border: 1px;
