@@ -20,6 +20,7 @@ import {
 import bottleMobile from '../../images/PNG/images-mobile/btl_home_screen.png';
 import bottleTablet from '../../images/PNG/images-tablet/btl_home_screen.png';
 import bottleDesktop from '../../images/PNG/images-desktop/btl_home_screen.png';
+import { DailyNorma } from 'components/DailyNorma/DailyNorma';
 const value = 1.5;
 const HomePage = () => {
   const [sliderValue, setSliderValue] = useState(0);
@@ -36,11 +37,7 @@ const HomePage = () => {
   };
   return (
     <WrapHomePage>
-      <DailyNormaContainer>
-        <DailyNormaTitle>My daily norma</DailyNormaTitle>
-        <DailyNormaValue>{value} L</DailyNormaValue>
-        <DailyNormaButton>Edit</DailyNormaButton>
-      </DailyNormaContainer>
+      <DailyNorma />
       <ImgTumb>
         <img
           src={bottleMobile}

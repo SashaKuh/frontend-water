@@ -22,7 +22,6 @@ export const WrapHomePage = styled.div`
         margin-right:auto;
         margin-left:0;
     }
-}
 `
 
 export const DailyNormaContainer = styled.div`
