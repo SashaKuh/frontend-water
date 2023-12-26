@@ -40,17 +40,6 @@ const SignUpForm = () => {
   const successful = useSelector(selectSuccessful);
   const error = useSelector(selectError);
 
-  const emailInLocalStorage = email => {
-    localStorage.setItem('registrationEmail', email);
-  };
-
-  const emailFromLocalStorage = () => {
-    return localStorage.getItem('registrationEmail') || '';
-  };
-
-  const storeEmail = emailFromLocalStorage();
-  const [email, setEmail] = useState(storeEmail);
-
   useEffect(() => {
     if (successful && !error) {
       Notiflix.Notify.success('Congratulations! You are registered.');
@@ -66,10 +55,6 @@ const SignUpForm = () => {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      // Зберігаю меіл в LocalStorage
-      emailInLocalStorage(values.email);
-      // Меiл у станi
-      setEmail(values.email);
       await dispatch(
         register({ email: values.email, password: values.password })
       );
