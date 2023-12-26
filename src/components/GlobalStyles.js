@@ -18,6 +18,17 @@ ${modernNormalize}
     --secondaryRed: #EF5050;
     --secondaryOrange: #FF9D43;
     --secondaryBlue: #9EBBFF;
+
+
+    --fontSizesTiny: 12px;
+    --fontSizesSmall: 16px;
+    --fontSizesMedium: 18px;
+    --fontSizesLarge: 26px;
+
+    --animationDuration: 0.3s;
+    --animationCubicBezier: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+
+   
   }
 
 body {
@@ -43,13 +54,13 @@ body {
   @media screen and (min-width: 768px) {
         max-width: 768px;
         padding-left: 32px;
-        padding-left: 32px;
+        padding-right: 32px;
         }
 
     @media screen and (min-width: 1440px) {
         max-width: 1440px;
         padding-left: 112px;
-        padding-left: 112px;
+        padding-right: 112px;
     }
 }
 
