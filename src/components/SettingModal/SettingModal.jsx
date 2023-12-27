@@ -3,7 +3,7 @@ import sprite from "../../images/SVG/symbol-defs.svg";
 import {
     StModalBackdrope, StModalWrap, StyledSettingModal, Title, BtnSvg, SvgClose, WrapHeader, ImgWrapper, ImgAvatar,
     AvatarWrap, UploadLabel, FileInput, UploadButton, StyledRadioGroup, StyledRadioInput, StyledRadioCircle, StyledRadioLabel,
-    StyledRadioText, CircleColor, Button, SvgUpload, WrapInfo, Input, EmailText, PasswordText, PasswordTitle, InputPassword, SvgEye, ButtonEye, InputPasswordWrap,  
+    StyledRadioText, CircleColor, Button, SvgUpload, WrapInfo, Input, EmailText, PasswordText, PasswordTitle, InputPassword, SvgEye, ButtonEye, InputPasswordWrap, MessageError, Label,  
 } from "./SettingModal.styled"
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
@@ -120,22 +120,43 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 </StyledRadioGroup>
                                 <label>
                                     <p>Your name</p>
-                                    <Input name="name" type="text" placeholder={name} onChange={handleInputChange} />
+                                    <Input
+                                        name="name"
+                                        type="text"
+                                        placeholder={name}
+                                        onChange={handleInputChange}
+                                        $hasError={formik.touched.name && formik.errors.name}
+                                    />
+                                    {formik.touched.name && formik.errors.name ? (
+                                        <MessageError>{formik.errors.name}</MessageError>
+                                    ) : null}
                                 </label>
                                 <label>
                                     <EmailText>E-mail</EmailText>
-                                    <Input name="email" type="email" placeholder={email} onChange={handleInputChange} />
+                                    <Input
+                                        name="email"
+                                        type="email"
+                                        placeholder={email}
+                                        onChange={handleInputChange}
+                                        $hasError={formik.touched.email && formik.errors.email}
+                                    />
                                     {formik.touched.email && formik.errors.email ? (
-                                        <div>{formik.errors.email}</div>
+                                        <MessageError>{formik.errors.email}</MessageError>
                                     ) : null}
                                 </label>
                             </div>
                             <div>
                                 <PasswordTitle>Password</PasswordTitle>
-                                <label>
+                                <Label>
                                     <PasswordText>Outdated password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="oldPassword" onChange={handleInputChange} type={showPassword.oldPassword ? "text" : "password"} placeholder="Password" />
+                                        <InputPassword
+                                            name="oldPassword"
+                                            onChange={handleInputChange}
+                                            type={showPassword.oldPassword ? "text" : "password"}
+                                            placeholder="Password"
+                                            $hasError={formik.touched.oldPassword && formik.errors.oldPassword}
+                                        />
                                         <ButtonEye onClick={() => handleTogglePassword("oldPassword")} type="button">
                                             {showPassword.oldPassword ?
                                                 <SvgEye width="16" height="16">
@@ -146,14 +167,20 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                                 </SvgEye>}
                                         </ButtonEye>
                                     </InputPasswordWrap>
-                                </label>
-                                <label>
+                                    {formik.touched.oldPassword && formik.errors.oldPassword ? (
+                                        <MessageError>{formik.errors.oldPassword}</MessageError>
+                                    ) : null}
+                                </Label>
+                                <Label>
                                     <PasswordText>New Password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="newPassword" onChange={handleInputChange} type={showPassword.newPassword ? "text" : "password"} placeholder="Password" />
-                                        {formik.touched.newPassword && formik.errors.newPassword ? (
-                                            <div>{formik.errors.newPassword}</div>
-                                        ) : null}
+                                        <InputPassword
+                                            name="newPassword"
+                                            onChange={handleInputChange}
+                                            type={showPassword.newPassword ? "text" : "password"}
+                                            placeholder="Password"
+                                            $hasError={formik.touched.newPassword && formik.errors.newPassword}
+                                        />
                                         <ButtonEye onClick={() => handleTogglePassword("newPassword")} type="button">
                                             {showPassword.newPassword ?
                                                 <SvgEye width="16" height="16">
@@ -164,14 +191,20 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                                 </SvgEye>}
                                         </ButtonEye>
                                     </InputPasswordWrap>
-                                </label>
-                                <label>
+                                    {formik.touched.newPassword && formik.errors.newPassword ? (
+                                            <MessageError>{formik.errors.newPassword}</MessageError>
+                                        ) : null}
+                                </Label>
+                                <Label>
                                     <PasswordText>Repeat new password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="confirmPassword" onChange={handleInputChange} type={showPassword.confirmPassword ? "text" : "password"} placeholder="Password" />
-                                        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                                            <div>{formik.errors.confirmPassword}</div>
-                                        ) : null}
+                                        <InputPassword
+                                            name="confirmPassword"
+                                            onChange={handleInputChange}
+                                            type={showPassword.confirmPassword ? "text" : "password"}
+                                            placeholder="Password"
+                                            $hasError={formik.touched.confirmPassword && formik.errors.confirmPassword}
+                                        />                                        
                                         <ButtonEye onClick={() => handleTogglePassword("confirmPassword")} type="button">
                                             {showPassword.confirmPassword ?
                                                 <SvgEye width="16" height="16">
@@ -182,7 +215,10 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                                 </SvgEye>}
                                         </ButtonEye>
                                     </InputPasswordWrap>
-                                </label>
+                                    {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                                            <MessageError>{formik.errors.confirmPassword}</MessageError>
+                                        ) : null}
+                                </Label>
                             </div>
                         </WrapInfo>
                         <Button type="submit">Save</Button>

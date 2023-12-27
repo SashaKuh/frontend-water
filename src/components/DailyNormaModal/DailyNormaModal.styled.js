@@ -206,6 +206,14 @@ line-height: 1.3;
 border-radius: 10px;
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54)
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
 @media (min-width: 768px) {
     display: block;
     width: 160px;

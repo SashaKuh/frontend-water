@@ -196,6 +196,14 @@ box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     height: 44px;
     margin-left: auto;
   }
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54)
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
 `;
 
 export const Input = styled.input`
@@ -215,6 +223,17 @@ export const Input = styled.input`
   @media (min-width: 768px) {
     width: 392px;
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
 `;
 
 export const EmailText = styled.p`
@@ -252,6 +271,17 @@ export const InputPassword = styled.input`
   @media (min-width: 768px) {
     width: 392px;
   }
+
+    &:focus {
+    outline: none;
+  }
+
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
   `;
 
 export const InputPasswordWrap = styled.div`
@@ -278,4 +308,24 @@ background-color: var(--primaryWhite);
 border: none;
 top: 22px;
 right: 22px;
+`;
+
+export const MessageError = styled.div`
+  color: var(--secondaryRed);
+  /* /* margin-bottom: 8px; */
+  font-family: 'Roboto-regular';
+  margin-top: 4px;
+  font-size: 14px;
+  /* @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 364px;
+  } */
+`;
+
+export const Label = styled.label`
+display: flex;
+flex-direction: column;
 `;
