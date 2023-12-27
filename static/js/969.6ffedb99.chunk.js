@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend_water=self.webpackChunkfrontend_water||[]).push([[969],{2969:function(e,a,s){s(2791);a.Z=s.p+"static/media/symbol-defs.35320c87493ef925c5183e3a8272aa21.svg"}}]);
+//# sourceMappingURL=969.6ffedb99.chunk.js.map
