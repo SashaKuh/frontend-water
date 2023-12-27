@@ -17,7 +17,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
 
     useEffect(() => {
         const weightNumber = Math.floor(weight);
-        let timeNumber =Math.floor(time);
+        let timeNumber = Math.floor(time);
 
         if (isNaN(timeNumber)) {
             timeNumber = 0

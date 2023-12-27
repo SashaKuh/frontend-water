@@ -6,7 +6,7 @@ import {
     StyledRadioText, CircleColor, Button, SvgUpload, WrapInfo, Input, EmailText, PasswordText, PasswordTitle, InputPassword, SvgEye, ButtonEye, InputPasswordWrap,  
 } from "./SettingModal.styled"
 import { useState } from "react";
-import { number } from "yup";
+import { SettingModalSchema } from "schemas/SettingModalSchema";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU";
@@ -14,24 +14,38 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const name = "Vira";
     const email = "vira@ukr.net";
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState({
+        oldPassword: false,
+        newPassword: false,
+        confirmPassword: false,
+    });
+
     const formik = useFormik({
         initialValues: {
             gender,
-            name: null,
-            email: null,
+            name: '',
+            email: '',
             oldPassword: null,
             newPassword: null,
             confirmPassword: null,
             avatarUrl: avatarImg,
         },
         onSubmit: (values) => {
-            console.log(values)
-        }
+            const changedValues = Object.keys(values).reduce((acc, key) => {
+                if (values[key] !== '' && values[key] !== formik.initialValues[key]) {
+                    acc[key] = values[key];
+                }
+                return acc;
+            }, {});
+            console.log(changedValues);
+            
+        },
+        validationSchema: SettingModalSchema,
     });
 
     const handleFileChange = (evt) => {
-        formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0]));
+        formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0])); //замість цього
+        //робимо запит на оновлення аватару та у цьому запиті з відповіді оновлюємо стейт в редакс
     };
 
     const handleGenderChange = (evt) => {
@@ -39,7 +53,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     };
 
     const handleInputChange = (evt) => {
-        formik.handleChange(evt); 
+        formik.handleChange(evt);
     };
     
     const handleCloseModal = () => {
@@ -47,8 +61,11 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         formik.resetForm()
     };
 
-    const handleTogglePassword = () => {
-        setShowPassword((prevShowPassword) => !prevShowPassword);
+    const handleTogglePassword = (field) => {
+        setShowPassword(prevShowPassword => ({
+            ...prevShowPassword,
+            [field]: !prevShowPassword[field]
+        }));
     };
 
     const onBackdropeClick = (evt) => {
@@ -103,11 +120,14 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 </StyledRadioGroup>
                                 <label>
                                     <p>Your name</p>
-                                    <Input name="name" type="text" placeholder={name} onChange={handleInputChange}/>
+                                    <Input name="name" type="text" placeholder={name} onChange={handleInputChange} />
                                 </label>
                                 <label>
                                     <EmailText>E-mail</EmailText>
-                                    <Input name="email" type="email" placeholder={email} onChange={handleInputChange}/>
+                                    <Input name="email" type="email" placeholder={email} onChange={handleInputChange} />
+                                    {formik.touched.email && formik.errors.email ? (
+                                        <div>{formik.errors.email}</div>
+                                    ) : null}
                                 </label>
                             </div>
                             <div>
@@ -115,9 +135,9 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 <label>
                                     <PasswordText>Outdated password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="oldPassword" onChange={handleInputChange} type={showPassword ? "text" : "password"} placeholder="Password" />
-                                        <ButtonEye onClick={handleTogglePassword}>
-                                            {showPassword ?
+                                        <InputPassword name="oldPassword" onChange={handleInputChange} type={showPassword.oldPassword ? "text" : "password"} placeholder="Password" />
+                                        <ButtonEye onClick={() => handleTogglePassword("oldPassword")} type="button">
+                                            {showPassword.oldPassword ?
                                                 <SvgEye width="16" height="16">
                                                     <use xlinkHref={`${sprite}#icon-eye`} />
                                                 </SvgEye> :
@@ -130,9 +150,12 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 <label>
                                     <PasswordText>New Password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="newPassword" onChange={handleInputChange} type={showPassword ? "text" : "password"} placeholder="Password" />
-                                        <ButtonEye onClick={handleTogglePassword}>
-                                            {showPassword ?
+                                        <InputPassword name="newPassword" onChange={handleInputChange} type={showPassword.newPassword ? "text" : "password"} placeholder="Password" />
+                                        {formik.touched.newPassword && formik.errors.newPassword ? (
+                                            <div>{formik.errors.newPassword}</div>
+                                        ) : null}
+                                        <ButtonEye onClick={() => handleTogglePassword("newPassword")} type="button">
+                                            {showPassword.newPassword ?
                                                 <SvgEye width="16" height="16">
                                                     <use xlinkHref={`${sprite}#icon-eye`} />
                                                 </SvgEye> :
@@ -145,9 +168,12 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 <label>
                                     <PasswordText>Repeat new password:</PasswordText>
                                     <InputPasswordWrap>
-                                        <InputPassword name="confirmPassword" onChange={handleInputChange} type={showPassword ? "text" : "password"} placeholder="Password" />
-                                        <ButtonEye onClick={handleTogglePassword}>
-                                            {showPassword ?
+                                        <InputPassword name="confirmPassword" onChange={handleInputChange} type={showPassword.confirmPassword ? "text" : "password"} placeholder="Password" />
+                                        {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                                            <div>{formik.errors.confirmPassword}</div>
+                                        ) : null}
+                                        <ButtonEye onClick={() => handleTogglePassword("confirmPassword")} type="button">
+                                            {showPassword.confirmPassword ?
                                                 <SvgEye width="16" height="16">
                                                     <use xlinkHref={`${sprite}#icon-eye`} />
                                                 </SvgEye> :
