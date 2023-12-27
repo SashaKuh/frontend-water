@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { signUpSchema } from 'schemas/SignUpSchema';
 import {
@@ -16,13 +17,12 @@ import {
   InputContainer,
   Background,
   BottleBackground,
-} from './SignUpForm.styled';
+} from '../AuthForm/AuthForm.styled';
 
 import {
   selectSuccessful,
   selectError,
 } from '../../redux/users/usersSelectors';
-import Notiflix from 'notiflix';
 import { register } from '../../redux/users/usersOperations';
 
 const initialValues = {
@@ -40,51 +40,32 @@ const SignUpForm = () => {
   const successful = useSelector(selectSuccessful);
   const error = useSelector(selectError);
 
-  const emailInLocalStorage = email => {
-    localStorage.setItem('registrationEmail', email);
-  };
-
-  const emailFromLocalStorage = () => {
-    return localStorage.getItem('registrationEmail') || '';
-  };
-
-  const storeEmail = emailFromLocalStorage();
-  const [email, setEmail] = useState(storeEmail);
-
   useEffect(() => {
     if (successful && !error) {
-      Notiflix.Notify.Success(
-        'Congratulations! Verify your email for confirmation.'
-      );
+      Notiflix.Notify.success('Congratulations! You are registered.');
       setTimeout(() => {
         navigate('/signin');
-      }, 6000);
+      }, 3000);
     }
 
     if (error) {
-      Notiflix.Notify.Failure(error);
+      Notiflix.Notify.failure(error);
     }
   }, [dispatch, successful, error, navigate]);
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      // Зберігаю меіл в LocalStorage
-      emailInLocalStorage(values.email);
-      // Меiл у станi
-      setEmail(values.email);
       await dispatch(
         register({ email: values.email, password: values.password })
       );
 
-      Notiflix.Notify.Success(
-        'Registration successful! Please check your email for confirmation.'
-      );
+      Notiflix.Notify.success('Registration successful!');
       setTimeout(() => {
         navigate('/signin');
-      }, 6000);
+      }, 3000);
     } catch (error) {
       console.error('Error during signup:', error);
-      Notiflix.Notify.Failure('Registration failed. Please try again.');
+      Notiflix.Notify.failure('Registration failed. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -112,11 +93,12 @@ const SignUpForm = () => {
                 <MainForm>
                   <Title>Sign Up</Title>
                   <Label htmlFor="email">Enter your email</Label>
-                  <Input
+                  <Field
+                    as={Input}
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                    hasError={touched.email && errors.email}
+                    $hasError={touched.email && errors.email}
                     value={values.email}
                     required
                   />
@@ -124,11 +106,12 @@ const SignUpForm = () => {
 
                   <Label htmlFor="password">Enter your password</Label>
                   <InputContainer>
-                    <Input
+                    <Field
+                      as={Input}
                       type={passwordVisible ? 'text' : 'password'}
                       name="password"
                       placeholder="Password"
-                      hasError={touched.password && errors.password}
+                      $hasError={touched.password && errors.password}
                       value={values.password}
                       required
                     />
@@ -152,11 +135,14 @@ const SignUpForm = () => {
 
                   <Label htmlFor="repeatPassword">Repeat password</Label>
                   <InputContainer>
-                    <Input
+                    <Field
+                      as={Input}
                       type={repeatPasswordVisible ? 'text' : 'password'}
                       name="repeatPassword"
                       placeholder="Repeat password"
-                      hasError={touched.repeatPassword && errors.repeatPassword}
+                      $hasError={
+                        touched.repeatPassword && errors.repeatPassword
+                      }
                       value={values.repeatPassword}
                       required
                     />
