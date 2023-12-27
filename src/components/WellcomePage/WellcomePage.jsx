@@ -1,7 +1,6 @@
-import { Tracker } from '../WellcomeForm/WellcomeForm.styled';
+import { Tracker, WellcomeLayout } from './WellcomePage.styled';
 import { TrackerBenefits } from '../TrackerBenefits/TrackerBenefits';
 import { TrackerInfo } from '../TrackerInfo/TrackerInfo';
-import WellcomeLayout from '../WellcomeLayout/WellcomeLayout';
 
 const WellcomePage = () => {
   return (

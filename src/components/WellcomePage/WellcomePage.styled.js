@@ -6,7 +6,22 @@ import bg_tabl_2x from '../../images/PNG/images-tablet/bg_main_page.png';
 import bg_desk_1x from '../../images/PNG/images-desktop/bg_main_page.png';
 import bg_desk_2x from '../../images/PNG/images-desktop/bg_main_page.png';
 
-export const HomeStyledLayout = styled.section`
+export const Tracker = styled.div`
+  @media screen and (max-width: 767px) {
+    padding-bottom: 40px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    padding-bottom: 50px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const WellcomeLayout = styled.section`
   min-height: calc(100vh - 119px);
   background-image: url(${bg_main_page});
   background-size: cover;
