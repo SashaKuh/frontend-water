@@ -1,8 +1,8 @@
-import { SubTitle } from 'CommonStyle/Title/Title.styled';
 import {
   InfoItems,
   InfoList,
   TrackerInfoContainer,
+  SubTitle,
 } from './TrackerInfo.styled';
 
 export const TrackerInfo = () => {

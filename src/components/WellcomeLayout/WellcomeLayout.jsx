@@ -1,4 +1,4 @@
-import { HomeStyledLayout } from './HomeLayout.styled';
+import { HomeStyledLayout } from './WellcomeLayout.styled';
 
 const HomeLayout = ({ children }) => {
   return (

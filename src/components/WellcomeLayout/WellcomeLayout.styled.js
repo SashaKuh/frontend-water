@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-import bg_main_page from '../../images/PNG/images-mobile/';
+import bg_main_page from '../../images/PNG/images-mobile/bg_main_page.png';
+import bg_tabl_1x from '../../images/PNG/images-tablet/bg_main_page.png';
+import bg_tabl_2x from '../../images/PNG/images-tablet/bg_main_page.png';
+import bg_desk_1x from '../../images/PNG/images-desktop/bg_main_page.png';
+import bg_desk_2x from '../../images/PNG/images-desktop/bg_main_page.png';
+
 export const HomeStyledLayout = styled.section`
   min-height: calc(100vh - 119px);
   background-image: url(${bg_main_page});
