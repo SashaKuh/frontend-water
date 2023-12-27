@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 // import theme from 'CommonStyle/themeJSX';
-import { ReactComponent as CalendarIconSvg } from '../../images/SVG/icons/calendar.svg';
-import { ReactComponent as StatisticsIconSvg } from '../../images/SVG/icons/statistics.svg';
-import { ReactComponent as SettingsIconSvg } from '../../images/SVG/icons/settings.svg';
+import { ReactComponent as CalendarIconSvg } from '../../../../images/SVG/icons/calendar.svg';
+import { ReactComponent as StatisticsIconSvg } from '../../../../images/SVG/icons/statistics.svg';
+import { ReactComponent as SettingsIconSvg } from '../../../../images/SVG/icons/settings.svg';
 
 export const BenefitsList = styled.ul`
   font-size: 16px;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import theme from 'CommonStyle/themeJSX';
 
 export const TrackerInfoContainer = styled.div`
   background-color: var(--secondaryGrey);
