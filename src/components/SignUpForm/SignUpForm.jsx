@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { Formik, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { Formik, ErrorMessage, Field } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { signUpSchema } from 'schemas/SignUpSchema';
 import {
@@ -17,7 +17,7 @@ import {
   InputContainer,
   Background,
   BottleBackground,
-} from './SignUpForm.styled';
+} from '../AuthForm/AuthForm.styled';
 
 import {
   selectSuccessful,
@@ -93,11 +93,12 @@ const SignUpForm = () => {
                 <MainForm>
                   <Title>Sign Up</Title>
                   <Label htmlFor="email">Enter your email</Label>
-                  <Input
+                  <Field
+                    as={Input}
                     type="email"
                     name="email"
                     placeholder="E-mail"
-                    hasError={touched.email && errors.email}
+                    $hasError={touched.email && errors.email}
                     value={values.email}
                     required
                   />
@@ -105,11 +106,12 @@ const SignUpForm = () => {
 
                   <Label htmlFor="password">Enter your password</Label>
                   <InputContainer>
-                    <Input
+                    <Field
+                      as={Input}
                       type={passwordVisible ? 'text' : 'password'}
                       name="password"
                       placeholder="Password"
-                      hasError={touched.password && errors.password}
+                      $hasError={touched.password && errors.password}
                       value={values.password}
                       required
                     />
@@ -133,11 +135,14 @@ const SignUpForm = () => {
 
                   <Label htmlFor="repeatPassword">Repeat password</Label>
                   <InputContainer>
-                    <Input
+                    <Field
+                      as={Input}
                       type={repeatPasswordVisible ? 'text' : 'password'}
                       name="repeatPassword"
                       placeholder="Repeat password"
-                      hasError={touched.repeatPassword && errors.repeatPassword}
+                      $hasError={
+                        touched.repeatPassword && errors.repeatPassword
+                      }
                       value={values.repeatPassword}
                       required
                     />

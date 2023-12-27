@@ -1,15 +1,18 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
+import { Form } from 'formik';
 import { Link } from 'react-router-dom';
-import bottleBackground from '../../images/PNG/images-desktop/btl_for_sign_in.png';
-import backgroundImg from '../../images/PNG/images-desktop/bg_el_main_page.png';
+import bottleBackgroundMob from '../../images/PNG/images-mobile/origin/btl_sign_in.png';
+import bottleBackgroundTab from '../../images/PNG/images-tablet/origin/btl_for_sign_in.png';
+import bottleBackgroundDesc from '../../images/PNG/images-desktop/origin/btl_for_sign_in.png';
+import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_sign_in.png';
+import backgroundImgTab from '../../images/PNG/images-tablet/bg_el_home_screen.png';
+import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
 
 export const Title = styled.h1`
   font-family: 'Roboto-Medium';
   color: var(--primaryBlack);
   font-weight: 500;
   font-size: 26px;
-  display: block;
   line-height: 32px;
   margin-bottom: 16px;
 `;
@@ -17,28 +20,24 @@ export const Title = styled.h1`
 export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
   align-content: flex-start;
-
+  width: 280px;
   margin-top: 24px;
 
   @media screen and (min-width: 768px) {
-    align-content: flex-start;
-    flex-wrap: wrap;
+    width: 336px;
     margin-top: 40px;
-    &:not(:first-child) {
-      align-items: flex-start;
-    }
   }
   @media screen and (min-width: 1440px) {
+    margin-left: 728px;
+    margin-right: 104px;
     flex-wrap: wrap;
-    align-content: flex-end;
-    padding-top: 220px;
-    margin: 0 198px 0 auto;
+    width: 384px;
+    margin-top: 162px;
   }
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   font-family: 'Roboto-regular';
   border-radius: 6px;
   border: 1px solid rgb(215, 227, 255);
@@ -50,13 +49,17 @@ export const Input = styled(Field)`
   &::placeholder {
     color: var(--secondaryBlue);
   }
-
   &:focus {
-    color: var(--primaryBlue);
     outline: none;
-    color: ${({ hasError }) =>
-      hasError ? 'var(--secondaryRed)' : 'var(--primaryBlue)'};
   }
+
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
+
   @media screen and (min-width: 768px) {
     min-width: 336px;
   }
@@ -146,46 +149,57 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 export const Background = styled.main`
-  background-image: url(${backgroundImg});
+  background-image: url(${backgroundImgMob});
   background-size: cover;
-  background-position: bottom center;
+  position: relative;
+  background-position: center;
   background-repeat: no-repeat;
-  padding-bottom: 100px;
-  min-height: 100vh;
+  height: 100%;
 
   @media screen and (min-width: 768px) {
-    background-image: url(${backgroundImg});
+    background-image: url(${backgroundImgTab});
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
   }
   @media screen and (min-width: 1440px) {
-    background-image: url(${backgroundImg});
+    background-image: url(${backgroundImgDesc});
     background-size: contain;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
   }
 `;
 
 export const BottleBackground = styled.div`
   min-height: calc(100vh - 68px);
-  background-image: url(${bottleBackground});
-  background-size: 100%;
-  background-position: center bottom 10px;
-  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
 
-  @media screen and (min-width: 768px) {
-    background-image: url(${bottleBackground});
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(${bottleBackgroundMob});
     background-size: 100%;
-    background-position: right -100px bottom 56px;
+    background-position: center bottom;
     background-repeat: no-repeat;
-  }
 
-  @media screen and (min-width: 1440px) {
-    background-image: url(${bottleBackground});
-    background-size: 80%;
-    position: relative;
-    background-position: left -200px top 90px;
-    background-repeat: no-repeat;
+    @media screen and (min-width: 768px) {
+      background-image: url(${bottleBackgroundTab});
+      background-position: right -100px bottom 20px;
+      background-repeat: no-repeat;
+    }
+
+    @media screen and (min-width: 1440px) {
+      background-image: url(${bottleBackgroundDesc});
+      background-size: 80%;
+      background-position: left -110px top 90px;
+      background-repeat: no-repeat;
+    }
+    z-index: -1;
   }
 `;

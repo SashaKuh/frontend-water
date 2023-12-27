@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
-import { ErrorMessage, Formik } from 'formik';
+import { ErrorMessage, Formik, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
@@ -86,11 +86,12 @@ const AuthForm = () => {
                     <Title>Sign In</Title>
                     <div>
                       <Label htmlFor="firstName">Enter your email</Label>
-                      <Input
+                      <Field
+                        as={Input}
                         type="email"
                         name="email"
                         placeholder="E-mail"
-                        hasError={touched.email && errors.email}
+                        $hasError={touched.email && errors.email}
                         required
                       />
                       <ErrorMessage name="email" component={MessageError} />
@@ -98,11 +99,12 @@ const AuthForm = () => {
                     <div>
                       <Label htmlFor="lastName">Enter your password </Label>
                       <InputContainer>
-                        <Input
+                        <Field
+                          as={Input}
                           type={passwordVisible ? 'text' : 'password'}
                           name="password"
                           placeholder="Password"
-                          hasError={touched.password && errors.password}
+                          $hasError={touched.password && errors.password}
                           required
                         />
                         <span onClick={togglePasswordVisibility}>
