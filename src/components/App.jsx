@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 // const MainPage = lazy(() => import(''));
@@ -31,6 +32,7 @@ export const App = () => {
           <Route path="signin" element={<SignInPage />} />
           <Route path="signup" element={<SignUpPage />} />
           <Route path="/homepage" element={<HomePage />} />
+          <Route path="/wellcomepage" element={<WellcomePage />} />
         </Route>
       </Routes>
     </>
