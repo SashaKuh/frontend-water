@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const instance = axios.create({
-  baseURL: 'https://backend-water.onrender.com',
+  baseURL: 'https://backend-water.onrender.com/api',
 });
 
 export const setAuthHeader = token => {
@@ -17,7 +17,7 @@ export const clearAuthHeader = () => {
 
 export const register = createAsyncThunk('/auth/signup', async newUser => {
   try {
-    const response = await instance.post('/users/signup', newUser);
+    const response = await instance.post('/auth/signup', newUser);
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -28,7 +28,7 @@ export const logIn = createAsyncThunk(
   '/auth/signin',
   async (user, thunkAPI) => {
     try {
-      const response = await instance.post('/users/signin', user);
+      const response = await instance.post('/auth/signin', user);
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {

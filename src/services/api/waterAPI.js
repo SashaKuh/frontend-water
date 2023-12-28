@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: 'https://backend-water.onrender.com/api',
+    baseURL: 'https://backend-water.onrender.com/api/',
 });
 
 const setAuthHeader = token => {

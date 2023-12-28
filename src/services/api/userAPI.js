@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://backend-water.onrender.com/api',
+  baseURL: 'https://backend-water.onrender.com/api/',
 });
 
 const removeToken = () => {
@@ -20,21 +20,21 @@ export const clearAuthHeader = () => {
 };
 
 export const signin = async body => {
-  const { data } = await instance.post('users/signin', body);
+  const { data } = await instance.post('auth/signin', body);
   setAuthHeader(data.token);
 
   return data;
 };
 
 export const signup = async body => {
-  const { data } = await instance.post('users/signup', body);
+  const { data } = await instance.post('auth/signup', body);
   setAuthHeader(data.token);
 
   return data;
 };
 
 export const signout = async () => {
-  await instance.post('users/signout');
+  await instance.post('auth/signout');
   removeToken();
 };
 
