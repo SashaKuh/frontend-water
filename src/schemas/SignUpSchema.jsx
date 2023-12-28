@@ -10,7 +10,7 @@ export const signUpSchema = Yup.object().shape({
   password: Yup.string()
     .matches(
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,64}$/,
-      'Password must include letters, numbers, and special characters'
+      'Password must include letters, numbers and special characters'
     )
     .min(8, 'Password is too short')
     .max(64, 'Password is too long')
