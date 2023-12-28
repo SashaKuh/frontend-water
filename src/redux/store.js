@@ -13,6 +13,7 @@ import {
 import sessionStorage from 'redux-persist/es/storage/session';
 
 import { authReducer } from './users/usersSlice';
+import { waterReducer } from './water/waterSlice';
 // import modalReducer
 // import waterReducer
 
@@ -28,9 +29,7 @@ export const store = configureStore({
     modals: {
       /*modalReducer*/
     },
-    water: {
-      /*waterReducer*/
-    },
+    water: waterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

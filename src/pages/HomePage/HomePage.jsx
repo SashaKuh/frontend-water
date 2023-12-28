@@ -1,5 +1,6 @@
 import { DailyNorma } from 'components/DailyNorma/DailyNorma';
 import { ImageOfBottle } from 'components/ImageOfBottle/ImageOfBottle';
+import TestComponent from 'components/TestComponent/TestComponent';
 import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
 const HomePage = () => {
   return (
@@ -7,6 +8,7 @@ const HomePage = () => {
       <DailyNorma />
       <ImageOfBottle />
       <WaterRatioPanel />
+      <TestComponent />
     </div>
   );
 };
