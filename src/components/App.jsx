@@ -1,40 +1,40 @@
-// import { lazy, useEffect } from 'react';
-import { lazy, useEffect } from 'react';
+import { lazy, Suspense,  } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// import { ErrorBoundary } from 'react-error-boundary';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-// const MainPage = lazy(() => import(''));
+
+// const ErrorFallback = ({ error }) => (
+//   <div>
+//     <p>An error occurred:</p>
+//     <pre>{error.message}</pre>
+//   </div>
+// );
 
 export const App = () => {
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const currentPath = location.pathname;
-
-  useEffect(() => {
-    if (currentPath === '/homepage') {
-      
-    } else {
-      
-    }
-  }, [dispatch, currentPath])
-
   return (
-    <>
-      <Routes>
-        <Route path="/">{/*Layout*/}
-          
-          <Route index /> {/* MainPage */}
-          <Route path="signin" element={<SignInPage />} />
-          <Route path="signup" element={<SignUpPage />} />
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/wellcomepage" element={<WellcomePage />} />
-        </Route>
-      </Routes>
-    </>
+    // <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/">{/* Layout */}
+            <Route
+              index
+              element={
+                <WellcomePage />
+              }
+            />
+            <Route path="signin" element={<SignInPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route
+              path="/homepage"
+              element={<HomePage />}
+            />
+          </Route>
+        </Routes>
+      </Suspense>
+    // </ErrorBoundary>
   );
 };
