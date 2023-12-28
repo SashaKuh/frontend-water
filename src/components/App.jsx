@@ -1,25 +1,33 @@
-// import { lazy, useEffect } from 'react';
-// import { lazy } from 'react';
-// import { Route, Routes } from 'react-router-dom';
-import TodayAndMonthLayout from './TodayAndMonthLayout/TodayAndMonthLayout';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+// import { ErrorBoundary } from 'react-error-boundary';
 
-// const HomePage = lazy(() => import(''));
-// const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
-// const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-// const MainPage = lazy(() => import(''));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
+const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
+const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
+const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
+
+// const ErrorFallback = ({ error }) => (
+//   <div>
+//     <p>An error occurred:</p>
+//     <pre>{error.message}</pre>
+//   </div>
+// );
 
 export const App = () => {
-  return <TodayAndMonthLayout />;
-  // return (
-  //   <>
-  //     <Routes>
-  //       <Route path="/">{/* SharedLayout */}
-  //         <Route index /> {/* MainPage */}
-  //         <Route path="signin" element={<SignInPage /> } />
-  //         <Route path="signup" element={<SignUpPage />} />
-  //         <Route path="/homepage" /> {/* HomePage */}
-  //       </Route>
-  //     </Routes>
-  //   </>
-  // );
+  return (
+    // <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/">
+          {/* Layout */}
+          <Route index element={<WellcomePage />} />
+          <Route path="signin" element={<SignInPage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="/homepage" element={<HomePage />} />
+        </Route>
+      </Routes>
+    </Suspense>
+    // </ErrorBoundary>
+  );
 };

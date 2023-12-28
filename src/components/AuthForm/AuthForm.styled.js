@@ -79,7 +79,7 @@ export const SignInButton = styled.button`
   color: var(--primaryWhite);
   cursor: pointer;
   box-shadow: 0px 4px 8px 0px #407bff;
-  &: hover,
+  &:hover,
   &:focus{
     box-shadow: 0px 4px 14px 0px #407BFF
   }
