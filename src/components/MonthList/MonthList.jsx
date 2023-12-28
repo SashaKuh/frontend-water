@@ -9,6 +9,7 @@ import {
   MonthHeader,
 } from './MonthList.styled';
 import sprite from '../../images/SVG/symbol-defs.svg';
+import DayDetails from 'components/DayDetails/DayDetails';
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
@@ -16,25 +17,27 @@ const MonthList = () => {
   const isCurrentMonth = date.getMonth() === new Date().getMonth();
 
   return (
-    <MonthHeader>
-      <MonthTitle>Month</MonthTitle>
-      <DatePicker>
-        <LeftArrowButton onClick={() => downMonth(date, setDate)}>
-          <SvgLeft>
-            <use href={`${sprite}#icon-chevron-double-up`}></use>
-          </SvgLeft>
-        </LeftArrowButton>
-        <p>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</p>
-        <RigthArrowButton
-          onClick={() => upMonth(date, setDate)}
-          disabled={isCurrentMonth}
-        >
-          <SvgRight>
-            <use href={`${sprite}#icon-chevron-double-up`}></use>
-          </SvgRight>
-        </RigthArrowButton>
-      </DatePicker>
-    </MonthHeader>
+    <div>
+      <MonthHeader>
+        <MonthTitle>Month</MonthTitle>
+        <DatePicker>
+          <LeftArrowButton onClick={() => downMonth(date, setDate)}>
+            <SvgLeft>
+              <use href={`${sprite}#icon-chevron-double-up`}></use>
+            </SvgLeft>
+          </LeftArrowButton>
+          <p>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</p>
+          <RigthArrowButton
+            onClick={() => upMonth(date, setDate)}
+            disabled={isCurrentMonth}
+          >
+            <SvgRight>
+              <use href={`${sprite}#icon-chevron-double-up`}></use>
+            </SvgRight>
+          </RigthArrowButton>
+        </DatePicker>
+      </MonthHeader>
+    </div>
   );
 };
 
