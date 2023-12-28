@@ -20,25 +20,39 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         confirmPassword: false,
     });
 
+    const saveValues = values => {
+        let data = {}
+        if (values.name !== formik.initialValues.name) {
+            data = { ...data, name: values.name };
+        }
+
+        if (values.email !== formik.initialValues.email) {
+            data = { ...data, email: values.email };
+        }
+
+        if (values.gender !== formik.initialValues.gender) {
+            data = { ...data, gender: values.gender };
+        }
+        if (formik.values.oldPassword || formik.values.confirmPassword) {
+            const password = { oldPassword: formik.values.oldPassword, newPassword: formik.values.confirmPassword }
+            data = { ...data, password };
+        }
+        return data;
+    };
+
     const formik = useFormik({
         initialValues: {
             gender,
             name: '',
             email: '',
-            oldPassword: null,
-            newPassword: null,
-            confirmPassword: null,
+            oldPassword: '',
+            newPassword: '',
+            confirmPassword: '',
             avatarUrl: avatarImg,
         },
         onSubmit: (values) => {
-            const changedValues = Object.keys(values).reduce((acc, key) => {
-                if (values[key] !== '' && values[key] !== formik.initialValues[key]) {
-                    acc[key] = values[key];
-                }
-                return acc;
-            }, {});
-            console.log(changedValues);
-            
+            const a = saveValues(values)
+            console.log(a)
         },
         validationSchema: SettingModalSchema,
     });
@@ -172,7 +186,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                     ) : null}
                                 </Label>
                                 <Label>
-                                    <PasswordText>New Password:</PasswordText>
+                                    <PasswordText>New password:</PasswordText>
                                     <InputPasswordWrap>
                                         <InputPassword
                                             name="newPassword"
