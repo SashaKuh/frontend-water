@@ -80,6 +80,7 @@ export const ImgWrapper = styled.div`
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
+  background-color: var(--secondaryGrey);
 `;
 
 export const ImgAvatar = styled.img`
@@ -312,17 +313,9 @@ right: 22px;
 
 export const MessageError = styled.div`
   color: var(--secondaryRed);
-  /* /* margin-bottom: 8px; */
   font-family: 'Roboto-regular';
   margin-top: 4px;
   font-size: 14px;
-  /* @media screen and (min-width: 768px) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 364px;
-  } */
 `;
 
 export const Label = styled.label`

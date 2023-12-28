@@ -39,6 +39,9 @@ color: #8BAEFF;
 border: none;
 background-color:var(--primaryWhite);
 outline: none;
+&:hover {
+    color: var(--secondaryOrange);
+  }
 `;
 
 export const BtnWrap = styled.div`

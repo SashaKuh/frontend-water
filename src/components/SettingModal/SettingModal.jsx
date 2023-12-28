@@ -3,15 +3,16 @@ import sprite from "../../images/SVG/symbol-defs.svg";
 import {
     StModalBackdrope, StModalWrap, StyledSettingModal, Title, BtnSvg, SvgClose, WrapHeader, ImgWrapper, ImgAvatar,
     AvatarWrap, UploadLabel, FileInput, UploadButton, StyledRadioGroup, StyledRadioInput, StyledRadioCircle, StyledRadioLabel,
-    StyledRadioText, CircleColor, Button, SvgUpload, WrapInfo, Input, EmailText, PasswordText, PasswordTitle, InputPassword, SvgEye, ButtonEye, InputPasswordWrap, MessageError, Label,  
+    StyledRadioText, CircleColor, Button, SvgUpload, WrapInfo, Input, EmailText, PasswordText, PasswordTitle, InputPassword, SvgEye,
+    ButtonEye, InputPasswordWrap, MessageError, Label, 
 } from "./SettingModal.styled"
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
-    const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU";
+    const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU"
     const gender = "girl";
-    const name = "Vira";
+    const name ='vira';
     const email = "vira@ukr.net";
 
     const [showPassword, setShowPassword] = useState({
@@ -43,8 +44,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const formik = useFormik({
         initialValues: {
             gender,
-            name: '',
-            email: '',
+            name,
+            email,
             oldPassword: '',
             newPassword: '',
             confirmPassword: '',
@@ -57,8 +58,10 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         validationSchema: SettingModalSchema,
     });
 
-    const handleFileChange = (evt) => {
-        formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0])); //замість цього
+    const handleFileChange = async (evt) => {
+        formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0]));
+        const avatar = await evt.currentTarget.files[0]
+        console.log(avatar)//замість цього
         //робимо запит на оновлення аватару та у цьому запиті з відповіді оновлюємо стейт в редакс
     };
 
@@ -105,7 +108,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                         <p>Your photo</p>
                         <AvatarWrap>
                             <ImgWrapper>
-                                <ImgAvatar src={formik.values.avatarUrl} alt="User Avatar" />
+                                <ImgAvatar src={formik.values.avatarUrl} alt="user avatar" /> 
                             </ImgWrapper>
                             <UploadLabel>
                                 <FileInput name="avatarUrl" type="file" accept="image/*" onChange={handleFileChange} />
