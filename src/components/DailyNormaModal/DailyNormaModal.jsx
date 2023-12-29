@@ -140,7 +140,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                                 type="text"
                                 value={formik.values.weight}
                                 onChange={handleInputChange}
-                                $hasError={formik.touched.name && formik.errors.name}
+                                $hasError={formik.touched.weight && formik.errors.weight}
                                 placeholder="0"
                             />
                             {formik.touched.weight && formik.errors.weight ? (
@@ -153,7 +153,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                                 type="text"
                                 value={formik.values.time }
                                 onChange={handleInputChange}
-                                $hasError={formik.touched.name && formik.errors.name}
+                                $hasError={formik.touched.time && formik.errors.time}
                                 placeholder="0"
                             />
                             {formik.touched.time && formik.errors.time ? (
@@ -168,7 +168,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                             type="text"
                             value={formik.values.dailyNorma ? formik.values.dailyNorma : amount}
                             onChange={handleInputChange}
-                            $hasError={formik.touched.name && formik.errors.name}
+                            $hasError={formik.touched.dailyNorma && formik.errors.dailyNorma}
                             placeholder="0"
                         />
                         {formik.touched.dailyNorma && formik.errors.dailyNorma ? (

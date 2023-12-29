@@ -174,6 +174,12 @@ export const Input = styled.input`
     color: var(--primaryBlue);
     opacity: 1;
   }
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
 `;
 
 export const AmountText = styled.div`

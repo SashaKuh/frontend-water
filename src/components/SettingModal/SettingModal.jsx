@@ -8,12 +8,14 @@ import {
 } from "./SettingModal.styled"
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
+import { useSelector } from "react-redux";
+import { selectEmail } from "../../redux/users/usersSelectors";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU"
     const gender = "girl";
     const name ='vira';
-    const email = "vira@ukr.net";
+    const email = useSelector(selectEmail);
 
     const [showPassword, setShowPassword] = useState({
         oldPassword: false,
