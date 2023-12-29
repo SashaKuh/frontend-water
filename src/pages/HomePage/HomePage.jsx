@@ -1,6 +1,6 @@
-import { DailyNorma } from 'components/DailyNorma/DailyNorma';
-import { ImageOfBottle } from 'components/ImageOfBottle/ImageOfBottle';
-import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
+import { DailyNorma } from 'components/Homepage/DailyNorma';
+import { ImageOfBottle } from 'components/Homepage/ImageOfBottle/ImageOfBottle';
+import { WaterRatioPanel } from 'components/Homepage/WaterRatioPanel/WaterRatioPanel';
 const HomePage = () => {
   return (
     <div className="container">
