@@ -8,14 +8,12 @@ import {
 } from "./SettingModal.styled"
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
-import { useSelector } from "react-redux";
-import { selectEmail } from "../../redux/users/usersSelectors";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU"
     const gender = "girl";
     const name ='vira';
-    const email = useSelector(selectEmail);
+    const email = "vira@ukr.net";
 
     const [showPassword, setShowPassword] = useState({
         oldPassword: false,
@@ -54,16 +52,14 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             avatarUrl: avatarImg,
         },
         onSubmit: (values) => {
-            const a = saveValues(values)
-            console.log(a)
+            saveValues(values)
         },
         validationSchema: SettingModalSchema,
     });
 
     const handleFileChange = async (evt) => {
         formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0]));
-        const avatar = await evt.currentTarget.files[0]
-        console.log(avatar)//замість цього
+        await evt.currentTarget.files[0] //замість цього
         //робимо запит на оновлення аватару та у цьому запиті з відповіді оновлюємо стейт в редакс
     };
 

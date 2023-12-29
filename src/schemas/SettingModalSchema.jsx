@@ -21,7 +21,8 @@ export const SettingModalSchema = Yup.object().shape({
                     .oneOf([Yup.ref('newPassword')], 'Passwords must match');
             }
         }),
-    oldPassword: Yup.string()
+    oldPassword: Yup.string().min(8, 'Password is too short')
+        .max(64, 'Password is too long')
         .when('newPassword', ([newPassword], schema) => {
             if (!newPassword) {
                 return schema.nullable()
