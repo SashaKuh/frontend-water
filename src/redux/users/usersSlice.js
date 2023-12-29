@@ -1,12 +1,25 @@
 // створюю slice для стану авторизації
 
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, register } from './usersOperations';
+import {
+  logIn,
+  register,
+  refreshUser,
+  updateAvatar,
+  signout,
+} from './usersOperations';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: { username: null, email: null },
+    user: {
+      username: null,
+      email: null,
+      avatarURL: null,
+      gender: null,
+      dailyNorma: null,
+      waterRate: null,
+    },
     token: null,
     error: null,
     isLoggedIn: false,
@@ -51,7 +64,44 @@ const authSlice = createSlice({
       })
       .addCase(logIn.pending, state => {
         state.error = null;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+        state.error = null;
+      })
+      .addCase(refreshUser.rejected, state => {
+        state.isRefreshing = false;
+        state.isLoggedIn = false;
+        state.token = '';
+      })
+      .addCase(refreshUser.pending, state => {
+        state.error = null;
+      })
+      .addCase(updateAvatar.fulfilled, (state, { payload }) => {
+        state.user.avatarURL = payload.avatarURL;
+      })
+
+      .addCase(signout.pending, state => {
+        state.error = '';
+        state.isLoggedIn = true;
+      })
+      .addCase(signout.rejected, (state, { payload }) => {
+        state.error = payload.message;
+      })
+      .addCase(signout.fulfilled, state => {
+        state.user.username = '';
+        state.user.email = '';
+        state.user.avatarURL = '';
+        state.user.gender = '';
+        state.user.dailyNorma = '';
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+        state.token = '';
+        state.error = '';
       }),
 });
 
 export const authReducer = authSlice.reducer;
+export const { resetSuccessful, resetError } = authSlice.actions;
