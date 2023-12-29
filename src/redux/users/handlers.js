@@ -53,3 +53,5 @@ export const handleUpdate = (state, { payload }) => {
 export const handleWaterRate = (state, { payload }) => {
   state.user.waterRate = payload;
 };
+
+
