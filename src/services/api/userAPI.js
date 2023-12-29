@@ -55,12 +55,17 @@ export const updateAvatar = async (newPhotoFile, token) => {
   return data.data.avatar;
 };
 
-export const updateUser = async (updateUser, token, id) => {
+export const updateUser = async (updateUser, token) => {
   setAuthHeader(token);
-  if (updateUser.hasOwnProperty('id')) {
-    delete updateUser.id;
-  }
-  const data = await instance.patch(`users/update/${id}`, updateUser);
+  const data = await instance.patch(`users/update/`, updateUser);
 
   return data;
+};
+
+
+export const addWaterRate = async (data, token) => {
+  setAuthHeader(token);
+  const res = await instance.patch(`api/water/rate`, data);
+
+  return res;
 };
