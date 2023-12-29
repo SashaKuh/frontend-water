@@ -58,6 +58,7 @@ export const UserLogo = styled.button`
 
   & svg {
     flex-shrink: 0;
+    transition: var(--animationCubicBezier);
   }
 
   &.open {
