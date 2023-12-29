@@ -36,3 +36,56 @@ export const logIn = createAsyncThunk(
     }
   }
 );
+
+export const signout = createAsyncThunk(
+  '/auth/signout',
+  async (_, thunkAPI) => {
+    try {
+      await instance.post('/auth/signout');
+      clearAuthHeader();
+      return {};
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk('/users/current', async token => {
+  try {
+    setAuthHeader(token);
+    const response = await instance.get('users/current');
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+});
+
+export const updateAvatar = createAsyncThunk(
+  '/users/updateAvatar',
+  async ({ newPhotoFile, token }) => {
+    try {
+      setAuthHeader(token);
+      const data = await instance.patch('users/avatar', newPhotoFile, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return data.data.avatar;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  '/users/updateUser',
+  async ({ updateUser, token }) => {
+    try {
+      setAuthHeader(token);
+      const response = await instance.patch(`users/update`, updateUser);
+      return response.data;
+    } catch (error) {
+      throw error.response.data;
+    }
+  }
+);
