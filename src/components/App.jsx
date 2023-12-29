@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
+import { Layout } from './Layout/Layout.jsx';
 // import { ErrorBoundary } from 'react-error-boundary';
 
 // import {PrivateRoute} from './privateRoute';
