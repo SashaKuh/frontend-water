@@ -79,6 +79,24 @@ export const SubTitle = styled.h2`
   margin-bottom: 12px;
 `;
 
+// export const EyeIcon = styled.svg`
+//   cursor: pointer;
+//   color: var(--primaryBlue);
+//   position: absolute;
+//   right: 10px;
+//   top: 40%;
+//   transform: translateY(-50%);
+//   fill: none;
+//   width: 16px;
+//   height: 16px;
+
+//   svg {
+//     width: 100%;
+//     height: 100%;
+//     fill: var(--primaryBlue);
+//   }
+// `;
+
 export const CalendarIcon = styled(CalendarIconSvg)`
   margin-right: 8px;
   @media only screen and (max-width: 767px) {
