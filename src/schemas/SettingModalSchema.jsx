@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 export const SettingModalSchema = Yup.object().shape({
-    name: Yup.string().nullable(),
+    name: Yup.string().nullable().max(32, 'Name is too long'),
     email: Yup.string()
         .matches(
             /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
