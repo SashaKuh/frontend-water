@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   display: flex;
+  gap: 8px;
   justify-content: space-between;
-  padding: 8px 0 24px 0;
+  padding-top: 8px;
+  padding-bottom: 24px;
 `;
 
 export const UserAuth = styled.button`
-  text-align: center;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -22,6 +23,46 @@ export const UserAuth = styled.button`
   }
 `;
 
-export const UserLogo = styled.button`
+export const UserLogoWrapper = styled.div`
+  position: relative;
   display: flex;
+  max-width: calc(100% - 102px);
+  width: auto;
+  flex-shrink: 2;
+`;
+
+export const UserLogo = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 10px 0;
+
+  & span {
+    flex-shrink: 2;
+    margin-right: 8px;
+    font-family: 'Roboto-regular';
+    font-size: 16px;
+    color: var(--primaryBlack);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: auto;
+  }
+
+  & img {
+    flex-shrink: 0;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+
+  & svg {
+    flex-shrink: 0;
+  }
+
+  &.open {
+    & svg {
+      transform: rotateX(180deg);
+    }
+  }
 `;
