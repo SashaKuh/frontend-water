@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout/Layout';
 // import { ErrorBoundary } from 'react-error-boundary';
 
 // import {PrivateRoute} from './privateRoute';
@@ -20,45 +21,43 @@ const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 export const App = () => {
   return (
     // <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
-        <Route path="/">
-          {/* Layout */}
-          <Route
-            index
-            element={
-              // <PublicRoute>
-              <WellcomePage />
-              // </PublicRoute>
-            }
-          />
-          <Route
-            path="signin"
-            element={
-              // <PublicRoute>
-              <SignInPage />
-              // </PublicRoute>
-            }
-          />
-          <Route
-            path="signup"
-            element={
-              //<PublicRoute>
-              <SignUpPage />
-              //</PublicRoute>
-            }
-          />
-          <Route
-            path="/homepage"
-            element={
-              // <PrivateRoute>
-              <HomePage />
-              // </PrivateRoute>
-            }
-          />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* Layout */}
+        <Route
+          index
+          element={
+            // <PublicRoute>
+            <WellcomePage />
+            // </PublicRoute>
+          }
+        />
+        <Route
+          path="signin"
+          element={
+            // <PublicRoute>
+            <SignInPage />
+            // </PublicRoute>
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            //<PublicRoute>
+            <SignUpPage />
+            //</PublicRoute>
+          }
+        />
+        <Route
+          path="/homepage"
+          element={
+            // <PrivateRoute>
+            <HomePage />
+            // </PrivateRoute>
+          }
+        />
+      </Route>
+    </Routes>
     // </ErrorBoundary>
   );
 };

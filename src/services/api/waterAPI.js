@@ -1,48 +1,28 @@
-import axios from "axios";
+import {instance} from './waterAPI.js'
 
-export const instance = axios.create({
-    baseURL: 'https://backend-water.onrender.com/api/',
-});
+export const getWater = async () => {
+    const { data } = await instance.get(`water/today`);
+    return data;
+};
 
-const setAuthHeader = token => {
-    instance.defaults.headers.common.Authorization = ` Bearer ${token}`;
-    localStorage.setItem('token', token);
-}
-
-export const addWater = async (data, token) => {
-    setAuthHeader(token);
-    const response = await instance.post('water/add', data);
-
-    return response;
-}
-
-export const editWater = async (data, token, id) => {
-    setAuthHeader(token);
-    if (data.hasOwnProperty('id')) {
-        delete data.id;
-    }
-    const response = await instance.patch(`water/${id}`, data);
-
-    return response;
-}
-
-export const getWater = async token => {
-    setAuthHeader(token);
-    const response = await instance.get(`water/today`);
-
-    return response;
-}
-
-export const getMonthWater = async token => {
-    setAuthHeader(token);
+export const getMonthWater = async () => {
     const response = await instance.get(`water/month`);
-
     return response;
-}
+};
 
-export const deleteWaterById = async (token, id) => {
-    setAuthHeader(token);
+export const addWater = async newWaterUsed  => {
+    const { data } = await instance.post('water/add', newWaterUsed);
+    return data;
+};
+
+export const editWater = async ({newWaterUsed, id}) => {
+    const { data } = await instance.put(`water/${id}`, newWaterUsed);
+    return data;
+};
+
+
+export const deleteWaterById = async id => {
     const response = await instance.delete(`water/${id}`);
     return response;
-}
+};
 
