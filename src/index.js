@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { App } from 'components/App';
 import { GlobalStyle } from 'components/GlobalStyles';
 import './index.css';
-import { store, persistor } from './redux/store.js';  
+import { store } from './redux/store.js';  
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

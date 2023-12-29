@@ -1,89 +1,4 @@
 import styled from 'styled-components';
-export const WrapHomePage = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-right: auto;
-  margin-left: auto;
-
-  @media screen and (min-width: 320px) {
-        max-width: 320px;
-        }
-  
-  @media screen and (min-width: 768px) {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right: 32px;
-        }
-
-    @media screen and (min-width: 1440px) {
-        width: 738px;
-        padding-left: 112px;
-        padding-right: 0;
-        margin-right:auto;
-        margin-left:0;
-    }
-`
-
-export const DailyNormaContainer = styled.div`
-max-width:164px;
-padding: 8px 20px 8px 20px;
-border-radius: 10px;
-border: 1px;
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-
-border: 1px solid var(--secondaryGrey);
-box-shadow: 0px 4px 8px 0px #9EBBFF1F;
-
-margin-bottom:8px;
-
-@media (min-width:768px){
-    margin-bottom:0;
-     position: absolute; 
-  top: 0; 
-  left: 10%;
-
-}
-@media (min-width:1440px){
-  left: 10%;
-
-}
-
-
-`;
-export const DailyNormaTitle = styled.p`
-font-size: 18px;
-font-weight: 500;
-line-height: 24px;
-letter-spacing: 0em;
-text-align: left;
-min-width:164px;
-color:var(--primaryBlack);
-`;
-
-export const DailyNormaValue = styled.p`
-font-size: 22px;
-font-weight: 700;
-line-height: 22px;
-letter-spacing: 0em;
-text-align: left;
-color:var(--primaryBlue);
-`;
-export const DailyNormaButton = styled.button`
-background-color: Transparent;
-border:none;
-cursor:pointer;
-overflow: hidden; 
-
-
-font-size: 16px;
-font-weight: 400;
-line-height: 20px;
-letter-spacing: 0em;
-text-align: left;
-color:#8BAEFF;
-`;
 
 export const ImgTumb = styled.div`
  margin-bottom: 16px;
@@ -241,7 +156,7 @@ height:44px;
     }
 
 @media (min-width: 1440px) {
-width:179px;
+width:182px;
 padding:10px 30px 10px 30px;
     }
     

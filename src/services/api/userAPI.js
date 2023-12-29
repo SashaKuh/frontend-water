@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://backend-water.onrender.com',
+  baseURL: 'https://backend-water.onrender.com/api/',
 });
 
 const removeToken = () => {
@@ -20,21 +20,21 @@ export const clearAuthHeader = () => {
 };
 
 export const signin = async body => {
-  const { data } = await instance.post('users/signin', body);
+  const { data } = await instance.post('auth/signin', body);
   setAuthHeader(data.token);
 
   return data;
 };
 
 export const signup = async body => {
-  const { data } = await instance.post('users/signup', body);
+  const { data } = await instance.post('auth/signup', body);
   setAuthHeader(data.token);
 
   return data;
 };
 
 export const signout = async () => {
-  await instance.post('users/logout');
+  await instance.post('auth/signout');
   removeToken();
 };
 
@@ -55,12 +55,17 @@ export const updateAvatar = async (newPhotoFile, token) => {
   return data.data.avatar;
 };
 
-export const updateUser = async (updateUser, token, id) => {
+export const updateUser = async (updateUser, token) => {
   setAuthHeader(token);
-  if (updateUser.hasOwnProperty('id')) {
-    delete updateUser.id;
-  }
-  const data = await instance.patch(`users/update/${id}`, updateUser);
+  const data = await instance.patch(`users/update/`, updateUser);
 
   return data;
+};
+
+
+export const addWaterRate = async (data, token) => {
+  setAuthHeader(token);
+  const res = await instance.patch(`api/water/rate`, data);
+
+  return res;
 };
