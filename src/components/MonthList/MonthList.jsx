@@ -13,7 +13,9 @@ import sprite from '../../images/SVG/symbol-defs.svg';
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
 
-  const isCurrentMonth = date.getMonth() === new Date().getMonth();
+  const isCurrentMonth =
+    date.getMonth() === new Date().getMonth() &&
+    date.getFullYear() === new Date().getFullYear();
 
   return (
     <div>
