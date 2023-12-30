@@ -131,7 +131,7 @@ export const MessageError = styled.div`
 
 export const EyeIcon = styled.svg`
   cursor: pointer;
-  color: var(--primaryBlue);
+  stroke: var(--primaryBlue);
   position: absolute;
   right: 10px;
   top: 40%;
@@ -139,16 +139,11 @@ export const EyeIcon = styled.svg`
   fill: none;
   width: 16px;
   height: 16px;
-
-  svg {
-    width: 100%;
-    height: 100%;
-    fill: var(--primaryBlue);
-  }
 `;
 
 export const InputContainer = styled.div`
   position: relative;
+  display: inline-block;
 `;
 export const Background = styled.main`
   background-image: url(${backgroundImgMob});

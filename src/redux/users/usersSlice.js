@@ -5,7 +5,7 @@ import {
   refreshUser,
   updateAvatar,
   signout,
-  updateUser
+  updateUser,
 } from './usersOperations';
 
 import {
@@ -26,22 +26,22 @@ import {
   handlePendingAvatar,
   handleUpdate,
   handleUpdateError,
-  handlePendingUpdate
-} from './handlers'
+  handlePendingUpdate,
+} from './handlers';
 
 export const initialState = {
-    user: {
-      username: null,
-      email: null,
-      avatarURL: null,
-      gender: null,
-      dailyNorma: null,
-    },
-    token: null,
-    error: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-  }
+  user: {
+    username: null,
+    email: null,
+    avatarURL: null,
+    gender: null,
+    dailyNorma: null,
+  },
+  token: null,
+  error: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+};
 
 const authSlice = createSlice({
   name: 'auth',
@@ -77,11 +77,10 @@ const authSlice = createSlice({
       .addCase(updateAvatar.fulfilled, handleAvatar)
       .addCase(updateAvatar.rejected, handleAvatarError)
       .addCase(updateAvatar.pending, handlePendingAvatar)
-  
+
       .addCase(updateUser.fulfilled, handleUpdate)
       .addCase(updateUser.rejected, handleUpdateError)
-      .addCase(updateUser.pending, handlePendingUpdate)
-
+      .addCase(updateUser.pending, handlePendingUpdate),
 });
 
 export const authReducer = authSlice.reducer;

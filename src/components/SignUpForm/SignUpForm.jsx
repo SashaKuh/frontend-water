@@ -72,82 +72,92 @@ const SignUpForm = () => {
               {({ isSubmitting, errors, touched, values }) => (
                 <MainForm>
                   <Title>Sign Up</Title>
-                  <Label htmlFor="email">Enter your email</Label>
-                  <Field
-                    as={Input}
-                    type="email"
-                    name="email"
-                    placeholder="E-mail"
-                    $hasError={touched.email && errors.email}
-                    value={values.email}
-                    required
-                  />
-                  <ErrorMessage name="email" component={MessageError} />
-
-                  <Label htmlFor="password">Enter your password</Label>
-                  <InputContainer>
+                  <div>
+                    <Label htmlFor="email">Enter your email</Label>
                     <Field
                       as={Input}
-                      type={passwordVisible ? 'text' : 'password'}
-                      name="password"
-                      placeholder="Password"
-                      $hasError={touched.password && errors.password}
-                      value={values.password}
+                      type="email"
+                      name="email"
+                      placeholder="E-mail"
+                      $hasError={touched.email && errors.email}
+                      value={values.email}
                       required
                     />
-                    <span onClick={() => togglePasswordVisibility('password')}>
-                      {passwordVisible ? (
-                        <EyeIcon>
-                          <svg>
-                            <use href={iconSprite + '#icon-eye'} />
-                          </svg>
-                        </EyeIcon>
-                      ) : (
-                        <EyeIcon>
-                          <svg>
-                            <use href={iconSprite + '#icon-eye-slash'} />
-                          </svg>
-                        </EyeIcon>
-                      )}
-                    </span>
-                  </InputContainer>
-                  <ErrorMessage name="password" component={MessageError} />
+                    <ErrorMessage name="email" component={MessageError} />
+                  </div>
 
-                  <Label htmlFor="repeatPassword">Repeat password</Label>
-                  <InputContainer>
-                    <Field
-                      as={Input}
-                      type={repeatPasswordVisible ? 'text' : 'password'}
+                  <div>
+                    <Label htmlFor="password">Enter your password</Label>
+                    <InputContainer>
+                      <Field
+                        as={Input}
+                        type={passwordVisible ? 'text' : 'password'}
+                        name="password"
+                        placeholder="Password"
+                        $hasError={touched.password && errors.password}
+                        value={values.password}
+                        required
+                      />
+                      <span
+                        onClick={() => togglePasswordVisibility('password')}
+                      >
+                        {passwordVisible ? (
+                          <EyeIcon>
+                            <svg>
+                              <use href={iconSprite + '#icon-eye'} />
+                            </svg>
+                          </EyeIcon>
+                        ) : (
+                          <EyeIcon>
+                            <svg>
+                              <use href={iconSprite + '#icon-eye-slash'} />
+                            </svg>
+                          </EyeIcon>
+                        )}
+                      </span>
+                    </InputContainer>
+                    <ErrorMessage name="password" component={MessageError} />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="repeatPassword">Repeat password</Label>
+                    <InputContainer>
+                      <Field
+                        as={Input}
+                        type={repeatPasswordVisible ? 'text' : 'password'}
+                        name="repeatPassword"
+                        placeholder="Repeat password"
+                        $hasError={
+                          touched.repeatPassword && errors.repeatPassword
+                        }
+                        value={values.repeatPassword}
+                        required
+                      />
+                      <span
+                        onClick={() =>
+                          togglePasswordVisibility('repeatPassword')
+                        }
+                      >
+                        {repeatPasswordVisible ? (
+                          <EyeIcon>
+                            <svg>
+                              <use href={iconSprite + '#icon-eye'} />
+                            </svg>
+                          </EyeIcon>
+                        ) : (
+                          <EyeIcon>
+                            <svg>
+                              <use href={iconSprite + '#icon-eye-slash'} />
+                            </svg>
+                          </EyeIcon>
+                        )}
+                      </span>
+                    </InputContainer>
+                    <ErrorMessage
                       name="repeatPassword"
-                      placeholder="Repeat password"
-                      $hasError={
-                        touched.repeatPassword && errors.repeatPassword
-                      }
-                      value={values.repeatPassword}
-                      required
+                      component={MessageError}
                     />
-                    <span
-                      onClick={() => togglePasswordVisibility('repeatPassword')}
-                    >
-                      {repeatPasswordVisible ? (
-                        <EyeIcon>
-                          <svg>
-                            <use href={iconSprite + '#icon-eye'} />
-                          </svg>
-                        </EyeIcon>
-                      ) : (
-                        <EyeIcon>
-                          <svg>
-                            <use href={iconSprite + '#icon-eye-slash'} />
-                          </svg>
-                        </EyeIcon>
-                      )}
-                    </span>
-                  </InputContainer>
-                  <ErrorMessage
-                    name="repeatPassword"
-                    component={MessageError}
-                  />
+                  </div>
 
                   <SignInButton type="submit" disabled={isSubmitting}>
                     Sign Up
