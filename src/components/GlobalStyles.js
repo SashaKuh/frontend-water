@@ -63,6 +63,25 @@ body {
         padding-right: 112px;
     }
 }
+.static-background {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media screen and (min-width: 320px) {
+        max-width: 320px;
+        }
+  
+  @media screen and (min-width: 768px) {
+        max-width: 768px;
+      
+        }
+
+    @media screen and (min-width: 1440px) {
+        max-width: 1440px;
+        
+    }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
