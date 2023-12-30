@@ -6,6 +6,8 @@ export const ImgTumb = styled.div`
     height: 208px;
     margin-left:auto;
     margin-right:auto;
+    z-index: -1;
+    position: relative;
 
     img {
         width: 100%;
