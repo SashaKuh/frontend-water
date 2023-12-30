@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   UserAuth,
   HeaderContainer,
@@ -17,13 +17,9 @@ export const Header = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const navigate = useNavigate();
-  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  // const username = useSelector(state => state.auth.user.username);
-  // const avatar = useSelector(state => state.auth.avatar);
-  const isLoggedIn = true;
-  const username = 'Sasha';
-  const avatar =
-    'https://res.cloudinary.com/dmmsw1ano/image/upload/v1703575588/water-project/avatars/bfbkvoz9o3xal8el2kdy.jpg';
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const username = useSelector(state => state.auth.user.username);
+  const avatar = useSelector(state => state.auth.user.avatarURL);
 
   const onClickUserLogo = e => {
     if (e.currentTarget.classList.contains('open')) {

@@ -1,12 +1,18 @@
 import { HeaderModalStyled } from './HeaderModal.styled';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { useCallback, useEffect, useRef } from 'react';
+import { signout } from '../../redux/users/usersOperations';
+import { useDispatch } from 'react-redux';
 
 export const HeaderModal = ({ setModalIsOpen, headerNode }) => {
+  const dispatch = useDispatch();
   const node = useRef();
 
   const onClickSettings = () => setModalIsOpen(false);
-  const onClickLogout = () => setModalIsOpen(false);
+  const onClickLogout = async () => {
+    setModalIsOpen(false);
+    dispatch(signout());
+  };
 
   const handleClickOutside = useCallback(
     event => {
