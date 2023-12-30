@@ -18,6 +18,7 @@ export const HeaderModalStyled = styled.div`
   }
 
   & button {
+    padding: 0;
     background-color: transparent;
     border: none;
     display: flex;
