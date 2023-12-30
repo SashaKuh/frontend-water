@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Notiflix from 'notiflix';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Formik, ErrorMessage, Field } from 'formik';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
@@ -19,10 +18,6 @@ import {
   BottleBackground,
 } from '../AuthForm/AuthForm.styled';
 
-import {
-  selectSuccessful,
-  selectError,
-} from '../../redux/users/usersSelectors';
 import { register } from '../../redux/users/usersOperations';
 
 const initialValues = {
@@ -37,35 +32,20 @@ const SignUpForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const successful = useSelector(selectSuccessful);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    if (successful && !error) {
-      Notiflix.Notify.success('Congratulations! You are registered.');
-      setTimeout(() => {
-        navigate('/signin');
-      }, 3000);
-    }
-
-    if (error) {
-      Notiflix.Notify.failure(error);
-    }
-  }, [dispatch, successful, error, navigate]);
-
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      await dispatch(
+      const response = await dispatch(
         register({ email: values.email, password: values.password })
       );
-
-      Notiflix.Notify.success('Registration successful!');
-      setTimeout(() => {
-        navigate('/signin');
-      }, 3000);
+      if (response.payload) {
+        setTimeout(() => {
+          navigate('/signin');
+        }, 3000);
+      } else {
+        console.error('Error during login:', response.error);
+      }
     } catch (error) {
-      console.error('Error during signup:', error);
-      Notiflix.Notify.failure('Registration failed. Please try again.');
+      console.error('Error during login:', error);
     } finally {
       setSubmitting(false);
     }
