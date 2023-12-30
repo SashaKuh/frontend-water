@@ -16,29 +16,41 @@ export const ImgTumb = styled.div`
     @media (min-width: 768px) {
         width: 518px;
         height: 386px;
-        position: relative;
+        // position: relative;
     }
 
     @media (min-width: 1440px) {
         width: 738px;
         height: 548px;
         margin-bottom: 24px;
+        img{
+          position: relative;
+          left:-50px;
+
+        }
     }
 `;
 export const StyledRangeInput = styled.input`
 
   -webkit-appearance: none;
   appearance: none; 
-  width: 268px;
+  width: 258px;
   cursor: pointer;
   outline: none;
   border-radius: 15px;
   margin-bottom:16px;
-  margin-left:8px;
-  margin-right:10px;
+  margin-left:9px;
+  margin-right:13px;
   display:block;
   height: 8px;
   background: var(--secondaryDarkGrey);
+@media (min-width:768px){
+  width:334px;
+  // margin-left:1px;
+  // margin-right:17px;
+}
+@media (min-width:1440px){
+  width:360px;
 }
 
 /* Thumb: webkit */
@@ -60,13 +72,15 @@ export const StyledRangeInput = styled.input`
   background-color: var(--primaryWhite);
   border-radius: 50%;
   border: 1px solid var(--primaryBlue);
-}`
+}
+`
 
 export const RangeAndAddWater = styled.div`
 display:flex;
 flex-wrap:wrap;
 gap: 16px; 
-justify-content:center;
+justify-content:space-between;
+margin-bottom: 40px;
 @media (min-width: 768px) {
         flex-wrap:nowrap;
         gap:24px;
@@ -74,11 +88,18 @@ justify-content:center;
     }
 @media (min-width: 1440px){
     gap:28px;
+    margin-bottom: 0px;
 }
 `;
 
 export const RangeDiv = styled.div`
 width:280px;
+@media (min-width:768px){
+  width:356px;
+}
+@media (min-width:768px){
+  width:391px;
+}
 
 
 `;
@@ -103,7 +124,6 @@ export const PercentageOfRange = styled.div`
   letter-spacing: 0em;
   text-align: center;
   color:var(--primaryBlue);
-
 &::before {
     content: "";
     position: absolute;
@@ -121,11 +141,14 @@ line-height: 20px;
 letter-spacing: 0em;
 
 
+
 `;
 export const PercentageDiv = styled.div`
 display:flex;
-gap:107px; 
+justify-content:space-between;
 flex-basis:auto;
+
+
 `
 export const ButtonAddWater = styled.button`
 width:280px;
@@ -150,14 +173,14 @@ box-shadow: 0px 4px 8px 0px #407BFF57;
 font-size: 18px;
 font-weight: 500;
 line-height: 24px;
-padding: 10px 104px 10px 104px;
+padding: 8px 90px 8px 90px;
 width:336px;
 height:44px;
     }
 
 @media (min-width: 1440px) {
 width:182px;
-padding:10px 30px 10px 30px;
+padding:10px 29px 10px 29px;
     }
     
 `
@@ -167,4 +190,16 @@ height:24px;
 margin-right:10px;
 stroke: var(--primaryWhite);   
   stroke-width: 2; 
+`
+export const LeftSideDiv = styled.div`
+@media (min-width: 1440px){
+  // margin-right:30px;
+  width:592px;
+}
+`
+export const AllSidesDiv = styled.div`
+@media (min-width: 1440px){
+display: flex;
+gap:32px;
+}
 `
