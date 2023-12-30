@@ -1,4 +1,4 @@
-import {instance} from './waterAPI.js'
+import {instance} from './userAPI.js'
 
 export const getWater = async () => {
     const { data } = await instance.get(`water/today`);
