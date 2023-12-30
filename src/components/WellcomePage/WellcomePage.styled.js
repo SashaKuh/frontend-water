@@ -36,7 +36,7 @@ height: calc(100vh - 84px);
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    min-height: calc(100vh - 143px);
+    /* min-height: calc(100vh - 143px); */
     background-image: url(${bg_tabl_1x});
   }
 
@@ -46,8 +46,8 @@ height: calc(100vh - 84px);
   }
 
   @media screen and (min-width: 1440px) {
-    min-height: calc(100vh - 121px);
-    padding-top: 40px;
+    /* min-height: calc(100vh - 121px); */
+    /* padding-top: 40px; */
     background-image: url(${bg_desk_1x});
   }
 
