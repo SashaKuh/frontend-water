@@ -62,7 +62,6 @@ export const updateUser = async (updateUser, token) => {
   return data;
 };
 
-
 export const addWaterRate = async (data, token) => {
   setAuthHeader(token);
   const res = await instance.patch(`api/water/rate`, data);

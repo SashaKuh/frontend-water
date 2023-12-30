@@ -78,15 +78,17 @@ export const SignInButton = styled.button`
   padding: 8px 30px;
   color: var(--primaryWhite);
   cursor: pointer;
-  box-shadow: 0px 4px 8px 0px #407bff;
-  &:hover,
-  &:focus{
-    box-shadow: 0px 4px 14px 0px #407BFF
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
+  &:focus {
+    box-shadow: none;
   }
   @media screen and (min-width: 768px) {
     min-width: 336px;
     line-height: 24px;
-    font-size:18px;
+    font-size: 18px;
   }
   @media screen and (min-width: 1140px) {
     min-width: 384px;
