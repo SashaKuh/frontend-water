@@ -1,4 +1,4 @@
-import {instance} from './waterAPI.js'
+import {instance} from './userAPI.js'
 
 export const getWater = async () => {
     const { data } = await instance.get(`water/today`);
@@ -16,7 +16,7 @@ export const addWater = async newWaterUsed  => {
 };
 
 export const editWater = async ({newWaterUsed, id}) => {
-    const { data } = await instance.post(`water/${id}`, newWaterUsed);
+    const { data } = await instance.put(`water/${id}`, newWaterUsed);
     return data;
 };
 
