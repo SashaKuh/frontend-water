@@ -4,13 +4,13 @@ import { TrackerInfo } from './TrackerInfo/TrackerInfo';
 
 const WellcomePage = () => {
   return (
-    <WellcomeLayout>
-      <div className="container">
+    <WellcomeLayout className='static-background'>
+      
         <Tracker>
           <TrackerBenefits />
           <TrackerInfo />
         </Tracker>
-      </div>
+     
     </WellcomeLayout>
   );
 };

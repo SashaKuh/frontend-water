@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-// import theme from 'CommonStyle/themeJSX';
-import { ReactComponent as CalendarIconSvg } from '../../../images/SVG/icons/calendar.svg';
-import { ReactComponent as StatisticsIconSvg } from '../../../images/SVG/icons/statistics.svg';
-import { ReactComponent as SettingsIconSvg } from '../../../images/SVG/icons/settings.svg';
 
 export const BenefitsList = styled.ul`
   font-size: 16px;
@@ -79,65 +75,52 @@ export const SubTitle = styled.h2`
   margin-bottom: 12px;
 `;
 
-export const CalendarIcon = styled(CalendarIconSvg)`
+export const CalendarIcon = styled.svg`
   margin-right: 8px;
-  @media only screen and (max-width: 767px) {
-    height: 32px;
-  }
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  fill: var(--primaryBlue);
 `;
-export const StatisticsIcon = styled(StatisticsIconSvg)`
+export const StatisticsIcon = styled.svg`
   margin-right: 8px;
-  @media only screen and (max-width: 767px) {
-    height: 32px;
-  }
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  fill: var(--primaryBlue);
 `;
-export const SettingsIcon = styled(SettingsIconSvg)`
+export const SettingsIcon = styled.svg`
   margin-right: 8px;
-  @media only screen and (max-width: 767px) {
-    height: 32px;
-  }
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  fill: var(--primaryBlue);
 `;
 
 export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-
-  font-size: var(--fontSizesSmall);
-  line-height: calc(20 / 16);
-  font-weight: 500;
-  text-align: center;
-  color: #fff;
-
-  outline: none;
-  border: none;
-  border-radius: 10px;
+  padding-right: 100px;
+  font-family: 'Roboto-Medium';
+  font-size: 16px;
   background-color: var(--primaryBlue);
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-
-  transition: all var(--animationCubicBezier);
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  max-width: 280px;
+  padding: 8px 30px;
+  color: var(--primaryWhite);
   cursor: pointer;
-  &:hover {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  box-shadow: 0px 4px 8px 0px #407bff;
+  &:hover,
+  &:focus {
+    box-shadow: 0px 4px 14px 0px #407bff;
   }
-  &:active {
-    box-shadow: none;
-  }
-  &:disabled {
-    background-color: var(--secondaryBlue);
-    cursor: not-allowed;
-  }
-  width: 280px;
-  height: 36px;
   @media screen and (min-width: 768px) {
+    min-width: 336px;
+    line-height: 24px;
     font-size: 18px;
-    line-height: calc(24 / 18);
-    width: 336px;
-    height: 44px;
   }
-  @media screen and (min-width: 1440px) {
-    width: 384px;
-    height: 44px;
+  @media screen and (min-width: 1140px) {
+    min-width: 384px;
   }
 `;

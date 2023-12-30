@@ -11,6 +11,7 @@ import {
   SubTitle,
   Button,
 } from './TrackerBenefits.styled';
+import iconSprite from '../../../images/SVG/symbol-defs.svg';
 
 export const TrackerBenefits = () => {
   const navigate = useNavigate();
@@ -18,21 +19,30 @@ export const TrackerBenefits = () => {
     navigate('/signup');
   }
   return (
-    <Container>
+    <Container className='container'>
       <MainTitle>Water consumption tracker</MainTitle>
       <Descr>Record daily water intake and track</Descr>
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <CalendarIcon />
+          <CalendarIcon>
+            <use href={iconSprite + '#icon-calendar-days'} />
+          </CalendarIcon>
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <StatisticsIcon />
+          <StatisticsIcon >
+          <use href={iconSprite + '#icon-presantation-chart-bar'} />
+          </StatisticsIcon >
+          
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <SettingsIcon />
+          <SettingsIcon >
+          <use href={iconSprite + '#icon-wrench-screendriver'} />
+
+          </SettingsIcon >
+
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>

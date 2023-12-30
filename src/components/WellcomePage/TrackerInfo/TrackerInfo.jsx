@@ -8,7 +8,8 @@ import {
 export const TrackerInfo = () => {
   return (
     <>
-      <TrackerInfoContainer>
+    <div className='container'>
+      <TrackerInfoContainer >
         <SubTitle>Why drink water</SubTitle>
         <InfoList>
           <InfoItems>Supply of nutrients to all organs</InfoItems>
@@ -24,6 +25,7 @@ export const TrackerInfo = () => {
           </InfoItems>
         </InfoList>
       </TrackerInfoContainer>
+      </div>
     </>
   );
 };
