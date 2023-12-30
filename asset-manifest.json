@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/frontend-water/static/css/main.cd2e038f.css",
-    "main.js": "/frontend-water/static/js/main.fc1cef97.js",
+    "main.js": "/frontend-water/static/js/main.f8746d37.js",
     "static/js/969.3473853d.chunk.js": "/frontend-water/static/js/969.3473853d.chunk.js",
-    "static/js/511.2be70148.chunk.js": "/frontend-water/static/js/511.2be70148.chunk.js",
+    "static/js/468.232cd6d8.chunk.js": "/frontend-water/static/js/468.232cd6d8.chunk.js",
     "static/js/178.dbf37ff1.chunk.js": "/frontend-water/static/js/178.dbf37ff1.chunk.js",
     "static/js/439.55c06a8e.chunk.js": "/frontend-water/static/js/439.55c06a8e.chunk.js",
     "static/js/541.517e38ab.chunk.js": "/frontend-water/static/js/541.517e38ab.chunk.js",
@@ -16,14 +16,11 @@
     "static/media/Logo.svg": "/frontend-water/static/media/Logo.515ca1fd429fa942f45dc440950d81f9.svg",
     "static/media/btl_sign_in.png": "/frontend-water/static/media/btl_sign_in.fbcd6723f9032f7077b4.png",
     "static/media/bg_main_page.png": "/frontend-water/static/media/bg_main_page.244e4c887f6d9c4ccfca.png",
-    "static/media/settings.svg": "/frontend-water/static/media/settings.1ef47b6378ba99b1bec33eba937a8039.svg",
-    "static/media/calendar.svg": "/frontend-water/static/media/calendar.5b8fcdc71dc0cdec8086bbbaf30d0d6b.svg",
     "index.html": "/frontend-water/index.html",
-    "static/media/statistics.svg": "/frontend-water/static/media/statistics.8cfec11a5c739ea320477bba603d1a57.svg",
     "main.cd2e038f.css.map": "/frontend-water/static/css/main.cd2e038f.css.map",
-    "main.fc1cef97.js.map": "/frontend-water/static/js/main.fc1cef97.js.map",
+    "main.f8746d37.js.map": "/frontend-water/static/js/main.f8746d37.js.map",
     "969.3473853d.chunk.js.map": "/frontend-water/static/js/969.3473853d.chunk.js.map",
-    "511.2be70148.chunk.js.map": "/frontend-water/static/js/511.2be70148.chunk.js.map",
+    "468.232cd6d8.chunk.js.map": "/frontend-water/static/js/468.232cd6d8.chunk.js.map",
     "178.dbf37ff1.chunk.js.map": "/frontend-water/static/js/178.dbf37ff1.chunk.js.map",
     "439.55c06a8e.chunk.js.map": "/frontend-water/static/js/439.55c06a8e.chunk.js.map",
     "541.517e38ab.chunk.js.map": "/frontend-water/static/js/541.517e38ab.chunk.js.map",
@@ -31,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.fc1cef97.js"
+    "static/js/main.f8746d37.js"
   ]
 }
