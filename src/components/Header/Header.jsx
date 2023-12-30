@@ -20,6 +20,10 @@ export const Header = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
   const avatar = useSelector(state => state.auth.avatar);
+  // const isLoggedIn = true;
+  // const username = 'Sasha';
+  // const avatar =
+  //   'https://res.cloudinary.com/dmmsw1ano/image/upload/v1703575588/water-project/avatars/bfbkvoz9o3xal8el2kdy.jpg';
 
   const onClickUserLogo = e => {
     if (e.currentTarget.classList.contains('open')) {

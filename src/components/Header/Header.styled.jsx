@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  position: fixed;
+  transform: translate(-50%);
+  left: 50%;
   display: flex;
   gap: 8px;
   justify-content: space-between;
