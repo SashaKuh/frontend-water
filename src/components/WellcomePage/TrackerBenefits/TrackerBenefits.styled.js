@@ -120,7 +120,7 @@ export const Button = styled.button`
     line-height: 24px;
     font-size: 18px;
   }
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     min-width: 384px;
   }
 `;
