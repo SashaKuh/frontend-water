@@ -39,6 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 250ms linear;
+
 }
 .container {
   width: 100%;
@@ -46,7 +47,7 @@ body {
   padding-right: 20px;
   margin-right: auto;
   margin-left: auto;
-
+  
   @media screen and (min-width: 320px) {
         max-width: 320px;
         }

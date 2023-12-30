@@ -22,6 +22,7 @@ export const Tracker = styled.div`
 `;
 
 export const WellcomeLayout = styled.section`
+height: calc(100vh - 84px);
   min-height: calc(100vh - 119px);
   background-image: url(${bg_main_page});
   background-size: cover;
