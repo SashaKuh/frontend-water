@@ -8,15 +8,17 @@ import {
 } from "./SettingModal.styled"
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateAvatar, updateUser } from "../../redux/users/usersOperations";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
-    const avatarImg = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRypDF0qZ728h4xrKppmUyL6jzA4DxVjHF-g&usqp=CAU"
-    const gender = "girl";
-    const name = 'vira';
-    // const name = useSelector(state => state)
+    const avatarImg = useSelector(state => state.auth.user.avatarURL)
+    const gender = useSelector(state => state.auth.user.gender)
+    const username = useSelector(state => state.auth.user.username)    
+    const email = useSelector(state => state.auth.user.email)
+    const token = useSelector(state => state.auth.token)
     
-    const email = "vira@ukr.net";
+    const dispatch = useDispatch();   
 
     const [showPassword, setShowPassword] = useState({
         oldPassword: false,
@@ -26,8 +28,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 
     const saveValues = values => {
         let data = {}
-        if (values.name !== formik.initialValues.name) {
-            data = { ...data, name: values.name };
+        if (values.username !== formik.initialValues.username) {
+            data = { ...data, username: values.username };
         }
 
         if (values.email !== formik.initialValues.email) {
@@ -38,7 +40,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             data = { ...data, gender: values.gender };
         }
         if (formik.values.oldPassword || formik.values.confirmPassword) {
-            const password = { oldPassword: formik.values.oldPassword, newPassword: formik.values.confirmPassword }
+            const password = { newPassword: formik.values.confirmPassword, oldPassword: formik.values.oldPassword }
             data = { ...data, password };
         }
         return data;
@@ -47,25 +49,52 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const formik = useFormik({
         initialValues: {
             gender,
-            name,
+            username,
             email,
             oldPassword: '',
             newPassword: '',
             confirmPassword: '',
             avatarUrl: avatarImg,
         },
-        onSubmit: (values) => {
-            saveValues(values)
+        onSubmit: async (values) => {
+            const data = saveValues(values);
+            try {
+                dispatch(updateUser({ updateUser: data, token }))
+            } catch (e) {
+                console.log(e)
+            }
         },
         validationSchema: SettingModalSchema,
     });
 
     const handleFileChange = async (evt) => {
-        formik.setFieldValue("avatarUrl", URL.createObjectURL(evt.currentTarget.files[0]));
-        await evt.currentTarget.files[0] //замість цього
-        //робимо запит на оновлення аватару та у цьому запиті з відповіді оновлюємо стейт в редакс
+        evt.preventDefault();
+        const file = evt.target.files[0];
+
+        if (file) {
+            const binaryString = await readBinaryString(file);
+            await dispatch(updateAvatar({ avatar: binaryString, token }));
+        }
     };
 
+    const readBinaryString = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+
+            fileReader.onloadend = function () {
+                const arrayBuffer = fileReader.result;
+                const binaryString = new TextDecoder().decode(arrayBuffer);
+                resolve(binaryString);
+            };
+
+            fileReader.onerror = function (error) {
+                reject(error);
+            };
+
+            fileReader.readAsArrayBuffer(file);
+        });
+    };
+    
     const handleGenderChange = (evt) => {
         formik.setFieldValue("gender", evt.target.value);
     };
@@ -139,14 +168,14 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 <label>
                                     <p>Your name</p>
                                     <Input
-                                        name="name"
+                                        name="username"
                                         type="text"
-                                        placeholder={name}
+                                        placeholder={username}
                                         onChange={handleInputChange}
-                                        $hasError={formik.touched.name && formik.errors.name}
+                                        $hasError={formik.touched.username && formik.errors.username}
                                     />
-                                    {formik.touched.name && formik.errors.name ? (
-                                        <MessageError>{formik.errors.name}</MessageError>
+                                    {formik.touched.username && formik.errors.username ? (
+                                        <MessageError>{formik.errors.username}</MessageError>
                                     ) : null}
                                 </label>
                                 <label>
