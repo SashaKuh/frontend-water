@@ -1,4 +1,4 @@
-import { initialState } from './usersSlice';
+
 
 //----------------------- SignUp ------------------------
 
@@ -47,8 +47,10 @@ export const handlePendingSignIn = (state, { payload }) => {
 //----------------------- SignOut ------------------------
 
 export const handleSignOut = (state, { payload }) => {
-  state = initialState
+  state.user = {};
+  state.token = null;
   state.isRefreshing = false;
+  state.isLoggedIn = false
 };
 
 export const handleSignOutError = (state, { payload }) => {
@@ -62,7 +64,7 @@ export const handlePendingSignOut = (state, { payload }) => {
 //----------------------- Refresh ------------------------
 
 export const handleRefresh = (state, { payload }) => {
-  state.user = {...payload};
+  state.user = { ...payload };
   state.user.avatarURL = payload.avatar.URL;
   state.isLoggedIn = true;
   state.isRefreshing = false;
@@ -105,5 +107,3 @@ export const handleUpdateError = (state, { payload }) => {
 export const handlePendingUpdate = (state, { payload }) => {
   state.isRefreshing = true;
 };
-
-

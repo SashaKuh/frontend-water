@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  logIn,
-  register,
-  refreshUser,
-  updateAvatar,
-  signout,
-  updateUser
+  signUpThunk,
+  signInThunk,
+  signOutThunk,
+  refreshUserThunk,
+  updateAvatarThunk,
+  updateThunk,
 } from './usersOperations';
 
 import {
@@ -26,22 +26,22 @@ import {
   handlePendingAvatar,
   handleUpdate,
   handleUpdateError,
-  handlePendingUpdate
-} from './handlers'
+  handlePendingUpdate,
+} from './handlers';
 
 export const initialState = {
-    user: {
-      username: null,
-      email: null,
-      avatarURL: null,
-      gender: null,
-      dailyNorma: null,
-    },
-    token: null,
-    error: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-  }
+  user: {
+    username: null,
+    email: null,
+    avatarURL: null,
+    gender: null,
+    dailyNorma: null,
+  },
+  token: null,
+  error: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+};
 
 const authSlice = createSlice({
   name: 'auth',
@@ -58,30 +58,29 @@ const authSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(register.fulfilled, handleSignUp)
-      .addCase(register.rejected, handleSignUpError)
-      .addCase(register.pending, handlePendingSignUp)
+      .addCase(signUpThunk.fulfilled, handleSignUp)
+      .addCase(signUpThunk.rejected, handleSignUpError)
+      .addCase(signUpThunk.pending, handlePendingSignUp)
 
-      .addCase(logIn.fulfilled, handleSignIn)
-      .addCase(logIn.rejected, handleSignInError)
-      .addCase(logIn.pending, handlePendingSignIn)
+      .addCase(signInThunk.fulfilled, handleSignIn)
+      .addCase(signInThunk.rejected, handleSignInError)
+      .addCase(signInThunk.pending, handlePendingSignIn)
 
-      .addCase(signout.fulfilled, handleSignOut)
-      .addCase(signout.rejected, handleSignOutError)
-      .addCase(signout.pending, handlePendingSignOut)
+      .addCase(signOutThunk.fulfilled, handleSignOut)
+      .addCase(signOutThunk.rejected, handleSignOutError)
+      .addCase(signOutThunk.pending, handlePendingSignOut)
 
-      .addCase(refreshUser.fulfilled, handleRefresh)
-      .addCase(refreshUser.rejected, handleRefreshError)
-      .addCase(refreshUser.pending, handlePendingRefresh)
+      .addCase(refreshUserThunk.fulfilled, handleRefresh)
+      .addCase(refreshUserThunk.rejected, handleRefreshError)
+      .addCase(refreshUserThunk.pending, handlePendingRefresh)
 
-      .addCase(updateAvatar.fulfilled, handleAvatar)
-      .addCase(updateAvatar.rejected, handleAvatarError)
-      .addCase(updateAvatar.pending, handlePendingAvatar)
-  
-      .addCase(updateUser.fulfilled, handleUpdate)
-      .addCase(updateUser.rejected, handleUpdateError)
-      .addCase(updateUser.pending, handlePendingUpdate)
+      .addCase(updateAvatarThunk.fulfilled, handleAvatar)
+      .addCase(updateAvatarThunk.rejected, handleAvatarError)
+      .addCase(updateAvatarThunk.pending, handlePendingAvatar)
 
+      .addCase(updateThunk.fulfilled, handleUpdate)
+      .addCase(updateThunk.rejected, handleUpdateError)
+      .addCase(updateThunk.pending, handlePendingUpdate),
 });
 
 export const authReducer = authSlice.reducer;

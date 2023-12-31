@@ -8,18 +8,18 @@ import {
   UserLogo,
   UserLogoWrapper,
 } from './Header.styled';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { HeaderModal } from 'components/HaderModal/HeaderModal';
 
 export const Header = () => {
+  const headerNode = useRef();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const navigate = useNavigate();
-  let isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
-  const avatar = useSelector(state => state.auth.avatar);
-
-  isLoggedIn = true;
+  const avatar = useSelector(state => state.auth.user.avatarURL);
 
   const onClickUserLogo = e => {
     if (e.currentTarget.classList.contains('open')) {
@@ -30,23 +30,15 @@ export const Header = () => {
   };
 
   return (
-    <HeaderContainer className="container">
+    <HeaderContainer className="container" ref={headerNode}>
       <Link to="homepage">
         <img src={logo} alt="Logo tracker of water" />
       </Link>
       {isLoggedIn ? (
         <UserLogoWrapper>
           <UserLogo onClick={onClickUserLogo} className={modalIsOpen && 'open'}>
-            <span>{username || '83213829654652288028731080252373'}</span>
-            <img
-              height="28"
-              width="28"
-              src={
-                avatar ||
-                'https://s.gravatar.com/avatar/8f175290e672fb87ec57c5e10a6e804e?s=250&r=g&d=retro'
-              }
-              alt="User avatar"
-            />
+            <span>{username}</span>
+            <img height="28" width="28" src={avatar} alt="User avatar" />
             <svg height="28" width="28">
               <use href={iconSprite + '#icon-chevron-double-up'}></use>
             </svg>
@@ -54,6 +46,7 @@ export const Header = () => {
           {modalIsOpen && (
             <HeaderModal
               setModalIsOpen={setModalIsOpen}
+              headerNode={headerNode.current}
               contentLabel="User menu modal"
             ></HeaderModal>
           )}
