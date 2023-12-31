@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/frontend-water/static/css/main.cd2e038f.css",
-    "main.js": "/frontend-water/static/js/main.52c5e296.js",
+    "main.js": "/frontend-water/static/js/main.af9a0861.js",
     "static/js/969.3473853d.chunk.js": "/frontend-water/static/js/969.3473853d.chunk.js",
     "static/js/468.232cd6d8.chunk.js": "/frontend-water/static/js/468.232cd6d8.chunk.js",
-    "static/js/178.db6d18dc.chunk.js": "/frontend-water/static/js/178.db6d18dc.chunk.js",
-    "static/js/439.edcc64ea.chunk.js": "/frontend-water/static/js/439.edcc64ea.chunk.js",
+    "static/js/178.2de1bec8.chunk.js": "/frontend-water/static/js/178.2de1bec8.chunk.js",
+    "static/js/439.d3a5df46.chunk.js": "/frontend-water/static/js/439.d3a5df46.chunk.js",
     "static/js/306.5574aad5.chunk.js": "/frontend-water/static/js/306.5574aad5.chunk.js",
     "static/js/522.79b16fd8.chunk.js": "/frontend-water/static/js/522.79b16fd8.chunk.js",
     "static/media/Medium.ttf": "/frontend-water/static/media/Medium.7c8d04cd831df3033c8a.ttf",
@@ -18,16 +18,16 @@
     "static/media/bg_main_page.png": "/frontend-water/static/media/bg_main_page.244e4c887f6d9c4ccfca.png",
     "index.html": "/frontend-water/index.html",
     "main.cd2e038f.css.map": "/frontend-water/static/css/main.cd2e038f.css.map",
-    "main.52c5e296.js.map": "/frontend-water/static/js/main.52c5e296.js.map",
+    "main.af9a0861.js.map": "/frontend-water/static/js/main.af9a0861.js.map",
     "969.3473853d.chunk.js.map": "/frontend-water/static/js/969.3473853d.chunk.js.map",
     "468.232cd6d8.chunk.js.map": "/frontend-water/static/js/468.232cd6d8.chunk.js.map",
-    "178.db6d18dc.chunk.js.map": "/frontend-water/static/js/178.db6d18dc.chunk.js.map",
-    "439.edcc64ea.chunk.js.map": "/frontend-water/static/js/439.edcc64ea.chunk.js.map",
+    "178.2de1bec8.chunk.js.map": "/frontend-water/static/js/178.2de1bec8.chunk.js.map",
+    "439.d3a5df46.chunk.js.map": "/frontend-water/static/js/439.d3a5df46.chunk.js.map",
     "306.5574aad5.chunk.js.map": "/frontend-water/static/js/306.5574aad5.chunk.js.map",
     "522.79b16fd8.chunk.js.map": "/frontend-water/static/js/522.79b16fd8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.52c5e296.js"
+    "static/js/main.af9a0861.js"
   ]
 }
