@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
 import { useDispatch, useSelector } from "react-redux";
-import { updateAvatar, updateUser } from "../../redux/users/usersOperations";
+import { updateAvatarThunk, updateThunk } from "../../redux/users/usersOperations";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const avatarImg = useSelector(state => state.auth.user.avatarURL)
@@ -59,7 +59,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         onSubmit: async (values) => {
             const data = saveValues(values);
             try {
-                dispatch(updateUser({ updateUser: data, token }))
+                dispatch(updateThunk({ updateUser: data, token }))
             } catch (e) {
                 console.log(e)
             }
@@ -73,7 +73,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 
         if (file) {
             const binaryString = await readBinaryString(file);
-            await dispatch(updateAvatar({ avatar: binaryString, token }));
+            await dispatch(updateAvatarThunk({ avatar: binaryString, token }));
         }
     };
 
