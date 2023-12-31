@@ -50,6 +50,7 @@ export const handleSignOut = (state, { payload }) => {
   state.user = {};
   state.token = null;
   state.isRefreshing = false;
+  state.isLoggedIn = false
 };
 
 export const handleSignOutError = (state, { payload }) => {
