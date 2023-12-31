@@ -1,7 +1,7 @@
 import { HeaderModalStyled } from './HeaderModal.styled';
-import iconSprite from '../../images/SVG/symbol-defs.svg';
+import iconSprite from '../../../images/SVG/symbol-defs.svg';
 import { useCallback, useEffect, useRef } from 'react';
-import { signOutThunk } from '../../redux/users/usersOperations';
+import { signOutThunk } from '../../../redux/users/usersOperations';
 import { useDispatch } from 'react-redux';
 
 export const HeaderModal = ({ setModalIsOpen, headerNode }) => {
