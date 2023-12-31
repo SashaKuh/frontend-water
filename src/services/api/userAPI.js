@@ -4,14 +4,14 @@ export const instance = axios.create({
   baseURL: 'https://backend-water.onrender.com/api/',
 });
 
-const removeToken = () => {
-  delete instance.defaults.headers.common['Authorization'];
-  localStorage.removeItem('token');
-};
-
 export const setAuthHeader = token => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
   localStorage.setItem('token', token);
+};
+
+const removeToken = () => {
+  delete instance.defaults.headers.common['Authorization'];
+  localStorage.removeItem('token');
 };
 
 export const clearAuthHeader = () => {
@@ -19,15 +19,14 @@ export const clearAuthHeader = () => {
   localStorage.removeItem('token');
 };
 
-export const signin = async body => {
-  const { data } = await instance.post('auth/signin', body);
+export const signup = async newUser => {
+  const { data } = await instance.post('/auth/signup', newUser);
   setAuthHeader(data.token);
-
   return data;
 };
 
-export const signup = async body => {
-  const { data } = await instance.post('auth/signup', body);
+export const signin = async body => {
+  const { data } = await instance.post('/auth/signin', body);
   setAuthHeader(data.token);
 
   return data;
@@ -47,24 +46,24 @@ export const refreshUser = async token => {
 
 export const updateAvatar = async (newPhotoFile, token) => {
   setAuthHeader(token);
-  const data = await instance.patch('users/avatar', newPhotoFile, {
+  const { data } = await instance.patch('users/avatar', newPhotoFile, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   });
-  return data.data.avatar;
+  return data.avatar;
 };
 
-export const updateUser = async (updateUser, token) => {
+export const updateUsers = async (updateUser, token) => {
   setAuthHeader(token);
-  const data = await instance.patch(`users/update`, updateUser);
+  const { data } = await instance.patch(`users/update`, updateUser);
 
   return data;
 };
 
-export const addWaterRate = async (data, token) => {
+export const addWaterRate = async (body, token) => {
   setAuthHeader(token);
-  const res = await instance.patch(`water/rate`, data);
+  const { data } = await instance.patch(`water/rate`, body);
 
-  return res;
+  return data;
 };

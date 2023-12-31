@@ -1,7 +1,7 @@
 import { HeaderModalStyled } from './HeaderModal.styled';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { useCallback, useEffect, useRef } from 'react';
-import { signout } from '../../redux/users/usersOperations';
+import { signOutThunk } from '../../redux/users/usersOperations';
 import { useDispatch } from 'react-redux';
 
 export const HeaderModal = ({ setModalIsOpen, headerNode }) => {
@@ -11,7 +11,7 @@ export const HeaderModal = ({ setModalIsOpen, headerNode }) => {
   const onClickSettings = () => setModalIsOpen(false);
   const onClickLogout = async () => {
     setModalIsOpen(false);
-    dispatch(signout());
+    dispatch(signOutThunk());
   };
 
   const handleClickOutside = useCallback(

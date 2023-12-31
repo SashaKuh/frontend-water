@@ -1,91 +1,88 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const instance = axios.create({
-  baseURL: 'https://backend-water.onrender.com/api',
-});
+import {
+  signup,
+  signin,
+  signout,
+  refreshUser,
+  updateAvatar,
+  updateUsers,
+} from '../../services/api/userAPI.js';
 
-export const setAuthHeader = token => {
-  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-  localStorage.setItem('token', token);
-};
 
-export const clearAuthHeader = () => {
-  instance.defaults.headers.common.Authorization = '';
-  localStorage.removeItem('token');
-};
 
-export const register = createAsyncThunk('/auth/signup', async newUser => {
+export const signUpThunk = createAsyncThunk(
+  'auth/signup',
+  async newUser => {
   try {
-    const response = await instance.post('/auth/signup', newUser);
-    return response.data;
+    const resp = await signup(newUser);
+    
+    return resp;
   } catch (error) {
-    throw error.response.data;
+    return error.response.data; 
   }
 });
 
-export const logIn = createAsyncThunk(
-  '/auth/signin',
-  async (user, thunkAPI) => {
+
+export const signInThunk = createAsyncThunk(
+  'auth/signin',
+  async (user, { rejectWithValue }) => {
     try {
-      const response = await instance.post('/auth/signin', user);
-      setAuthHeader(response.data.token);
-      return response.data;
+      const resp = await signin(user);
+
+      return resp;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const signout = createAsyncThunk(
-  '/auth/signout',
-  async (_, thunkAPI) => {
+export const signOutThunk  = createAsyncThunk(
+  'auth/signout',
+  async (_, {rejectWithValue}) => {
     try {
-      await instance.post('/auth/signout');
-      clearAuthHeader();
-      return {};
+      const resp = await signout();
+
+      return resp;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return rejectWithValue(error.message);
     }
   }
 );
 
-export const refreshUser = createAsyncThunk('/users/current', async token => {
+export const refreshUserThunk = createAsyncThunk(
+  'users/current',
+  async token => {
   try {
-    setAuthHeader(token);
-    const response = await instance.get('users/current');
-    return response.data;
+    const { data } = await refreshUser(token);
+    
+    return data;
   } catch (error) {
-    throw error.response.data;
+    return error.message;
   }
 });
 
-export const updateAvatar = createAsyncThunk(
-  '/users/updateAvatar',
+export const updateAvatarThunk  = createAsyncThunk(
+  'users/avatar',
   async ({ newPhotoFile, token }) => {
     try {
-      setAuthHeader(token);
-      const data = await instance.patch('users/avatar', newPhotoFile, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      return data.data.avatar;
+      const { data } = await updateAvatar(newPhotoFile, token);
+      return data.avatar;
     } catch (error) {
-      throw error.response.data;
+      return error.message;
     }
   }
 );
 
-export const updateUser = createAsyncThunk(
-  '/users/updateUser',
+export const updateThunk  = createAsyncThunk(
+  'users/update',
   async ({ updateUser, token }) => {
     try {
-      setAuthHeader(token);
-      const response = await instance.patch(`users/update`, updateUser);
-      return response.data;
+      const { data } = await updateUsers(updateUser, token);
+
+      return data;
     } catch (error) {
-      throw error.response.data;
+      return error.message;
     }
   }
 );

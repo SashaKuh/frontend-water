@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 // import { ErrorBoundary } from 'react-error-boundary';
 
-// import {PrivateRoute} from './privateRoute';
-// import {PublicRoute} from './publicRoute';
+import {PrivateRoute} from './privateRoute';
+import {PublicRoute} from './publicRoute';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
@@ -27,33 +27,33 @@ export const App = () => {
         <Route
           index
           element={
-            // <PublicRoute>
+            <PublicRoute>
             <WellcomePage />
-            // </PublicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="signin"
           element={
-            // <PublicRoute>
+             <PublicRoute>
             <SignInPage />
-            // </PublicRoute>
+             </PublicRoute>
           }
         />
         <Route
           path="signup"
           element={
-            //<PublicRoute>
+            <PublicRoute>
             <SignUpPage />
-            //</PublicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="/homepage"
           element={
-            // <PrivateRoute>
+             <PrivateRoute>
             <HomePage />
-            // </PrivateRoute>
+             </PrivateRoute>
           }
         />
       </Route>

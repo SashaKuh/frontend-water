@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ErrorMessage, Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
 
 import {
@@ -18,7 +17,7 @@ import {
   BottleBackground,
 } from './AuthForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
-import { logIn } from '../../redux/users/usersOperations';
+import { signInThunk } from '../../redux/users/usersOperations';
 
 const initialValues = {
   email: '',
@@ -27,27 +26,23 @@ const initialValues = {
 
 const AuthForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    try {
-      const response = await dispatch(
-        logIn({ email: values.email, password: values.password })
-      );
-      if (response.payload) {
-        setTimeout(() => {
-          navigate('/homepage');
-        }, 3000);
-      } else {
-        console.error('Error during login:', response.error);
-      }
-    } catch (error) {
-      console.error('Error during login:', error);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  try {
+    const response = await dispatch(
+      signInThunk({ email: values.email, password: values.password })
+    );
+    if (!response.error) {
+      console.log('Successful login!');
+    } 
+  } catch (error) {
+    console.error('Error during login:', error);
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);

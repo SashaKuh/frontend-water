@@ -1,4 +1,4 @@
-import { initialState } from './usersSlice';
+
 
 //----------------------- SignUp ------------------------
 
@@ -47,7 +47,8 @@ export const handlePendingSignIn = (state, { payload }) => {
 //----------------------- SignOut ------------------------
 
 export const handleSignOut = (state, { payload }) => {
-  state = initialState;
+  state.user = {};
+  state.token = null;
   state.isRefreshing = false;
 };
 

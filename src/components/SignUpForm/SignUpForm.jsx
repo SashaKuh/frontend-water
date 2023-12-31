@@ -18,7 +18,7 @@ import {
   BottleBackground,
 } from '../AuthForm/AuthForm.styled';
 
-import { register } from '../../redux/users/usersOperations';
+import { signUpThunk } from '../../redux/users/usersOperations';
 
 const initialValues = {
   email: '',
@@ -35,11 +35,13 @@ const SignUpForm = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await dispatch(
-        register({ email: values.email, password: values.password })
+        signUpThunk({ email: values.email, password: values.password })
       );
       if (response.payload) {
         setTimeout(() => {
-          navigate('/signin');
+          if (response.payload.successful) {
+            navigate('/signin'); 
+          }
         }, 3000);
       } else {
         console.error('Error during login:', response.error);
@@ -51,7 +53,7 @@ const SignUpForm = () => {
     }
   };
 
-  const togglePasswordVisibility = field => {
+  const togglePasswordVisibility = (field) => {
     if (field === 'password') {
       setPasswordVisible(!passwordVisible);
     } else if (field === 'repeatPassword') {
