@@ -19,6 +19,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const email = useSelector(state => state.auth.user.email)
     const token = useSelector(state => state.auth.token)
 
+    const [genderValue, setGenderValue] = useState(gender)
+
     const [selectedFile, setSelectedFile] = useState(null)
     const dispatch = useDispatch();   
 
@@ -38,8 +40,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             data = { ...data, email: values.email };
         }
 
-        if (values.gender !== formik.initialValues.gender) {
-            data = { ...data, gender: values.gender };
+        if (genderValue !== gender) {
+            data = { ...data, gender: genderValue };
         }
         if (formik.values.oldPassword || formik.values.confirmPassword) {
             const password = { newPassword: formik.values.confirmPassword, oldPassword: formik.values.oldPassword }
@@ -50,7 +52,6 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 
     const formik = useFormik({
         initialValues: {
-            gender,
             username,
             email,
             oldPassword: '',
@@ -62,7 +63,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             try {
                 dispatch(updateThunk({ updateUser: data, token }))
             } catch (e) {
-                console.log(e)
+                console.log(e.message)
             }
         },
         validationSchema: SettingModalSchema,
@@ -70,22 +71,25 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 
 
     const handleFileChange = async (evt) => {
-        setSelectedFile(evt.target.files[0])
-        if (!selectedFile) {
-            return
-        }
-        const avatar = evt.target.files[0];
-        console.log(evt.target.files[0])
-        try {
-            
-            await dispatch(updateAvatarThunk({ avatar, token }))
-        } catch (error) {
-            console.log(error)
-        }
-    };
+    console.log('first');
+    const avatar = evt.target.files[0];
+    console.log(avatar);
+    
+    if (!avatar) {
+        console.log(avatar);
+        return;
+    }
+
+    try {
+        await dispatch(updateAvatarThunk({ avatar, token }));
+        console.log("after dispatch", avatar);
+    } catch (error) {
+        console.log(error.message);
+    }
+};
     
     const handleGenderChange = (evt) => {
-        formik.setFieldValue("gender", evt.target.value);
+        setGenderValue(evt.target.value)
     };
 
     const handleInputChange = (evt) => {
@@ -145,12 +149,12 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                 <StyledRadioGroup role="group" aria-labelledby="my-radio-group">
                                     <StyledRadioLabel>
                                         <StyledRadioInput type="radio" name="gender" value="girl" onChange={handleGenderChange} />
-                                        <StyledRadioCircle><CircleColor checked={formik.values.gender === 'girl'}></CircleColor></StyledRadioCircle>
+                                        <StyledRadioCircle><CircleColor checked={genderValue === 'girl'}></CircleColor></StyledRadioCircle>
                                         <StyledRadioText>Girl</StyledRadioText>
                                     </StyledRadioLabel>
                                     <StyledRadioLabel>
                                         <StyledRadioInput type="radio" name="gender" value="man" onChange={handleGenderChange} />
-                                        <StyledRadioCircle><CircleColor checked={formik.values.gender === 'man'}></CircleColor></StyledRadioCircle>
+                                        <StyledRadioCircle><CircleColor checked={genderValue === 'man'}></CircleColor></StyledRadioCircle>
                                         <StyledRadioText>Man</StyledRadioText>
                                     </StyledRadioLabel>
                                 </StyledRadioGroup>

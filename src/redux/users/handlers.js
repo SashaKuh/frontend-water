@@ -96,7 +96,12 @@ export const handlePendingAvatar = (state, { payload }) => {
 //----------------------- Update ------------------------
 
 export const handleUpdate = (state, { payload }) => {
+  console.log(payload)
+  state.user.email = payload.email;
+  state.user.username = payload.username;
+  state.user.gender = payload.gender;
   state.user.avatarURL = payload.avatar.URL;
+  state.user.dailyNorma = payload.dailyNorma;
   state.isRefreshing = false;
 };
 
