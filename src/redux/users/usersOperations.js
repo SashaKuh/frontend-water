@@ -67,7 +67,7 @@ export const updateAvatarThunk  = createAsyncThunk(
   async ({ avatar, token }) => {
     try {
       const data = await updateAvatar(avatar, token);
-      return data.avatar;
+      return data;
     } catch (error) {
       return error.message;
     }

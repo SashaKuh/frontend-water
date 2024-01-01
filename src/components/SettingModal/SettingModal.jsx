@@ -18,37 +18,16 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const username = useSelector(state => state.auth.user.username)    
     const email = useSelector(state => state.auth.user.email)
     const token = useSelector(state => state.auth.token)
+    const loader = useSelector(state => state.auth.isRefreshing)
 
-    const [genderValue, setGenderValue] = useState(gender)
-
-    const [selectedFile, setSelectedFile] = useState(null)
-    const dispatch = useDispatch();   
-
+    const [genderValue, setGenderValue] = useState(gender);
+    const [imgSize, setImgSize] = useState(false)     
     const [showPassword, setShowPassword] = useState({
         oldPassword: false,
         newPassword: false,
         confirmPassword: false,
     });
-
-    const saveValues = values => {
-        let data = {}
-        if (values.username !== formik.initialValues.username) {
-            data = { ...data, username: values.username };
-        }
-
-        if (values.email !== formik.initialValues.email) {
-            data = { ...data, email: values.email };
-        }
-
-        if (genderValue !== gender) {
-            data = { ...data, gender: genderValue };
-        }
-        if (formik.values.oldPassword || formik.values.confirmPassword) {
-            const password = { newPassword: formik.values.confirmPassword, oldPassword: formik.values.oldPassword }
-            data = { ...data, password };
-        }
-        return data;
-    };
+    const dispatch = useDispatch(); 
 
     const formik = useFormik({
         initialValues: {
@@ -59,30 +38,61 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             confirmPassword: '',
         },
         onSubmit: async (values) => {
-            const data = saveValues(values);
             try {
-                dispatch(updateThunk({ updateUser: data, token }))
-            } catch (e) {
-                console.log(e.message)
+                const data = saveValues(values);
+                if (Object.keys(data).length === 0) {
+                    return
+                }                
+                await dispatch(updateThunk({ updateUser: data, token }))
+                handleCloseModal()
+            } catch (error) {
+                console.log(error.message)
             }
         },
         validationSchema: SettingModalSchema,
     });
 
+    const saveValues = (values) => {
+        let data = {};
 
-    const handleFileChange = async (evt) => {
-    const avatar = evt.target.files[0];    
-    if (!avatar) {
-        return;
-    }
+        if (values.username.trim().length !== 0 && values.username !== formik.initialValues.username) {
+            data = { ...data, username: values.username };
+        }
 
-    try {
-        await dispatch(updateAvatarThunk({ avatar, token }));
-    } catch (error) {
-        console.log(error.message);
-    }
-};
+        if (values.email.trim().length !== 0 && values.email !== formik.initialValues.email) {
+            data = { ...data, email: values.email };
+        }
+
+        if (genderValue !== gender) {
+            data = { ...data, gender: genderValue };
+        }
+
+        if (formik.values.oldPassword || formik.values.confirmPassword) {
+            const password = { newPassword: formik.values.confirmPassword, oldPassword: formik.values.oldPassword };
+            data = { ...data, password };
+        }
+
+        return data;
+    };
     
+    const handleFileChange = async (evt) => {
+        const avatar = evt.target.files[0];
+        setImgSize(false)
+        if (!avatar) {
+            return;
+        }
+
+        const maxSizeInBytes = 3 * 1024 * 1024;
+        if (avatar.size > maxSizeInBytes) {
+            evt.target.value = null;
+            setImgSize(true)
+            return;          
+        }
+        const formData = new FormData();
+        formData.append('avatar', avatar);
+        dispatch(updateAvatarThunk({ avatar: formData, token }));
+    };
+
     const handleGenderChange = (evt) => {
         setGenderValue(evt.target.value)
     };
@@ -93,7 +103,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     
     const handleCloseModal = () => {
         closeModal();
-        formik.resetForm()
+        formik.resetForm();
+        setImgSize(false);
     };
 
     const handleTogglePassword = (field) => {
@@ -126,7 +137,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                         <p>Your photo</p>
                         <AvatarWrap>
                             <ImgWrapper>
-                                <ImgAvatar src={avatarUrl} alt="user avatar" /> 
+                                {loader ? <div>Laodaing</div> : <ImgAvatar src={avatarUrl} alt="user avatar" />}
                             </ImgWrapper>
                             <UploadLabel>
                                 <FileInput name="avatarUrl" type="file" accept="image/*" onChange={handleFileChange} />
@@ -136,8 +147,11 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                                     </SvgUpload>
                                     <p>Upload a photo</p>
                                 </UploadButton>
-                            </UploadLabel>
+                            </UploadLabel>                            
                         </AvatarWrap>
+                        {imgSize ? (
+                                        <MessageError>File size to large (3 MB)</MessageError>
+                                    ) : null}
                         <WrapInfo>
                             <div>
                                 <p>Your gender identity</p>
@@ -272,9 +286,9 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 //     const closeSettingModal = () => {
 //         setSettingModalIsOpen(false);
 //     }
-//-----
+// -----
 // <SettingModal modalIsOpen={settingModalIsOpen} closeModal={closeSettingModal}/>
-//-----
+// -----
 // елементу розмітки, який відкриває модалку добавляємо
 // onClick={openSettingModal}
 

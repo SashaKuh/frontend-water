@@ -76,6 +76,9 @@ justify-content: space-between;
 `;
 
 export const ImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -92,11 +95,11 @@ export const ImgAvatar = styled.img`
 export const AvatarWrap = styled.div`
 display: flex;
 margin-top: 8px;
-margin-bottom: 24px;
 gap: 8px;
 `;
 
 export const WrapInfo = styled.div`
+margin-top: 24px;
 @media (min-width: 1440px) {
     display: flex;
     gap: 24px;

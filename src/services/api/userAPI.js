@@ -51,7 +51,6 @@ export const updateAvatar = async (avatar, token) => {
       'Content-Type': 'multipart/form-data',
     },
   });
-  console.log(data)
   return data;
 };
 
