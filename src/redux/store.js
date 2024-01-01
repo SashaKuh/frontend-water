@@ -8,7 +8,7 @@ import { authReducer } from './users/usersSlice';
 const persistConfig = {
   key: 'root',
   storage: sessionStorage,
-  whitelist: ['auth'],
+  whitelist: ['token'],
 };
 
 const store = configureStore({
