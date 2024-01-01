@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 export const Layout = () => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
