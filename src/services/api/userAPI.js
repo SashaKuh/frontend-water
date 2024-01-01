@@ -38,7 +38,8 @@ export const signout = async () => {
 };
 
 export const refreshUser = async token => {
-  setAuthHeader(token);
+  setAuthHeader(token)
+  
   const { data } = await instance.get('users/current');
 
   return data;

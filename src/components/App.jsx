@@ -1,41 +1,39 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
-// import { ErrorBoundary } from 'react-error-boundary';
 
 import { PrivateRoute } from './privateRoute';
 import { PublicRoute } from './publicRoute';
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import { selectUserToken } from '../redux/selectors.js';
 import { refreshUserThunk } from '../redux/users/usersOperations.js';
 
+// import {selectUserToken} from '../redux'
+
+
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage')); // Corrected typo
+const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); // Corrected typo
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 
-export const App = () => {
-  const token = useSelector(selectUserToken);
+export const App = () => { 
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
   useEffect(() => {
-    if (token) {
-      dispatch(refreshUserThunk());
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) { 
+      dispatch(refreshUserThunk(storedToken));
     }
-  }, [dispatch, token]);
+  }, [dispatch]);
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route
           index
-          element={
-            <PublicRoute>
-              <WelcomePage />
-            </PublicRoute>
-          }
+          element={!isLoggedIn ? <WelcomePage /> : <HomePage />} 
         />
         <Route
           path="signin"
