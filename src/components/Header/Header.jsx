@@ -9,7 +9,7 @@ import {
   UserLogoWrapper,
 } from './Header.styled';
 import { useRef, useState } from 'react';
-import { HeaderModal } from 'components/HaderModal/HeaderModal';
+import { HeaderModal } from 'components/Header/HaderModal/HeaderModal';
 
 export const Header = () => {
   const headerNode = useRef();
