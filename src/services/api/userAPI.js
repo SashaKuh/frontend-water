@@ -44,26 +44,26 @@ export const refreshUser = async token => {
   return data;
 };
 
-export const updateAvatar = async (newPhotoFile, token) => {
+export const updateAvatar = async (avatar, token) => {
   setAuthHeader(token);
-  const { data } = await instance.patch('users/avatar', newPhotoFile, {
+  const { data } = await instance.patch('users/avatar', avatar, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   });
-  return data.avatar;
+  console.log(data)
+  return data;
 };
 
 export const updateUsers = async (updateUser, token) => {
   setAuthHeader(token);
   const { data } = await instance.patch(`users/update`, updateUser);
-
   return data;
 };
 
 export const addWaterRate = async (body, token) => {
   setAuthHeader(token);
   const { data } = await instance.patch(`water/rate`, body);
-
   return data;
 };
+

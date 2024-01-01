@@ -25,7 +25,6 @@ font-family: 'Roboto-regular';
 color: var(--primaryBlack);
 padding: 24px 12px;
 border-radius: 10px;
-position: relative;
 font-size: 16px;
 line-height: 1.2;
 box-sizing: border-box;
@@ -44,18 +43,24 @@ box-sizing: border-box;
   }
 `;
 
+export const WrapHeader = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+
 export const BtnSvg = styled.button`
-position: absolute;
+height: 24px;
 padding: 0;
-top: 28px; 
-right: 12px;
 border: none;
 background-color: var(--primaryWhite);
 
-@media (min-width: 768px) and (max-width: 1439px){
-    top: 36px; 
-    right: 24px;
-  }
+`;
+
+export const SvgClose = styled.svg`
+fill: var(--primaryBlue);
+transform: rotate(45deg); 
+width: 36px;
+height: 36px;
 `;
 
 export const StyledRadioGroup = styled.div`
@@ -113,7 +118,7 @@ gap: 16px;
 flex-direction: column;
 margin-bottom: 12px;
 
-@media (min-width: 768px) and (max-width: 1439px){
+@media (min-width: 768px) {
     flex-direction: row;
     gap: 24px;
   }
@@ -169,6 +174,12 @@ export const Input = styled.input`
     color: var(--primaryBlue);
     opacity: 1;
   }
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
 `;
 
 export const AmountText = styled.div`
@@ -206,10 +217,25 @@ line-height: 1.3;
 border-radius: 10px;
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54)
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
 @media (min-width: 768px) {
     display: block;
     width: 160px;
     height: 44px;
     margin-left: auto;
   }
+`;
+
+export const MessageError = styled.div`
+  color: var(--secondaryRed);
+  font-family: 'Roboto-regular';
+  margin-top: 4px;
+  font-size: 14px;
 `;
