@@ -12,12 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateAvatarThunk, updateThunk } from "../../redux/users/usersOperations";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
-    const avatarImg = useSelector(state => state.auth.user.avatarURL)
+       
+    const avatarUrl = useSelector(state => state.auth.user.avatarURL)
     const gender = useSelector(state => state.auth.user.gender)
     const username = useSelector(state => state.auth.user.username)    
     const email = useSelector(state => state.auth.user.email)
     const token = useSelector(state => state.auth.token)
-    
+
+    const [selectedFile, setSelectedFile] = useState(null)
     const dispatch = useDispatch();   
 
     const [showPassword, setShowPassword] = useState({
@@ -54,7 +56,6 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             oldPassword: '',
             newPassword: '',
             confirmPassword: '',
-            avatarUrl: avatarImg,
         },
         onSubmit: async (values) => {
             const data = saveValues(values);
@@ -67,32 +68,20 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         validationSchema: SettingModalSchema,
     });
 
+
     const handleFileChange = async (evt) => {
-        evt.preventDefault();
-        const file = evt.target.files[0];
-
-        if (file) {
-            const binaryString = await readBinaryString(file);
-            await dispatch(updateAvatarThunk({ avatar: binaryString, token }));
+        setSelectedFile(evt.target.files[0])
+        if (!selectedFile) {
+            return
         }
-    };
-
-    const readBinaryString = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-
-            fileReader.onloadend = function () {
-                const arrayBuffer = fileReader.result;
-                const binaryString = new TextDecoder().decode(arrayBuffer);
-                resolve(binaryString);
-            };
-
-            fileReader.onerror = function (error) {
-                reject(error);
-            };
-
-            fileReader.readAsArrayBuffer(file);
-        });
+        const avatar = evt.target.files[0];
+        console.log(evt.target.files[0])
+        try {
+            
+            await dispatch(updateAvatarThunk({ avatar, token }))
+        } catch (error) {
+            console.log(error)
+        }
     };
     
     const handleGenderChange = (evt) => {
@@ -138,7 +127,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                         <p>Your photo</p>
                         <AvatarWrap>
                             <ImgWrapper>
-                                <ImgAvatar src={formik.values.avatarUrl} alt="user avatar" /> 
+                                <ImgAvatar src={avatarUrl} alt="user avatar" /> 
                             </ImgWrapper>
                             <UploadLabel>
                                 <FileInput name="avatarUrl" type="file" accept="image/*" onChange={handleFileChange} />
