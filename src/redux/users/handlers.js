@@ -96,7 +96,6 @@ export const handlePendingAvatar = (state, { payload }) => {
 //----------------------- Update ------------------------
 
 export const handleUpdate = (state, { payload }) => {
-  console.log(payload)
   state.user.email = payload.email;
   state.user.username = payload.username;
   state.user.gender = payload.gender;

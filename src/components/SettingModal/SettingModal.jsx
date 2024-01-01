@@ -71,18 +71,13 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
 
 
     const handleFileChange = async (evt) => {
-    console.log('first');
-    const avatar = evt.target.files[0];
-    console.log(avatar);
-    
+    const avatar = evt.target.files[0];    
     if (!avatar) {
-        console.log(avatar);
         return;
     }
 
     try {
         await dispatch(updateAvatarThunk({ avatar, token }));
-        console.log("after dispatch", avatar);
     } catch (error) {
         console.log(error.message);
     }

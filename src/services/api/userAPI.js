@@ -45,9 +45,7 @@ export const refreshUser = async token => {
 };
 
 export const updateAvatar = async (avatar, token) => {
-  console.log("updateAvatar", avatar)
   setAuthHeader(token);
-  console.log(avatar)
   const { data } = await instance.patch('users/avatar', avatar, {
     headers: {
       'Content-Type': 'multipart/form-data',
