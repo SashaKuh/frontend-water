@@ -1,63 +1,67 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 // import { ErrorBoundary } from 'react-error-boundary';
 
-import {PrivateRoute} from './privateRoute';
-import {PublicRoute} from './publicRoute';
+import { PrivateRoute } from './privateRoute';
+import { PublicRoute } from './publicRoute';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectUserToken } from '../redux/selectors.js';
+import { refreshUserThunk } from '../redux/users/usersOperations.js';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
+const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage')); // Corrected typo
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 
-// const ErrorFallback = ({ error }) => (
-//   <div>
-//     <p>An error occurred:</p>
-//     <pre>{error.message}</pre>
-//   </div>
-// );
-
 export const App = () => {
+  const token = useSelector(selectUserToken);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(refreshUserThunk());
+    }
+  }, [dispatch, token]);
+
   return (
-    // <ErrorBoundary FallbackComponent={ErrorFallback}>
     <Routes>
       <Route path="/" element={<Layout />}>
-        {/* Layout */}
         <Route
           index
           element={
             <PublicRoute>
-            <WellcomePage />
+              <WelcomePage />
             </PublicRoute>
           }
         />
         <Route
           path="signin"
           element={
-             <PublicRoute>
-            <SignInPage />
-             </PublicRoute>
+            <PublicRoute>
+              <SignInPage />
+            </PublicRoute>
           }
         />
         <Route
           path="signup"
           element={
             <PublicRoute>
-            <SignUpPage />
+              <SignUpPage />
             </PublicRoute>
           }
         />
         <Route
           path="/homepage"
           element={
-             <PrivateRoute>
-            <HomePage />
-             </PrivateRoute>
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
           }
         />
       </Route>
     </Routes>
-    // </ErrorBoundary>
   );
 };

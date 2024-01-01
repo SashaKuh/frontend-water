@@ -52,15 +52,19 @@ export const signOutThunk  = createAsyncThunk(
 
 export const refreshUserThunk = createAsyncThunk(
   'users/current',
-  async token => {
-  try {
-    const { data } = await refreshUser(token);
-    
-    return data;
-  } catch (error) {
-    return error.message;
+  async (token, { rejectWithValue }) => {
+    if (!token) {
+      return rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      const resp = await refreshUser(token);
+      return resp;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const updateAvatarThunk  = createAsyncThunk(
   'users/avatar',
