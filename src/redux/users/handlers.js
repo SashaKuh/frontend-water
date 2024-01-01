@@ -70,7 +70,8 @@ export const handleRefresh = (state, { payload }) => {
   state.user.email = payload.email;
   state.user.username = payload.username;
   state.user.gender = payload.gender;
-  state.user.avatarURL = payload.avatar.URL;
+  state.user.avatarURL = payload?.avatar.URL;
+  state.token = localStorage.getItem('token');
   state.isLoggedIn = true;
   state.isRefreshing = false;
 };
