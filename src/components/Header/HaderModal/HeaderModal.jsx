@@ -4,11 +4,19 @@ import { useCallback, useEffect, useRef } from 'react';
 import { signOutThunk } from '../../../redux/users/usersOperations';
 import { useDispatch } from 'react-redux';
 
-export const HeaderModal = ({ setModalIsOpen, headerNode }) => {
+export const HeaderModal = ({
+  setModalIsOpen,
+  headerNode,
+  setSettingModalIsOpen,
+}) => {
   const dispatch = useDispatch();
   const node = useRef();
 
-  const onClickSettings = () => setModalIsOpen(false);
+  const onClickSettings = () => {
+    setSettingModalIsOpen(true);
+    setModalIsOpen(false);
+  };
+
   const onClickLogout = async () => {
     setModalIsOpen(false);
     dispatch(signOutThunk());
