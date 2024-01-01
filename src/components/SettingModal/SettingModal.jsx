@@ -277,18 +277,3 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         </StyledSettingModal>
     )
 };
-
-//  в компонент, який рендерить SettingModal добавляємо
-//  const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
-//     const openSettingModal = () => {
-//         setSettingModalIsOpen(true);
-//     }
-//     const closeSettingModal = () => {
-//         setSettingModalIsOpen(false);
-//     }
-// -----
-// <SettingModal modalIsOpen={settingModalIsOpen} closeModal={closeSettingModal}/>
-// -----
-// елементу розмітки, який відкриває модалку добавляємо
-// onClick={openSettingModal}
-

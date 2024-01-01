@@ -11,6 +11,7 @@ export const StModalBackdrope = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
 `;
 
 export const StyledSettingModal = styled(ReactModal)`
@@ -28,6 +29,7 @@ font-size: 18px;
 line-height: 1.1;
 font-family: 'Roboto-Medium';
 box-sizing: border-box;
+overflow-y: auto;
 
 @media (min-width: 1440px) {
     width: 1008px;
