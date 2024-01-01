@@ -52,25 +52,21 @@ export const signOutThunk  = createAsyncThunk(
 
 export const refreshUserThunk = createAsyncThunk(
   'users/current',
-  async (token, { rejectWithValue }) => {
-    if (!token) {
-      return rejectWithValue('Unable to fetch user');
-    }
-
-    try {
-      const resp = await refreshUser(token);
-      return resp;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+  async token => {
+  try {
+    const data = await refreshUser(token);
+    
+    return data;
+  } catch (error) {
+    return error.message;
   }
-);
+});
 
 export const updateAvatarThunk  = createAsyncThunk(
   'users/avatar',
-  async ({ newPhotoFile, token }) => {
+  async ({ avatar, token }) => {
     try {
-      const { data } = await updateAvatar(newPhotoFile, token);
+      const data = await updateAvatar(avatar, token);
       return data.avatar;
     } catch (error) {
       return error.message;
@@ -82,8 +78,7 @@ export const updateThunk  = createAsyncThunk(
   'users/update',
   async ({ updateUser, token }) => {
     try {
-      const { data } = await updateUsers(updateUser, token);
-
+      const data = await updateUsers(updateUser, token);
       return data;
     } catch (error) {
       return error.message;
