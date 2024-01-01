@@ -14,9 +14,7 @@ export const DailyNorma = () => {
     }
     ///SettingModal  <TextWater onClick={}>2.0 L</TextWater>
     const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
-    const openSettingModal = () => {
-        setSettingModalIsOpen(true);
-    }
+    
 
     const closeSettingModal = () => {
         setSettingModalIsOpen(false);
@@ -26,7 +24,7 @@ export const DailyNorma = () => {
         <Wrap>
             <Text>My daily norma</Text>
             <BtnWrap>
-                <TextWater onClick={openSettingModal}>2.0 L</TextWater>
+                <TextWater >2.0 L</TextWater>
                 <Button type="button" onClick={openModal}>Edit</Button>
                 <DailyNormaModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
                 <SettingModal modalIsOpen={settingModalIsOpen} closeModal={closeSettingModal}/>

@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  position: fixed;
-  z-index: 1;
+  position: absolute;
+  z-index: 0;
   transform: translate(-50%);
   left: 50%;
   display: flex;
   gap: 8px;
   justify-content: space-between;
   padding-top: 8px;
-  padding-bottom: 24px;
 `;
 
 export const UserAuth = styled.button`
