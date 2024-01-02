@@ -36,7 +36,7 @@ export const Header = () => {
   };
 
   return (
-    <HeaderContainer className="container-header" ref={headerNode}>
+    <HeaderContainer className="container" ref={headerNode}>
       <Link to="homepage">
         <img src={logo} alt="Logo tracker of water" />
       </Link>
