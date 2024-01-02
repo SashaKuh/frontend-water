@@ -1,17 +1,53 @@
-// створюю slice для стану авторизації
-
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, register } from './usersOperations';
+import {
+  signUpThunk,
+  signInThunk,
+  signOutThunk,
+  refreshUserThunk,
+  updateAvatarThunk,
+  updateThunk,
+} from './usersOperations';
+
+import {
+  handleSignUp,
+  handleSignUpError,
+  handlePendingSignUp,
+  handleSignIn,
+  handleSignInError,
+  handlePendingSignIn,
+  handleSignOut,
+  handleSignOutError,
+  handlePendingSignOut,
+  handleRefresh,
+  handleRefreshError,
+  handlePendingRefresh,
+  handleAvatar,
+  handleAvatarError,
+  handlePendingAvatar,
+  handleUpdate,
+  handleUpdateError,
+  handlePendingUpdate,
+} from './handlers';
+
+export const initialState = {
+  user: {
+    username: null,
+    email: null,
+    avatarURL: null,
+    gender: null,
+    dailyNorma: null,
+  },
+  token: null,
+  error: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+  isLoaduing: false,
+  isInitialized: false,
+};
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: { username: null, email: null },
-    token: null,
-    error: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-  },
+  initialState,
 
   reducers: {
     resetSuccessful: state => {
@@ -24,34 +60,31 @@ const authSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-        state.error = null;
-      })
-      .addCase(register.rejected, state => {
-        state.isRefreshing = false;
-        state.error = 'Wrong email or password.';
-        state.isLoggedIn = false;
-        state.token = '';
-      })
-      .addCase(register.pending, state => {
-        state.error = null;
-      })
-      .addCase(logIn.fulfilled, state => {
-        state.successful = true;
-        state.error = null;
-      })
-      .addCase(logIn.rejected, state => {
-        state.isRefreshing = false;
-        state.error = 'Values are not valid, try again.';
-        state.isLoggedIn = false;
-        state.token = '';
-      })
-      .addCase(logIn.pending, state => {
-        state.error = null;
-      }),
+      .addCase(signUpThunk.fulfilled, handleSignUp)
+      .addCase(signUpThunk.rejected, handleSignUpError)
+      .addCase(signUpThunk.pending, handlePendingSignUp)
+
+      .addCase(signInThunk.fulfilled, handleSignIn)
+      .addCase(signInThunk.rejected, handleSignInError)
+      .addCase(signInThunk.pending, handlePendingSignIn)
+
+      .addCase(signOutThunk.fulfilled, handleSignOut)
+      .addCase(signOutThunk.rejected, handleSignOutError)
+      .addCase(signOutThunk.pending, handlePendingSignOut)
+
+      .addCase(refreshUserThunk.fulfilled, handleRefresh)
+      .addCase(refreshUserThunk.rejected, handleRefreshError)
+      .addCase(refreshUserThunk.pending, handlePendingRefresh)
+
+      .addCase(updateAvatarThunk.fulfilled, handleAvatar)
+      .addCase(updateAvatarThunk.rejected, handleAvatarError)
+      .addCase(updateAvatarThunk.pending, handlePendingAvatar)
+
+      .addCase(updateThunk.fulfilled, handleUpdate)
+      .addCase(updateThunk.rejected, handleUpdateError)
+      .addCase(updateThunk.pending, handlePendingUpdate),
 });
 
 export const authReducer = authSlice.reducer;
+export const { resetSuccessful, resetError } = authSlice.actions;
+

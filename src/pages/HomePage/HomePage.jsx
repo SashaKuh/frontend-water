@@ -1,14 +1,19 @@
-import { DailyNorma } from 'components/DailyNorma/DailyNorma';
-import { ImageOfBottle } from 'components/ImageOfBottle/ImageOfBottle';
-import TestComponent from 'components/TestComponent/TestComponent';
-import { WaterRatioPanel } from 'components/WaterRatioPanel/WaterRatioPanel';
+import { DailyNorma } from 'components/Homepage/DailyNorma';
+import { ImageOfBottle } from 'components/Homepage/ImageOfBottle/ImageOfBottle';
+import TodayAndMonthLayout from 'components/TodayAndMonthLayout/TodayAndMonthLayout';
+import { WaterRatioPanel } from 'components/Homepage/WaterRatioPanel/WaterRatioPanel';
+import { LeftSideDiv, AllSidesDiv } from './HomePage.styled';
 const HomePage = () => {
   return (
     <div className="container">
-      <DailyNorma />
-      <ImageOfBottle />
-      <WaterRatioPanel />
-      <TestComponent />
+      <AllSidesDiv>
+        <LeftSideDiv>
+          <DailyNorma />
+          <ImageOfBottle />
+          <WaterRatioPanel />
+        </LeftSideDiv>
+        <TodayAndMonthLayout />
+      </AllSidesDiv>
     </div>
   );
 };

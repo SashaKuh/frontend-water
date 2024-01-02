@@ -1,37 +1,87 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = "https://backend-water.onrender.com/api";
+import {
+  signup,
+  signin,
+  signout,
+  refreshUser,
+  updateAvatar,
+  updateUsers,
+} from '../../services/api/userAPI.js';
 
 
-export const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  localStorage.setItem('token', token);
-};
 
-export const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-  localStorage.removeItem('token');
-};
-
-export const register = createAsyncThunk('/auth/signup', async newUser => {
+export const signUpThunk = createAsyncThunk(
+  'auth/signup',
+  async newUser => {
   try {
-    const response = await axios.post('/auth/signup', newUser);
-    return response.data;
+    const resp = await signup(newUser);
+    
+    return resp;
   } catch (error) {
-    throw error.response.data;
+    return error.response.data; 
   }
 });
 
-export const logIn = createAsyncThunk(
-  '/auth/signin',
-  async (user, thunkAPI) => {
+
+export const signInThunk = createAsyncThunk(
+  'auth/signin',
+  async (user, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/auth/signin', user);
-      setAuthHeader(response.data.token);
-      return response.data;
+      const resp = await signin(user);
+
+      return resp;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const signOutThunk  = createAsyncThunk(
+  'auth/signout',
+  async (_, {rejectWithValue}) => {
+    try {
+      const resp = await signout();
+
+      return resp;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshUserThunk = createAsyncThunk(
+  'users/current',
+  async token => {
+  try {
+    const data = await refreshUser(token);
+    
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
+
+export const updateAvatarThunk  = createAsyncThunk(
+  'users/avatar',
+  async ({ avatar, token }) => {
+    try {
+      const data = await updateAvatar(avatar, token);
+      return data;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
+
+export const updateThunk  = createAsyncThunk(
+  'users/update',
+  async ({ updateUser, token }) => {
+    try {
+      const data = await updateUsers(updateUser, token);
+      return data;
+    } catch (error) {
+      return error.message;
     }
   }
 );

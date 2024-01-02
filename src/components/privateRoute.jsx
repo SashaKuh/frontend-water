@@ -8,3 +8,4 @@ export const PrivateRoute = ({ children }) => {
 
     return token ? children : <Navigate to='/' state={location} />;
 }
+

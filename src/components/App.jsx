@@ -1,61 +1,65 @@
-import { lazy, Suspense,  } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import { ErrorBoundary } from 'react-error-boundary';
+import { Layout } from './Layout/Layout.jsx';
 
-// import {PrivateRoute} from './privateRoute';
-// import {PublicRoute} from './publicRoute';
+import { PrivateRoute } from './privateRoute';
+import { PublicRoute } from './publicRoute';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUserThunk } from '../redux/users/usersOperations.js';
+
+// import {selectUserToken} from '../redux'
+
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const WellcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage'));
+const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); // Corrected typo
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
 
-// const ErrorFallback = ({ error }) => (
-//   <div>
-//     <p>An error occurred:</p>
-//     <pre>{error.message}</pre>
-//   </div>
-// );
+export const App = () => { 
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
-export const App = () => {
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) { 
+      dispatch(refreshUserThunk(storedToken));
+    }
+  }, [dispatch]);
+
   return (
-    // <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/">{/* Layout */}
-            <Route
-              index
-            element={
-               // <PublicRoute>
-                  <WellcomePage />
-               // </PublicRoute>
-              }
-            />
-          <Route path="signin"
-            element={
-               // <PublicRoute>
-                  <SignInPage />
-               // </PublicRoute>
-              }
-            />
-          <Route path="signup"
-            element={
-                //<PublicRoute>
-                  <SignUpPage />
-                //</PublicRoute>
-              }
-          />
-            <Route
-              path="/homepage"
-            element={
-              // <PrivateRoute>
-                <HomePage />
-              // </PrivateRoute>
-            }
-            />
-          </Route>
-        </Routes>
-      </Suspense>
-    // </ErrorBoundary>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={!isLoggedIn ? <WelcomePage /> : <HomePage />} 
+        />
+        <Route
+          path="signin"
+          element={
+            <PublicRoute>
+              <SignInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="signup"
+          element={
+            <PublicRoute>
+              <SignUpPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/homepage"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 };

@@ -8,3 +8,4 @@ export const PublicRoute = ({ children }) => {
 
     return !token ? children : <Navigate to={location.state ?? '/homepage'} />;
 }
+

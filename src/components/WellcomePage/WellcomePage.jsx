@@ -1,16 +1,14 @@
 import { Tracker, WellcomeLayout } from './WellcomePage.styled';
-import { TrackerBenefits } from './components/TrackerBenefits/TrackerBenefits';
-import { TrackerInfo } from './components/TrackerInfo/TrackerInfo';
+import { TrackerBenefits } from './TrackerBenefits/TrackerBenefits';
+import { TrackerInfo } from './TrackerInfo/TrackerInfo';
 
 const WellcomePage = () => {
   return (
-    <WellcomeLayout>
-      <div className="container">
-        <Tracker>
-          <TrackerBenefits />
-          <TrackerInfo />
-        </Tracker>
-      </div>
+    <WellcomeLayout className="static-background">
+      <Tracker>
+        <TrackerBenefits />
+        <TrackerInfo />
+      </Tracker>
     </WellcomeLayout>
   );
 };

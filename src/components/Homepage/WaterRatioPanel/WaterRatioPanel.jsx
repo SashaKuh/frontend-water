@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import iconSprite from '../../images/SVG/symbol-defs.svg';
+import iconSprite from '../../../images/SVG/symbol-defs.svg';
 import {
   RangeAndAddWater,
   RangeDiv,
@@ -10,7 +10,7 @@ import {
   BoldPercentageOfRange,
   ButtonAddWater,
   SvgButton,
-} from '../../pages/HomePage/HomePage.styled';
+} from '../../../pages/HomePage/HomePage.styled';
 export const WaterRatioPanel = () => {
   const [sliderValue, setSliderValue] = useState(0);
 
