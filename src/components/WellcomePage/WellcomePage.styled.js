@@ -15,15 +15,17 @@ export const Tracker = styled.div`
     padding-bottom: 50px;
   }
 
-  @media only screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: center;
+    padding-top: 109px;
+    padding-left: 86px;
+    padding-right: 80px;
   }
 `;
 
 export const WellcomeLayout = styled.section`
-
-  min-height: calc(100vh - 119px);
+  min-height: 100vh;
   background-image: url(${bg_main_page});
   background-size: cover;
   background-position: center bottom;
@@ -36,7 +38,6 @@ export const WellcomeLayout = styled.section`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    /* min-height: calc(100vh - 143px); */
     background-image: url(${bg_tabl_1x});
   }
 
@@ -46,8 +47,6 @@ export const WellcomeLayout = styled.section`
   }
 
   @media screen and (min-width: 1440px) {
-    /* min-height: calc(100vh - 121px); */
-    /* padding-top: 40px; */
     background-image: url(${bg_desk_1x});
   }
 
