@@ -4,17 +4,18 @@ export const Wrap = styled.div`
 padding-left: 20px;
 padding-top: 8px;
 width: 164px;
-height: 76px;
 border-radius: 10px;
-margin-bottom:8px;
 border: 1px solid var(--secondaryGrey);
 box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
 font-family: 'Roboto-regular';
-position:absolute;
-@media (min-width: 320px) and (max-width: 767px){
-    height: 74px;
-    margin-bottom:8px;
-    position:static;
+height: 74px;
+margin-bottom:8px;
+position:static;
+
+
+@media (min-width: 768px){
+position:absolute;    
+height: 76px;
   }
 `;
 
