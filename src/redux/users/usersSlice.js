@@ -41,7 +41,7 @@ export const initialState = {
   error: null,
   isLoggedIn: false,
   isRefreshing: false,
-  isLoaduing: false,
+  isLoading: false,
   isInitialized: false,
 };
 

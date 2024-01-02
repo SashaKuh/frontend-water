@@ -8,6 +8,9 @@ import { PublicRoute } from './publicRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from '../redux/users/usersOperations.js';
 
+import ReactModal from 'react-modal';
+ReactModal.setAppElement('#modal-root');
+
 // import {selectUserToken} from '../redux'
 
 
