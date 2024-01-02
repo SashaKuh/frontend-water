@@ -49,11 +49,8 @@ export const handlePendingSignIn = (state, { payload }) => {
 export const handleSignOut = (state, { payload }) => {
   state.user = {};
   state.token = null;
-
   state.isRefreshing = false;
-
   state.isLoading = false;
-
   state.isLoggedIn = false
 };
 
@@ -64,7 +61,6 @@ export const handleSignOutError = (state, { payload }) => {
 export const handlePendingSignOut = (state, { payload }) => {
 
   state.isRefreshing = true;
-
   state.isLoading = true;
 };
 
@@ -75,6 +71,7 @@ export const handleRefresh = (state, { payload }) => {
   state.user.username = payload.username;
   state.user.gender = payload.gender;
   state.user.avatarURL = payload.avatar.URL;
+  state.token = localStorage.getItem('token');
   state.isLoggedIn = true;
   state.isRefreshing = false;
 };
