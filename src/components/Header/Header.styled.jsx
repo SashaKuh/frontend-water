@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  position: absolute;
-  z-index: 0;
-  transform: translate(-50%);
-  left: 50%;
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
-  padding-top: 8px;
+  &.container {
+    padding-top: 8px;
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%);
+    left: 50%;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
 `;
 
 export const UserAuth = styled.button`
