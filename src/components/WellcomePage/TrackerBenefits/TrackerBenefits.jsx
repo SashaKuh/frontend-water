@@ -19,7 +19,7 @@ export const TrackerBenefits = () => {
     navigate('/signup');
   }
   return (
-    <Container className='container'>
+    <Container>
       <MainTitle>Water consumption tracker</MainTitle>
       <Descr>Record daily water intake and track</Descr>
       <SubTitle>Tracker Benefits</SubTitle>
@@ -31,18 +31,15 @@ export const TrackerBenefits = () => {
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <StatisticsIcon >
-          <use href={iconSprite + '#icon-presantation-chart-bar'} />
-          </StatisticsIcon >
-          
+          <StatisticsIcon>
+            <use href={iconSprite + '#icon-presantation-chart-bar'} />
+          </StatisticsIcon>
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <SettingsIcon >
-          <use href={iconSprite + '#icon-wrench-screendriver'} />
-
-          </SettingsIcon >
-
+          <SettingsIcon>
+            <use href={iconSprite + '#icon-wrench-screendriver'} />
+          </SettingsIcon>
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>
