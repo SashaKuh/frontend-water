@@ -30,13 +30,18 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                 waterNorma = values.dailyNorma*1000
             } 
 
+            if (waterNorma < 1000 ) {
+                Notify.failure("Too little, even the cat drinks more (min 1 L)")
+                return 
+            }
+
             if (waterNorma > 15000 && waterNorma <= 25000) {
-                Notify.failure("This is amount of water that horse usually drinks. Please pick another amount (max rate 15 l)")
+                Notify.failure("This is amount of water that horse usually drinks. Please pick another amount (max rate 15 L)")
                 return 
             }
 
             if (waterNorma > 25000 ) {
-                Notify.failure("This is amount of water that elephant usually drinks. Please pick another amount (max rate 15 l)")
+                Notify.failure("This is amount of water that elephant usually drinks. Please pick another amount (max rate 15 L)")
                 return 
             }
 
