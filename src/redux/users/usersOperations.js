@@ -8,6 +8,7 @@ import {
   refreshUser,
   updateAvatar,
   updateUsers,
+  addWaterRate,
 } from '../../services/api/userAPI.js';
 
 
@@ -92,6 +93,18 @@ export const updateThunk  = createAsyncThunk(
   async ({ updateUser, token }) => {
     try {
       const data = await updateUsers(updateUser, token);
+      return data;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
+
+export const updateWaterThunk  = createAsyncThunk(
+  'water/rate',
+  async ({ dailyNorma, token }) => {
+    try {
+      const data = await addWaterRate(dailyNorma, token);
       return data;
     } catch (error) {
       return error.message;

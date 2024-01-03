@@ -1,25 +1,11 @@
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
 
-export const ModalBackdrope = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-`;
-
 export const StyledReactModal = styled(ReactModal)`
-  &.ReactModal__Overlay--after-open {
-    border: none;
-  }
-`;
-
-export const ModalWrap = styled.div`
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 background-color: var(--primaryWhite);
 font-family: 'Roboto-regular';
 color: var(--primaryBlack);
@@ -223,6 +209,7 @@ box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
   &:focus {
     box-shadow: none;
+    outline: none;
   }
 
 @media (min-width: 768px) {
