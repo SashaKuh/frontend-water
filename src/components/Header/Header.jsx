@@ -1,79 +1,104 @@
-import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   UserAuth,
   HeaderContainer,
   UserLogo,
   UserLogoWrapper,
 } from './Header.styled';
-import { useRef, useState } from 'react';
-import { HeaderModal } from 'components/Header/HaderModal/HeaderModal';
+import { HeaderDropdown } from 'components/Header/HaderDropdown/HeaderDropdown';
 import { SettingModal } from 'components/SettingModal/SettingModal';
 import { Modal } from 'components/Modal/Modal';
+import {
+  ButtonCancel,
+  ButtonRed,
+  ButtonsWrapper,
+  SecondTitleModal,
+} from 'components/Modal/Modal.styled';
+import { signOutThunk } from '../../redux/users/usersOperations';
 
 export const Header = () => {
   const headerNode = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [logoutModal, setLogoutModal] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [logoutModalIsOpen, setLogoutModalIsOpen] = useState(false);
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
-  const closeSettingModal = () => {
-    setSettingModalIsOpen(false);
-  };
-
-  const navigate = useNavigate();
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
   const avatar = useSelector(state => state.auth.user.avatarURL);
 
   const onClickUserLogo = e => {
     if (e.currentTarget.classList.contains('open')) {
-      setModalIsOpen(false);
+      setDropdownIsOpen(false);
       return;
     }
-    setModalIsOpen(true);
+    setDropdownIsOpen(true);
   };
 
   return (
     <HeaderContainer className="container" ref={headerNode}>
       <Link to="homepage">
-        <img src={logo} alt="Logo tracker of water" />
+        <img
+          src={logo}
+          alt="Logo tracker of water"
+          height="48px"
+          width="102px"
+        />
       </Link>
       {isLoggedIn ? (
         <UserLogoWrapper>
-          <UserLogo onClick={onClickUserLogo} className={modalIsOpen && 'open'}>
+          <UserLogo
+            onClick={onClickUserLogo}
+            className={dropdownIsOpen && 'open'}
+          >
             <span>{username}</span>
             <img height="28" width="28" src={avatar} alt="User avatar" />
             <svg height="28" width="28">
               <use href={iconSprite + '#icon-chevron-double-up'}></use>
             </svg>
           </UserLogo>
-          {modalIsOpen && (
-            <HeaderModal
+          {dropdownIsOpen && (
+            <HeaderDropdown
               settingModalIsOpen={settingModalIsOpen}
               setSettingModalIsOpen={setSettingModalIsOpen}
-              setModalIsOpen={setModalIsOpen}
+              setModalIsOpen={setDropdownIsOpen}
               headerNode={headerNode.current}
               contentLabel="User menu modal"
-              setLogoutModal={setLogoutModal}
-            ></HeaderModal>
+              setLogoutModal={setLogoutModalIsOpen}
+            ></HeaderDropdown>
           )}
           <SettingModal
             modalIsOpen={settingModalIsOpen}
-            closeModal={closeSettingModal}
+            closeModal={() => setSettingModalIsOpen(false)}
           />
           <Modal
             contentLabel="Logout modal"
-            isOpen={logoutModal}
+            isOpen={logoutModalIsOpen}
             onRequestClose={() => {
-              setLogoutModal(false);
+              setLogoutModalIsOpen(false);
             }}
-            titleText="Logout"
+            titleText="Log out"
           >
-            <div></div>
+            <SecondTitleModal>Do you really want to leave?</SecondTitleModal>
+            <ButtonsWrapper>
+              <ButtonCancel onClick={() => setLogoutModalIsOpen(false)}>
+                Cancel
+              </ButtonCancel>
+              <ButtonRed
+                onClick={() => {
+                  dispatch(signOutThunk());
+                  setLogoutModalIsOpen(false);
+                }}
+              >
+                Log out
+              </ButtonRed>
+            </ButtonsWrapper>
           </Modal>
         </UserLogoWrapper>
       ) : (

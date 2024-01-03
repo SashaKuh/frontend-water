@@ -7,7 +7,7 @@ import {
   WrapHeader,
 } from './Modal.styled';
 
-export const Modal = ({ titleText, isOpen, onRequestClose }) => {
+export const Modal = ({ titleText, isOpen, onRequestClose, children }) => {
   return (
     <ReactModalStyled
       isOpen={isOpen}
@@ -20,12 +20,13 @@ export const Modal = ({ titleText, isOpen, onRequestClose }) => {
     >
       <WrapHeader>
         <Title>{titleText}</Title>
-        <BtnSvg type="button" onClick={console.log('close')}>
+        <BtnSvg type="button" onClick={onRequestClose}>
           <SvgClose>
             <use xlinkHref={`${sprite}#icon-plus-small`} />
           </SvgClose>
         </BtnSvg>
       </WrapHeader>
+      {children}
     </ReactModalStyled>
   );
 };
