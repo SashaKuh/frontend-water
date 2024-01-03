@@ -5,7 +5,6 @@ import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import dotenv from 'dotenv';
 
 import {
   Title,
@@ -23,7 +22,6 @@ import {
 import { signInSchema } from 'schemas/SignInSchema';
 import { signInThunk } from '../../redux/users/usersOperations';
 
-dotenv.config();
 const initialValues = {
   email: '',
   password: '',
@@ -66,9 +64,7 @@ const AuthForm = () => {
                 {({ isSubmitting, errors, touched }) => (
                   <MainForm>
                     <Title>Sign In</Title>
-                    <GoogleOAuthProvider
-                      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                    >
+                    <GoogleOAuthProvider clientId="820626927158-774p7limsp4mefruashq9nfglvqckrtf.apps.googleusercontent.com">
                       <GoogleLogin
                         onSuccess={credentialResponse => {
                           const decoded = jwtDecode(
