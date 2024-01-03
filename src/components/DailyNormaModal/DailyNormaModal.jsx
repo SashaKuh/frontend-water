@@ -49,7 +49,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
                 await dispatch(updateWaterThunk({ dailyNorma, token }))
                 handleCloseModal()
             } catch {
-                return Notify.failure("Something went wrong")
+                return 
             }
         },
     });

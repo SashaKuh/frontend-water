@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix';
 
 export const instance = axios.create({
   baseURL: 'https://backend-water.onrender.com/api/',
@@ -66,7 +67,12 @@ export const updateUsers = async (updateUser, token) => {
 
 export const addWaterRate = async (dailyNorma, token) => {
   setAuthHeader(token);
-  const { data } = await instance.patch(`water/rate`, dailyNorma);
+  try {
+    const { data } = await instance.patch(`water/rate`, dailyNorma);
   return data;
+  } catch {
+    Notify.failure("Something went wrong")
+  }
+  
 };
 
