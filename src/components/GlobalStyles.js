@@ -121,5 +121,5 @@ margin: 0
   .ReactModalPortal {
     position: relative;
     z-index: 5;
-  } 
+  }
 `;

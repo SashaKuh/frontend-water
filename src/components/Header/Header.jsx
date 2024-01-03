@@ -11,10 +11,12 @@ import {
 import { useRef, useState } from 'react';
 import { HeaderModal } from 'components/Header/HaderModal/HeaderModal';
 import { SettingModal } from 'components/SettingModal/SettingModal';
+import { Modal } from 'components/Modal/Modal';
 
 export const Header = () => {
   const headerNode = useRef();
 
+  const [logoutModal, setLogoutModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
@@ -56,12 +58,23 @@ export const Header = () => {
               setModalIsOpen={setModalIsOpen}
               headerNode={headerNode.current}
               contentLabel="User menu modal"
+              setLogoutModal={setLogoutModal}
             ></HeaderModal>
           )}
           <SettingModal
             modalIsOpen={settingModalIsOpen}
             closeModal={closeSettingModal}
           />
+          <Modal
+            contentLabel="Logout modal"
+            isOpen={logoutModal}
+            onRequestClose={() => {
+              setLogoutModal(false);
+            }}
+            titleText="Logout"
+          >
+            <div></div>
+          </Modal>
         </UserLogoWrapper>
       ) : (
         <UserAuth onClick={() => navigate('/signin')}>
