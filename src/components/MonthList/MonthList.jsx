@@ -7,8 +7,23 @@ import {
   LeftArrowButton,
   RigthArrowButton,
   MonthHeader,
+  MonthListStyled,
 } from './MonthList.styled';
 import sprite from '../../images/SVG/symbol-defs.svg';
+import MonthItem from 'components/MonthItem/MonthItem';
+import { nanoid } from 'nanoid';
+
+const testArray = [];
+
+for (let i = 0; i < 31; i += 1) {
+  testArray[i] = {
+    id: i,
+    serving: 3,
+    date: `December, ${i + 1}`,
+    dailyNorma: 2,
+    completed: i % 2 === 0 ? 90 : 100,
+  };
+}
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
@@ -38,6 +53,15 @@ const MonthList = () => {
           </RigthArrowButton>
         </DatePicker>
       </MonthHeader>
+      <MonthListStyled>
+        {testArray.map(item => (
+          <MonthItem
+            key={nanoid()}
+            date={item.date}
+            completed={item.completed}
+          />
+        ))}
+      </MonthListStyled>
     </div>
   );
 };
