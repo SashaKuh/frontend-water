@@ -10,9 +10,7 @@ export const BenefitsList = styled.ul`
     align-items: center;
     justify-content: space-between;
   }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 47px;
-  }
+ 
 `;
 export const BenefitsItems = styled.li`
   font-family: 'Roboto-regular';
@@ -78,6 +76,11 @@ export const Icon = styled.svg`
   height: 32px;
   flex-shrink: 0;
   fill: var(--primaryBlue);
+  @media screen and (min-width: 768px) {
+    width: 40px;
+  height: 40px;
+
+  }
 `;
 
 export const Button = styled.button`
