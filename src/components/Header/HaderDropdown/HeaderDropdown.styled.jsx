@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderModalStyled = styled.div`
+export const HeaderDropdownStyled = styled.div`
   position: absolute;
   top: 60px;
   right: 0;
