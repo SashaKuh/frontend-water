@@ -21,7 +21,7 @@ export const handleSignUpError = (state, { payload }) => {
 
 export const handlePendingSignUp = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- SignIn ------------------------
@@ -45,7 +45,7 @@ export const handleSignInError = (state, { payload }) => {
 
 export const handlePendingSignIn = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- SignOut ------------------------
@@ -88,7 +88,7 @@ export const handleRefreshError = (state, { payload }) => {
 
 export const handlePendingRefresh = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- Avatar ------------------------
@@ -105,7 +105,7 @@ export const handleAvatarError = (state, { payload }) => {
 
 export const handlePendingAvatar = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- Update ------------------------
@@ -126,5 +126,22 @@ export const handleUpdateError = (state, { payload }) => {
 
 export const handlePendingUpdate = (state, { payload }) => {
   state.isRefreshing = true;
+  state.isLoading = true;
+};
+
+//----------------------- WaterRare ------------------------
+
+export const handleWaterRate = (state, { payload }) => {
+  state.user.dailyNorma = payload.dailyNorma;
+  state.isRefreshing = false;
   state.isLoading = false;
+};
+
+export const handleWaterRateError = (state, { payload }) => {
+  state.error = payload.message;
+};
+
+export const handlePendingWaterRate = (state, { payload }) => {
+  state.isRefreshing = true;
+  state.isLoading = true;
 };
