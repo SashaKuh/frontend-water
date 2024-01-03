@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import {
   signup,
@@ -22,13 +22,8 @@ export const signUpThunk = createAsyncThunk(
     } catch (error) {
       switch (error.response.status) {
         case 409:
-          Notiflix.failure(
-            `This email is already in use by another user. Please try a different address.`
-          );
-          return rejectWithValue(error.message);
-        case 400:
-          Notiflix.failure(
-            `The password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number and 1 special character`
+          Notify.failure(
+            `User with this email already exists`
           );
           return rejectWithValue(error.message);
         default:
@@ -47,8 +42,8 @@ export const signInThunk = createAsyncThunk(
 
       return resp;
     } catch (error) {
-      Notiflix.failurer(`Email or password is wrong. Try again =)`);
-      return rejectWithValue(error);
+      Notify.failure(`Email or password is wrong`);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -61,7 +56,8 @@ export const signOutThunk  = createAsyncThunk(
 
       return resp;
     } catch (error) {
-      return rejectWithValue(error.message);
+      Notify.failure(`Error! User not logged in!`)
+      return rejectWithValue(error);
     }
   }
 );
@@ -74,6 +70,7 @@ export const refreshUserThunk = createAsyncThunk(
     
     return data;
   } catch (error) {
+    Notify.failure(`Error! User with this email not found!`)
     return error.message;
   }
 });

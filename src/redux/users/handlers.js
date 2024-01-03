@@ -16,12 +16,12 @@ export const handleSignUp = (state, { payload }) => {
 };
 
 export const handleSignUpError = (state, { payload }) => {
-  // state.error = payload.message;
+  state.error = payload.message;
 };
 
 export const handlePendingSignUp = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- SignIn ------------------------
@@ -45,7 +45,7 @@ export const handleSignInError = (state, { payload }) => {
 
 export const handlePendingSignIn = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- SignOut ------------------------
@@ -88,7 +88,7 @@ export const handleRefreshError = (state, { payload }) => {
 
 export const handlePendingRefresh = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- Avatar ------------------------
@@ -105,7 +105,7 @@ export const handleAvatarError = (state, { payload }) => {
 
 export const handlePendingAvatar = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
 
 //----------------------- Update ------------------------
@@ -126,5 +126,5 @@ export const handleUpdateError = (state, { payload }) => {
 
 export const handlePendingUpdate = (state, { payload }) => {
   state.isRefreshing = true;
-  state.isLoading = false;
+  state.isLoading = true;
 };
