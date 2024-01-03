@@ -6,10 +6,15 @@ import {
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { DailyNormaModalSchema } from 'schemas/DailyNormaModalSchema';
+import { Notify } from "notiflix";
+import { useDispatch, useSelector } from "react-redux";
+import { updateWaterThunk } from "../../redux/users/usersOperations";
 
 export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {   
     const [formula, setFormula] = useState('');
     const [amount, setAmount] = useState(0);
+    const dispatch = useDispatch(); 
+    const token = useSelector(state => state.auth.token)
     
     const formik = useFormik({
         initialValues: {
@@ -19,12 +24,31 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             dailyNorma: amount,
         },
         validationSchema: DailyNormaModalSchema,
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
+            let waterNorma = amount*1000;
             if (values.dailyNorma > 0) {
-                console.log(values.dailyNorma)
-            } else {
-                console.log(amount)
-            }            
+                waterNorma = values.dailyNorma*1000
+            } 
+
+            if (waterNorma > 15000 && waterNorma <= 25000) {
+                Notify.failure("This is amount of water that horse usually drinks. Please pick another amount (max rate 15 l)")
+                return 
+            }
+
+            if (waterNorma > 25000 ) {
+                Notify.failure("This is amount of water that elephant usually drinks. Please pick another amount (max rate 15 l)")
+                return 
+            }
+
+            const dailyNorma = {
+                dailyNorma: waterNorma
+            }
+            try {
+                await dispatch(updateWaterThunk({ dailyNorma, token }))
+                handleCloseModal()
+            } catch {
+                Notify.failure("Something went wrong")
+            }
         },
     });
 

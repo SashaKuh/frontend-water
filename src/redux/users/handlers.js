@@ -128,3 +128,20 @@ export const handlePendingUpdate = (state, { payload }) => {
   state.isRefreshing = true;
   state.isLoading = false;
 };
+
+//----------------------- WaterRare ------------------------
+
+export const handleWaterRate = (state, { payload }) => {
+  state.user.dailyNorma = payload.dailyNorma;
+  state.isRefreshing = false;
+  state.isLoading = false;
+};
+
+export const handleWaterRateError = (state, { payload }) => {
+  state.error = payload.message;
+};
+
+export const handlePendingWaterRate = (state, { payload }) => {
+  state.isRefreshing = true;
+  state.isLoading = false;
+};

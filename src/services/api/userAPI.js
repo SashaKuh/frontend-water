@@ -64,9 +64,9 @@ export const updateUsers = async (updateUser, token) => {
   return data;
 };
 
-export const addWaterRate = async (body, token) => {
+export const addWaterRate = async (dailyNorma, token) => {
   setAuthHeader(token);
-  const { data } = await instance.patch(`water/rate`, body);
+  const { data } = await instance.patch(`water/rate`, dailyNorma);
   return data;
 };
 
