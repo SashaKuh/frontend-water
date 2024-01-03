@@ -21,7 +21,7 @@ import {
 } from './AuthForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
 import { signInThunk } from '../../redux/users/usersOperations';
-
+import { refreshUserThunk } from '../../redux/users/usersOperations';
 const initialValues = {
   email: '',
   password: '',
@@ -46,6 +46,20 @@ const AuthForm = () => {
     }
   };
 
+  const handleGoogleLogin = async credentialResponse => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      console.log(decoded);
+
+      // Диспетчеризация refreshUserThunk с токеном от Google
+      await dispatch(refreshUserThunk(decoded.googleAccessToken));
+
+      // Если есть дополнительные действия после успешного входа через Google, выполните их здесь
+    } catch (error) {
+      console.error('Error during Google login:', error);
+    }
+  };
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -66,12 +80,7 @@ const AuthForm = () => {
                     <Title>Sign In</Title>
                     <GoogleOAuthProvider clientId="820626927158-774p7limsp4mefruashq9nfglvqckrtf.apps.googleusercontent.com">
                       <GoogleLogin
-                        onSuccess={credentialResponse => {
-                          const decoded = jwtDecode(
-                            credentialResponse.credential
-                          );
-                          console.log(decoded);
-                        }}
+                        onSuccess={handleGoogleLogin}
                         onError={() => {
                           console.log('Login Failed');
                         }}
