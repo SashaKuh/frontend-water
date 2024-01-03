@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 export const BenefitsList = styled.ul`
   font-size: 16px;
-  line-height: calc(20 / 16);
+  line-height: 1.25;
   margin-bottom: 24px;
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 47px;
   }
 `;
 export const BenefitsItems = styled.li`
@@ -26,7 +29,7 @@ export const BenefitsItems = styled.li`
 export const Descr = styled.p`
   font-family: 'Roboto-regular';
   font-size: 24px;
-  line-height: calc(30 / 24);
+  line-height: 1.25;
   color: var(--primaryBlack);
   margin-bottom: 24px;
 
@@ -54,7 +57,7 @@ export const MainTitle = styled.h1`
   line-height: 1.17;
   color: var(--primaryBlack);
 
-  margin-bottom: ${props => props.$marginBottom || '16px'};
+  margin-bottom: 16px;
 
   @media only screen and (max-width: 767px) {
     font-size: 28px;
@@ -96,6 +99,7 @@ export const Button = styled.button`
     box-shadow: 0px 4px 14px 0px #407bff;
   }
   @media screen and (min-width: 768px) {
+    padding: 10px 30px;
     min-width: 336px;
     line-height: 24px;
     font-size: 18px;

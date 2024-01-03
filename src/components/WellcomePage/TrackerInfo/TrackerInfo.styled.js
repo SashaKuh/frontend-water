@@ -11,6 +11,7 @@ export const TrackerInfoContainer = styled.div`
     width: 446px;
   }
   @media screen and (min-width: 1440px) {
+    padding: 32px 24px;
     margin-top: 34px;
   }
 `;
@@ -18,20 +19,18 @@ export const TrackerInfoContainer = styled.div`
 export const SubTitle = styled.h2`
   font-family: 'Roboto-Medium';
   font-size: 18px;
-  font-weight: 700;
-  line-height: calc(20 / 18);
+  line-height: 1.11;
 
   margin-bottom: 12px;
 `;
 
-export const InfoList = styled.ul``;
 export const InfoItems = styled.li`
   display: flex;
   align-items: center;
   gap: 8px;
   font-family: 'Roboto-regular';
   font-size: 16px;
-  line-height: calc(20 / 16);
+  line-height: 1.25;
 
   &::before {
     content: '';
