@@ -4,6 +4,9 @@ import sessionStorage from 'redux-persist/es/storage/session';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist/es/constants';
 
 import { authReducer } from './users/usersSlice';
+import { waterReducer } from './water/waterSlice';
+// import modalReducer
+// import waterReducer
 
 const persistConfig = {
   key: 'root',
@@ -14,8 +17,10 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    modals: {},
-    water: {},
+    modals: {
+      /*modalReducer*/
+    },
+    water: waterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

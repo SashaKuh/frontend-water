@@ -5,18 +5,18 @@ export const getWater = async () => {
     return data;
 };
 
-export const getMonthWater = async () => {
-    const response = await instance.get(`water/month`);
-    return response;
-};
-
-export const addWater = async newWaterUsed  => {
-    const { data } = await instance.post('water/add', newWaterUsed);
+export const getMonthWater = async (date) => {
+    const {data} = await instance.post(`water/month`, date);
     return data;
 };
 
-export const editWater = async ({newWaterUsed, id}) => {
-    const { data } = await instance.put(`water/${id}`, newWaterUsed);
+export const addWater = async newWaterCard => {
+    const { data } = await instance.post('water/add', newWaterCard);
+    return data;
+};
+
+export const editWater = async ({id, waterVolume, date}) => {
+    const { data } = await instance.put(`water/${id}`, {waterVolume, date});
     return data;
 };
 
