@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { ErrorMessage, Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import iconSprite from '../../images/SVG/symbol-defs.svg';
+import { GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 import {
   Title,
@@ -29,20 +32,19 @@ const AuthForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { setSubmitting }) => {
-  try {
-    const response = await dispatch(
-      signInThunk({ email: values.email, password: values.password })
-    );
-    if (!response.error) {
-      console.log('Successful login!');
-    } 
-  } catch (error) {
-    console.error('Error during login:', error);
-  } finally {
-    setSubmitting(false);
-  }
-};
-
+    try {
+      const response = await dispatch(
+        signInThunk({ email: values.email, password: values.password })
+      );
+      if (!response.error) {
+        console.log('Successful login!');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -62,6 +64,19 @@ const AuthForm = () => {
                 {({ isSubmitting, errors, touched }) => (
                   <MainForm>
                     <Title>Sign In</Title>
+                    <GoogleOAuthProvider clientId="820626927158-774p7limsp4mefruashq9nfglvqckrtf.apps.googleusercontent.com">
+                      <GoogleLogin
+                        onSuccess={credentialResponse => {
+                          const decoded = jwtDecode(
+                            credentialResponse.credential
+                          );
+                          console.log(decoded);
+                        }}
+                        onError={() => {
+                          console.log('Login Failed');
+                        }}
+                      />
+                    </GoogleOAuthProvider>
                     <div>
                       <Label htmlFor="firstName">Enter your email</Label>
                       <Field
