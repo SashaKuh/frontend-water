@@ -10,6 +10,7 @@ import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAvatarThunk, updateThunk } from "../../redux/users/usersOperations";
+import { Notify } from "notiflix";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
        
@@ -18,8 +19,8 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     const username = useSelector(state => state.auth.user.username)    
     const email = useSelector(state => state.auth.user.email)
     const token = useSelector(state => state.auth.token)
-    const loader = useSelector(state => state.auth.isRefreshing)
 
+    const [loader, setLoader] = useState(false)
     const [genderValue, setGenderValue] = useState(gender);
     const [imgSize, setImgSize] = useState(false)     
     const [showPassword, setShowPassword] = useState({
@@ -41,12 +42,13 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
             try {
                 const data = saveValues(values);
                 if (Object.keys(data).length === 0) {
+                    handleCloseModal()
                     return
-                }                
+                }
                 await dispatch(updateThunk({ updateUser: data, token }))
                 handleCloseModal()
-            } catch (error) {
-                console.log(error.message)
+            } catch  {
+                Notify.failure("Something went wrong")
             }
         },
         validationSchema: SettingModalSchema,
@@ -90,7 +92,9 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
         }
         const formData = new FormData();
         formData.append('avatar', avatar);
-        dispatch(updateAvatarThunk({ avatar: formData, token }));
+        setLoader(true)
+        await dispatch(updateAvatarThunk({ avatar: formData, token }));
+        setLoader(false)
     };
 
     const handleGenderChange = (evt) => {

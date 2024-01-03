@@ -1,4 +1,3 @@
-import ReactModal from 'react-modal'; 
 import sprite from "../../images/SVG/symbol-defs.svg";
 import {
     BtnSvg, ModalBackdrope, ModalWrap, StyledRadioGroup, StyledRadioInput, StyledRadioLabel, StyledRadioText, StyledRadioCircle, TitleText, Text, FormulaText,
@@ -7,7 +6,6 @@ import {
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { DailyNormaModalSchema } from 'schemas/DailyNormaModalSchema';
-ReactModal.setAppElement('#modal-root');
 
 export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {   
     const [formula, setFormula] = useState('');
