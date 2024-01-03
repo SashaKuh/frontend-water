@@ -16,7 +16,7 @@ export const handleSignUp = (state, { payload }) => {
 };
 
 export const handleSignUpError = (state, { payload }) => {
-  state.error = payload.message;
+  // state.error = payload.message;
 };
 
 export const handlePendingSignUp = (state, { payload }) => {

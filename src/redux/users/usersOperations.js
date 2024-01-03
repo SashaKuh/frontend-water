@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import Notiflix from 'notiflix';
 
 import {
   signup,
@@ -13,15 +14,29 @@ import {
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
-  async newUser => {
-  try {
-    const resp = await signup(newUser);
-    
-    return resp;
-  } catch (error) {
-    return error.response.data; 
+  async (newUser, { rejectWithValue }) => {
+    try {
+      const resp = await signup(newUser);
+
+      return resp;
+    } catch (error) {
+      switch (error.response.status) {
+        case 409:
+          Notiflix.failure(
+            `This email is already in use by another user. Please try a different address.`
+          );
+          return rejectWithValue(error.message);
+        case 400:
+          Notiflix.failure(
+            `The password must contain at least 1 lowercase letter, 1 uppercase letter, 1 number and 1 special character`
+          );
+          return rejectWithValue(error.message);
+        default:
+          return rejectWithValue(error.message);
+      }
+    }
   }
-});
+);
 
 
 export const signInThunk = createAsyncThunk(
@@ -32,7 +47,8 @@ export const signInThunk = createAsyncThunk(
 
       return resp;
     } catch (error) {
-      return rejectWithValue(error.message);
+      Notiflix.failurer(`Email or password is wrong. Try again =)`);
+      return rejectWithValue(error);
     }
   }
 );
