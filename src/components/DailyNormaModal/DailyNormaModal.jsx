@@ -83,6 +83,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
 
     return (
         <StyledReactModal
+            contentLabel="Modal"
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
         >

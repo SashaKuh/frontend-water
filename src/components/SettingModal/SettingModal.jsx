@@ -125,6 +125,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     }
     return (
         <StyledSettingModal
+            contentLabel="Setting Modal"
             isOpen={modalIsOpen}
             onRequestClose={closeModal}>
             <StModalBackdrope onClick={onBackdropeClick}>
