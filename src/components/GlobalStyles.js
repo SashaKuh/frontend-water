@@ -117,4 +117,9 @@ margin: 0
     font-family: 'Roboto-Bold';
     src: url(${Bold}) format('truetype'),
     }
+
+  .ReactModalPortal {
+    position: relative;
+    z-index: 5;
+  } 
 `;

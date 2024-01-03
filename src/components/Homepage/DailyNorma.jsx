@@ -1,10 +1,13 @@
 import { DailyNormaModal } from "components/DailyNormaModal/DailyNormaModal";
 import { Button, Text, TextWater, Wrap, BtnWrap } from "./DailyNorma.styled.js";
 import { useState } from 'react';
-import { SettingModal } from "components/SettingModal/SettingModal.jsx";
+import { useSelector } from "react-redux";
 
 export const DailyNorma = () => {
+    const dailyNorma = useSelector(state => state.auth.user.dailyNorma)
     const [modalIsOpen, setIsOpen] = useState(false);
+    
+    const water = (dailyNorma / 1000).toFixed(1)
     const openModal = () => {
         setIsOpen(true);
     }
@@ -12,22 +15,14 @@ export const DailyNorma = () => {
     const closeModal = () => {
         setIsOpen(false);
     }
-    ///SettingModal  <TextWater onClick={}>2.0 L</TextWater>
-    const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
-    
-
-    const closeSettingModal = () => {
-        setSettingModalIsOpen(false);
-    }
     
     return (
         <Wrap>
             <Text>My daily norma</Text>
             <BtnWrap>
-                <TextWater >2.0 L</TextWater>
+                <TextWater>{water} L</TextWater>
                 <Button type="button" onClick={openModal}>Edit</Button>
                 <DailyNormaModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
-                <SettingModal modalIsOpen={settingModalIsOpen} closeModal={closeSettingModal}/>
             </BtnWrap>
         </Wrap>
     )

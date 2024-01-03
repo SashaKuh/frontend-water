@@ -75,6 +75,7 @@ export const handleRefresh = (state, { payload }) => {
   state.user.username = payload.username;
   state.user.gender = payload.gender;
   state.user.avatarURL = payload.avatar.URL;
+  state.user.dailyNorma = payload.dailyNorma;
   state.token = localStorage.getItem('token');
   state.isLoggedIn = true;
   state.isRefreshing = false;
