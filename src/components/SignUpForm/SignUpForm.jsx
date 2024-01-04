@@ -16,6 +16,8 @@ import {
   InputContainer,
   Background,
   BottleBackground,
+  FormSection,
+  LinkNav,
 } from '../AuthForm/AuthForm.styled';
 
 import { signUpThunk } from '../../redux/users/usersOperations';
@@ -40,7 +42,7 @@ const SignUpForm = () => {
       if (response.payload) {
         setTimeout(() => {
           if (response.payload.successful) {
-            navigate('/signin'); 
+            navigate('/signin');
           }
         }, 3000);
       } else {
@@ -53,7 +55,7 @@ const SignUpForm = () => {
     }
   };
 
-  const togglePasswordVisibility = (field) => {
+  const togglePasswordVisibility = field => {
     if (field === 'password') {
       setPasswordVisible(!passwordVisible);
     } else if (field === 'repeatPassword') {
@@ -65,7 +67,7 @@ const SignUpForm = () => {
     <Background>
       <div className="container">
         <BottleBackground>
-          <div>
+          <FormSection>
             <Formik
               initialValues={initialValues}
               validationSchema={signUpSchema}
@@ -164,11 +166,13 @@ const SignUpForm = () => {
                   <SignInButton type="submit" disabled={isSubmitting}>
                     Sign Up
                   </SignInButton>
-                  <PageLink to="/signin">Sign In</PageLink>
+                  <LinkNav>
+                    <PageLink to="/signin">Sign In</PageLink>
+                  </LinkNav>
                 </MainForm>
               )}
             </Formik>
-          </div>
+          </FormSection>
         </BottleBackground>
       </div>
     </Background>

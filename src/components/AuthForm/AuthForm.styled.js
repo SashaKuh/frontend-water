@@ -21,22 +21,34 @@ export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-content: flex-start;
-  width: 280px;
   margin-top: 24px;
+  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    width: 336px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    &:not(:first-child) {
+      align-items: flex-start;
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    margin-right: 104px;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    &:not(:first-child) {
+      align-items: flex-end;
+    }
+  }
+`;
+export const FormSection = styled.div`
+  @media screen and (min-width: 1440px) {
     margin-top: 40px;
   }
   @media screen and (min-width: 1440px) {
-    margin-left: 728px;
-    margin-right: 104px;
-    flex-wrap: wrap;
-    width: 384px;
-    margin-top: 162px;
+    margin-bottom: 196px;
   }
 `;
-
 export const Input = styled.input`
   font-family: 'Roboto-regular';
   border-radius: 6px;
@@ -106,12 +118,14 @@ export const Label = styled.label`
 
 export const PageLink = styled(Link)`
   font-family: 'Roboto-regular';
+  display: inline-block;
   color: var(--primaryBlue);
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
   margin-top: 16px;
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--secondaryOrange);
   }
 `;
@@ -146,12 +160,12 @@ export const InputContainer = styled.div`
   display: inline-block;
 `;
 export const Background = styled.main`
+  min-height: 100vh;
   background-image: url(${backgroundImgMob});
+  padding-bottom: 24px;
   background-size: cover;
-  position: relative;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  height: 100%;
 
   @media screen and (min-width: 768px) {
     background-image: url(${backgroundImgTab});
@@ -162,41 +176,37 @@ export const Background = styled.main`
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundImgDesc});
     background-size: contain;
-    background-position: top center;
+    background-position: center;
     background-repeat: no-repeat;
+    padding-bottom: 20px;
   }
 `;
 
 export const BottleBackground = styled.div`
   min-height: calc(100vh - 68px);
-  position: relative;
-  overflow: hidden;
+  background-image: url(${bottleBackgroundMob});
+  background-size: 100%;
+  background-position: center bottom 10px;
+  background-repeat: no-repeat;
 
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: url(${bottleBackgroundMob});
+  @media screen and (min-width: 768px) {
     background-size: 100%;
-    background-position: center bottom;
+    background-image: url(${bottleBackgroundTab});
+    background-position: right -5px bottom 56px;
     background-repeat: no-repeat;
-
-    @media screen and (min-width: 768px) {
-      background-image: url(${bottleBackgroundTab});
-      background-position: right -100px bottom 20px;
-      background-repeat: no-repeat;
-    }
-
-    @media screen and (min-width: 1440px) {
-      background-image: url(${bottleBackgroundDesc});
-      background-size: 80%;
-      background-position: left -110px top 90px;
-      background-repeat: no-repeat;
-    }
-    z-index: -1;
   }
+
+  @media screen and (min-width: 1440px) {
+    background-image: url(${bottleBackgroundDesc});
+    background-size: 80%;
+    background-position: top 0px left -81px;
+    background-repeat: no-repeat;
+    margin-top: 0%;
+  }
+`;
+
+export const LinkNav = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
 `;
