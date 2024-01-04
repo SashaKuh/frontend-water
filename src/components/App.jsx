@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate  } from 'react-router-dom';
 import { Layout } from './Layout/Layout.jsx';
 
 import { PrivateRoute } from './privateRoute';
@@ -10,9 +10,6 @@ import { refreshUserThunk } from '../redux/users/usersOperations.js';
 
 import ReactModal from 'react-modal';
 ReactModal.setAppElement('#modal-root');
-
-// import {selectUserToken} from '../redux'
-
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); // Corrected typo
@@ -62,6 +59,7 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
