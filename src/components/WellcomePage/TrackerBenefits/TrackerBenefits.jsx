@@ -4,9 +4,7 @@ import {
   BenefitsItems,
   Descr,
   Container,
-  CalendarIcon,
-  StatisticsIcon,
-  SettingsIcon,
+  Icon,
   MainTitle,
   SubTitle,
   Button,
@@ -25,21 +23,21 @@ export const TrackerBenefits = () => {
       <SubTitle>Tracker Benefits</SubTitle>
       <BenefitsList>
         <BenefitsItems>
-          <CalendarIcon>
+          <Icon>
             <use href={iconSprite + '#icon-calendar-days'} />
-          </CalendarIcon>
+          </Icon>
           Habit drive
         </BenefitsItems>
         <BenefitsItems>
-          <StatisticsIcon>
+          <Icon>
             <use href={iconSprite + '#icon-presantation-chart-bar'} />
-          </StatisticsIcon>
+          </Icon>
           View statistics
         </BenefitsItems>
         <BenefitsItems>
-          <SettingsIcon>
+          <Icon>
             <use href={iconSprite + '#icon-wrench-screendriver'} />
-          </SettingsIcon>
+          </Icon>
           Personal rate setting
         </BenefitsItems>
       </BenefitsList>

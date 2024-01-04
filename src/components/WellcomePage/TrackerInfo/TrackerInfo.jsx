@@ -1,6 +1,6 @@
 import {
   InfoItems,
-  InfoList,
+  // InfoList,
   TrackerInfoContainer,
   SubTitle,
 } from './TrackerInfo.styled';
@@ -11,7 +11,7 @@ export const TrackerInfo = () => {
       <div>
         <TrackerInfoContainer>
           <SubTitle>Why drink water</SubTitle>
-          <InfoList>
+          <ul>
             <InfoItems>Supply of nutrients to all organs</InfoItems>
             <InfoItems>Providing oxygen to the lungs</InfoItems>
             <InfoItems>Maintaining the work of the heart</InfoItems>
@@ -23,7 +23,7 @@ export const TrackerInfo = () => {
             <InfoItems>
               Maintaining an immune system capable of resisting disease
             </InfoItems>
-          </InfoList>
+          </ul>
         </TrackerInfoContainer>
       </div>
     </>
