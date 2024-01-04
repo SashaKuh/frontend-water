@@ -4,34 +4,42 @@ import {
   DateText,
   OtherText,
   ValueSpan,
+  SvgClose,
+  CloseButton,
 } from './DayDetails.styled.';
+import sprite from '../../images/SVG/symbol-defs.svg';
 
-const DayDetails = () => {
+const plusIcon = `${sprite}#icon-plus-small`;
+
+const DayDetails = ({
+  date,
+  dailyNorma,
+  completed,
+  serving,
+  side,
+  setModal,
+}) => {
   return (
-    <DayDetailsCont>
-      <DateText>{`${exampleProps.date.getDay()}, ${
-        months[exampleProps.date.getMonth()]
-      }`}</DateText>
+    <DayDetailsCont className={side}>
+      <CloseButton onClick={() => setModal('')}>
+        <SvgClose>
+          <use href={plusIcon}></use>
+        </SvgClose>
+      </CloseButton>
+      <DateText>{date}</DateText>
       <OtherText>
-        Daily norma: <ValueSpan>{` ${exampleProps.daily} L`}</ValueSpan>
+        Daily norma: <ValueSpan>{`${dailyNorma} L`}</ValueSpan>
       </OtherText>
       <OtherText>
         Fulfillment of the daily norm:
-        <ValueSpan>{` ${exampleProps.part}%`}</ValueSpan>
+        <ValueSpan>{` ${completed}%`}</ValueSpan>
       </OtherText>
       <OtherText>
         How many servings of water:
-        <ValueSpan>{` ${exampleProps.count}`}</ValueSpan>
+        <ValueSpan>{` ${serving}`}</ValueSpan>
       </OtherText>
     </DayDetailsCont>
   );
-};
-
-const exampleProps = {
-  date: new Date(),
-  daily: 1.5,
-  part: 90,
-  count: 5,
 };
 
 const months = [

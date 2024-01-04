@@ -13,6 +13,8 @@ import sprite from '../../images/SVG/symbol-defs.svg';
 import MonthItem from 'components/MonthItem/MonthItem';
 import { nanoid } from 'nanoid';
 
+const iconArrow = `${sprite}#icon-chevron-double-up`;
+
 const testArray = [];
 
 for (let i = 0; i < 31; i += 1) {
@@ -27,6 +29,7 @@ for (let i = 0; i < 31; i += 1) {
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
+  const [details, setDetails] = useState('');
 
   const isCurrentMonth =
     date.getMonth() === new Date().getMonth() &&
@@ -39,7 +42,7 @@ const MonthList = () => {
         <DatePicker>
           <LeftArrowButton onClick={() => downMonth(date, setDate)}>
             <SvgLeft>
-              <use href={`${sprite}#icon-chevron-double-up`}></use>
+              <use href={iconArrow}></use>
             </SvgLeft>
           </LeftArrowButton>
           <p>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</p>
@@ -48,7 +51,7 @@ const MonthList = () => {
             disabled={isCurrentMonth}
           >
             <SvgRight>
-              <use href={`${sprite}#icon-chevron-double-up`}></use>
+              <use href={iconArrow}></use>
             </SvgRight>
           </RigthArrowButton>
         </DatePicker>
@@ -59,6 +62,10 @@ const MonthList = () => {
             key={nanoid()}
             date={item.date}
             completed={item.completed}
+            serving={item.serving}
+            dailyNorma={item.dailyNorma}
+            modal={details}
+            setModal={setDetails}
           />
         ))}
       </MonthListStyled>

@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const MonthItemStyled = styled.div`
 width: 32px;
 
+
 @media screen and (min-width: 768px) {
    width: 34px;
         }
 
-    @media screen and (min-width: 1440px) {
-   
-    }
 `
 
 export const DayButtonFull = styled.button`
@@ -33,9 +31,6 @@ line-height: 1.25;
 padding: 7px;
         }
 
-    /* @media screen and (min-width: 1440px) {
-
-    } */
 `
 
 export const DayButtonPart = styled.button`
@@ -59,9 +54,6 @@ line-height: 1.25;
 padding: 7px;
         }
 
-    /* @media screen and (min-width: 1440px) {
-   
-    } */
 `
 
 export const DayCompleted = styled.p`
