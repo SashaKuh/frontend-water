@@ -20,33 +20,31 @@ export const Title = styled.h1`
 export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
-  margin-top: 24px;
-  margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 40px;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    &:not(:first-child) {
-      align-items: flex-start;
-    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-right: auto;
+    width: 336px;
+    z-index: 100;
   }
   @media screen and (min-width: 1440px) {
-    margin-right: 104px;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    &:not(:first-child) {
-      align-items: flex-end;
-    }
+    position: static;
+    width: 384px;
+    margin-top: 113px;
+    margin-right: -198px;
   }
 `;
 export const FormSection = styled.div`
-  @media screen and (min-width: 1440px) {
-    margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    position: relative;
   }
+
   @media screen and (min-width: 1440px) {
-    margin-bottom: 196px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
   }
 `;
 export const Input = styled.input`
@@ -183,25 +181,28 @@ export const Background = styled.main`
 `;
 
 export const BottleBackground = styled.div`
-  min-height: calc(100vh - 68px);
   background-image: url(${bottleBackgroundMob});
+  min-height: calc(100vh - 68px);
   background-size: 100%;
-  background-position: center bottom 10px;
   background-repeat: no-repeat;
+  width: 280px;
+  height: 210px;
+  background-position: center bottom 10px;
 
   @media screen and (min-width: 768px) {
-    background-size: 100%;
+    margin-top: 0;
+    width: 736px;
+    height: 548px;
     background-image: url(${bottleBackgroundTab});
-    background-position: right -5px bottom 56px;
-    background-repeat: no-repeat;
+    z-index: -1;
   }
 
   @media screen and (min-width: 1440px) {
     background-image: url(${bottleBackgroundDesc});
-    background-size: 80%;
-    background-position: top 0px left -81px;
-    background-repeat: no-repeat;
-    margin-top: 0%;
+    margin-top: 0;
+    background-position: -65px center;
+    width: 916px;
+    min-height: 680px;
   }
 `;
 
