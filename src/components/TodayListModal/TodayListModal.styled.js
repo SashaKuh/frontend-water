@@ -18,7 +18,7 @@ overflow-y: auto;
 width: 280px;
 
 @media (min-width: 1440px) {
-    width: 1008px;
+    width: 592px;
     padding: 32px 24px;
   }
 
@@ -96,6 +96,101 @@ background-color: var(--secondaryDarkGrey);
 
 export const CounterWrap = styled.div`
 display: flex;
+margin-top: 12px;
+margin-bottom: 24px;
 align-items: center;
 gap: 7px;
+`;
+
+export const Button = styled.button`
+background-color: var(--primaryBlue);
+border: none;
+width: 100%;
+height: 36px;
+color: var(--primaryWhite);
+font-size: 16px;
+font-family: 'Roboto-Medium';
+line-height: 1.3;
+border-radius: 10px;
+box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54)
+  }
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+@media (min-width: 768px) {
+    width: 160px;
+    height: 44px;
+    font-size: 18px;
+  }
+`;
+
+export const TitleInput = styled.p`
+margin-bottom: 16px;
+font-family: 'Roboto-Medium';
+`;
+
+export const TextInput = styled.p`
+font-size: 16px;
+`;
+
+export const TextInputTime = styled.p`
+font-size: 16px;
+margin-bottom: 12px;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  border: 1px solid var(--secondaryDarkGrey);
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+  color: #407BFF;
+  font-size: 16px;
+  @media (max-width: 767px){
+    max-width: 120px;
+  }
+  &::placeholder {
+    color: var(--primaryBlue);
+    opacity: 1;
+  }
+  ${({ $hasError }) =>
+    $hasError &&
+    `
+      border-color: var(--secondaryRed) !important;
+      color: var(--secondaryRed);
+    `}
+`;
+
+export const AmountDiv = styled.div`
+color: var(--primaryBlue);
+font-family: 'Roboto-Bold';
+border-radius: 40px;
+`;
+
+export const AmountWrap = styled.div`
+display: flex;
+gap: 16px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+@media (min-width: 768px){
+  gap: 24px;
+  flex-direction: row;
+  justify-content: end;
+  }
+`;
+
+export const MessageError = styled.div`
+  color: var(--secondaryRed);
+  font-family: 'Roboto-regular';
+  margin-top: 4px;
+  font-size: 14px;
 `;
