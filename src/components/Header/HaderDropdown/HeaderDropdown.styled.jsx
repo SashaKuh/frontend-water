@@ -8,6 +8,7 @@ export const HeaderDropdownStyled = styled.div`
   padding: 16px;
   background-color: var(--primaryWhite);
   width: fit-content;
+  min-width: 110px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.2);
 
@@ -22,8 +23,14 @@ export const HeaderDropdownStyled = styled.div`
     background-color: transparent;
     border: none;
     display: flex;
+    align-items: center;
     gap: 8px;
     color: var(--primaryBlue);
+    transition: color var(--animationCubicBezier);
+
+    &:hover {
+      color: var(--secondaryOrange);
+    }
 
     & span {
       line-height: 1.25;
