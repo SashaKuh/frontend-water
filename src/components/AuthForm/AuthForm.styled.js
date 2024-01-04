@@ -22,18 +22,18 @@ export const MainForm = styled(Form)`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
     top: 0;
     left: 0;
     margin-right: auto;
     width: 336px;
     z-index: 100;
+    position: absolute;
   }
   @media screen and (min-width: 1440px) {
-    position: static;
     width: 384px;
     margin-top: 113px;
     margin-right: -198px;
+    position: static;
   }
 `;
 export const FormSection = styled.div`
@@ -190,11 +190,11 @@ export const BottleBackground = styled.div`
   background-position: center bottom 10px;
 
   @media screen and (min-width: 768px) {
+    background-image: url(${bottleBackgroundTab});
+    z-index: -1;
     margin-top: 0;
     width: 736px;
     height: 548px;
-    background-image: url(${bottleBackgroundTab});
-    z-index: -1;
   }
 
   @media screen and (min-width: 1440px) {
