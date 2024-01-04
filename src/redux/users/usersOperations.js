@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { toast } from 'react-toastify';
 
 import {
   signup,
@@ -23,7 +23,7 @@ export const signUpThunk = createAsyncThunk(
     } catch (error) {
       switch (error.response.status) {
         case 409:
-          Notify.failure(
+          toast.error(
             `User with this email already exists`
           );
           return rejectWithValue(error.message);
@@ -43,7 +43,7 @@ export const signInThunk = createAsyncThunk(
 
       return resp;
     } catch (error) {
-      Notify.failure(`Email or password is wrong`);
+      toast.error(`Email or password is wrong`);
       return rejectWithValue(error.message);
     }
   }
@@ -54,10 +54,11 @@ export const signOutThunk  = createAsyncThunk(
   async (_, {rejectWithValue}) => {
     try {
       const resp = await signout();
+      toast.success('Sign out successful!');
 
       return resp;
     } catch (error) {
-      Notify.failure(`Error! User not logged in!`)
+      toast.error(`Error! User not logged in!`)
       return rejectWithValue(error);
     }
   }
@@ -71,7 +72,7 @@ export const refreshUserThunk = createAsyncThunk(
     
     return data;
   } catch (error) {
-    Notify.failure(`Error! User with this email not found!`)
+    toast.error(`Error! User with this email not found!`)
     return error.message;
   }
 });
@@ -107,7 +108,8 @@ export const updateWaterThunk  = createAsyncThunk(
       const data = await addWaterRate(dailyNorma, token);
       return data;
     } catch (error) {
-      return error.message;
+      toast.error("Something went wrong")
+      return error;
     }
   }
 );

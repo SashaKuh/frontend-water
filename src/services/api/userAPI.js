@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Notify } from 'notiflix';
 
 export const instance = axios.create({
   baseURL: 'https://backend-water.onrender.com/api/',
@@ -29,7 +28,6 @@ export const signup = async newUser => {
 export const signin = async body => {
   const { data } = await instance.post('/auth/signin', body);
   setAuthHeader(data.token);
-
   return data;
 };
 
@@ -43,9 +41,7 @@ export const refreshUser = async token => {
     return
   }
   setAuthHeader(token)
-
   const { data } = await instance.get('users/current');
-
   return data;
 };
 
@@ -67,12 +63,7 @@ export const updateUsers = async (updateUser, token) => {
 
 export const addWaterRate = async (dailyNorma, token) => {
   setAuthHeader(token);
-  try {
-    const { data } = await instance.patch(`water/rate`, dailyNorma);
-  return data;
-  } catch {
-    Notify.failure("Something went wrong")
-  }
-  
+  const { data } = await instance.patch(`water/rate`, dailyNorma);
+  return data;  
 };
 
