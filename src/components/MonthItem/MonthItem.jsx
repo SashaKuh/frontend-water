@@ -7,7 +7,7 @@ import {
 } from './MonthItem.styled';
 import DayDetails from 'components/DayDetails/DayDetails';
 
-const MonthItem = ({
+export const MonthItem = ({
   date,
   completed,
   dailyNorma,
@@ -47,5 +47,3 @@ const isRight = day => {
   }
   return 'left';
 };
-
-export default MonthItem;

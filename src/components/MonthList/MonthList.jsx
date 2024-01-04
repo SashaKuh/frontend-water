@@ -10,7 +10,7 @@ import {
   MonthListStyled,
 } from './MonthList.styled';
 import sprite from '../../images/SVG/symbol-defs.svg';
-import MonthItem from 'components/MonthItem/MonthItem';
+import {MonthItem} from '../MonthItem/MonthItem';
 import { nanoid } from 'nanoid';
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
