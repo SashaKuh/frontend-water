@@ -11,8 +11,10 @@ import {
   ButtonAddWater,
   SvgButton,
 } from '../../../pages/HomePage/HomePage.styled';
+import { TodayListModal } from 'components/TodayListModal/TodayListModal';
 export const WaterRatioPanel = () => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleChange = event => {
     const value = event.target.value;
@@ -24,6 +26,15 @@ export const WaterRatioPanel = () => {
   const sliderStyle = {
     background: `linear-gradient(to right, #9EBBFF ${progress}%, #D7E3FF ${progress}%)`,
   };
+
+  const openModal = () => {
+        setIsOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsOpen(false);
+  }
+  
   return (
     <RangeAndAddWater>
       <RangeDiv>
@@ -44,12 +55,13 @@ export const WaterRatioPanel = () => {
           <PercentageOfRange>100%</PercentageOfRange>
         </PercentageDiv>
       </RangeDiv>
-      <ButtonAddWater>
+      <ButtonAddWater onClick={openModal}>
         <SvgButton>
           <use href={iconSprite + '#icon-plus-circle'} />
         </SvgButton>
         Add Water
       </ButtonAddWater>
+      <TodayListModal modalIsOpen={modalIsOpen} closeModal={closeModal}/>
     </RangeAndAddWater>
   );
 };
