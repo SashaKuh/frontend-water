@@ -43,6 +43,12 @@ export const BtnSvg = styled.button`
   height: 36px;
   border: none;
   background-color: var(--primaryWhite);
+
+  &:hover {
+    & svg {
+      transform: rotate(-45deg) scale(1.1);
+    }
+  }
 `;
 
 export const SvgClose = styled.svg`
@@ -50,6 +56,7 @@ export const SvgClose = styled.svg`
   transform: rotate(45deg);
   width: 36px;
   height: 36px;
+  transition: transform var(--animationCubicBezier);
 `;
 
 export const SecondTitleModal = styled.h3`
