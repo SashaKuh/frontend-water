@@ -143,5 +143,5 @@ export const handleWaterRateError = (state, { payload }) => {
 
 export const handlePendingWaterRate = (state, { payload }) => {
   state.isRefreshing = true;
- state.isLoading = true;
+  state.isLoading = true;
 };
