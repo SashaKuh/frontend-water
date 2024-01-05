@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 import {
-    Background,
-    BottleBackground,
-    // MainForm,
-    Title,
-    Label,
-    SignInButton
+  Background,
+  BottleBackground,
+  // MainForm,
+  Title,
+  Label,
+  SignInButton,
 } from '../components/AuthForm/AuthForm.styled';
-
+import { requestResetPassword } from 'services/api/userAPI';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
@@ -23,50 +23,52 @@ const ForgotPasswordPage = () => {
     return isValid;
   };
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (validateEmail()) {
-
-      const response = { ok: true, message: 'Instructions sent successfully.' };
+      const response = await requestResetPassword(email);
+      console.log(response.ok);
 
       if (response.ok) {
-        setNotification('Instructions for submitting a password reset have been sent to your email.');
+        setNotification(
+          'Instructions for submitting a password reset have been sent to your email.'
+        );
       } else {
         setNotification(`Error: ${response.message}`);
       }
     }
   };
 
-    return (
-        <>
-            <Background>
-                <div className="container">
-                    <BottleBackground>
-                        {/* <MainForm> */}
-                            <Title>Forgot Password</Title>
-                            <form>
-                                <div>
-                                    <Label>Enter your email</Label>
-                                    <br />
-                                    <input
-                                        type="email"
-                                        placeholder="E-mail"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        onBlur={validateEmail}
-                                    />
-                                    {emailError && <p>{emailError}</p>}
-                                </div>
-                                <SignInButton type="button" onClick={handleSend}>
-                                    Send
-                                </SignInButton>
-                            </form>
-                            {notification && <p>{notification}</p>}
-                        {/* </MainForm> */}
-                    </BottleBackground>
-                </div>
-            </Background>
-        </>
-    );
+  return (
+    <>
+      <Background>
+        <div className="container">
+          <BottleBackground>
+            {/* <MainForm> */}
+            <Title>Forgot Password</Title>
+            <form>
+              <div>
+                <Label>Enter your email</Label>
+                <br />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  onBlur={validateEmail}
+                />
+                {emailError && <p>{emailError}</p>}
+              </div>
+              <SignInButton type="button" onClick={handleSend}>
+                Send
+              </SignInButton>
+            </form>
+            {notification && <p>{notification}</p>}
+            {/* </MainForm> */}
+          </BottleBackground>
+        </div>
+      </Background>
+    </>
+  );
 };
 
 export default ForgotPasswordPage;

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { resetPasswordThunk } from '../redux/users/usersOperations';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import {
-    Background,
-    BottleBackground,
-    // MainForm,
-    Title,
-    Label,
-    SignInButton
+  Background,
+  BottleBackground,
+  // MainForm,
+  Title,
+  Label,
+  SignInButton,
 } from '../components/AuthForm/AuthForm.styled';
+import { resetPassword } from 'services/api/userAPI';
 
 const ResetPasswordPage = () => {
   const [password, setPassword] = useState('');
@@ -18,13 +17,16 @@ const ResetPasswordPage = () => {
   const [passwordError, setPasswordError] = useState('');
   const [notification, setNotification] = useState('');
 
-//   const { resetToken } = useParams(); // Отримуємо параметр resetToken з URL
-//   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { resetToken } = useParams();
 
   const validatePassword = () => {
-    const isValid = password.length >= 6; // Ваші вимоги до пароля
+    const isValid = password.length >= 8 && password.length <= 64;
 
-    setPasswordError(isValid ? '' : 'Password must be at least 6 characters long');
+    setPasswordError(
+      isValid ? '' : 'Password must be at least 6 characters long'
+    );
     return isValid;
   };
 
@@ -38,9 +40,10 @@ const ResetPasswordPage = () => {
   const handleResetPassword = async () => {
     if (validatePassword() && validateConfirmPassword()) {
       try {
-        // Відправляємо запит на сервер для збереження нового пароля
-        // await dispatch(resetPasswordThunk({ resetToken, password }));
+        const response = await resetPassword(resetToken, password);
+        console.log(response);
         setNotification('Password has been successfully reset.');
+        navigate('/signin');
       } catch (error) {
         console.error('Error resetting password:', error);
         setNotification('Error resetting password.');
@@ -48,46 +51,46 @@ const ResetPasswordPage = () => {
     }
   };
 
-    return (
-        <div>
-            <Background>
-                <div className="container">
-                    <BottleBackground>
-                        <Title>Reset Password</Title>
-                        <p>Enter your new password below:</p>
+  return (
+    <div>
+      <Background>
+        <div className="container">
+          <BottleBackground>
+            <Title>Reset Password</Title>
+            <p>Enter your new password below:</p>
 
-                        <div>
-                            <Label>Password:</Label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                onBlur={validatePassword}
-                            />
-                            {passwordError && <p>{passwordError}</p>}
-                        </div>
+            <div>
+              <Label>Password:</Label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                onBlur={validatePassword}
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
 
-                        <div>
-                            <Label>Confirm Password:</Label>
-                            <input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                                onBlur={validateConfirmPassword}
-                            />
-                            {passwordError && <p>{passwordError}</p>}
-                        </div>
+            <div>
+              <Label>Confirm Password:</Label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+                onBlur={validateConfirmPassword}
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
 
-                        <SignInButton type="button" onClick={handleResetPassword}>
-                            Reset Password
-                        </SignInButton>
+            <SignInButton type="button" onClick={handleResetPassword}>
+              Reset Password
+            </SignInButton>
 
-                        {notification && <p>{notification}</p>}
-                    </BottleBackground>
-                </div>
-            </Background>
+            {notification && <p>{notification}</p>}
+          </BottleBackground>
         </div>
-    );
+      </Background>
+    </div>
+  );
 };
 
 export default ResetPasswordPage;

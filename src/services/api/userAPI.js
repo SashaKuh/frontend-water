@@ -38,9 +38,9 @@ export const signout = async () => {
 
 export const refreshUser = async token => {
   if (!token) {
-    return
+    return;
   }
-  setAuthHeader(token)
+  setAuthHeader(token);
   const { data } = await instance.get('users/current');
   return data;
 };
@@ -64,6 +64,18 @@ export const updateUsers = async (updateUser, token) => {
 export const addWaterRate = async (dailyNorma, token) => {
   setAuthHeader(token);
   const { data } = await instance.patch(`water/rate`, dailyNorma);
-  return data;  
+  return data;
 };
 
+export const requestResetPassword = async email => {
+  const data = await instance.post('auth/request-reset-password', { email });
+  return data;
+};
+
+export const resetPassword = async (token, newPassword) => {
+  const data = await instance.patch('auth/reset-password', {
+    newPassword,
+    token,
+  });
+  return data;
+};
