@@ -5,7 +5,6 @@ import bottleBackgroundMob from '../../images/PNG/images-mobile/origin/btl_sign_
 import bottleBackgroundTab from '../../images/PNG/images-tablet/origin/btl_for_sign_in.png';
 import bottleBackgroundDesc from '../../images/PNG/images-desktop/origin/btl_for_sign_in.png';
 import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_sign_in.png';
-import backgroundImgTab from '../../images/PNG/images-tablet/bg_el_home_screen.png';
 import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
 
 export const Title = styled.h1`
@@ -20,23 +19,34 @@ export const Title = styled.h1`
 export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
-  width: 280px;
-  margin-top: 24px;
 
   @media screen and (min-width: 768px) {
+    top: 0;
+    left: 0;
+    margin-right: auto;
     width: 336px;
-    margin-top: 40px;
+    z-index: 100;
+    position: absolute;
   }
+
   @media screen and (min-width: 1440px) {
-    margin-left: 728px;
-    margin-right: 104px;
-    flex-wrap: wrap;
     width: 384px;
-    margin-top: 162px;
+    margin-top: 113px;
+    margin-right: -198px;
+    position: static;
   }
 `;
+export const FormSection = styled.div`
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
 
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+`;
 export const Input = styled.input`
   font-family: 'Roboto-regular';
   border-radius: 6px;
@@ -63,7 +73,7 @@ export const Input = styled.input`
   @media screen and (min-width: 768px) {
     min-width: 336px;
   }
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     min-width: 384px;
   }
 `;
@@ -90,7 +100,7 @@ export const SignInButton = styled.button`
     line-height: 24px;
     font-size: 18px;
   }
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     min-width: 384px;
   }
 `;
@@ -106,12 +116,14 @@ export const Label = styled.label`
 
 export const PageLink = styled(Link)`
   font-family: 'Roboto-regular';
+  display: inline-block;
   color: var(--primaryBlue);
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
   margin-top: 16px;
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--secondaryOrange);
   }
 `;
@@ -123,7 +135,6 @@ export const MessageError = styled.div`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-
   @media screen and (min-width: 1440px) {
     width: 364px;
   }
@@ -147,56 +158,57 @@ export const InputContainer = styled.div`
 `;
 export const Background = styled.main`
   background-image: url(${backgroundImgMob});
-  background-size: cover;
-  position: relative;
-  background-position: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 320px;
+  padding-top: 86px;
   background-repeat: no-repeat;
-  height: 100%;
+  background-position: center bottom;
 
   @media screen and (min-width: 768px) {
-    background-image: url(${backgroundImgTab});
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+    background-image: url(${bottleBackgroundTab});
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-position: center;
   }
+
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundImgDesc});
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
+    width: 1440px;
+    padding-left: 112px;
+    padding-right: 112px;
   }
 `;
 
 export const BottleBackground = styled.div`
-  min-height: calc(100vh - 68px);
-  position: relative;
-  overflow: hidden;
+  background-image: url(${bottleBackgroundMob});
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 80vh;
 
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: url(${bottleBackgroundMob});
-    background-size: 100%;
-    background-position: center bottom;
-    background-repeat: no-repeat;
+  background-position: center bottom;
 
-    @media screen and (min-width: 768px) {
-      background-image: url(${bottleBackgroundTab});
-      background-position: right -100px bottom 20px;
-      background-repeat: no-repeat;
-    }
-
-    @media screen and (min-width: 1440px) {
-      background-image: url(${bottleBackgroundDesc});
-      background-size: 80%;
-      background-position: left -110px top 90px;
-      background-repeat: no-repeat;
-    }
-    z-index: -1;
+  @media screen and (min-width: 768px) {
+    background-position: 80px center;
+    background-image: none;
+    width: 736px;
+    height: 548px;
   }
+
+  @media screen and (min-width: 1440px) {
+    background-image: url(${bottleBackgroundDesc});
+    margin-top: 0;
+    background-position: -65px center;
+    width: 916px;
+    min-height: 680px;
+  }
+`;
+
+export const LinkNav = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
 `;
