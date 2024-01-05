@@ -12,25 +12,10 @@ import {
 import sprite from '../../images/SVG/symbol-defs.svg';
 import { MonthItem } from '../MonthItem/MonthItem';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addWaterOperation,
-  getMonthWaterOperation,
-} from '../../redux/water/waterOperations';
+import { getMonthWaterOperation } from '../../redux/water/waterOperations';
 import { selectManthList } from '../../redux/selectors';
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
-
-// const testArray = [];
-
-// for (let i = 0; i < 31; i += 1) {
-//   testArray[i] = {
-//     id: i,
-//     serving: 3,
-//     date: `December, ${i + 1}`,
-//     dailyNorma: 2,
-//     completed: i % 2 === 0 ? 90 : 100,
-//   };
-// }
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
