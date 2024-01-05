@@ -34,7 +34,6 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     }
 
     const onChange = (timeValue) => {
-        console.log(timeValue.$d)
         setStartDate(timeValue.$d)
    }
 
