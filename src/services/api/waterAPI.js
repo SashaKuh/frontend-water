@@ -1,22 +1,26 @@
 import {instance} from './userAPI.js'
 
-export const getWater = async () => {
-    const { data } = await instance.get(`water/today`);
-    return data;
+export const getWater = async (date) => {
+    const formatDate = date.toISOString().split("T")[0];
+    const { data } = await instance.get(`water/today/${formatDate}`);
+    return data[0].entries;
 };
 
 export const getMonthWater = async (date) => {
-    const {data} = await instance.post(`water/month`, date);
+    const formatDate = date.toISOString();
+    const {data} = await instance.get(`water/month/${formatDate}`);
     return data;
 };
 
-export const addWater = async newWaterCard => {
-    const { data } = await instance.post('water/add', newWaterCard);
+export const addWater = async ({ waterVolume, date }) => {
+    const formatDate = date.toISOString();
+    const { data } = await instance.post('water/add', { waterVolume, date: formatDate});
     return data;
 };
 
-export const editWater = async ({id, waterVolume, date}) => {
-    const { data } = await instance.put(`water/${id}`, {waterVolume, date});
+export const editWater = async ({ id, waterVolume, date }) => {
+    const formatDate = date.toISOString();
+    const { data } = await instance.put(`water/${id}`, {waterVolume, date: formatDate});
     return data;
 };
 

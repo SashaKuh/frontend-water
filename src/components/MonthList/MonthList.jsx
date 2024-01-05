@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MonthTitle,
   DatePicker,
@@ -10,26 +10,50 @@ import {
   MonthListStyled,
 } from './MonthList.styled';
 import sprite from '../../images/SVG/symbol-defs.svg';
-import {MonthItem} from '../MonthItem/MonthItem';
-import { nanoid } from 'nanoid';
+import { MonthItem } from '../MonthItem/MonthItem';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addWaterOperation,
+  getMonthWaterOperation,
+} from '../../redux/water/waterOperations';
+import { selectManthList } from '../../redux/selectors';
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
 
-const testArray = [];
+// const testArray = [];
 
-for (let i = 0; i < 31; i += 1) {
-  testArray[i] = {
-    id: i,
-    serving: 3,
-    date: `December, ${i + 1}`,
-    dailyNorma: 2,
-    completed: i % 2 === 0 ? 90 : 100,
-  };
-}
+// for (let i = 0; i < 31; i += 1) {
+//   testArray[i] = {
+//     id: i,
+//     serving: 3,
+//     date: `December, ${i + 1}`,
+//     dailyNorma: 2,
+//     completed: i % 2 === 0 ? 90 : 100,
+//   };
+// }
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
   const [details, setDetails] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMonthWaterOperation(date));
+  }, [date, dispatch]);
+
+  const firstArray = useSelector(selectManthList);
+
+  const testArray = firstArray.map(item => {
+    if (!item.date) {
+      const newItem = { ...item };
+      newItem.servings = 0;
+      newItem.completed = 0;
+      newItem.dailyNorma = 2;
+      newItem.date = `${months[date.getMonth()]}, ${item._id}`;
+      return newItem;
+    }
+    return item;
+  });
 
   const isCurrentMonth =
     date.getMonth() === new Date().getMonth() &&
@@ -59,7 +83,7 @@ const MonthList = () => {
       <MonthListStyled>
         {testArray.map(item => (
           <MonthItem
-            key={nanoid()}
+            key={item._id}
             date={item.date}
             completed={item.completed}
             serving={item.serving}

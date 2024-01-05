@@ -16,7 +16,8 @@ export const MonthItem = ({
   setModal,
 }) => {
   const day = date.split(' ')[1];
-  const Button = completed === 100 ? DayButtonFull : DayButtonPart;
+
+  const Button = completed >= 100 ? DayButtonFull : DayButtonPart;
   const leftOrRigth = isRight(day);
 
   return (

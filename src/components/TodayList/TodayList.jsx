@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   TodayTitle,
   AddLink,
@@ -7,24 +7,32 @@ import {
   TodayListContainer,
 } from './TodayList.styled';
 import TodayItem from 'components/TodayItem/TodayItem';
-import { nanoid } from 'nanoid';
 import sprite from '../../images/SVG/symbol-defs.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { getWaterOperation } from '../../redux/water/waterOperations';
+import { selectTodayList } from '../../redux/selectors';
 
 const plusIcon = `${sprite}#icon-plus-small`;
 
-const testArrayDayWater = [];
-
-for (let i = 0; i <= 10; i += 1) {
-  testArrayDayWater[i] = { id: nanoid(), water: 200, date: new Date() };
-}
-
 const TodayList = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWaterOperation(new Date()));
+  }, [dispatch]);
+
+  const todayList = useSelector(selectTodayList);
+
   return (
     <TodayListContainer>
       <TodayTitle>Today</TodayTitle>
       <WaterList>
-        {testArrayDayWater.map(item => (
-          <TodayItem key={nanoid()} water={item.water} date={item.date} />
+        {todayList.map(item => (
+          <TodayItem
+            key={item._id}
+            water={item.waterVolume}
+            date={new Date(item.date)}
+          />
         ))}
         <AddLink>
           <SvgPlus>
