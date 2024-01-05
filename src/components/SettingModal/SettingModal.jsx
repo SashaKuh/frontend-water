@@ -11,6 +11,7 @@ import { SettingModalSchema } from "schemas/SettingModalSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAvatarThunk, updateThunk } from "../../redux/users/usersOperations";
 import { Notify } from "notiflix";
+import { Oval } from "react-loader-spinner";
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
        
@@ -142,7 +143,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                         <p>Your photo</p>
                         <AvatarWrap>
                             <ImgWrapper>
-                                {loader ? <div>Laodaing</div> : <ImgAvatar src={avatarUrl} alt="user avatar" />}
+                                {loader ? <Oval color="#407BFF" secondaryColor="#ECF2FF" width="40"/> : <ImgAvatar src={avatarUrl} alt="user avatar" />}
                             </ImgWrapper>
                             <UploadLabel>
                                 <FileInput name="avatarUrl" type="file" accept="image/*" onChange={handleFileChange} />

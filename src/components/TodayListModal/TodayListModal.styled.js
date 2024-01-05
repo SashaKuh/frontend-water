@@ -1,5 +1,6 @@
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
+import { TimePicker  } from 'antd';
 
 export const StyledModal = styled(ReactModal)`
 position: absolute;
@@ -145,7 +146,7 @@ margin-bottom: 12px;
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: 120px;
   box-sizing: border-box;
   margin-bottom: 24px;
   border: 1px solid var(--secondaryDarkGrey);
@@ -154,19 +155,14 @@ export const Input = styled.input`
   outline: none;
   color: #407BFF;
   font-size: 16px;
-  @media (max-width: 767px){
-    max-width: 120px;
+
+  @media (min-width: 1440px) {
+    width: 544px;
   }
-  &::placeholder {
-    color: var(--primaryBlue);
-    opacity: 1;
+
+@media (min-width: 768px) and (max-width: 1439px){
+    width: 656px;
   }
-  ${({ $hasError }) =>
-    $hasError &&
-    `
-      border-color: var(--secondaryRed) !important;
-      color: var(--secondaryRed);
-    `}
 `;
 
 export const AmountDiv = styled.div`
@@ -193,4 +189,33 @@ export const MessageError = styled.div`
   font-family: 'Roboto-regular';
   margin-top: 4px;
   font-size: 14px;
+`;
+
+export const StyledDatePicker = styled(TimePicker)`
+  width: 120px;
+  margin-bottom: 24px;
+  border: 1px solid var(--secondaryDarkGrey);
+  border-radius: 8px;
+  padding: 10px;
+  outline: none;
+
+  @media (min-width: 1440px) {
+    width: 544px;
+  }
+
+@media (min-width: 768px) and (max-width: 1439px){
+    width: 656px;
+  }
+input {
+  color: red;
+}
+input::placeholder {
+    color: red; /* Замість #yourColor вкажіть бажаний колір */
+    /* Інші стилі для плейсхолдера */
+  }
+  &::placeholder {
+  color: red; /* Замість #yourColor вкажіть бажаний колір */
+  /* Інші стилі для плейсхолдера */
+}
+
 `;

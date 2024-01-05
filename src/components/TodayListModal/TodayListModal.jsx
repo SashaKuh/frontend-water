@@ -1,44 +1,73 @@
-import { BtnSvg } from "components/DailyNormaModal/DailyNormaModal.styled";
 import sprite from "../../images/SVG/symbol-defs.svg";
-import { AmountDiv, AmountWrap, Button, CounterDiv, CounterWrap, Input, StyledModal, Svg, SvgClose, TextInput, TextInputTime, Title, TitleInput, WrapHeader, WrapSvg } from "./TodayListModal.styled"
+import {
+    AmountDiv, AmountWrap, BtnSvg, Button, CounterDiv, CounterWrap, Input,
+    StyledDatePicker,
+    StyledModal, Svg, SvgClose, TextInput, TextInputTime,
+    Title, TitleInput, WrapHeader, WrapSvg
+} from "./TodayListModal.styled"
 import { useState } from "react";
 import { Notify } from "notiflix";
+import { useDispatch } from "react-redux";
+import { addWaterOperation } from "../../redux/water/waterOperations";
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
-    const [amountWater, setAmountWater] = useState(0);
+    const [waterVolume, setWaterVolume] = useState(0);
+    const [startDate, setStartDate] = useState(new Date());
+    const dispatch = useDispatch();
 
+    const hours = startDate.getHours().toString().padStart(2, '0');
+    const minutes = startDate.getMinutes().toString().padStart(2, '0');
     const increment = () => {
-        setAmountWater(state => state + 50)
+        setWaterVolume(state => state + 50)
     }
 
     const decrement = () => {
-        setAmountWater(state => state - 50)
+        setWaterVolume(state => state - 50)
     }
 
     const handleChange = async (evt) => {
         const result = Math.floor(evt.target.value)
         if (result || result === 0) {
-            setAmountWater(result)
-        }         
+            setWaterVolume(result)
+        }
         
     }
 
+    const onChange = (timeValue) => {
+        console.log(timeValue.$d)
+        setStartDate(timeValue.$d)
+   }
+
     const handleCloseModal = () => {
         closeModal();
-        setAmountWater(0);
+        setWaterVolume(0);
+        setStartDate(new Date())
     };
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        if (amountWater < 0 || amountWater > 1500) {
+        if (waterVolume < 0 || waterVolume > 1500) {
             return Notify.failure('You can enter value from 0 to 1500')
         }
-        if (amountWater > 0) {
-            console.log("dispatch")
+        if (waterVolume > 0) {
+            await dispatch(addWaterOperation({ waterVolume, date: startDate }))
             //відправляємо
         }
         handleCloseModal()
     }
+
+    const disabledTime = (now) => {
+        const currentHour = now.hour();
+        const disabledHours = () => {
+            return Array.from({ length: 24 }, (_, index) => index > currentHour ? index : -1).filter(hour => hour !== -1);
+        };
+
+        const disabledMinutes = (selectedHour) => {
+            return selectedHour === currentHour ? Array.from({ length: 60 }, (_, index) => index > now.minute() ? index : -1).filter(minute => minute !== -1) : [];
+        };
+
+        return { disabledHours, disabledMinutes };
+    };
 
     return (
         <StyledModal
@@ -63,36 +92,42 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
                 <TitleInput>Choose a value:</TitleInput>
                 <TextInput>Amount of water:</TextInput>
                 <CounterWrap>
-                    <WrapSvg type="button" onClick={decrement} disabled={amountWater <= 49 ? true : false}>
+                    <WrapSvg type="button" onClick={decrement} disabled={waterVolume <= 49 ? true : false}>
                         <Svg width="24" height="24">
                             <use xlinkHref={`${sprite}#icon-minus-small`} />
                         </Svg>
                     </WrapSvg>
-                    <CounterDiv>{amountWater} ml</CounterDiv>
-                    <WrapSvg type="button" onClick={increment} disabled={amountWater >= 1500 ? true : false}>
+                    <CounterDiv>{waterVolume} ml</CounterDiv>
+                    <WrapSvg type="button" onClick={increment} disabled={waterVolume >= 1500 ? true : false}>
                         <Svg width="24" height="24">
-                            <use xlinkHref={`${sprite}#icon-plus-small`}/>
+                            <use xlinkHref={`${sprite}#icon-plus-small`} />
                         </Svg>
                     </WrapSvg>
                 </CounterWrap>
+                
                 <label>
                     <TextInputTime>Recording time:</TextInputTime>
-                    <Input />
+                    <StyledDatePicker 
+                        placeholder={`${hours}:${minutes}`}
+                        format="HH:mm"          
+                        onChange={onChange} 
+                        disabledTime={disabledTime}
+                    />
                 </label>
                 <label>
                     <TitleInput>Enter the value of the water used:</TitleInput>
                     <Input
                         name="amount"
                         type="text"
-                        value={amountWater}
-                        onChange={handleChange}
+                        value={waterVolume}
+                        onChange={handleChange}                        
                     />
                 </label>
                 <AmountWrap>
-                    <AmountDiv>{amountWater} ml</AmountDiv>
+                    <AmountDiv>{waterVolume} ml</AmountDiv>
                     <Button type="submit">Save</Button>
                 </AmountWrap>
             </form>
         </StyledModal>
     )
-}
+};

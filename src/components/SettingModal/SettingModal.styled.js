@@ -85,7 +85,7 @@ export const ImgWrapper = styled.div`
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--secondaryGrey);
+  border: 1px solid var(--secondaryDarkGrey);
 `;
 
 export const ImgAvatar = styled.img`
