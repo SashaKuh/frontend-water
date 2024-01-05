@@ -6,9 +6,9 @@ import {
     Title, TitleInput, WrapHeader, WrapSvg
 } from "./TodayListModal.styled"
 import { useState } from "react";
-import { Notify } from "notiflix";
 import { useDispatch } from "react-redux";
 import { addWaterOperation } from "../../redux/water/waterOperations";
+import { toast } from "react-toastify";
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     const [waterVolume, setWaterVolume] = useState(0);
@@ -47,11 +47,10 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         if (waterVolume < 0 || waterVolume > 1500) {
-            return Notify.failure('You can enter value from 0 to 1500')
+            return toast.error('You can enter value from 0 to 1500')
         }
         if (waterVolume > 0) {
             await dispatch(addWaterOperation({ waterVolume, date: startDate }))
-            //відправляємо
         }
         handleCloseModal()
     }
