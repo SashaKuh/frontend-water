@@ -217,6 +217,7 @@ box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     width: 160px;
     height: 44px;
     margin-left: auto;
+    font-size: 18px;
   }
 `;
 
