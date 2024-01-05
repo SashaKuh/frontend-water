@@ -11,15 +11,19 @@ import { PublicRoute } from './publicRoute';
 
 import { Layout } from './Layout/Layout.jsx';
 import { refreshUserThunk } from '../redux/users/usersOperations.js';
-import ResetPasswordPage from '../components/ResetPasswordPage.jsx'
+import ResetPasswordPage from '../components/ResetPasswordPage.jsx';
 
 ReactModal.setAppElement('#modal-root');
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); // Corrected typo
+const WelcomePage = lazy(() =>
+  import('../pages/WellcomePage/WellcomePage.jsx')
+); // Corrected typo
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-const ForgotPasswordPage = lazy(() => import('../components/ForgotPasswordPage.jsx'));
+const ForgotPasswordPage = lazy(() =>
+  import('../components/ForgotPasswordPage.jsx')
+);
 // const ResetPasswordPage = lazy(() => ('../components/ResetPasswordPage.jsx'))
 
 export const App = () => {
@@ -36,13 +40,9 @@ export const App = () => {
 
   return (
     <>
-      
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={!isLoggedIn ? <WelcomePage /> : <HomePage />}
-          />
+          <Route index element={!isLoggedIn ? <WelcomePage /> : <HomePage />} />
           <Route
             path="signin"
             element={
@@ -60,19 +60,21 @@ export const App = () => {
             }
           />
           <Route
-            path='forgot-password'
+            path="forgot-password"
             element={
               <PublicRoute>
                 <ForgotPasswordPage />
               </PublicRoute>
-            } />
-           <Route
-          path='reset-password' // Додайте динамічний шлях для resetToken /:resetToken
-          element={
-            <PublicRoute>
-              <ResetPasswordPage />
-            </PublicRoute>
-          }/>
+            }
+          />
+          <Route
+            path="password-reset/:resetToken"
+            element={
+              <PublicRoute>
+                <ResetPasswordPage />
+              </PublicRoute>
+            }
+          />
           <Route
             path="/homepage"
             element={
@@ -83,7 +85,6 @@ export const App = () => {
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
-        
       </Routes>
       <ToastContainer
         position="top-right"
