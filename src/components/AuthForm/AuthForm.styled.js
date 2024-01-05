@@ -5,7 +5,6 @@ import bottleBackgroundMob from '../../images/PNG/images-mobile/origin/btl_sign_
 import bottleBackgroundTab from '../../images/PNG/images-tablet/origin/btl_for_sign_in.png';
 import bottleBackgroundDesc from '../../images/PNG/images-desktop/origin/btl_for_sign_in.png';
 import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_sign_in.png';
-import backgroundImgTab from '../../images/PNG/images-tablet/bg_el_home_screen.png';
 import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
 
 export const Title = styled.h1`
@@ -29,6 +28,7 @@ export const MainForm = styled(Form)`
     z-index: 100;
     position: absolute;
   }
+
   @media screen and (min-width: 1440px) {
     width: 384px;
     margin-top: 113px;
@@ -73,7 +73,7 @@ export const Input = styled.input`
   @media screen and (min-width: 768px) {
     min-width: 336px;
   }
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     min-width: 384px;
   }
 `;
@@ -100,7 +100,7 @@ export const SignInButton = styled.button`
     line-height: 24px;
     font-size: 18px;
   }
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
     min-width: 384px;
   }
 `;
@@ -158,41 +158,43 @@ export const InputContainer = styled.div`
   display: inline-block;
 `;
 export const Background = styled.main`
-  min-height: 100vh;
   background-image: url(${backgroundImgMob});
-  padding-bottom: 24px;
-  background-size: cover;
-  background-position: center bottom;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 320px;
+  padding-top: 86px;
   background-repeat: no-repeat;
+  background-position: center bottom;
 
   @media screen and (min-width: 768px) {
-    background-image: url(${backgroundImgTab});
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
+    background-image: url(${bottleBackgroundTab});
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-position: center;
   }
+
   @media screen and (min-width: 1440px) {
     background-image: url(${backgroundImgDesc});
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding-bottom: 20px;
+    width: 1440px;
+    padding-left: 112px;
+    padding-right: 112px;
   }
 `;
 
 export const BottleBackground = styled.div`
   background-image: url(${bottleBackgroundMob});
-  min-height: calc(100vh - 68px);
-  background-size: 100%;
   background-repeat: no-repeat;
-  width: 280px;
-  height: 210px;
-  background-position: center bottom 10px;
+  background-size: contain;
+  min-height: 80vh;
+
+  background-position: center bottom;
 
   @media screen and (min-width: 768px) {
-    background-image: url(${bottleBackgroundTab});
-    z-index: -1;
-    margin-top: 0;
+    background-position: 80px center;
+    background-image: none;
     width: 736px;
     height: 548px;
   }
