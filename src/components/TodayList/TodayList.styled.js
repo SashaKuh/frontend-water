@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 export const TodayListContainer = styled.div`
+margin-bottom: 24px;
+
   @media screen and (min-width: 320px) {
        width: 264px;
         }

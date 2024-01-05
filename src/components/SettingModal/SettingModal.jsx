@@ -10,7 +10,7 @@ import { useState } from "react";
 import { SettingModalSchema } from "schemas/SettingModalSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAvatarThunk, updateThunk } from "../../redux/users/usersOperations";
-import { Notify } from "notiflix";
+import { toast } from 'react-toastify';
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
        
@@ -48,7 +48,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                 await dispatch(updateThunk({ updateUser: data, token }))
                 handleCloseModal()
             } catch  {
-                Notify.failure("Something went wrong")
+                toast.error("Something went wrong")
             }
         },
         validationSchema: SettingModalSchema,

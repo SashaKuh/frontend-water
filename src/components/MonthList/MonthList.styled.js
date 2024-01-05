@@ -12,6 +12,7 @@ export const DatePicker = styled.div`
   display: flex;
   color: #407BFF;
   align-items: center;
+  margin-left: auto;
 `
 
 export const SvgLeft = styled.svg`
@@ -52,7 +53,28 @@ fill: currentColor;
 
 export const MonthHeader = styled.div`
 display: flex;
+margin-bottom: 16px;
+`
 
-justify-content: space-around;
+export const MonthListStyled = styled.ul`
+margin-left: auto;
+margin-right: auto;
+margin: 0;
+display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+    row-gap: 16px;
+    column-gap: 26px;
+position: relative;
+  
+   @media screen and (min-width: 768px) {
+     row-gap: 20px;
+     column-gap: 34px;
+        }
+
+    @media screen and (min-width: 1440px) {
+    row-gap: 20px;
+    column-gap: 22px;
+    }
 `
 

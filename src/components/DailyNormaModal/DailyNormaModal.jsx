@@ -6,7 +6,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { DailyNormaModalSchema } from 'schemas/DailyNormaModalSchema';
-import { Notify } from "notiflix";
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
 import { updateWaterThunk } from "../../redux/users/usersOperations";
 
@@ -31,15 +31,15 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
             }
 
             if (waterNorma < 1000) {
-                return Notify.failure("Too little, even the cat drinks more (min 1 L)")
+                return toast.error("Too little, even the cat drinks more (min 1 L)")
             }
 
             if (waterNorma > 15000 && waterNorma <= 25000) {
-                return Notify.failure("This is amount of water that horse usually drinks. Please pick another amount (max rate 15 L)")
+                return toast.error("This is amount of water that horse usually drinks. Please pick another amount (max rate 15 L)")
             }
 
             if (waterNorma > 25000) {
-                return Notify.failure("This is amount of water that elephant usually drinks. Please pick another amount (max rate 15 L)")
+                return toast.error("This is amount of water that elephant usually drinks. Please pick another amount (max rate 15 L)")
             }
 
             const dailyNorma = {
