@@ -135,7 +135,6 @@ export const MessageError = styled.div`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-
   @media screen and (min-width: 1440px) {
     width: 364px;
   }
