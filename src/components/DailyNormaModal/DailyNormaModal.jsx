@@ -90,7 +90,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
 
     const handleGenderChange = (evt) => {
         formik.setFieldValue("gender", evt.target.value);
-        if (formik.values.gender === "girl") {
+        if (evt.target.value === "girl") {
             setFormula("V=(M*0,03) + (T*0,4)");
         } else {
             setFormula("V=(M*0,04) + (T*0,6)");
