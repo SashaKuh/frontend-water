@@ -6,3 +6,4 @@ export const selectId = state => state.auth.user.id;
 
 export const selectTodayList = state => state.water.todatList;
 export const selectManthList = state => state.water.monthList;
+export const selectСompleteToday = state => state.water.completeToday;

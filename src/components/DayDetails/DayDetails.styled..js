@@ -48,6 +48,8 @@ left: -2%;
 
 export const DateText = styled.p`
 color: var(--primaryBlue);
+font-weight: 500;
+font-size: 18px;
 `
 
 export const OtherText = styled.p`

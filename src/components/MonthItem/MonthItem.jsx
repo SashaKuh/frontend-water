@@ -11,28 +11,32 @@ export const MonthItem = ({
   date,
   completed,
   dailyNorma,
-  serving,
+  servings,
   modal,
   setModal,
 }) => {
   const day = date.split(' ')[1];
-  const Button = completed === 100 ? DayButtonFull : DayButtonPart;
-  const leftOrRigth = isRight(day);
 
+  const Button = completed >= 100 ? DayButtonFull : DayButtonPart;
+  const completedFormat = completed >= 100 ? 100 : completed;
+  const leftOrRigth = isRight(day);
   return (
     <MonthItemStyled>
       {modal === day && (
         <DayDetails
           date={date}
           dailyNorma={dailyNorma}
-          completed={completed}
-          serving={serving}
+          completed={completedFormat}
+          servings={servings}
           side={leftOrRigth}
           setModal={setModal}
+          statusModal={modal}
         />
       )}
-      <Button onClick={() => setModal(day)}>{day}</Button>
-      <DayCompleted>{`${completed}%`}</DayCompleted>
+      <Button onClick={() => setModal(day)} className="dateButton">
+        {day}
+      </Button>
+      <DayCompleted>{`${completedFormat}%`}</DayCompleted>
     </MonthItemStyled>
   );
 };
