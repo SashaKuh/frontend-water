@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   DayDetailsCont,
   DateText,
@@ -15,12 +15,37 @@ const DayDetails = ({
   date,
   dailyNorma,
   completed,
-  serving,
+  servings,
   side,
   setModal,
+  statusModal,
 }) => {
+  const day = date.split(' ')[1];
+
+  const handleClickOutside = useCallback(
+    event => {
+      if (
+        !event.target.closest('.modalDetails') &&
+        !event.target.classList.contains('dateButton')
+      ) {
+        setModal('');
+      }
+    },
+    [setModal]
+  );
+
+  useEffect(() => {
+    if (statusModal === day) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [day, handleClickOutside, statusModal]);
+
   return (
-    <DayDetailsCont className={side}>
+    <DayDetailsCont className={`${side} modalDetails`}>
       <CloseButton onClick={() => setModal('')}>
         <SvgClose>
           <use href={plusIcon}></use>
@@ -36,7 +61,7 @@ const DayDetails = ({
       </OtherText>
       <OtherText>
         How many servings of water:
-        <ValueSpan>{` ${serving}`}</ValueSpan>
+        <ValueSpan>{` ${servings}`}</ValueSpan>
       </OtherText>
     </DayDetailsCont>
   );

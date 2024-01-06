@@ -3,7 +3,7 @@ import {instance} from './userAPI.js'
 export const getWater = async (date) => {
     const formatDate = date.toISOString().split("T")[0];
     const { data } = await instance.get(`water/today/${formatDate}`);
-    return data[0].entries;
+    return data[0];
 };
 
 export const getMonthWater = async (date) => {

@@ -31,7 +31,7 @@ const MonthList = () => {
   const testArray = firstArray.map(item => {
     if (!item.date) {
       const newItem = { ...item };
-      newItem.servings = 0;
+      // newItem.servings = 0;
       newItem.completed = 0;
       newItem.dailyNorma = 2;
       newItem.date = `${months[date.getMonth()]}, ${item._id}`;
@@ -71,7 +71,7 @@ const MonthList = () => {
             key={item._id}
             date={item.date}
             completed={item.completed}
-            serving={item.serving}
+            servings={item.servings}
             dailyNorma={item.dailyNorma}
             modal={details}
             setModal={setDetails}
