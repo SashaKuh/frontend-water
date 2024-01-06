@@ -34,15 +34,28 @@ const DayDetails = ({
     [setModal]
   );
 
+  const handleEscPress = useCallback(
+    e => {
+      if (
+        e.code.toLowerCase() === 'escape' ||
+        e.code.toLowerCase() === 'backspace'
+      )
+        setModal('');
+    },
+    [setModal]
+  );
+
   useEffect(() => {
     if (statusModal === day) {
       document.addEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handleEscPress);
     }
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
+      document.addEventListener('keydown', handleEscPress);
     };
-  }, [day, handleClickOutside, statusModal]);
+  }, [day, handleClickOutside, handleEscPress, statusModal]);
 
   return (
     <DayDetailsCont className={`${side} modalDetails`}>

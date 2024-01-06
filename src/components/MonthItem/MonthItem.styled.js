@@ -22,6 +22,11 @@ border: 0;
 border-radius: 20px;
 border-color: var(--primaryWhite);
 margin-bottom: 4px;
+
+&:is(:hover, :focus) {
+        background-color: var(--secondaryBlue);
+        outline: inherit;
+}
   
    @media screen and (min-width: 768px) {
     width: 34px;
@@ -44,6 +49,11 @@ padding: 7px 6px;
 border: 1px solid var(--secondaryOrange);
 border-radius: 20px;
 margin-bottom: 4px;
+
+&:is(:hover, :focus) {
+        background-color: var(--secondaryOrange);
+        outline: inherit;
+}
 
   
    @media screen and (min-width: 768px) {
