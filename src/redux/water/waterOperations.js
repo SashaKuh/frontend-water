@@ -33,7 +33,6 @@ export const addWaterOperation = createAsyncThunk("water/addWater", async ({wate
   }
 });
 
-
 export const editWaterOperation = createAsyncThunk("water/editWater", async ({id, waterVolume, date}, thunkAPI) => {
   try {
     const response = await editWater({id, waterVolume, date});

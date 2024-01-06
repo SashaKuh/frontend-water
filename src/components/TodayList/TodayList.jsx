@@ -32,6 +32,7 @@ const TodayList = () => {
             key={item._id}
             water={item.waterVolume}
             date={new Date(item.date)}
+            id={item._id}
           />
         ))}
         <AddLink>

@@ -9,7 +9,7 @@ export const handleRejected = (state, action) => {
 export const getWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todatList = action.payload.entries;
+        state.todayList = action.payload.entries;
         state.completeToday = action.payload.completed;
 };
 export const getMonthWaterFulfilled = (state, action) => {
@@ -20,15 +20,15 @@ export const getMonthWaterFulfilled = (state, action) => {
 export const addWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todatList.push(action.payload);
+        state.todayList.push(action.payload);
 };
 export const editWaterFulfilled = (state, action) => {
-        const { id, water, date } = action.payload; 
+        const { _id, waterVolume, date } = action.payload; 
         state.isLoading = false;
         state.error = null;
-        state.todatList = state.todatList.map(element => {
-        if (element.id === id) {
-         return { id, water, date };
+        state.todayList = state.todayList.map(element => {
+        if (element._id === _id) {
+         return { _id, waterVolume, date };
          } 
         return element;
         }); 
@@ -36,5 +36,5 @@ export const editWaterFulfilled = (state, action) => {
 export const deleteWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todatList = state.todatList.filter(element => element.id !== action.payload.id);  
+        state.todayList = state.todayList.filter(element => element._id !== action.payload._id);  
 };

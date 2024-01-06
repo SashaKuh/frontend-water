@@ -6,7 +6,7 @@ const waterSlice = createSlice(
     {
         name: "water",
         initialState: {
-            todatList: [],
+            todayList: [],
             completeToday: 0,
             monthList: [],
             isLoading: false,
