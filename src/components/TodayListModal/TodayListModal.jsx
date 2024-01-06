@@ -26,11 +26,13 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     }
 
     const handleChange = async (evt) => {
+        if (evt.target.value.length > 4) {
+            return
+        }
         const result = Math.floor(evt.target.value)
         if (result || result === 0) {
             setWaterVolume(result)
         }
-        
     }
 
     const onChange = (timeValue) => {
@@ -96,7 +98,7 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
                         </Svg>
                     </WrapSvg>
                     <CounterDiv>{waterVolume} ml</CounterDiv>
-                    <WrapSvg type="button" onClick={increment} disabled={waterVolume >= 1500 ? true : false}>
+                    <WrapSvg type="button" onClick={increment} disabled={waterVolume >= 1451 ? true : false}>
                         <Svg width="24" height="24">
                             <use xlinkHref={`${sprite}#icon-plus-small`} />
                         </Svg>
