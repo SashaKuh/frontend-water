@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addWaterOperation,getMonthWaterOperation } from "../../redux/water/waterOperations";
 import { toast } from "react-toastify";
+import { disabledTime } from "helpers/disabledTime";
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     const [waterVolume, setWaterVolume] = useState(0);
@@ -56,20 +57,7 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
         await dispatch(getMonthWaterOperation(new Date()));
         handleCloseModal()
     }
-
-     const disabledTime = (now) => {
-        const currentHour = now.hour();
-        const disabledHours = () => {
-            return Array.from({ length: 24 }, (_, index) => index > currentHour ? index : -1).filter(hour => hour !== -1);
-        };
-
-        const disabledMinutes = (selectedHour) => {
-            return selectedHour === currentHour ? Array.from({ length: 60 }, (_, index) => index > now.minute() ? index : -1).filter(minute => minute !== -1) : [];
-        };
-
-        return { disabledHours, disabledMinutes };
-    };
-
+    
     return (
         <StyledModal
             contentLabel="Modal"
