@@ -14,7 +14,7 @@ import {
 import { EditModal } from '../EditModal/EditModal.jsx';
 import { Modal } from 'components/Modal/Modal';
 import sprite from '../../images/SVG/symbol-defs.svg';
-import { deleteWaterOperation, getWaterOperation } from '../../redux/water/waterOperations';
+import { deleteWaterOperation, getWaterOperation, getMonthWaterOperation } from '../../redux/water/waterOperations';
 import { ButtonCancel, ButtonRed, ButtonsWrapper, SecondTitleModal } from '../Modal/Modal.styled';
 
 const editIcon = `${sprite}#icon-pencil`;
@@ -56,6 +56,7 @@ const TodayItem = ({ id, water, date }) => {
   const handleDelete = async () => {
     await dispatch(deleteWaterOperation(id));
     await dispatch(getWaterOperation(new Date()));
+    await dispatch(getMonthWaterOperation(new Date()));
     setDeleteModalOpen(false);
   };
 
