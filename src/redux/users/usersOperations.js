@@ -67,7 +67,6 @@ export const refreshUserThunk = createAsyncThunk(
   async token => {
   try {
     const data = await refreshUser(token);
-    toast.success('Sign out successful!');
     
     return data;
   } catch (error) {
