@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { editWaterOperation, getWaterOperation,getMonthWaterOperation } from '../../redux/water/waterOperations';
+import { editWaterOperation, getMonthWaterOperation } from '../../redux/water/waterOperations';
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
     StyledModal,
