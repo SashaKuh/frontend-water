@@ -6,6 +6,7 @@ import {
   MonthItemStyled,
 } from './MonthItem.styled';
 import DayDetails from 'components/DayDetails/DayDetails';
+import { useDispatch } from 'react-redux';
 
 export const MonthItem = ({
   date,
@@ -16,7 +17,7 @@ export const MonthItem = ({
   setModal,
 }) => {
   const day = date.split(' ')[1];
-
+  const dispatch = useDispatch();
   const Button = completed >= 100 ? DayButtonFull : DayButtonPart;
   const completedFormat = completed >= 100 ? 100 : completed;
   const leftOrRigth = isRight(day);
@@ -33,7 +34,7 @@ export const MonthItem = ({
           statusModal={modal}
         />
       )}
-      <Button onClick={() => setModal(day)} className="dateButton">
+      <Button onClick={() => dispatch(setModal(day))} className="dateButton">
         {day}
       </Button>
       <DayCompleted>{`${completedFormat}%`}</DayCompleted>
