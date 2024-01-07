@@ -1,5 +1,29 @@
 import styled from 'styled-components';
+import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_home_screen.png';
+import backgroundImgTab from '../../images/PNG/images-tablet/bg_el_home_screen.png';
+import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
 
+export const StyledBackground = styled.div`
+background-image: url(${backgroundImgMob});
+  background-size: cover;
+  position: relative;
+  background-position: 0% -5%;
+  background-repeat: no-repeat;
+  height: 100%;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${backgroundImgTab});
+    background-size: cover;
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+  }
+  @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundImgDesc});
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+`;
 export const ImgTumb = styled.div`
  margin-bottom: 16px;
     width: 280px; 

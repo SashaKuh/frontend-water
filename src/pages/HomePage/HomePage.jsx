@@ -2,11 +2,10 @@ import { DailyNorma } from 'components/Homepage/DailyNorma';
 import { ImageOfBottle } from 'components/Homepage/ImageOfBottle/ImageOfBottle';
 import TodayAndMonthLayout from 'components/TodayAndMonthLayout/TodayAndMonthLayout';
 import { WaterRatioPanel } from 'components/Homepage/WaterRatioPanel/WaterRatioPanel';
-import { LeftSideDiv, AllSidesDiv } from './HomePage.styled';
-import { Background } from '../../components/AuthForm/AuthForm.styled';
+import { LeftSideDiv, AllSidesDiv, StyledBackground } from './HomePage.styled';
 const HomePage = () => {
   return (
-    <Background>
+    <StyledBackground>
       <div className="container">
         <AllSidesDiv>
           <LeftSideDiv>
@@ -17,7 +16,7 @@ const HomePage = () => {
           <TodayAndMonthLayout />
         </AllSidesDiv>
       </div>
-    </Background>
+    </StyledBackground>
   );
 };
 export default HomePage;
