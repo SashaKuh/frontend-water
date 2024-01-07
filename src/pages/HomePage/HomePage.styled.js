@@ -27,8 +27,8 @@ background-image: url(${backgroundImgMob});
 `;
 export const ImgTumb = styled.div`
  margin-bottom: 16px;
-    width: 280px; 
-    height: 208px;
+    width: 100%; 
+    
     margin-left:auto;
     margin-right:auto;
     z-index: -1;
@@ -39,7 +39,12 @@ export const ImgTumb = styled.div`
         height: auto;
     }
 
-
+    @media (min-width: 320px) {
+        width: 280px;
+        height: 208px;
+       
+        // position: relative;
+    }
     @media (min-width: 768px) {
         width: 518px;
         height: 386px;
@@ -183,7 +188,7 @@ flex-basis:auto;
 
 `
 export const ButtonAddWater = styled.button`
-width:280px;
+width:100%;
 height:36px;
 padding: 6px 76px 6px 76px;
 border-radius: 10px;
@@ -200,6 +205,9 @@ border:none;
 background-color:var(--primaryBlue);
 color:var(--primaryWhite);
 box-shadow: 0px 4px 8px 0px #407BFF57;
+@media (min-width: 320px) {
+  width:280px;
+    }
 
 @media (min-width: 768px) {
 font-size: 18px;
