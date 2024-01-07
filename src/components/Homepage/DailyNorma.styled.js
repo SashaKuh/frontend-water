@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrap = styled.div`
+export const Wrap = styled.div` 
 padding-left: 20px;
 padding-top: 8px;
 width: 164px;

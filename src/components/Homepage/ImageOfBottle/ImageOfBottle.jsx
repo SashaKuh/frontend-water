@@ -15,7 +15,8 @@ export const ImageOfBottle = () => {
         `.trim()}
         sizes="(min-width: 1441px) 1440px,
                (min-width: 769px) 768px,
-               320px"
+               (max-width: 320px) 100vw
+"
         alt="bottle"
       />
     </ImgTumb>

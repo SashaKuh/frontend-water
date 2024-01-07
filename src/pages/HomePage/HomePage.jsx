@@ -5,7 +5,7 @@ import { WaterRatioPanel } from 'components/Homepage/WaterRatioPanel/WaterRatioP
 import { LeftSideDiv, AllSidesDiv, StyledBackground } from './HomePage.styled';
 const HomePage = () => {
   return (
-    <StyledBackground>
+    <StyledBackground className='static-background'>
       <div className="container">
         <AllSidesDiv>
           <LeftSideDiv>

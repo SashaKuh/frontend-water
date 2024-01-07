@@ -10,6 +10,7 @@ background-image: url(${backgroundImgMob});
   background-position: 0% -5%;
   background-repeat: no-repeat;
   height: 100%;
+  z-index: 0;
 
   @media screen and (min-width: 768px) {
     background-image: url(${backgroundImgTab});
@@ -60,7 +61,8 @@ export const StyledRangeInput = styled.input`
 
   -webkit-appearance: none;
   appearance: none; 
-  width: 258px;
+  /* width: 258px; */
+  width: 100%;
   cursor: pointer;
   outline: none;
   border-radius: 15px;
@@ -70,6 +72,10 @@ export const StyledRangeInput = styled.input`
   display:block;
   height: 8px;
   background: var(--secondaryDarkGrey);
+  @media (min-width:320px){
+  width:258px;
+ 
+}
 @media (min-width:768px){
   width:334px;
   // margin-left:1px;
