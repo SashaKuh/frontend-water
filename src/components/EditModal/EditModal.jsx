@@ -48,11 +48,14 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
     };
 
     const handleChange = async (evt) => {
-        const result = Math.floor(evt.target.value);
-        if (result || result === 0) {
-            setWaterVolume(result);
+        if (evt.target.value.length > 4) {
+            return
         }
-    };
+        const result = Math.floor(evt.target.value)
+        if (result || result === 0) {
+            setWaterVolume(result)
+        }
+    }
 
     const onChange = (timeValue) => {
         setStartDate(timeValue.$d);

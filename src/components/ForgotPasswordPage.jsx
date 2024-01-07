@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import {
   Background,
@@ -27,6 +28,7 @@ const ForgotPasswordPage = () => {
     if (validateEmail()) {
       const response = await requestResetPassword(email);
       console.log(response.ok);
+      toast.success('Confirmation email has been sent!')
 
       if (response.ok) {
         setNotification(

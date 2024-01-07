@@ -73,9 +73,6 @@ export const requestResetPassword = async email => {
 };
 
 export const resetPassword = async (token, newPassword) => {
-  const data = await instance.patch('auth/reset-password', {
-    newPassword,
-    token,
-  });
+  const data = await instance.patch('auth/reset-password', { newPassword, token });
   return data;
 };

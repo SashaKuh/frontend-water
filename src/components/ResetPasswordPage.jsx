@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import {
   Background,
@@ -41,6 +42,7 @@ const ResetPasswordPage = () => {
     if (validatePassword() && validateConfirmPassword()) {
       try {
         const response = await resetPassword(resetToken, password);
+        toast.success('Password has been successfully reset')
         console.log(response);
         setNotification('Password has been successfully reset.');
         navigate('/signin');

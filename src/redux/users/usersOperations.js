@@ -11,8 +11,6 @@ import {
   addWaterRate,
 } from '../../services/api/userAPI.js';
 
-
-
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
   async (newUser, { rejectWithValue }) => {
@@ -69,6 +67,7 @@ export const refreshUserThunk = createAsyncThunk(
   async token => {
   try {
     const data = await refreshUser(token);
+    toast.success('Sign out successful!');
     
     return data;
   } catch (error) {
@@ -94,6 +93,8 @@ export const updateThunk  = createAsyncThunk(
   async ({ updateUser, token }) => {
     try {
       const data = await updateUsers(updateUser, token);
+      toast.success('The changes have been adopted!')
+
       return data;
     } catch (error) {
       return error.message;
