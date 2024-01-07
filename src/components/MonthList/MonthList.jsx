@@ -21,6 +21,7 @@ const iconArrow = `${sprite}#icon-chevron-double-up`;
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
+  const dailyNorma = useSelector(selectDailyNorma);
 
   const modalDetails = useSelector(selectModalDetails);
 
@@ -34,7 +35,7 @@ const MonthList = () => {
     if (!item.date) {
       const newItem = { ...item };
       newItem.completed = 0;
-      newItem.dailyNorma = 2;
+      newItem.dailyNorma = dailyNorma / 1000;
       newItem.date = `${months[date.getMonth()]}, ${item._id}`;
       return newItem;
     }
