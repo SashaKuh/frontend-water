@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/frontend-water/static/css/main.1a24fdc4.css",
-    "main.js": "/frontend-water/static/js/main.7ee17d5d.js",
-    "static/js/415.4281e65c.chunk.js": "/frontend-water/static/js/415.4281e65c.chunk.js",
+    "main.js": "/frontend-water/static/js/main.128d9441.js",
+    "static/js/415.07098638.chunk.js": "/frontend-water/static/js/415.07098638.chunk.js",
     "static/js/468.286eb117.chunk.js": "/frontend-water/static/js/468.286eb117.chunk.js",
     "static/js/660.ea7c893f.chunk.js": "/frontend-water/static/js/660.ea7c893f.chunk.js",
-    "static/js/863.d04f442e.chunk.js": "/frontend-water/static/js/863.d04f442e.chunk.js",
-    "static/js/627.5161440a.chunk.js": "/frontend-water/static/js/627.5161440a.chunk.js",
+    "static/js/863.037afa90.chunk.js": "/frontend-water/static/js/863.037afa90.chunk.js",
+    "static/js/627.5dee8ebb.chunk.js": "/frontend-water/static/js/627.5dee8ebb.chunk.js",
     "static/js/314.bc433b91.chunk.js": "/frontend-water/static/js/314.bc433b91.chunk.js",
     "static/media/Medium.ttf": "/frontend-water/static/media/Medium.7c8d04cd831df3033c8a.ttf",
     "static/media/Regular.ttf": "/frontend-water/static/media/Regular.fc2b5060f7accec5cf74.ttf",
@@ -18,16 +18,16 @@
     "static/media/bg_main_page.png": "/frontend-water/static/media/bg_main_page.244e4c887f6d9c4ccfca.png",
     "index.html": "/frontend-water/index.html",
     "main.1a24fdc4.css.map": "/frontend-water/static/css/main.1a24fdc4.css.map",
-    "main.7ee17d5d.js.map": "/frontend-water/static/js/main.7ee17d5d.js.map",
-    "415.4281e65c.chunk.js.map": "/frontend-water/static/js/415.4281e65c.chunk.js.map",
+    "main.128d9441.js.map": "/frontend-water/static/js/main.128d9441.js.map",
+    "415.07098638.chunk.js.map": "/frontend-water/static/js/415.07098638.chunk.js.map",
     "468.286eb117.chunk.js.map": "/frontend-water/static/js/468.286eb117.chunk.js.map",
     "660.ea7c893f.chunk.js.map": "/frontend-water/static/js/660.ea7c893f.chunk.js.map",
-    "863.d04f442e.chunk.js.map": "/frontend-water/static/js/863.d04f442e.chunk.js.map",
-    "627.5161440a.chunk.js.map": "/frontend-water/static/js/627.5161440a.chunk.js.map",
+    "863.037afa90.chunk.js.map": "/frontend-water/static/js/863.037afa90.chunk.js.map",
+    "627.5dee8ebb.chunk.js.map": "/frontend-water/static/js/627.5dee8ebb.chunk.js.map",
     "314.bc433b91.chunk.js.map": "/frontend-water/static/js/314.bc433b91.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.7ee17d5d.js"
+    "static/js/main.128d9441.js"
   ]
 }
