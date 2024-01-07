@@ -7,7 +7,7 @@ import {
 } from "./TodayListModal.styled"
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addWaterOperation } from "../../redux/water/waterOperations";
+import { addWaterOperation,getMonthWaterOperation } from "../../redux/water/waterOperations";
 import { toast } from "react-toastify";
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
@@ -53,6 +53,7 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
         if (waterVolume > 0) {
             await dispatch(addWaterOperation({ waterVolume, date: startDate }))
         }
+        await dispatch(getMonthWaterOperation(new Date()));
         handleCloseModal()
     }
 

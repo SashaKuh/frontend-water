@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { editWaterOperation, getWaterOperation } from '../../redux/water/waterOperations';
+import { editWaterOperation, getWaterOperation,getMonthWaterOperation } from '../../redux/water/waterOperations';
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
     StyledModal,
@@ -72,7 +72,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
         if (waterVolume > 0) {
             dispatch(editWaterOperation({ id, waterVolume, date: startDate }));
         }
-        await dispatch(getWaterOperation(new Date()));
+        await dispatch(getMonthWaterOperation(new Date()));
         handleCloseModal();
     };
 
