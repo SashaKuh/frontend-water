@@ -7,3 +7,7 @@ export const selectDailyNorma = state => state.auth.user.dailyNorma;
 export const selectTodayList = state => state.water.todatList;
 export const selectManthList = state => state.water.monthList;
 export const selectСompleteToday = state => state.water.completeToday;
+
+
+
+export const selectModalDetails = state => state.modals.modalDetails;
