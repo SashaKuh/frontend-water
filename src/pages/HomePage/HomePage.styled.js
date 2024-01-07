@@ -10,6 +10,7 @@ background-image: url(${backgroundImgMob});
   background-position: 0% -5%;
   background-repeat: no-repeat;
   height: 100%;
+  z-index: 0;
 
   @media screen and (min-width: 768px) {
     background-image: url(${backgroundImgTab});
@@ -26,8 +27,8 @@ background-image: url(${backgroundImgMob});
 `;
 export const ImgTumb = styled.div`
  margin-bottom: 16px;
-    width: 280px; 
-    height: 208px;
+    width: 100%; 
+    
     margin-left:auto;
     margin-right:auto;
     z-index: -1;
@@ -38,7 +39,12 @@ export const ImgTumb = styled.div`
         height: auto;
     }
 
-
+    @media (min-width: 320px) {
+        width: 280px;
+        height: 208px;
+       
+        // position: relative;
+    }
     @media (min-width: 768px) {
         width: 518px;
         height: 386px;
@@ -60,7 +66,8 @@ export const StyledRangeInput = styled.input`
 
   -webkit-appearance: none;
   appearance: none; 
-  width: 258px;
+  /* width: 258px; */
+  width: 100%;
   cursor: pointer;
   outline: none;
   border-radius: 15px;
@@ -70,6 +77,10 @@ export const StyledRangeInput = styled.input`
   display:block;
   height: 8px;
   background: var(--secondaryDarkGrey);
+  @media (min-width:320px){
+  width:258px;
+ 
+}
 @media (min-width:768px){
   width:334px;
   // margin-left:1px;
@@ -177,7 +188,7 @@ flex-basis:auto;
 
 `
 export const ButtonAddWater = styled.button`
-width:280px;
+width:100%;
 height:36px;
 padding: 6px 76px 6px 76px;
 border-radius: 10px;
@@ -194,6 +205,9 @@ border:none;
 background-color:var(--primaryBlue);
 color:var(--primaryWhite);
 box-shadow: 0px 4px 8px 0px #407BFF57;
+@media (min-width: 320px) {
+  width:280px;
+    }
 
 @media (min-width: 768px) {
 font-size: 18px;
