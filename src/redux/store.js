@@ -5,6 +5,7 @@ import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist
 
 import { authReducer } from './users/usersSlice';
 import { waterReducer } from './water/waterSlice';
+import { modalReducer } from './modal/modalSlice';
 // import modalReducer
 // import waterReducer
 
@@ -17,9 +18,7 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    modals: {
-      /*modalReducer*/
-    },
+    modals: modalReducer,
     water: waterReducer,
   },
   middleware: getDefaultMiddleware =>

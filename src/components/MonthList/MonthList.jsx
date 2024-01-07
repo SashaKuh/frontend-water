@@ -13,14 +13,17 @@ import sprite from '../../images/SVG/symbol-defs.svg';
 import { MonthItem } from '../MonthItem/MonthItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMonthWaterOperation } from '../../redux/water/waterOperations';
-import { selectManthList } from '../../redux/selectors';
+import { selectManthList, selectModalDetails } from '../../redux/selectors';
+import { setModalDetails } from '../../redux/modal/modalSlice';
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
 
 const MonthList = () => {
   const [date, setDate] = useState(new Date());
-  const [details, setDetails] = useState('');
   const dispatch = useDispatch();
+  const dailyNorma = useSelector(selectDailyNorma);
+
+  const modalDetails = useSelector(selectModalDetails);
 
   useEffect(() => {
     dispatch(getMonthWaterOperation(date));
@@ -31,9 +34,8 @@ const MonthList = () => {
   const testArray = firstArray.map(item => {
     if (!item.date) {
       const newItem = { ...item };
-      // newItem.servings = 0;
       newItem.completed = 0;
-      newItem.dailyNorma = 2;
+      newItem.dailyNorma = dailyNorma / 1000;
       newItem.date = `${months[date.getMonth()]}, ${item._id}`;
       return newItem;
     }
@@ -73,8 +75,8 @@ const MonthList = () => {
             completed={item.completed}
             servings={item.servings}
             dailyNorma={item.dailyNorma}
-            modal={details}
-            setModal={setDetails}
+            modal={modalDetails}
+            setModal={setModalDetails}
           />
         ))}
       </MonthListStyled>

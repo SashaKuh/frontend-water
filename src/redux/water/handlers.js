@@ -9,8 +9,8 @@ export const handleRejected = (state, action) => {
 export const getWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todayList = action.payload.entries;
-        state.completeToday = action.payload.completed;
+        state.todatList = action.payload?.entries ? action.payload.entries : [];
+        state.completeToday = action.payload?.completed ? action.payload.completed : 0;
 };
 export const getMonthWaterFulfilled = (state, action) => {
         state.isLoading = false;

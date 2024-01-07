@@ -8,6 +8,7 @@ import {
   CloseButton,
 } from './DayDetails.styled.';
 import sprite from '../../images/SVG/symbol-defs.svg';
+import { useDispatch } from 'react-redux';
 
 const plusIcon = `${sprite}#icon-plus-small`;
 
@@ -21,6 +22,7 @@ const DayDetails = ({
   statusModal,
 }) => {
   const day = date.split(' ')[1];
+  const dispatch = useDispatch();
 
   const handleClickOutside = useCallback(
     event => {
@@ -28,10 +30,10 @@ const DayDetails = ({
         !event.target.closest('.modalDetails') &&
         !event.target.classList.contains('dateButton')
       ) {
-        setModal('');
+        dispatch(setModal(''));
       }
     },
-    [setModal]
+    [dispatch, setModal]
   );
 
   const handleEscPress = useCallback(
@@ -40,9 +42,9 @@ const DayDetails = ({
         e.code.toLowerCase() === 'escape' ||
         e.code.toLowerCase() === 'backspace'
       )
-        setModal('');
+        dispatch(setModal(''));
     },
-    [setModal]
+    [setModal, dispatch]
   );
 
   useEffect(() => {
@@ -59,7 +61,7 @@ const DayDetails = ({
 
   return (
     <DayDetailsCont className={`${side} modalDetails`}>
-      <CloseButton onClick={() => setModal('')}>
+      <CloseButton onClick={() => dispatch(setModal(''))}>
         <SvgClose>
           <use href={plusIcon}></use>
         </SvgClose>

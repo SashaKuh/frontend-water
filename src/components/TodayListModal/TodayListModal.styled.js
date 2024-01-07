@@ -146,7 +146,7 @@ margin-bottom: 12px;
 `;
 
 export const Input = styled.input`
-  width: 120px;
+  width: 100%;
   box-sizing: border-box;
   margin-bottom: 24px;
   border: 1px solid var(--secondaryDarkGrey);
@@ -155,14 +155,6 @@ export const Input = styled.input`
   outline: none;
   color: #407BFF;
   font-size: 16px;
-
-  @media (min-width: 1440px) {
-    width: 544px;
-  }
-
-@media (min-width: 768px) and (max-width: 1439px){
-    width: 656px;
-  }
 `;
 
 export const AmountDiv = styled.div`
@@ -192,30 +184,10 @@ export const MessageError = styled.div`
 `;
 
 export const StyledDatePicker = styled(TimePicker)`
-  width: 120px;
+  width: 100%;
   margin-bottom: 24px;
   border: 1px solid var(--secondaryDarkGrey);
   border-radius: 8px;
   padding: 10px;
   outline: none;
-
-  @media (min-width: 1440px) {
-    width: 544px;
-  }
-
-@media (min-width: 768px) and (max-width: 1439px){
-    width: 656px;
-  }
-input {
-  color: red;
-}
-input::placeholder {
-    color: red; /* Замість #yourColor вкажіть бажаний колір */
-    /* Інші стилі для плейсхолдера */
-  }
-  &::placeholder {
-  color: red; /* Замість #yourColor вкажіть бажаний колір */
-  /* Інші стилі для плейсхолдера */
-}
-
 `;
