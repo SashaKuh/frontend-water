@@ -32,7 +32,7 @@ import { disabledTime } from 'helpers/disabledTime';
 
 const glassIcon = `${sprite}#cup`;
 export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
-    const [waterVolume, setWaterVolume] = useState(waterMl || 0);
+    const [waterVolume, setWaterVolume] = useState(waterMl);
     const [startDate, setStartDate] = useState(new Date());
     const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
 
     const handleCloseModal = () => {
         closeModal();
-        setWaterVolume(0);
+        // setWaterVolume(0);
         setStartDate(new Date());
     };
 
