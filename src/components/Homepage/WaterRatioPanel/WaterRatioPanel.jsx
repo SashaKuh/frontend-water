@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import iconSprite from '../../../images/SVG/symbol-defs.svg';
 import {
   RangeAndAddWater,
@@ -12,14 +12,14 @@ import {
   SvgButton,
 } from '../../../pages/HomePage/HomePage.styled';
 import { TodayListModal } from 'components/TodayListModal/TodayListModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectСompleteToday, selectModalAdd } from '../../../redux/selectors';
+import { openModalAdd, closeModalAdd } from '../../../redux/modal/modalSlice';
 export const WaterRatioPanel = () => {
-  const [sliderValue, setSliderValue] = useState(0);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleChange = event => {
-    const value = event.target.value;
-    setSliderValue(value);
-  };
+  const modalIsOpen = useSelector(selectModalAdd);
+  const sliderValue = useSelector(selectСompleteToday);
 
   const progress = (sliderValue / 100) * 100;
 
@@ -28,13 +28,13 @@ export const WaterRatioPanel = () => {
   };
 
   const openModal = () => {
-        setIsOpen(true);
-    }
+    dispatch(openModalAdd());
+  };
 
-    const closeModal = () => {
-        setIsOpen(false);
-  }
-  
+  const closeModal = () => {
+    dispatch(closeModalAdd());
+  };
+
   return (
     <RangeAndAddWater>
       <RangeDiv>
@@ -44,8 +44,8 @@ export const WaterRatioPanel = () => {
           min="0"
           max="100"
           value={sliderValue}
-          onChange={handleChange}
           style={sliderStyle}
+          readOnly={true}
         ></StyledRangeInput>
         <PercentageDiv>
           <PercentageOfRange>0%</PercentageOfRange>
@@ -61,7 +61,7 @@ export const WaterRatioPanel = () => {
         </SvgButton>
         Add Water
       </ButtonAddWater>
-      <TodayListModal modalIsOpen={modalIsOpen} closeModal={closeModal}/>
+      <TodayListModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
     </RangeAndAddWater>
   );
 };

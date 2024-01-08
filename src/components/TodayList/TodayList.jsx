@@ -11,6 +11,7 @@ import sprite from '../../images/SVG/symbol-defs.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWaterOperation } from '../../redux/water/waterOperations';
 import { selectTodayList } from '../../redux/selectors';
+import { openModalAdd } from '../../redux/modal/modalSlice';
 
 const plusIcon = `${sprite}#icon-plus-small`;
 
@@ -35,7 +36,7 @@ const TodayList = () => {
             id={item._id}
           />
         ))}
-        <AddLink>
+        <AddLink onClick={() => dispatch(openModalAdd())}>
           <SvgPlus>
             <use xlinkHref={plusIcon}></use>
           </SvgPlus>

@@ -11,13 +11,13 @@ import {
 } from './Header.styled';
 import { HeaderDropdown } from 'components/Header/HaderDropdown/HeaderDropdown';
 import { SettingModal } from 'components/SettingModal/SettingModal';
-import { Modal } from 'components/Modal/Modal';
+import { DeleteModal } from 'components/Modal/DeleteModal';
 import {
   ButtonCancel,
   ButtonRed,
   ButtonsWrapper,
   SecondTitleModal,
-} from 'components/Modal/Modal.styled';
+} from 'components/Modal/DeleteModal.styled';
 import { signOutThunk } from '../../redux/users/usersOperations';
 
 export const Header = () => {
@@ -77,7 +77,7 @@ export const Header = () => {
             modalIsOpen={settingModalIsOpen}
             closeModal={() => setSettingModalIsOpen(false)}
           />
-          <Modal
+          <DeleteModal
             contentLabel="Logout modal"
             isOpen={logoutModalIsOpen}
             onRequestClose={() => {
@@ -99,7 +99,7 @@ export const Header = () => {
                 Log out
               </ButtonRed>
             </ButtonsWrapper>
-          </Modal>
+          </DeleteModal>
         </UserLogoWrapper>
       ) : (
         <UserAuth onClick={() => navigate('/signin')}>

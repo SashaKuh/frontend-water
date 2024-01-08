@@ -11,3 +11,6 @@ export const selectСompleteToday = state => state.water.completeToday;
 
 
 export const selectModalDetails = state => state.modals.modalDetails;
+export const selectModalEdit = state => state.modals.modalEdit;
+export const selectModalDelete = state => state.modals.modalDelete;
+export const selectModalAdd = state => state.modals.modalAdd;

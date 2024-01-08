@@ -7,7 +7,7 @@ export const getWater = async (date) => {
 };
 
 export const getMonthWater = async (date) => {
-    const formatDate = date.toISOString();
+    const formatDate = date.toISOString().slice(0, 7);
     const {data} = await instance.get(`water/month/${formatDate}`);
     return data;
 };

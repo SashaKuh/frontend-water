@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+
 
 
 
@@ -34,42 +34,36 @@ export const TodayTitle = styled.h3`
     }
 `
 
-export const AddLink = styled(Link)`
+export const AddLink = styled.button`
 display: inline-block;
-/* width: 254px; */
-/* height: 26px; */
 padding: 12px 0;
-
+border: 0;
 background-color: inherit;
-text-decoration: none;
 font-size: 16px;
 line-height: 1.25;
 color: var(--primaryBlue);
-stroke: currentColor;
 font-weight: 500;
 transition: color 250ms linear;
+
 
 &:hover {
   color: var(--secondaryOrange);
 }
 
 @media screen and (min-width: 320px) {
-       width: 254px;
+       width: 97px;
         }
 
         @media screen and (min-width: 768px) {
-        width: 646px;
+        width: 114px;
         }
-
-    @media screen and (min-width: 1440px) {
-        width: 534px;
-    }
 `
 
 export const SvgPlus = styled.svg`
 width: 8px;
 height: 8px;
 margin-right: 8px;
+stroke: currentColor;
 fill: currentColor;
 
 @media screen and (min-width: 768px) {

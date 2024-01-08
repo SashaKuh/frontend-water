@@ -5,9 +5,14 @@ import {
   SvgClose,
   Title,
   WrapHeader,
-} from './Modal.styled';
+} from './DeleteModal.styled';
 
-export const Modal = ({ titleText, isOpen, onRequestClose, children }) => {
+export const DeleteModal = ({
+  titleText,
+  isOpen,
+  onRequestClose,
+  children,
+}) => {
   return (
     <ReactModalStyled
       isOpen={isOpen}
