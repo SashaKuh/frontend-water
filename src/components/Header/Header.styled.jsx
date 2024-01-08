@@ -24,7 +24,31 @@ export const UserAuth = styled.button`
   & span {
     font-family: 'Roboto-regular';
     font-size: 16px;
-    color: var(--primaryBlue);
+
+    color: transparent;
+    overflow: hidden;
+
+    background: linear-gradient(
+      90deg,
+      var(--secondaryOrange) 0%,
+      var(--secondaryOrange) 50%,
+      var(--primaryBlue) 50%,
+      var(--primaryBlue) 100%
+    );
+
+    background-size: 200% 100%;
+    background-position: 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    transition: background-position var(--animationCubicBezier);
+  }
+
+  &:hover {
+    & span {
+      background-position: 0 100%;
+    }
   }
 `;
 
