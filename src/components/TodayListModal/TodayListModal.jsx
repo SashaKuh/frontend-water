@@ -2,7 +2,9 @@ import sprite from "../../images/SVG/symbol-defs.svg";
 import {
     AmountDiv, AmountWrap, BtnSvg, Button, CounterDiv, CounterWrap, Input,
     StyledDatePicker,
-    StyledModal, Svg, SvgClose, TextInput, TextInputTime,
+    StyledModal, Svg,
+    //  SvgClose,
+      TextInput, TextInputTime,
     Title, TitleInput, WrapHeader, WrapSvg
 } from "./TodayListModal.styled"
 import { useState } from "react";
@@ -71,10 +73,10 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
         >
             <WrapHeader>
                 <Title>Add water</Title>
-                <BtnSvg type="button" onClick={handleCloseModal}>
-                    <SvgClose >
+                <BtnSvg className="cross-btn" type="button" onClick={handleCloseModal}>
+                    <svg className="cross-svg" >
                         <use xlinkHref={`${sprite}#icon-plus-small`} />
-                    </SvgClose>
+                    </svg>
                 </BtnSvg>
             </WrapHeader>
             <form onSubmit={handleSubmit}>

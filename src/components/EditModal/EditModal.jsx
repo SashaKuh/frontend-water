@@ -9,7 +9,7 @@ import {
     WrapHeader,
     Title,
     BtnSvg,
-    SvgClose,
+    // SvgClose,
     CounterWrap,
     Button,
     TitleInput,
@@ -93,10 +93,10 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
         >
             <WrapHeader>
                 <Title>Edit the entered amount of water</Title>
-                <BtnSvg type="button" onClick={closeModal}>
-                    <SvgClose>
+                <BtnSvg className='cross-btn' type="button" onClick={closeModal}>
+                    <svg className='cross-svg'>
                         <use xlinkHref={`${sprite}#icon-plus-small`} />
-                    </SvgClose>
+                    </svg>
                 </BtnSvg>
                 
             </WrapHeader>
