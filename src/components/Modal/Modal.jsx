@@ -1,8 +1,8 @@
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
-  BtnSvg,
+  // BtnSvg,
   ReactModalStyled,
-  SvgClose,
+  // SvgClose,
   Title,
   WrapHeader,
 } from './Modal.styled';
@@ -20,11 +20,11 @@ export const Modal = ({ titleText, isOpen, onRequestClose, children }) => {
     >
       <WrapHeader>
         <Title>{titleText}</Title>
-        <BtnSvg type="button" onClick={onRequestClose}>
-          <SvgClose>
+        <button  className="cross-btn" type="button" onClick={onRequestClose}>
+          <svg className='cross-svg'>
             <use xlinkHref={`${sprite}#icon-plus-small`} />
-          </SvgClose>
-        </BtnSvg>
+          </svg>
+        </button>
       </WrapHeader>
       {children}
     </ReactModalStyled>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+ import styled from 'styled-components';
 import ReactModal from 'react-modal';
 
 export const ReactModalStyled = styled(ReactModal)`
@@ -37,27 +37,27 @@ export const WrapHeader = styled.div`
   justify-content: space-between;
 `;
 
-export const BtnSvg = styled.button`
-  padding: 0;
-  width: 36px;
-  height: 36px;
-  border: none;
-  background-color: var(--primaryWhite);
+// export const BtnSvg = styled.button`
+//   padding: 0;
+//   width: 36px;
+//   height: 36px;
+//   border: none;
+//   background-color: var(--primaryWhite);
 
-  &:hover {
-    & svg {
-      transform: rotate(-45deg) scale(1.1);
-    }
-  }
-`;
+//   &:hover {
+//     & svg {
+//       transform: rotate(-45deg) scale(1.1);
+//     }
+//   }
+// `;
 
-export const SvgClose = styled.svg`
-  fill: var(--primaryBlue);
-  transform: rotate(45deg);
-  width: 36px;
-  height: 36px;
-  transition: transform var(--animationCubicBezier);
-`;
+// export const SvgClose = styled.svg`
+//   fill: var(--primaryBlue);
+//   transform: rotate(45deg);
+//   width: 36px;
+//   height: 36px;
+//   transition: transform var(--animationCubicBezier);
+// `;
 
 export const SecondTitleModal = styled.h3`
   font-family: 'Roboto-regular';
