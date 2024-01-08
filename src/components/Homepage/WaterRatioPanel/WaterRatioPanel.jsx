@@ -13,13 +13,13 @@ import {
 } from '../../../pages/HomePage/HomePage.styled';
 import { TodayListModal } from 'components/TodayListModal/TodayListModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectСompleteToday, selectModalAdd } from '../../../redux/selectors';
+import { selectModalAdd, selectNewCompleted } from '../../../redux/selectors';
 import { openModalAdd, closeModalAdd } from '../../../redux/modal/modalSlice';
 export const WaterRatioPanel = () => {
   const dispatch = useDispatch();
 
   const modalIsOpen = useSelector(selectModalAdd);
-  const sliderValue = useSelector(selectСompleteToday);
+  const sliderValue = useSelector(selectNewCompleted);
 
   const progress = (sliderValue / 100) * 100;
 

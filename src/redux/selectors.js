@@ -14,3 +14,12 @@ export const selectModalDetails = state => state.modals.modalDetails;
 export const selectModalEdit = state => state.modals.modalEdit;
 export const selectModalDelete = state => state.modals.modalDelete;
 export const selectModalAdd = state => state.modals.modalAdd;
+
+
+export const selectNewCompleted = state => {
+    const allWater = selectTodayList(state).reduce((previousValue, item) => {
+        return previousValue + item.waterVolume;
+    }, 0)
+    const result = allWater / selectDailyNorma(state) * 100;
+    return result.toFixed();
+}

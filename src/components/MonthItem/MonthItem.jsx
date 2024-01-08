@@ -6,7 +6,8 @@ import {
   MonthItemStyled,
 } from './MonthItem.styled';
 import DayDetails from 'components/DayDetails/DayDetails';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectNewCompleted } from '../../redux/selectors';
 
 export const MonthItem = ({
   date,
@@ -17,6 +18,8 @@ export const MonthItem = ({
   setModal,
 }) => {
   const day = date.split(' ')[1];
+  const isToday = day === new Date().getDate().toString();
+  const newCompleted = useSelector(selectNewCompleted);
   const dispatch = useDispatch();
   const Button = completed >= 100 ? DayButtonFull : DayButtonPart;
   const completedFormat = completed >= 100 ? 100 : completed;
@@ -27,7 +30,7 @@ export const MonthItem = ({
         <DayDetails
           date={date}
           dailyNorma={dailyNorma}
-          completed={completedFormat}
+          completed={isToday ? newCompleted : completedFormat}
           servings={servings}
           side={leftOrRigth}
           setModal={setModal}
@@ -37,7 +40,9 @@ export const MonthItem = ({
       <Button onClick={() => dispatch(setModal(day))} className="dateButton">
         {day}
       </Button>
-      <DayCompleted>{`${completedFormat}%`}</DayCompleted>
+      <DayCompleted>{`${
+        isToday ? newCompleted : completedFormat
+      }%`}</DayCompleted>
     </MonthItemStyled>
   );
 };
