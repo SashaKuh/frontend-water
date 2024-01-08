@@ -1,31 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { ErrorMessage, Formik, Field } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
-// import iconSprite from '../images/SVG/symbol-defs.svg';
+import iconSprite from '../images/SVG/symbol-defs.svg';
 import {
   Background,
   BottleBackground,
-  // MainForm,
-  // FormSection,
-  // Input,
-  // MessageError,
+  MainForm,
+  FormSection,
+  Input,
+  MessageError,
   Title,
   Label,
   SignInButton,
-  // EyeIcon,
-  // InputContainer,
+  EyeIcon,
+  InputContainer,
 } from '../components/AuthForm/AuthForm.styled';
 import { resetPassword } from 'services/api/userAPI';
 
-// const initialValues = {
-//   password: '',
-//   confirmPassword: '',
-// };
-
 const ResetPasswordPage = () => {
-  // const [passwordVisible, setPasswordVisible] = useState(false);
-  // const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -34,6 +28,11 @@ const ResetPasswordPage = () => {
   const navigate = useNavigate();
 
   const { resetToken } = useParams();
+
+  const initialValues = {
+    password: '',
+    confirmPassword: '',
+  };
 
   const validatePassword = () => {
     const isValid = password.length >= 8 && password.length <= 64;
@@ -66,62 +65,31 @@ const ResetPasswordPage = () => {
     }
   };
 
-  // const togglePasswordVisibility = field => {
-  //   if (field === 'password') {
-  //     setPasswordVisible(!passwordVisible);
-  //   } else if (field === 'repeatPassword') {
-  //     setRepeatPasswordVisible(!repeatPasswordVisible);
-  //   }
-  // };
-
   return (
-    <div>
-      <Background>
-        <div className="container">
-          <BottleBackground>
-            {/* <FormSection>
+    <Background>
+      <BottleBackground>
+        <FormSection>
           <Formik
             initialValues={initialValues}
             validate={validatePassword}
             onSubmit={handleResetPassword}
           >
-            {({ handleResetPassword, errors, touched }) => (
-              <MainForm> */}
-            <Title>Reset Password</Title>
-            <p>Enter your new password below</p>
-            <div>
-              <Label>Password</Label>
-              <input
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                onBlur={validatePassword}
-              />
-              {passwordError && <p>{passwordError}</p>}
-            </div>
-            <div>
-              <Label>Confirm Password</Label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-                onBlur={validateConfirmPassword}
-              />
-              {passwordError && <p>{passwordError}</p>}
-            </div>
-            {/* <InputContainer> */}
-            {/* <Field
+            {({ handleResetPassword }) => (
+              <MainForm>
+                <Title>Reset Password</Title>
+                <Label>Enter your new password below</Label>
+                <Label>Password</Label>
+                <InputContainer>
+                  <Field
                     as={Input}
                     type={passwordVisible ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
-                    $hasError={touched.password && errors.password}
-                    required
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     onBlur={validatePassword}
                   />
-                  <span onClick={() => togglePasswordVisibility('password')}>
+                  <span onClick={() => setPasswordVisible(!passwordVisible)}>
                     {passwordVisible ? (
                       <EyeIcon>
                         <svg>
@@ -144,21 +112,15 @@ const ResetPasswordPage = () => {
                 <InputContainer>
                   <Field
                     as={Input}
-                    type={repeatPasswordVisible ? 'text' : 'password'}
-                    name="confirmPassword"
+                    type={passwordVisible ? 'text' : 'password'}
+                    name="password"
                     placeholder="Confirm password"
-                    $hasError={
-                      touched.confirmPassword && errors.confirmPassword
-                    }
-                    required
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
                     onBlur={validateConfirmPassword}
                   />
-                  <span
-                    onClick={() => togglePasswordVisibility('repeatPassword')}
-                  >
-                    {repeatPasswordVisible ? (
+                  <span onClick={() => setPasswordVisible(!passwordVisible)}>
+                    {passwordVisible ? (
                       <EyeIcon>
                         <svg>
                           <use href={iconSprite + '#icon-eye'} />
@@ -174,19 +136,18 @@ const ResetPasswordPage = () => {
                   </span>
                 </InputContainer>
                 {passwordError && <MessageError>{passwordError}</MessageError>}
-                {<ErrorMessage name="password" component={MessageError} />} */}
-            <SignInButton type="button" onClick={handleResetPassword}>
-              Reset Password
-            </SignInButton>
-            {notification && <p>{notification}</p>}
-            {/* </MainForm> */}
-            {/* )} */}
-            {/* </Formik>
-        </FormSection> */}
-          </BottleBackground>
-        </div>
-      </Background>
-    </div>
+                {<ErrorMessage name="passweord" component={MessageError} />}
+
+                <SignInButton type="button" onClick={handleResetPassword}>
+                  Reset Password
+                </SignInButton>
+                {notification && <p>{notification}</p>}
+              </MainForm>
+            )}
+          </Formik>
+        </FormSection>
+      </BottleBackground>
+    </Background>
   );
 };
 
