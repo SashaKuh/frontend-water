@@ -76,6 +76,7 @@ height: 44px;
 background-color: var(--primaryWhite);
 border-radius: 30px;
 border: 1px solid var(--secondaryBlue);
+box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 `;
 
 export const WrapHeader = styled.div`
