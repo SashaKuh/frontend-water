@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { OurTeam } from 'components/OurTeam/OurTeam';
 
 export const Layout = () => {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ export const Layout = () => {
   return (
     <>
       <Header />
+      <OurTeam/>
       <Suspense >
         <Outlet />
       </Suspense>

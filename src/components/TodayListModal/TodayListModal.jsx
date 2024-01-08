@@ -3,7 +3,6 @@ import {
     AmountDiv, AmountWrap, BtnSvg, Button, CounterDiv, CounterWrap, Input,
     StyledDatePicker,
     StyledModal, Svg,
-    //  SvgClose,
       TextInput, TextInputTime,
     Title, TitleInput, WrapHeader, WrapSvg
 } from "./TodayListModal.styled"
