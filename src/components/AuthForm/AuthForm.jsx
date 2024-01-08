@@ -36,10 +36,8 @@ const AuthForm = () => {
         signInThunk({ email: values.email, password: values.password })
       );
       if (!response.error) {
-        // console.log('Successful login!');
       }
     } catch (error) {
-      // console.error('Error during login:', error);
     } finally {
       setSubmitting(false);
     }

@@ -21,19 +21,15 @@ export const MainForm = styled(Form)`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    top: 0;
-    left: 0;
     margin-right: auto;
     width: 336px;
-    z-index: 100;
     position: absolute;
   }
 
   @media screen and (min-width: 1440px) {
     width: 384px;
     margin-top: 113px;
-    margin-right: -198px;
-    position: static;
+    margin-right: -190px;
   }
 `;
 export const FormSection = styled.div`
@@ -43,8 +39,8 @@ export const FormSection = styled.div`
 
   @media screen and (min-width: 1440px) {
     display: flex;
-    justify-content: flex-start;
     flex-direction: row-reverse;
+    justify-content: flex-start;
   }
 `;
 export const Input = styled.input`
