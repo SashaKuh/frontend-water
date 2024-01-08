@@ -154,7 +154,7 @@ const ResetPasswordPage = () => {
                 </InputContainer>
                 {passwordError && <MessageError>{passwordError}</MessageError>}
                 {<ErrorMessage name="password" component={MessageError} />}
-                <SignInButton type="submit" disabled={handleResetPassword}>
+                <SignInButton type="button" onClick={handleResetPassword}>
                   Reset Password
                 </SignInButton>
                 {/* {notification && <p>{notification}</p>} */}
