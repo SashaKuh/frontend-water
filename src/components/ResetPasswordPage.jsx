@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ErrorMessage, Formik, Field } from 'formik';
+// import { ErrorMessage, Formik, Field } from 'formik';
 import { toast } from 'react-toastify';
-import iconSprite from '../images/SVG/symbol-defs.svg';
+// import iconSprite from '../images/SVG/symbol-defs.svg';
 import {
   Background,
   BottleBackground,
-  MainForm,
-  FormSection,
-  Input,
-  MessageError,
+  // MainForm,
+  // FormSection,
+  // Input,
+  // MessageError,
   Title,
   Label,
   SignInButton,
-  EyeIcon,
-  InputContainer,
+  // EyeIcon,
+  // InputContainer,
 } from '../components/AuthForm/AuthForm.styled';
 import { resetPassword } from 'services/api/userAPI';
 
-const initialValues = {
-  password: '',
-  confirmPassword: '',
-};
+// const initialValues = {
+//   password: '',
+//   confirmPassword: '',
+// };
 
 const ResetPasswordPage = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  // const [passwordVisible, setPasswordVisible] = useState(false);
+  // const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  // const [notification, setNotification] = useState('');
+  const [notification, setNotification] = useState('');
 
   const navigate = useNavigate();
 
@@ -57,39 +57,60 @@ const ResetPasswordPage = () => {
         const response = await resetPassword(resetToken, password);
         toast.success('Password has been successfully reset');
         console.log(response);
-        // setNotification('Password has been successfully reset.');
+        setNotification('Password has been successfully reset.');
         navigate('/signin');
       } catch (error) {
         console.error('Error resetting password:', error);
-        // setNotification('Error resetting password.');
+        setNotification('Error resetting password.');
       }
     }
   };
 
-  const togglePasswordVisibility = field => {
-    if (field === 'password') {
-      setPasswordVisible(!passwordVisible);
-    } else if (field === 'repeatPassword') {
-      setRepeatPasswordVisible(!repeatPasswordVisible);
-    }
-  };
+  // const togglePasswordVisibility = field => {
+  //   if (field === 'password') {
+  //     setPasswordVisible(!passwordVisible);
+  //   } else if (field === 'repeatPassword') {
+  //     setRepeatPasswordVisible(!repeatPasswordVisible);
+  //   }
+  // };
 
   return (
-    <Background>
-      <BottleBackground>
-        <FormSection>
+    <div>
+      <Background>
+        <div className="container">
+          <BottleBackground>
+            {/* <FormSection>
           <Formik
             initialValues={initialValues}
             validate={validatePassword}
             onSubmit={handleResetPassword}
           >
             {({ handleResetPassword, errors, touched }) => (
-              <MainForm>
-                <Title>Reset Password</Title>
-                <Label>Enter your new password below</Label>
-                <Label>Password</Label>
-                <InputContainer>
-                  <Field
+              <MainForm> */}
+            <Title>Reset Password</Title>
+            <p>Enter your new password below</p>
+            <div>
+              <Label>Password</Label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                onBlur={validatePassword}
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
+            <div>
+              <Label>Confirm Password</Label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+                onBlur={validateConfirmPassword}
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </div>
+            {/* <InputContainer> */}
+            {/* <Field
                     as={Input}
                     type={passwordVisible ? 'text' : 'password'}
                     name="password"
@@ -153,17 +174,19 @@ const ResetPasswordPage = () => {
                   </span>
                 </InputContainer>
                 {passwordError && <MessageError>{passwordError}</MessageError>}
-                {<ErrorMessage name="password" component={MessageError} />}
-                <SignInButton type="button" onClick={handleResetPassword}>
-                  Reset Password
-                </SignInButton>
-                {/* {notification && <p>{notification}</p>} */}
-              </MainForm>
-            )}
-          </Formik>
-        </FormSection>
-      </BottleBackground>
-    </Background>
+                {<ErrorMessage name="password" component={MessageError} />} */}
+            <SignInButton type="button" onClick={handleResetPassword}>
+              Reset Password
+            </SignInButton>
+            {notification && <p>{notification}</p>}
+            {/* </MainForm> */}
+            {/* )} */}
+            {/* </Formik>
+        </FormSection> */}
+          </BottleBackground>
+        </div>
+      </Background>
+    </div>
   );
 };
 
