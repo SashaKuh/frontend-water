@@ -81,7 +81,7 @@ body {
         }
 
     @media screen and (min-width: 1440px) {
-        max-width: 1440px;
+        max-width: 100%;
         
     }
 }
@@ -132,4 +132,25 @@ margin: 0
     position: relative;
     z-index: 5;
   }
+  .cross-btn {
+    padding: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background-color: var(--primaryWhite);
+
+  &:hover {
+    & svg {
+      transform: rotate(-45deg) scale(1.1);
+    }
+  }
+  }
+  .cross-svg {
+    fill: var(--primaryBlue);
+  transform: rotate(45deg);
+  width: 36px;
+  height: 36px;
+  transition: transform var(--animationCubicBezier);
+  }
+
 `;

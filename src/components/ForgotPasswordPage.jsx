@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Formik, Field, ErrorMessage } from 'formik';
 
@@ -14,34 +14,38 @@ import {
   SignInButton,
 } from '../components/AuthForm/AuthForm.styled';
 import { requestResetPassword } from 'services/api/userAPI';
-import { signUpSchema } from '../schemas/SignUpSchema';
+
 const initialValues = {
   email: '',
 };
 
 const ForgotPasswordPage = () => {
-  // const [email, setEmail] = useState('');
-  // const [emailError, setEmailError] = useState('');
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   // const [notification, setNotification] = useState('');
 
-  // const validateEmail = values => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   const isValid = emailRegex.test(values.email);
-  //   return isValid ? {} : { email: 'Enter a valid email' };
-  // };
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(email);
 
-  const handleSend = async values => {
-    const response = await requestResetPassword(values.email);
-    console.log(response.ok);
-    toast.success('Confirmation email has been sent!');
+    setEmailError(isValid ? '' : 'Enter a valid email');
+    return isValid;
+  };
 
-    // if (response.ok) {
-    //   setNotification(
-    //     'Instructions for submitting a password reset have been sent to your email.'
-    //   );
-    // } else {
-    //   setNotification(`Error: ${response.message}`);
-    // }
+  const handleSend = async () => {
+    if (validateEmail()) {
+      const response = await requestResetPassword(email);
+      console.log(response.ok);
+      toast.success('Confirmation email has been sent!');
+
+      // if (response.ok) {
+      //   setNotification(
+      //     'Instructions for submitting a password reset have been sent to your email.'
+      //   );
+      // } else {
+      //   setNotification(`Error: ${response.message}`);
+      // }
+    }
   };
 
   return (
@@ -51,7 +55,7 @@ const ForgotPasswordPage = () => {
           <Formik
             initialValues={initialValues}
             onSubmit={handleSend}
-            validationSchema={signUpSchema}
+            validate={validateEmail}
           >
             {({ handleSend, errors, touched }) => (
               <MainForm>
@@ -65,11 +69,16 @@ const ForgotPasswordPage = () => {
                     placeholder="E-mail"
                     $hasError={touched.email && errors.email}
                     required
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    onBlur={() => {
+                      validateEmail();
+                    }}
                   />
-
+                  {emailError && <MessageError>{emailError}</MessageError>}
                   {<ErrorMessage name="email" component={MessageError} />}
                 </div>
-                <SignInButton type="submit" disabled={handleSend}>
+                <SignInButton type="submit" onSubmit={handleSend}>
                   Send
                 </SignInButton>
               </MainForm>

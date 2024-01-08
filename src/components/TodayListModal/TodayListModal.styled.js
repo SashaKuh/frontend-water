@@ -42,11 +42,11 @@ margin-bottom: 24px;
 `;
 
 export const BtnSvg = styled.button`
-padding: 0;
+/* padding: 0;
 width: 36px;
 height: 36px;
 border: none;
-background-color: var(--primaryWhite);
+background-color: var(--primaryWhite); */
 
 @media (min-width: 768px) and (max-width: 1439px){
     top: 36px; 
@@ -54,12 +54,12 @@ background-color: var(--primaryWhite);
   }
 `;
 
-export const SvgClose = styled.svg`
-fill: var(--primaryBlue);
-transform: rotate(45deg); 
-width: 36px;
-height: 36px;
-`;
+// export const SvgClose = styled.svg`
+// fill: var(--primaryBlue);
+// transform: rotate(45deg); 
+// width: 36px;
+// height: 36px;
+// `;
 
 export const Svg = styled.svg`
 fill: var(--primaryBlue);
@@ -76,6 +76,7 @@ height: 44px;
 background-color: var(--primaryWhite);
 border-radius: 30px;
 border: 1px solid var(--secondaryBlue);
+box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 `;
 
 export const WrapHeader = styled.div`

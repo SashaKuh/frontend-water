@@ -10,7 +10,7 @@ import {
   StyledDatePicker,
   StyledModal,
   Svg,
-  SvgClose,
+  //   SvgClose,
   TextInput,
   TextInputTime,
   Title,
@@ -83,10 +83,10 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
     >
       <WrapHeader>
         <Title>Add water</Title>
-        <BtnSvg type="button" onClick={handleCloseModal}>
-          <SvgClose>
+        <BtnSvg className="cross-btn" type="button" onClick={handleCloseModal}>
+          <svg className="cross-svg">
             <use xlinkHref={`${sprite}#icon-plus-small`} />
-          </SvgClose>
+          </svg>
         </BtnSvg>
       </WrapHeader>
       <form onSubmit={handleSubmit}>
