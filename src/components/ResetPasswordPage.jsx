@@ -83,7 +83,7 @@ const ResetPasswordPage = () => {
             validate={validatePassword}
             onSubmit={handleResetPassword}
           >
-            {({ handleResetPassword, errors, touched, values }) => (
+            {({ handleResetPassword, errors, touched }) => (
               <MainForm>
                 <Title>Reset Password</Title>
                 <Label>Enter your new password below</Label>
