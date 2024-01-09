@@ -61,8 +61,8 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
 
   const handleSubmit = async evt => {
     evt.preventDefault();
-    if (waterVolume < 0 || waterVolume > 1500) {
-      return toast.error('You can enter value from 0 to 1500');
+    if (waterVolume < 1 || waterVolume > 1500) {
+      return toast.error('You can enter value from 1 to 1500');
     }
     if (waterVolume > 0) {
       dispatch(addWaterOperation({ waterVolume, date: startDate }));
