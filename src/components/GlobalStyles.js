@@ -39,7 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: 250ms linear;
-
+  overflow: auto;
 }
 .container {
   padding-top: 86px;

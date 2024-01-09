@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 
 import { DailyNormaModal } from "components/DailyNormaModal/DailyNormaModal";
@@ -8,6 +8,18 @@ export const DailyNorma = () => {
     const dailyNorma = useSelector(state => state.auth.user.dailyNorma);
 
     const [modalIsOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const body = document.body;
+        if (modalIsOpen) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+        return () => {
+            body.style.overflow = 'auto';
+        };
+    }, [modalIsOpen]);
     
     const water = (dailyNorma / 1000).toFixed(1)
     const openModal = () => {

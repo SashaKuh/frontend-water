@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import iconSprite from '../../../images/SVG/symbol-defs.svg';
 import {
   RangeAndAddWater,
@@ -20,6 +20,18 @@ export const WaterRatioPanel = () => {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector(selectModalAdd);
   const sliderValue = useSelector(selectNewCompleted);
+
+  useEffect(() => {
+        const body = document.body;
+        if (modalIsOpen) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+        return () => {
+            body.style.overflow = 'auto';
+        };
+    }, [modalIsOpen]);
 
   const progress = (sliderValue / 100) * 100;
 
