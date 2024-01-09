@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
+
 import iconSprite from '../images/SVG/symbol-defs.svg';
 import {
   Background,
@@ -23,7 +24,6 @@ const ResetPasswordPage = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [notification, setNotification] = useState('');
 
   const navigate = useNavigate();
 
@@ -53,14 +53,12 @@ const ResetPasswordPage = () => {
   const handleResetPassword = async () => {
     if (validatePassword() && validateConfirmPassword()) {
       try {
-        const response = await resetPassword(resetToken, password);
+        await resetPassword(resetToken, password);
         toast.success('Password has been successfully reset');
 
-        setNotification('Password has been successfully reset.');
-        navigate('/signin');
+        navigate('/');
       } catch (error) {
-        console.error('Error resetting password:', error);
-        setNotification('Error resetting password.');
+        toast.error('User with this email not found!');
       }
     }
   };
@@ -141,7 +139,6 @@ const ResetPasswordPage = () => {
                 <SignInButton type="button" onClick={handleResetPassword}>
                   Reset Password
                 </SignInButton>
-                {notification && <p>{notification}</p>}
               </MainForm>
             )}
           </Formik>
