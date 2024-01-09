@@ -27,8 +27,8 @@ export const editWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.todayList = state.todayList.map(element => {
-        if (element._id === _id) {
-         return { _id, waterVolume, date };
+                if (element._id === _id) {
+                return { _id, waterVolume, date };
          } 
         return element;
         }); 
@@ -36,5 +36,5 @@ export const editWaterFulfilled = (state, action) => {
 export const deleteWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todayList = state.todayList.filter(element => element._id !== action.payload._id);  
+        state.todayList = state.todayList.filter(element => element._id !== action.payload);  
 };

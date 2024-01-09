@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   WaterItem,
   WaterText,
@@ -12,10 +12,22 @@ import {
   CupIcon,
 } from './TodayItem.styled';
 import { EditModal } from '../EditModal/EditModal.jsx';
-import { Modal } from 'components/Modal/Modal';
+import { DeleteModal } from 'components/Modal/DeleteModal';
 import sprite from '../../images/SVG/symbol-defs.svg';
-import { deleteWaterOperation, getWaterOperation, getMonthWaterOperation } from '../../redux/water/waterOperations';
-import { ButtonCancel, ButtonRed, ButtonsWrapper, SecondTitleModal } from '../Modal/Modal.styled';
+import { deleteWaterOperation } from '../../redux/water/waterOperations';
+import {
+  ButtonCancel,
+  ButtonRed,
+  ButtonsWrapper,
+  SecondTitleModal,
+} from '../Modal/DeleteModal.styled';
+import { selectModalDelete, selectModalEdit } from '../../redux/selectors';
+import {
+  closeModalDelete,
+  closeModalEdit,
+  openModalDelete,
+  openModalEdit,
+} from '../../redux/modal/modalSlice';
 
 const editIcon = `${sprite}#icon-pencil`;
 const delIcon = `${sprite}#icon-trash`;
@@ -23,30 +35,34 @@ const glassIcon = `${sprite}#cup`;
 
 const TodayItem = ({ id, water, date }) => {
   const dispatch = useDispatch();
-  const time = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
-  const [isEditModalOpen, setEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const time = `${date.getHours()}:${date
+    .getMinutes()
+    .toString()
+    .padStart(2, '0')}`;
 
-  const openModal = (modalType) => () => {
+  const isEditModalOpen = useSelector(selectModalEdit) === id;
+  const isDeleteModalOpen = useSelector(selectModalDelete) === id;
+
+  const openModal = modalType => () => {
     switch (modalType) {
       case 'edit':
-        setEditModalOpen(true);
+        dispatch(openModalEdit(id));
         break;
       case 'delete':
-        setDeleteModalOpen(true);
+        dispatch(openModalDelete(id));
         break;
       default:
         break;
     }
   };
 
-  const closeModal = (modalType) => () => {
+  const closeModal = modalType => () => {
     switch (modalType) {
       case 'edit':
-        setEditModalOpen(false);
+        dispatch(closeModalEdit());
         break;
       case 'delete':
-        setDeleteModalOpen(false);
+        dispatch(closeModalDelete());
         break;
       default:
         break;
@@ -54,10 +70,8 @@ const TodayItem = ({ id, water, date }) => {
   };
 
   const handleDelete = async () => {
-    await dispatch(deleteWaterOperation(id));
-    await dispatch(getWaterOperation(new Date()));
-    await dispatch(getMonthWaterOperation(new Date()));
-    setDeleteModalOpen(false);
+    dispatch(deleteWaterOperation(id));
+    dispatch(closeModalDelete());
   };
 
   return (
@@ -81,15 +95,26 @@ const TodayItem = ({ id, water, date }) => {
         </ButtonTrash>
       </ConfigIcons>
 
-      <EditModal modalIsOpen={isEditModalOpen} closeModal={closeModal('edit')} id={id} date={time} waterMl={water} />
+      <EditModal 
+         modalIsOpen={isEditModalOpen}
+         closeModal={closeModal('edit')}
+         id={id}
+         date={time}
+         waterMl={water} />
 
-      <Modal isOpen={isDeleteModalOpen} onRequestClose={closeModal('delete')} titleText="Delete Confirmation">
-        <SecondTitleModal>Do you really want to delete this item?</SecondTitleModal>
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onRequestClose={closeModal('delete')}
+        titleText="Delete Confirmation"
+      >
+        <SecondTitleModal>
+          Do you really want to delete this item?
+        </SecondTitleModal>
         <ButtonsWrapper>
           <ButtonCancel onClick={closeModal('delete')}>Cancel</ButtonCancel>
           <ButtonRed onClick={handleDelete}>Delete</ButtonRed>
         </ButtonsWrapper>
-      </Modal>
+      </DeleteModal>
     </WaterItem>
   );
 };
