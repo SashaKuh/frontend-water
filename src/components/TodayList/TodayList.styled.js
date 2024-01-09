@@ -40,12 +40,34 @@ font-size: 16px;
 line-height: 1.25;
 color: var(--primaryBlue);
 font-weight: 500;
-transition: color 250ms linear;
+transition: color 0ms linear;
 
 
 &:hover {
   color: var(--secondaryOrange);
 }
+
+& span {
+    color: transparent;
+    overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      var(--secondaryOrange) 0%,
+      var(--secondaryOrange) 50%,
+      var(--primaryBlue) 50%,
+      var(--primaryBlue) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-position var(--animationCubicBezier);
+  }
+  &:hover {
+    & span {
+      background-position: 0 100%;
+    }
+  }
 
 @media screen and (min-width: 320px) {
        width: 97px;
@@ -54,6 +76,9 @@ transition: color 250ms linear;
         @media screen and (min-width: 768px) {
         width: 114px;
         }
+
+
+
 `
 
 export const SvgPlus = styled.svg`

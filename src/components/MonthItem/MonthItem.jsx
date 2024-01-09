@@ -17,10 +17,12 @@ export const MonthItem = ({
   servings,
   modal,
   setModal,
+  isCurrentMonth,
 }) => {
   const day = date.split(' ')[1];
-  const isToday = day === new Date().getDate().toString();
+  const isToday = day === new Date().getDate().toString() && isCurrentMonth;
   const newCompleted = useSelector(selectNewCompleted);
+  const newCompletedFormat = newCompleted >= 100 ? 100 : newCompleted;
   const dispatch = useDispatch();
   const Button = completed >= 100 ? DayButtonFull : DayButtonPart;
   const completedFormat = completed >= 100 ? 100 : completed;
@@ -42,7 +44,7 @@ export const MonthItem = ({
         {day}
       </Button>
       <DayCompleted>{`${
-        isToday ? newCompleted : completedFormat
+        isToday ? newCompletedFormat : completedFormat
       }%`}</DayCompleted>
     </MonthItemStyled>
   );
