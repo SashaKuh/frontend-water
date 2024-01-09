@@ -24,12 +24,8 @@ const initialValues = {
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-<<<<<<< Updated upstream
 
   const navigate = useNavigate();
-=======
-  const [notification, setNotification] = useState('');
->>>>>>> Stashed changes
 
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,7 +37,6 @@ const ForgotPasswordPage = () => {
 
   const handleSend = async () => {
     if (validateEmail()) {
-<<<<<<< Updated upstream
       
       try {
         await requestResetPassword(email);
@@ -49,18 +44,6 @@ const ForgotPasswordPage = () => {
         toast.success('Confirmation email has been sent!');
       } catch (error) {
         toast.error('User with this email not found!')
-=======
-      const response = await requestResetPassword(email);
-
-      toast.success('Confirmation email has been sent!');
-
-      if (response.ok) {
-        setNotification(
-          'Instructions for submitting a password reset have been sent to your email.'
-        );
-      } else {
-        setNotification(`Error: ${response.message}`);
->>>>>>> Stashed changes
       }
     }
   };
