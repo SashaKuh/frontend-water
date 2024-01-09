@@ -17,15 +17,6 @@ border-radius: 10px;
 font-size: 16px;
 line-height: 1.2;
 box-sizing: border-box;
-&::-webkit-scrollbar {
-  width: 4px; 
-}
-&::-webkit-scrollbar-thumb {
-  width: 1px;
-  height: 100px;
-  background-color: var(--secondaryBlue);
-  border-radius: 10px; 
-}
 
 @media (min-width: 1440px) {
     width: 592px;

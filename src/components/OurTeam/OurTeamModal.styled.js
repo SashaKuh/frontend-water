@@ -16,15 +16,6 @@ overflow: auto;
 width: 200px;
 max-height: 80%;
 border: 2px solid var(--secondaryDarkGrey);
-&::-webkit-scrollbar {
-  width: 4px; 
-}
-&::-webkit-scrollbar-thumb {
-  width: 1px;
-  height: 100px;
-  background-color: var(--secondaryBlue);
-  border-radius: 10px; 
-}
 
 @media (min-width: 1440px) {
     width: 640px;
