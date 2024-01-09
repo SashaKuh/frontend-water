@@ -15,6 +15,8 @@ import {
 } from '../components/AuthForm/AuthForm.styled';
 import { requestResetPassword } from 'services/api/userAPI';
 
+import { useNavigate } from 'react-router-dom';
+
 const initialValues = {
   email: '',
 };
@@ -22,7 +24,8 @@ const initialValues = {
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  // const [notification, setNotification] = useState('');
+
+  const navigate = useNavigate();
 
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -34,17 +37,14 @@ const ForgotPasswordPage = () => {
 
   const handleSend = async () => {
     if (validateEmail()) {
-      const response = await requestResetPassword(email);
-
-      toast.success('Confirmation email has been sent!');
-
-      // if (response.ok) {
-      //   setNotification(
-      //     'Instructions for submitting a password reset have been sent to your email.'
-      //   );
-      // } else {
-      //   setNotification(`Error: ${response.message}`);
-      // }
+      
+      try {
+        await requestResetPassword(email);
+        navigate('/');
+        toast.success('Confirmation email has been sent!');
+      } catch (error) {
+        toast.error('User with this email not found!')
+      }
     }
   };
 
@@ -89,4 +89,4 @@ const ForgotPasswordPage = () => {
     </Background>
   );
 };
-export default ForgotPasswordPage;
+export default ForgotPasswordPage

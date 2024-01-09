@@ -1,12 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   DayButtonFull,
   DayButtonPart,
   DayCompleted,
   MonthItemStyled,
 } from './MonthItem.styled';
-import DayDetails from 'components/DayDetails/DayDetails';
-import { useDispatch, useSelector } from 'react-redux';
+import { DayDetails } from 'components/DayDetails/DayDetails';
 import { selectNewCompleted } from '../../redux/selectors';
 
 export const MonthItem = ({

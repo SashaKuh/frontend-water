@@ -5,7 +5,6 @@ export const MonthTitle = styled.h3`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
- 
 `
 
 export const DatePicker = styled.div`

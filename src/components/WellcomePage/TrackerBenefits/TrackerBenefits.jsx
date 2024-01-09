@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import {
   BenefitsList,
   BenefitsItems,
@@ -48,5 +49,3 @@ export const TrackerBenefits = () => {
     </Container>
   );
 };
-
-export default TrackerBenefits;

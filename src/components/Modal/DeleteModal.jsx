@@ -1,8 +1,6 @@
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
-  // BtnSvg,
   ReactModalStyled,
-  // SvgClose,
   Title,
   WrapHeader,
 } from './DeleteModal.styled';

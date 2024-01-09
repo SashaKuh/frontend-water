@@ -1,3 +1,8 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { Oval } from 'react-loader-spinner';
+
 import { useFormik } from 'formik';
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
@@ -6,7 +11,6 @@ import {
   StyledSettingModal,
   Title,
   BtnSvg,
-  // SvgClose,
   WrapHeader,
   ImgWrapper,
   ImgAvatar,
@@ -34,15 +38,12 @@ import {
   MessageError,
   Label,
 } from './SettingModal.styled';
-import { useState } from 'react';
 import { SettingModalSchema } from 'schemas/SettingModalSchema';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   updateAvatarThunk,
   updateThunk,
 } from '../../redux/users/usersOperations';
-import { toast } from 'react-toastify';
-import { Oval } from 'react-loader-spinner';
+
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
   const avatarUrl = useSelector(state => state.auth.user.avatarURL);

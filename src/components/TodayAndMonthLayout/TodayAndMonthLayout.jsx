@@ -1,9 +1,9 @@
 import React from 'react';
 import { TaDLayout } from './TodayAndMonthLayout.styled';
-import TodayList from 'components/TodayList/TodayList';
-import MonthList from 'components/MonthList/MonthList';
+import { TodayList } from 'components/TodayList/TodayList';
+import { MonthList } from 'components/MonthList/MonthList';
 
-const TodayAndMonthLayout = () => {
+export const TodayAndMonthLayout = () => {
   return (
     <TaDLayout>
       <TodayList />
@@ -11,5 +11,3 @@ const TodayAndMonthLayout = () => {
     </TaDLayout>
   );
 };
-
-export default TodayAndMonthLayout;

@@ -1,6 +1,5 @@
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
-  // BtnSvg,
   StyledRadioGroup,
   StyledRadioInput,
   StyledRadioLabel,
@@ -21,7 +20,6 @@ import {
   AmountNumberInfo,
   Button,
   StyledReactModal,
-  // SvgClose,
   WrapHeader,
   MessageError,
 } from './DailyNormaModal.styled.js';

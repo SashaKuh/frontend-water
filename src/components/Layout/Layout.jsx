@@ -29,7 +29,6 @@ export const Layout = () => {
       <Suspense >
         <Outlet />
       </Suspense>
-      {/* Backdrop з лоадером */}
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loading}

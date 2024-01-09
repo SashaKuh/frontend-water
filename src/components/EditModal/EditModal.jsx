@@ -9,7 +9,6 @@ import {
     WrapHeader,
     Title,
     BtnSvg,
-    // SvgClose,
     CounterWrap,
     Button,
     TitleInput,
@@ -63,7 +62,6 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
 
     const handleCloseModal = () => {
         closeModal();
-        // setWaterVolume(0);
         setStartDate(new Date());
     };
 

@@ -1,3 +1,7 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
   AmountDiv,
@@ -10,7 +14,6 @@ import {
   StyledDatePicker,
   StyledModal,
   Svg,
-  //   SvgClose,
   TextInput,
   TextInputTime,
   Title,
@@ -18,10 +21,7 @@ import {
   WrapHeader,
   WrapSvg,
 } from './TodayListModal.styled';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { addWaterOperation } from '../../redux/water/waterOperations';
-import { toast } from 'react-toastify';
 import { disabledTime } from 'helpers/disabledTime';
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {

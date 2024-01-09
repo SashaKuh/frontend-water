@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+
 import {
   TodayTitle,
   AddLink,
@@ -6,7 +7,7 @@ import {
   WaterList,
   TodayListContainer,
 } from './TodayList.styled';
-import TodayItem from 'components/TodayItem/TodayItem';
+import { TodayItem } from 'components/TodayItem/TodayItem';
 import sprite from '../../images/SVG/symbol-defs.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWaterOperation } from '../../redux/water/waterOperations';
@@ -15,7 +16,7 @@ import { openModalAdd } from '../../redux/modal/modalSlice';
 
 const plusIcon = `${sprite}#icon-plus-small`;
 
-const TodayList = () => {
+export const TodayList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,5 +47,3 @@ const TodayList = () => {
     </TodayListContainer>
   );
 };
-
-export default TodayList;

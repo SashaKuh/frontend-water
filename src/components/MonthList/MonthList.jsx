@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import {
   MonthTitle,
   DatePicker,
@@ -19,7 +20,7 @@ import {selectDailyNorma} from '../../redux/selectors'
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
 
-const MonthList = () => {
+export const MonthList = () => {
   const [date, setDate] = useState(new Date());
   const dispatch = useDispatch();
   const dailyNorma = useSelector(selectDailyNorma);
@@ -112,4 +113,3 @@ const months = [
   'December',
 ];
 
-export default MonthList;

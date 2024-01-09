@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-
-
-
 export const TodayListContainer = styled.div`
 margin-bottom: 24px;
 
@@ -99,7 +96,6 @@ overflow-x: hidden;
 }
 
 &::-webkit-scrollbar-track {
-  /* width: 2px; */
   background-color: var(--secondaryDarkGrey);
  border: 1px solid transparent;
     background-clip: content-box;

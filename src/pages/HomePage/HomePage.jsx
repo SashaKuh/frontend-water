@@ -1,8 +1,9 @@
 import { DailyNorma } from 'components/Homepage/DailyNorma';
 import { ImageOfBottle } from 'components/Homepage/ImageOfBottle/ImageOfBottle';
-import TodayAndMonthLayout from 'components/TodayAndMonthLayout/TodayAndMonthLayout';
+import { TodayAndMonthLayout } from 'components/TodayAndMonthLayout/TodayAndMonthLayout';
 import { WaterRatioPanel } from 'components/Homepage/WaterRatioPanel/WaterRatioPanel';
 import { LeftSideDiv, AllSidesDiv, StyledBackground } from './HomePage.styled';
+
 const HomePage = () => {
   return (
     <StyledBackground className='static-background'>

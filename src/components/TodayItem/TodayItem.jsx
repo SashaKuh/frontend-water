@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   WaterItem,
   WaterText,
@@ -33,7 +34,7 @@ const editIcon = `${sprite}#icon-pencil`;
 const delIcon = `${sprite}#icon-trash`;
 const glassIcon = `${sprite}#cup`;
 
-const TodayItem = ({ id, water, date }) => {
+export const TodayItem = ({ id, water, date }) => {
   const dispatch = useDispatch();
   const time = `${date.getHours()}:${date
     .getMinutes()
@@ -119,4 +120,3 @@ const TodayItem = ({ id, water, date }) => {
   );
 };
 
-export default TodayItem;

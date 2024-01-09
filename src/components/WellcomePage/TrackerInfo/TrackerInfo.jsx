@@ -1,6 +1,5 @@
 import {
   InfoItems,
-  // InfoList,
   TrackerInfoContainer,
   SubTitle,
 } from './TrackerInfo.styled';

@@ -15,9 +15,9 @@ import { TodayListModal } from 'components/TodayListModal/TodayListModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectModalAdd, selectNewCompleted } from '../../../redux/selectors';
 import { openModalAdd, closeModalAdd } from '../../../redux/modal/modalSlice';
+
 export const WaterRatioPanel = () => {
   const dispatch = useDispatch();
-
   const modalIsOpen = useSelector(selectModalAdd);
   const sliderValue = useSelector(selectNewCompleted);
 

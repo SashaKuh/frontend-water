@@ -1,10 +1,12 @@
-import { DailyNormaModal } from "components/DailyNormaModal/DailyNormaModal";
-import { Button, Text, TextWater, Wrap, BtnWrap } from "./DailyNorma.styled.js";
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 
+import { DailyNormaModal } from "components/DailyNormaModal/DailyNormaModal";
+import { Button, Text, TextWater, Wrap, BtnWrap } from "./DailyNorma.styled.js";
+
 export const DailyNorma = () => {
-    const dailyNorma = useSelector(state => state.auth.user.dailyNorma)
+    const dailyNorma = useSelector(state => state.auth.user.dailyNorma);
+
     const [modalIsOpen, setIsOpen] = useState(false);
     
     const water = (dailyNorma / 1000).toFixed(1)

@@ -28,7 +28,7 @@ const initialValues = {
   repeatPassword: '',
 };
 
-const SignUpForm = () => {
+export const SignUpForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
   const navigate = useNavigate();
@@ -172,5 +172,3 @@ const SignUpForm = () => {
     </Background>
   );
 };
-
-export default SignUpForm;

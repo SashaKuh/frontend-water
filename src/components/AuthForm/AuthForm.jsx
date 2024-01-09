@@ -26,7 +26,7 @@ const initialValues = {
   password: '',
 };
 
-const AuthForm = () => {
+export const AuthForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const dispatch = useDispatch();
 
@@ -115,4 +115,3 @@ const AuthForm = () => {
     </Background>
   );
 };
-export default AuthForm;

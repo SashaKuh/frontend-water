@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 
 const plusIcon = `${sprite}#icon-plus-small`;
 
-const DayDetails = ({
+export const DayDetails = ({
   date,
   dailyNorma,
   completed,
@@ -82,4 +82,4 @@ const DayDetails = ({
   );
 };
 
-export default DayDetails;
+

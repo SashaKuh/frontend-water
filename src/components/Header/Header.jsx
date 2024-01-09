@@ -1,8 +1,9 @@
-import logo from '../../images/Logo.svg';
-import iconSprite from '../../images/SVG/symbol-defs.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import logo from '../../images/Logo.svg';
+import iconSprite from '../../images/SVG/symbol-defs.svg';
 import {
   UserAuth,
   HeaderContainer,

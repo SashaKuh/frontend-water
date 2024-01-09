@@ -13,8 +13,8 @@ export const TaDLayout = styled.div`
         }
 
     @media screen and (min-width: 768px) {
-       width: 704px;
-       padding: 32px 24px;
+        width: 704px;
+        padding: 32px 24px;
         }
 
     @media screen and (min-width: 1440px) {

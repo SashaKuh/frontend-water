@@ -14,8 +14,8 @@ export const ImageOfBottle = () => {
           ${bottleDesktop} 1400w
         `.trim()}
         sizes="(min-width: 1441px) 1440px,
-               (min-width: 769px) 768px,
-               (max-width: 320px) 100vw
+              (min-width: 769px) 768px,
+              (max-width: 320px) 100vw
 "
         alt="bottle"
       />
