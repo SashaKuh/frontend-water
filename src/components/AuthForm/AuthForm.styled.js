@@ -13,12 +13,14 @@ export const Title = styled.h1`
   font-weight: 500;
   font-size: 26px;
   line-height: 32px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 `;
 
 export const MainForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 16px;
 
   @media screen and (min-width: 768px) {
     margin-right: auto;
@@ -28,7 +30,7 @@ export const MainForm = styled(Form)`
 
   @media screen and (min-width: 1440px) {
     width: 384px;
-    margin-top: 113px;
+    padding-top: 113px;
     margin-right: -190px;
   }
 `;
@@ -51,7 +53,7 @@ export const Input = styled.input`
   font-size: 16px;
   padding: 12px 10px;
   line-height: 20px;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   &::placeholder {
     color: var(--secondaryBlue);
   }
@@ -105,7 +107,6 @@ export const Label = styled.label`
   font-family: 'Roboto-regular';
   color: var(--primaryBlack);
   display: block;
-  margin-bottom: 8px;
   font-size: 18px;
   line-height: 24px;
 `;
@@ -117,17 +118,16 @@ export const PageLink = styled(Link)`
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
-  margin-top: 16px;
+  /* margin-top: 16px; */
   &:hover,
   &:focus {
     color: var(--secondaryOrange);
+    transition: color 0.3s ease;
   }
 `;
 
 export const MessageError = styled.div`
   color: var(--secondaryRed);
-  margin-bottom: 8px;
-  margin-top: -10px;
   @media screen and (min-width: 768px) {
     width: 336px;
   }
@@ -146,6 +146,7 @@ export const EyeIcon = styled.svg`
   fill: none;
   width: 16px;
   height: 16px;
+  margin-top: 4px;
 `;
 
 export const InputContainer = styled.div`
@@ -203,8 +204,19 @@ export const BottleBackground = styled.div`
   }
 `;
 
-export const LinkNav = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: fit-content;
+// export const LinkNav = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   max-width: fit-content;
+// `;
+
+export const LableContainer = styled.div`
+font-size: 18px;
+    line-height: calc(1.33333);
+    color: rgb(47, 47, 47);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
 `;

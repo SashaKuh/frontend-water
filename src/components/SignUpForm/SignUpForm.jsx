@@ -17,7 +17,6 @@ import {
   Background,
   BottleBackground,
   FormSection,
-  LinkNav,
 } from '../AuthForm/AuthForm.styled';
 
 import { signUpThunk } from '../../redux/users/usersOperations';
@@ -161,9 +160,9 @@ export const SignUpForm = () => {
                 <SignInButton type="submit" disabled={isSubmitting}>
                   Sign Up
                 </SignInButton>
-                <LinkNav>
-                  <PageLink to="/signin">Sign In</PageLink>
-                </LinkNav>
+                
+                  <PageLink to="/signin">Sign in</PageLink>
+                
               </MainForm>
             )}
           </Formik>

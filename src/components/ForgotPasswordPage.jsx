@@ -12,6 +12,8 @@ import {
   MessageError,
   Label,
   SignInButton,
+  PageLink,
+  LableContainer
 } from '../components/AuthForm/AuthForm.styled';
 import { requestResetPassword } from 'services/api/userAPI';
 
@@ -60,7 +62,7 @@ const ForgotPasswordPage = () => {
             {({ handleSend, errors, touched }) => (
               <MainForm>
                 <Title>Forgot Password</Title>
-                <div>
+                <LableContainer>
                   <Label htmlFor="email">Enter your email</Label>
                   <Field
                     as={Input}
@@ -77,10 +79,13 @@ const ForgotPasswordPage = () => {
                   />
                   {emailError && <MessageError>{emailError}</MessageError>}
                   {<ErrorMessage name="email" component={MessageError} />}
-                </div>
+                </LableContainer>
                 <SignInButton type="submit" onSubmit={handleSend}>
                   Send
                 </SignInButton>
+
+                <PageLink to="/signin">Sign in</PageLink>
+
               </MainForm>
             )}
           </Formik>
