@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMonthWaterOperation } from '../../redux/water/waterOperations';
 import { selectManthList, selectModalDetails } from '../../redux/selectors';
 import { setModalDetails } from '../../redux/modal/modalSlice';
-import {selectDailyNorma} from '../../redux/selectors'
+import { selectDailyNorma } from '../../redux/selectors';
 
 const iconArrow = `${sprite}#icon-chevron-double-up`;
 
@@ -79,6 +79,7 @@ export const MonthList = () => {
             dailyNorma={item.dailyNorma}
             modal={modalDetails}
             setModal={setModalDetails}
+            isCurrentMonth={isCurrentMonth}
           />
         ))}
       </MonthListStyled>
@@ -112,4 +113,3 @@ const months = [
   'November',
   'December',
 ];
-

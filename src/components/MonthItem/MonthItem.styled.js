@@ -16,7 +16,6 @@ text-align: center;
 width: 32px;
 height: 32px;
 background-color: var(--primaryWhite);
-padding: 7px 6px;
 border: 0;
 border-radius: 20px;
 border-color: var(--primaryWhite);
@@ -32,7 +31,6 @@ transition: background-color 200ms linear;
                 height: 34px;
                 font-size: 16px;
                 line-height: 1.25;
-                padding: 7px;
         }
 
 `
@@ -44,7 +42,6 @@ export const DayButtonPart = styled.button`
         width: 32px;
         height: 32px;
         background-color: var(--primaryWhite);
-        padding: 7px 6px;
         border: 1px solid var(--secondaryOrange);
         border-radius: 20px;
         margin-bottom: 4px;
@@ -60,7 +57,6 @@ export const DayButtonPart = styled.button`
         height: 34px;
         font-size: 16px;
         line-height: 1.25;
-        padding: 7px;
         }
 
 `
