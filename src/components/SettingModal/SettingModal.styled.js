@@ -54,24 +54,12 @@ margin-bottom: 24px;
 `;
 
 export const BtnSvg = styled.button`
-/* padding: 0;
-width: 36px;
-height: 36px;
-border: none;
-background-color: var(--primaryWhite); */
 
 @media (min-width: 768px) and (max-width: 1439px){
     top: 36px; 
     right: 24px;
   }
 `;
-
-// export const SvgClose = styled.svg`
-// fill: var(--primaryBlue);
-// transform: rotate(45deg); 
-// width: 36px;
-// height: 36px;
-// `;
 
 export const WrapHeader = styled.div`
 display: flex;
