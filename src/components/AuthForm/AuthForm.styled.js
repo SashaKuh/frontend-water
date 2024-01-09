@@ -6,6 +6,8 @@ import bottleBackgroundTab from '../../images/PNG/images-tablet/origin/btl_for_s
 import bottleBackgroundDesc from '../../images/PNG/images-desktop/origin/btl_for_sign_in.png';
 import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_sign_in.png';
 import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
+import bottleBgSolo from '../../images/PNG/images-desktop/btl_home_screen.png'
+import bgForTablet from '../../images/PNG/images-tablet/bg_el_home_screen.png'
 
 export const Title = styled.h1`
   font-family: 'Roboto-Medium';
@@ -188,9 +190,9 @@ export const BottleBackground = styled.div`
   background-position: center bottom;
 
   @media screen and (min-width: 768px) {
-    
+    background-image: url(${bottleBgSolo});
     background-position: 80px center;
-    background-image: none;
+    /* background-image: none; */
     width: 736px;
     height: 548px;
   }
@@ -219,7 +221,7 @@ height: 100vh;
   background-size: 100%;
 
   @media screen and (min-width: 768px) {
-    background-image: url(${bottleBackgroundTab});
+    background-image: url(${bgForTablet});
   }
 
   @media screen and (min-width: 1440px) {
