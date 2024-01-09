@@ -246,4 +246,9 @@ export const AllSidesDiv = styled.div`
 display: flex;
 gap:32px;
 }
-`
+
+  @media only screen and (max-width: 1439px) {
+    padding-bottom: 40px;
+  };
+  
+`;

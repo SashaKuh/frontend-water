@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field } from 'formik';
 import { toast } from 'react-toastify';
 
 import iconSprite from '../images/SVG/symbol-defs.svg';
@@ -38,7 +38,7 @@ const ResetPasswordPage = () => {
     const isValid = password.length >= 8 && password.length <= 64;
 
     setPasswordError(
-      isValid ? '' : 'Password must be at least 6 characters long'
+      isValid ? '' : 'Password must be at least 8 characters long'
     );
     return isValid;
   };
@@ -58,7 +58,7 @@ const ResetPasswordPage = () => {
 
         navigate('/');
       } catch (error) {
-        toast.error('User with this email not found!');
+        toast.error('Error resetting password');
       }
     }
   };
@@ -72,8 +72,8 @@ const ResetPasswordPage = () => {
             validate={validatePassword}
             onSubmit={handleResetPassword}
           >
-            {({ handleResetPassword }) => (
-              <MainForm>
+            {({ handleSubmit }) => (
+              <MainForm onSubmit={handleSubmit}>
                 <Title>Reset Password</Title>
                 <Label>Enter your new password below</Label>
                 <Label>Password</Label>
@@ -104,14 +104,12 @@ const ResetPasswordPage = () => {
                   </span>
                 </InputContainer>
                 {passwordError && <MessageError>{passwordError}</MessageError>}
-                {<ErrorMessage name="passweord" component={MessageError} />}
-
                 <Label>Confirm Password</Label>
                 <InputContainer>
                   <Field
                     as={Input}
                     type={passwordVisible ? 'text' : 'password'}
-                    name="password"
+                    name="confirmPassword"
                     placeholder="Confirm password"
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
@@ -134,8 +132,6 @@ const ResetPasswordPage = () => {
                   </span>
                 </InputContainer>
                 {passwordError && <MessageError>{passwordError}</MessageError>}
-                {<ErrorMessage name="passweord" component={MessageError} />}
-
                 <SignInButton type="button" onClick={handleResetPassword}>
                   Reset Password
                 </SignInButton>

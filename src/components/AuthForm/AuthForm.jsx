@@ -15,7 +15,7 @@ import {
   InputContainer,
   Background,
   BottleBackground,
-  LinkNav,
+  // LinkNav,
   FormSection,
   Layout,
 } from './AuthForm.styled';
@@ -105,10 +105,10 @@ export const AuthForm = () => {
                 <SignInButton type="submit" disabled={isSubmitting}>
                   Sign In
                 </SignInButton>
-                <LinkNav>
-                  <PageLink to="/forgot-password">Forgot password?</PageLink>
-                  <PageLink to="/signup">Sign Up</PageLink>
-                </LinkNav>
+                
+                <PageLink to="/forgot-password">Forgot password?</PageLink>
+                <PageLink to="/signup">Sign up</PageLink>
+                
               </MainForm>
             )}
           </Formik>

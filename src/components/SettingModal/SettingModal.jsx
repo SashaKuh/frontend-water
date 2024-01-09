@@ -61,7 +61,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     confirmPassword: false,
   });
   const dispatch = useDispatch();
-
+  
   const formik = useFormik({
     initialValues: {
       username,
