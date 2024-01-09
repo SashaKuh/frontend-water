@@ -22,6 +22,7 @@ export const UserAuth = styled.button`
   padding: 10px 0;
 
   & span {
+    display: block;
     font-family: 'Roboto-regular';
     font-size: 16px;
 
@@ -43,11 +44,28 @@ export const UserAuth = styled.button`
     background-clip: text;
 
     transition: background-position var(--animationCubicBezier);
+
+    &::after {
+      display: block;
+      content: '';
+
+      width: 100%;
+      height: 2px;
+      border-radius: 1px;
+      background-color: var(--secondaryOrange);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform var(--animationCubicBezier);
+    }
   }
 
   &:hover {
     & span {
       background-position: 0 100%;
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 `;
