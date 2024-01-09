@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
 export const Wrap = styled.div` 
-padding-left: 20px;
-padding-top: 8px;
-width: 164px;
-border-radius: 10px;
-border: 1px solid var(--secondaryGrey);
-box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
-font-family: 'Roboto-regular';
-height: 74px;
-margin-bottom:8px;
-position:static;
+  display: inline-block;
+  border-radius: 10px;
+  border: 1px solid var(--secondaryGrey);
+  background: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
+  padding: 8px 20px;
+  margin-bottom: 8px;
+  position:static;
 
 @media (min-width: 768px){
 position:absolute;    
