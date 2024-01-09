@@ -22,3 +22,7 @@ export const StyledContainer = styled.div`
   border-radius: 10px;
 background: var(--Secondary-color-2, #ECF2FF);
 `;
+
+export const StyledForm = styled.form`
+  padding-top: 24px;
+`;

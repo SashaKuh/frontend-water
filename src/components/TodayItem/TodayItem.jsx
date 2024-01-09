@@ -81,7 +81,7 @@ const TodayItem = ({ id, water, date }) => {
         </ButtonTrash>
       </ConfigIcons>
 
-      <EditModal modalIsOpen={isEditModalOpen} closeModal={closeModal('edit')} id={id} date={time} />
+      <EditModal modalIsOpen={isEditModalOpen} closeModal={closeModal('edit')} id={id} date={time} waterMl={water} />
 
       <Modal isOpen={isDeleteModalOpen} onRequestClose={closeModal('delete')} titleText="Delete Confirmation">
         <SecondTitleModal>Do you really want to delete this item?</SecondTitleModal>
