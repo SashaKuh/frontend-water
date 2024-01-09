@@ -41,10 +41,11 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
       gender: '',
       weight: '',
       time: '',
-      dailyNorma: amount,
+      dailyNorma: '',
     },
     validationSchema: DailyNormaModalSchema,
     onSubmit: async values => {
+      console.log(values.dailyNorma)
       let waterNorma = amount * 1000;
       if (values.dailyNorma > 0) {
         waterNorma = values.dailyNorma * 1000;
@@ -69,6 +70,8 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
       const dailyNorma = {
         dailyNorma: waterNorma,
       };
+
+      console.log(dailyNorma)
       try {
         await dispatch(updateWaterThunk({ dailyNorma, token }));
         handleCloseModal();
@@ -128,6 +131,11 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
   };
 
   const handleInputChange = evt => {
+    formik.handleChange(evt);    
+  };
+
+  const handleChange = evt => {
+    formik.values.dailyNorma = 0;
     formik.handleChange(evt);
   };
 
@@ -250,10 +258,10 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         <Input
           name="dailyNorma"
           type="text"
-          value={formik.values.dailyNorma ? formik.values.dailyNorma : amount}
-          onChange={handleInputChange}
+          value={formik.values.dailyNorma}
+          onChange={handleChange}
           $hasError={formik.touched.dailyNorma && formik.errors.dailyNorma}
-          placeholder="0"
+          placeholder={amount}
         />
         {formik.touched.dailyNorma && formik.errors.dailyNorma ? (
           <MessageError>{formik.errors.dailyNorma}</MessageError>
