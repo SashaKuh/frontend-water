@@ -35,7 +35,7 @@ const ForgotPasswordPage = () => {
   const handleSend = async () => {
     if (validateEmail()) {
       const response = await requestResetPassword(email);
-      console.log(response.ok);
+
       toast.success('Confirmation email has been sent!');
 
       // if (response.ok) {

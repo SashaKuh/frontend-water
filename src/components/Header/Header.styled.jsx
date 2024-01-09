@@ -22,9 +22,51 @@ export const UserAuth = styled.button`
   padding: 10px 0;
 
   & span {
+    display: block;
     font-family: 'Roboto-regular';
     font-size: 16px;
-    color: var(--primaryBlue);
+
+    color: transparent;
+    overflow: hidden;
+
+    background: linear-gradient(
+      90deg,
+      var(--secondaryOrange) 0%,
+      var(--secondaryOrange) 50%,
+      var(--primaryBlue) 50%,
+      var(--primaryBlue) 100%
+    );
+
+    background-size: 200% 100%;
+    background-position: 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    transition: background-position var(--animationCubicBezier);
+
+    &::after {
+      display: block;
+      content: '';
+
+      width: 100%;
+      height: 1px;
+      border-radius: 1px;
+      background-color: var(--secondaryOrange);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform var(--animationCubicBezier);
+    }
+  }
+
+  &:hover {
+    & span {
+      background-position: 0 100%;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
   }
 `;
 

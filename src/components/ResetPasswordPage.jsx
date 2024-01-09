@@ -55,7 +55,7 @@ const ResetPasswordPage = () => {
       try {
         const response = await resetPassword(resetToken, password);
         toast.success('Password has been successfully reset');
-        console.log(response);
+
         setNotification('Password has been successfully reset.');
         navigate('/signin');
       } catch (error) {
