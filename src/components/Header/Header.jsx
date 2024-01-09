@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../images/Logo.svg';
@@ -29,6 +29,18 @@ export const Header = () => {
   const [logoutModalIsOpen, setLogoutModalIsOpen] = useState(false);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(false);
   const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
+
+  useEffect(() => {
+        const body = document.body;
+        if (settingModalIsOpen) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+        return () => {
+            body.style.overflow = 'auto';
+        };
+    }, [settingModalIsOpen]);
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
