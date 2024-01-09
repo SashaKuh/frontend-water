@@ -105,10 +105,10 @@ const TodayItem = ({ id, water, date }) => {
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onRequestClose={closeModal('delete')}
-        titleText="Delete Confirmation"
+        titleText="Delete entry"
       >
         <SecondTitleModal>
-          Do you really want to delete this item?
+        Are you sure you want to delete the entry?
         </SecondTitleModal>
         <ButtonsWrapper>
           <ButtonCancel onClick={closeModal('delete')}>Cancel</ButtonCancel>
