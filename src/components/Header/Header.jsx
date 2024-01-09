@@ -16,9 +16,9 @@ import { DeleteModal } from 'components/Modal/DeleteModal';
 import {
   ButtonCancel,
   ButtonRed,
-  ButtonsWrapper,
   SecondTitleModal,
 } from 'components/Modal/DeleteModal.styled';
+import { ButtonsWrapperLogOut } from 'components/Modal/logOutModal.styled';
 import { signOutThunk } from '../../redux/users/usersOperations';
 
 export const Header = () => {
@@ -87,7 +87,7 @@ export const Header = () => {
             titleText="Log out"
           >
             <SecondTitleModal>Do you really want to leave?</SecondTitleModal>
-            <ButtonsWrapper>
+            <ButtonsWrapperLogOut>
               <ButtonCancel onClick={() => setLogoutModalIsOpen(false)}>
                 Cancel
               </ButtonCancel>
@@ -99,7 +99,7 @@ export const Header = () => {
               >
                 Log out
               </ButtonRed>
-            </ButtonsWrapper>
+            </ButtonsWrapperLogOut>
           </DeleteModal>
         </UserLogoWrapper>
       ) : (

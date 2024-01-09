@@ -206,6 +206,9 @@ border:none;
 background-color:var(--primaryBlue);
 color:var(--primaryWhite);
 box-shadow: 0px 4px 8px 0px #407BFF57;
+&:hover,
+  &:focus {
+    box-shadow: 0px 4px 14px 0px #407bff;}
 @media (min-width: 320px) {
   width:280px;
     }

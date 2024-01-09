@@ -37,6 +37,8 @@ export const WrapHeader = styled.div`
   justify-content: space-between;
 `;
 
+
+
 export const SecondTitleModal = styled.h3`
   font-family: 'Roboto-regular';
   font-size: 18px;
@@ -44,7 +46,7 @@ export const SecondTitleModal = styled.h3`
   margin-bottom: 24px;
 `;
 
-export const ButtonsWrapper = styled.div`
+export const ButtonsWrapperLogOut = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -54,10 +56,10 @@ export const ButtonsWrapper = styled.div`
     justify-content: flex-end;
   }
 
-  /* @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
     justify-content: flex-start;
-  } */
+  }
 `;
 
 export const ButtonRed = styled.button`
