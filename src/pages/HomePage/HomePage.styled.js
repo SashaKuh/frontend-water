@@ -161,6 +161,7 @@ export const PercentageOfRange = styled.div`
   letter-spacing: 0em;
   text-align: center;
   color:var(--primaryBlue);
+  left: 4px;
 &::before {
     content: "";
     position: absolute;
