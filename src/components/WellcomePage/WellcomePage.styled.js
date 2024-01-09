@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import bg_main_page from '../../images/PNG/images-mobile/bg_main_page.png';
 import bg_tabl from '../../images/PNG/images-tablet/bg_main_page.png';
 import bg_desk from '../../images/PNG/images-desktop/bg_main_page.png';
+import bg_el from '../../images/PNG/images-desktop/bg_el_main_page.png'
 
 export const Tracker = styled.div`
   padding-bottom: 40px;
@@ -31,6 +32,8 @@ export const WellcomeLayout = styled.section`
   }
 
   @media screen and (min-width: 1440px) {
-    background-image: url(${bg_desk});
+    background-image: url(${bg_desk}),url(${bg_el});
+    background-blend-mode: multiply;
   }
+  
 `;
