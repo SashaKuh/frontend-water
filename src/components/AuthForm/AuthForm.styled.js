@@ -146,7 +146,7 @@ export const EyeIcon = styled.svg`
   fill: none;
   width: 16px;
   height: 16px;
-  margin-top: 4px;
+  margin-top: 5px;
 `;
 
 export const InputContainer = styled.div`
