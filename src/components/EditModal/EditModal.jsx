@@ -22,7 +22,7 @@ import {
     StyledDatePicker,
     AmountDiv,
 } from '../TodayListModal/TodayListModal.styled';
-import { CounterDiv, StyledContainer } from './EditModal.styled';
+import { CounterDiv, StyledContainer, StyledForm } from './EditModal.styled';
 import {
     CupIcon,
     WaterText,
@@ -31,9 +31,8 @@ import {
 import { disabledTime } from 'helpers/disabledTime';
 
 const glassIcon = `${sprite}#cup`;
-
-export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
-    const [waterVolume, setWaterVolume] = useState(0);
+export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
+    const [waterVolume, setWaterVolume] = useState(waterMl);
     const [startDate, setStartDate] = useState(new Date());
     const dispatch = useDispatch();
 
@@ -64,7 +63,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
 
     const handleCloseModal = () => {
         closeModal();
-        setWaterVolume(0);
+        // setWaterVolume(0);
         setStartDate(new Date());
     };
 
@@ -107,7 +106,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
                 <WaterText>{`${waterVolume} ml`}</WaterText>
                 <TimeText>{date}</TimeText>
             </StyledContainer>
-            <form onSubmit={handleSubmit}>
+            <StyledForm onSubmit={handleSubmit}>
                 <TitleInput>Correct entered data:</TitleInput>
                 <TextInput>Amount of water:</TextInput>
                 <CounterWrap>
@@ -146,7 +145,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id }) => {
                     <AmountDiv>{waterVolume} ml</AmountDiv>
                     <Button type="submit">Save</Button>
                 </AmountWrap>
-            </form>
+            </StyledForm>
         </StyledModal>
     );
 };

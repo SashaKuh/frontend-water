@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ErrorMessage, Formik, Field } from 'formik';
-import iconSprite from '../images/SVG/symbol-defs.svg';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { toast } from 'react-toastify';
-
+import iconSprite from '../images/SVG/symbol-defs.svg';
 import {
   Background,
   BottleBackground,
@@ -18,74 +17,53 @@ import {
   InputContainer,
 } from '../components/AuthForm/AuthForm.styled';
 import { resetPassword } from 'services/api/userAPI';
-import { signUpSchema } from '../schemas/SignUpSchema';
-
-const initialValues = {
-  password: '',
-  repeatPassword: '',
-};
 
 const ResetPasswordPage = () => {
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
-  // const [passwordError, setPasswordError] = useState('');
-  // const [notification, setNotification] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [repeatPasswordVisible, setRepeatPasswordVisible] = useState(false);
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [notification, setNotification] = useState('');
+
   const navigate = useNavigate();
+
   const { resetToken } = useParams();
 
-  // const validatePassword = () => {
-  //   const isValid = password.length >= 8 && password.length <= 64;
-
-  //   setPasswordError(
-  //     isValid ? '' : 'Password must be at least 6 characters long'
-  //   );
-  //   return isValid;
-  // };
-
-  // const validateConfirmPassword = () => {
-  //   const isValid = confirmPassword === password;
-
-  //   setPasswordError(isValid ? '' : 'Passwords do not match');
-  //   return isValid;
-  // };
-
-  const handleResetPassword = async values => {
-    try {
-      const response = await resetPassword(resetToken, values.password);
-      toast.success('Password has been successfully reset');
-      console.log(response);
-      // setNotification('Password has been successfully reset.');
-      navigate('/signin');
-    } catch (error) {
-      console.error('Error resetting password:', error);
-      // setNotification('Error resetting password.');
-    }
+  const initialValues = {
+    password: '',
+    confirmPassword: '',
   };
 
-  const togglePasswordVisibility = field => {
-    if (field === 'password') {
-      setPasswordVisible(!passwordVisible);
-    } else if (field === 'repeatPassword') {
-      setRepeatPasswordVisible(!repeatPasswordVisible);
+  const validatePassword = () => {
+    const isValid = password.length >= 8 && password.length <= 64;
+
+    setPasswordError(
+      isValid ? '' : 'Password must be at least 6 characters long'
+    );
+    return isValid;
+  };
+
+  const validateConfirmPassword = () => {
+    const isValid = confirmPassword === password;
+
+    setPasswordError(isValid ? '' : 'Passwords do not match');
+    return isValid;
+  };
+
+  const handleResetPassword = async () => {
+    if (validatePassword() && validateConfirmPassword()) {
+      try {
+        const response = await resetPassword(resetToken, password);
+        toast.success('Password has been successfully reset');
+
+        setNotification('Password has been successfully reset.');
+        navigate('/signin');
+      } catch (error) {
+        console.error('Error resetting password:', error);
+        setNotification('Error resetting password.');
+      }
     }
   };
-  // const validatePassword = values => {
-  //   const errors = {};
-  //   if (values.password.length < 8 || values.password.length > 64) {
-  //     errors.password = 'Password must be between 8 and 64 characters long';
-  //   }
-  //   return errors;
-  // };
-
-  // const validateConfirmPassword = values => {
-  //   const errors = {};
-  //   if (values.confirmPassword !== values.password) {
-  //     errors.confirmPassword = 'Passwords do not match';
-  //   }
-  //   return errors;
-  // };
 
   return (
     <Background>
@@ -93,10 +71,10 @@ const ResetPasswordPage = () => {
         <FormSection>
           <Formik
             initialValues={initialValues}
-            validationSchema={signUpSchema}
+            validate={validatePassword}
             onSubmit={handleResetPassword}
           >
-            {({ handleResetPassword, errors, touched }) => (
+            {({ handleResetPassword }) => (
               <MainForm>
                 <Title>Reset Password</Title>
                 <Label>Enter your new password below</Label>
@@ -107,10 +85,11 @@ const ResetPasswordPage = () => {
                     type={passwordVisible ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
-                    $hasError={touched.password && errors.password}
-                    required
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    onBlur={validatePassword}
                   />
-                  <span onClick={() => togglePasswordVisibility('password')}>
+                  <span onClick={() => setPasswordVisible(!passwordVisible)}>
                     {passwordVisible ? (
                       <EyeIcon>
                         <svg>
@@ -126,22 +105,22 @@ const ResetPasswordPage = () => {
                     )}
                   </span>
                 </InputContainer>
-                {<ErrorMessage name="password" component={MessageError} />}
+                {passwordError && <MessageError>{passwordError}</MessageError>}
+                {<ErrorMessage name="passweord" component={MessageError} />}
 
-                <Label>Confirm password</Label>
+                <Label>Confirm Password</Label>
                 <InputContainer>
                   <Field
                     as={Input}
-                    type={repeatPasswordVisible ? 'text' : 'password'}
-                    name="repeatPassword"
+                    type={passwordVisible ? 'text' : 'password'}
+                    name="password"
                     placeholder="Confirm password"
-                    $hasError={touched.repeatPassword && errors.repeatPassword}
-                    required
+                    value={confirmPassword}
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    onBlur={validateConfirmPassword}
                   />
-                  <span
-                    onClick={() => togglePasswordVisibility('repeatPassword')}
-                  >
-                    {repeatPasswordVisible ? (
+                  <span onClick={() => setPasswordVisible(!passwordVisible)}>
+                    {passwordVisible ? (
                       <EyeIcon>
                         <svg>
                           <use href={iconSprite + '#icon-eye'} />
@@ -156,16 +135,13 @@ const ResetPasswordPage = () => {
                     )}
                   </span>
                 </InputContainer>
-                {
-                  <ErrorMessage
-                    name="repeatPassword"
-                    component={MessageError}
-                  />
-                }
-                <SignInButton type="submit" disabled={handleResetPassword}>
+                {passwordError && <MessageError>{passwordError}</MessageError>}
+                {<ErrorMessage name="passweord" component={MessageError} />}
+
+                <SignInButton type="button" onClick={handleResetPassword}>
                   Reset Password
                 </SignInButton>
-                {/* {notification && <p>{notification}</p>} */}
+                {notification && <p>{notification}</p>}
               </MainForm>
             )}
           </Formik>

@@ -95,12 +95,12 @@ const TodayItem = ({ id, water, date }) => {
         </ButtonTrash>
       </ConfigIcons>
 
-      <EditModal
-        modalIsOpen={isEditModalOpen}
-        closeModal={closeModal('edit')}
-        id={id}
-        date={time}
-      />
+      <EditModal 
+         modalIsOpen={isEditModalOpen}
+         closeModal={closeModal('edit')}
+         id={id}
+         date={time}
+         waterMl={water} />
 
       <DeleteModal
         isOpen={isDeleteModalOpen}

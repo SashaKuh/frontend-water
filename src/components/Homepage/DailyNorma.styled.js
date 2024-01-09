@@ -43,9 +43,34 @@ color: #8BAEFF;
 border: none;
 background-color:var(--primaryWhite);
 outline: none;
-&:hover {
-    color: var(--secondaryOrange);
+span {
+    color: transparent;
+    overflow: hidden;
+
+    background: linear-gradient(
+      90deg,
+      var(--secondaryOrange) 0%,
+      var(--secondaryOrange) 50%,
+      var(--primaryBlue) 50%,
+      var(--primaryBlue) 100%
+    );
+
+    background-size: 200% 100%;
+    background-position: 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    transition: background-position var(--animationCubicBezier);
   }
+
+  &:hover {
+    & span {
+      background-position: 0 100%;
+    }
+  }
+
+
 `;
 
 export const BtnWrap = styled.div`

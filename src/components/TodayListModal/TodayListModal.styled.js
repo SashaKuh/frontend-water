@@ -42,24 +42,11 @@ margin-bottom: 24px;
 `;
 
 export const BtnSvg = styled.button`
-/* padding: 0;
-width: 36px;
-height: 36px;
-border: none;
-background-color: var(--primaryWhite); */
-
 @media (min-width: 768px) and (max-width: 1439px){
     top: 36px; 
     right: 24px;
   }
 `;
-
-// export const SvgClose = styled.svg`
-// fill: var(--primaryBlue);
-// transform: rotate(45deg); 
-// width: 36px;
-// height: 36px;
-// `;
 
 export const Svg = styled.svg`
 fill: var(--primaryBlue);
@@ -111,7 +98,6 @@ width: 100%;
 height: 36px;
 color: var(--primaryWhite);
 font-size: 16px;
-font-family: 'Roboto-Medium';
 line-height: 1.3;
 border-radius: 10px;
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);

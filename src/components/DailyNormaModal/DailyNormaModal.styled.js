@@ -37,21 +37,6 @@ display: flex;
 justify-content: space-between;
 `;
 
-// export const BtnSvg = styled.button`
-// height: 24px;
-// padding: 0;
-// border: none;
-// background-color: var(--primaryWhite);
-
-// `;
-
-// export const SvgClose = styled.svg`
-// fill: var(--primaryBlue);
-// transform: rotate(45deg); 
-// width: 36px;
-// height: 36px;
-// `;
-
 export const StyledRadioGroup = styled.div`
   display: flex;
   flex-direction: row;
