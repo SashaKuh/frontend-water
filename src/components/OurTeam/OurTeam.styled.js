@@ -20,7 +20,7 @@ font-family: 'Roboto-Medium';
 line-height: 1.3;
 box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   &:hover {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54)
+    box-shadow: 1px 1px 15px 6px rgba(64, 123, 255, 0.54);
   }
 
   &:focus {
