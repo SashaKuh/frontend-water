@@ -22,7 +22,7 @@ import {
     StyledDatePicker,
     AmountDiv,
 } from '../TodayListModal/TodayListModal.styled';
-import { CounterDiv, StyledContainer } from './EditModal.styled';
+import { CounterDiv, StyledContainer, StyledForm } from './EditModal.styled';
 import {
     CupIcon,
     WaterText,
@@ -106,7 +106,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
                 <WaterText>{`${waterVolume} ml`}</WaterText>
                 <TimeText>{date}</TimeText>
             </StyledContainer>
-            <form onSubmit={handleSubmit}>
+            <StyledForm onSubmit={handleSubmit}>
                 <TitleInput>Correct entered data:</TitleInput>
                 <TextInput>Amount of water:</TextInput>
                 <CounterWrap>
@@ -145,7 +145,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
                     <AmountDiv>{waterVolume} ml</AmountDiv>
                     <Button type="submit">Save</Button>
                 </AmountWrap>
-            </form>
+            </StyledForm>
         </StyledModal>
     );
 };
