@@ -12,7 +12,6 @@ height: 74px;
 margin-bottom:8px;
 position:static;
 
-
 @media (min-width: 768px){
 position:absolute;    
 height: 76px;
@@ -69,8 +68,6 @@ span {
       background-position: 0 100%;
     }
   }
-
-
 `;
 
 export const BtnWrap = styled.div`

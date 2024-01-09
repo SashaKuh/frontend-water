@@ -31,6 +31,15 @@ font-size: 18px;
 line-height: 1.1;
 font-family: 'Roboto-Medium';
 box-sizing: border-box;
+&::-webkit-scrollbar {
+  width: 4px; 
+}
+&::-webkit-scrollbar-thumb {
+  width: 1px;
+  height: 100px;
+  background-color: var(--secondaryBlue);
+  border-radius: 10px; 
+}
 
 @media (min-width: 1440px) {
     width: 1008px;
