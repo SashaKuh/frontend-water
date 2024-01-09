@@ -2,8 +2,8 @@ import { lazy, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactModal from 'react-modal';
-
 import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import { PrivateRoute } from './privateRoute';
