@@ -4,8 +4,7 @@ export const DailyNormaModalSchema = Yup.object().shape({
     gender: Yup.string().required('Gender is required'),
     weight: Yup.number('Must be number').positive('Number must be positive').min(1)
         .required('Weight is required'),
-    time: Yup.number('Must be number').max(24, 'Time must not be greater than 24')
+    time: Yup.number().typeError('Must be a number').max(24, 'Time must not be greater than 24')
         .min(0).nullable(),
-    dailyNorma: Yup.number('Must be number')
-        .required('Field is required'),
+    dailyNorma: Yup.number().typeError('Must be a number'),
 })
