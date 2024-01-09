@@ -16,15 +16,10 @@ import ResetPasswordPage from '../components/ResetPasswordPage.jsx';
 ReactModal.setAppElement('#modal-root');
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const WelcomePage = lazy(() =>
-  import('../pages/WellcomePage/WellcomePage.jsx')
-); // Corrected typo
+const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); 
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-const ForgotPasswordPage = lazy(() =>
-  import('../components/ForgotPasswordPage.jsx')
-);
-// const ResetPasswordPage = lazy(() => ('../components/ResetPasswordPage.jsx'))
+const ForgotPasswordPage = lazy(() => import('../components/ForgotPasswordPage.jsx'));
 
 export const App = () => {
   const dispatch = useDispatch();
