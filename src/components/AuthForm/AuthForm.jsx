@@ -17,6 +17,7 @@ import {
   BottleBackground,
   LinkNav,
   FormSection,
+  Layout,
 } from './AuthForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
 import { signInThunk } from '../../redux/users/usersOperations';
@@ -48,6 +49,7 @@ export const AuthForm = () => {
   };
 
   return (
+    <Layout className='static-background'>
     <Background>
       <BottleBackground>
         <FormSection>
@@ -113,5 +115,6 @@ export const AuthForm = () => {
         </FormSection>
       </BottleBackground>
     </Background>
+    </Layout>
   );
 };
