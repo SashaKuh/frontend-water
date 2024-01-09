@@ -71,7 +71,6 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         dailyNorma: waterNorma,
       };
 
-      console.log(dailyNorma)
       try {
         await dispatch(updateWaterThunk({ dailyNorma, token }));
         handleCloseModal();
@@ -132,11 +131,6 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
 
   const handleInputChange = evt => {
     formik.handleChange(evt);    
-  };
-
-  const handleChange = evt => {
-    formik.values.dailyNorma = 0;
-    formik.handleChange(evt);
   };
 
   return (
@@ -259,7 +253,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
           name="dailyNorma"
           type="text"
           value={formik.values.dailyNorma}
-          onChange={handleChange}
+          onChange={handleInputChange}
           $hasError={formik.touched.dailyNorma && formik.errors.dailyNorma}
           placeholder={amount}
         />
