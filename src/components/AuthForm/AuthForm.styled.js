@@ -6,6 +6,8 @@ import bottleBackgroundTab from '../../images/PNG/images-tablet/origin/btl_for_s
 import bottleBackgroundDesc from '../../images/PNG/images-desktop/origin/btl_for_sign_in.png';
 import backgroundImgMob from '../../images/PNG/images-mobile/bg_el_sign_in.png';
 import backgroundImgDesc from '../../images/PNG/images-desktop/bg_el_main_page.png';
+import bottleBgSolo from '../../images/PNG/images-desktop/btl_home_screen.png'
+import bgForTablet from '../../images/PNG/images-tablet/bg_el_home_screen.png'
 
 export const Title = styled.h1`
   font-family: 'Roboto-Medium';
@@ -154,26 +156,26 @@ export const InputContainer = styled.div`
   display: inline-block;
 `;
 export const Background = styled.main`
-  background-image: url(${backgroundImgMob});
+  /* background-image: url(${backgroundImgMob}); */
   padding-left: 20px;
   padding-right: 20px;
   margin-right: auto;
   margin-left: auto;
   width: 320px;
   padding-top: 86px;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+  /* background-repeat: no-repeat;
+  background-position: center bottom; */
 
   @media screen and (min-width: 768px) {
-    background-image: url(${bottleBackgroundTab});
+    /* background-image: url(${bottleBackgroundTab}); */
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
-    background-position: center;
+    /* background-position: center; */
   }
 
   @media screen and (min-width: 1440px) {
-    background-image: url(${backgroundImgDesc});
+    /* background-image: url(${backgroundImgDesc}); */
     width: 1440px;
     padding-left: 112px;
     padding-right: 112px;
@@ -189,8 +191,9 @@ export const BottleBackground = styled.div`
   background-position: center bottom;
 
   @media screen and (min-width: 768px) {
+    background-image: url(${bottleBgSolo});
     background-position: 80px center;
-    background-image: none;
+    /* background-image: none; */
     width: 736px;
     height: 548px;
   }
@@ -203,6 +206,24 @@ export const BottleBackground = styled.div`
     min-height: 680px;
   }
 `;
+
+
+export const Layout = styled.div`
+height: 100vh;
+  background-image: url(${backgroundImgMob});
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(${bgForTablet});
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundImgDesc});
+  }
+`
 
 // export const LinkNav = styled.div`
 //   display: flex;

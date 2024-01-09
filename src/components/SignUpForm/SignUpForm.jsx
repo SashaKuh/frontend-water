@@ -17,6 +17,7 @@ import {
   Background,
   BottleBackground,
   FormSection,
+  Layout,
 } from '../AuthForm/AuthForm.styled';
 
 import { signUpThunk } from '../../redux/users/usersOperations';
@@ -63,6 +64,7 @@ export const SignUpForm = () => {
   };
 
   return (
+    <Layout className='static-background'>
     <Background>
       <BottleBackground>
         <FormSection>
@@ -169,5 +171,6 @@ export const SignUpForm = () => {
         </FormSection>
       </BottleBackground>
     </Background>
+    </Layout>
   );
 };
