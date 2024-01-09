@@ -13,21 +13,17 @@ font-size: 16px;
 line-height: 1.1;
 box-sizing: border-box;
 overflow: auto;
-width: 280px;
+width: 200px;
 max-height: 80%;
 border: 2px solid var(--secondaryDarkGrey);
 
 @media (min-width: 1440px) {
-    width: 540px;
-    padding: 32px 24px;
+    width: 640px;
   }
 
 @media (min-width: 768px) and (max-width: 1439px){
-    width: 540px;
+    width: 640px;
     padding: 32px 24px;
-  }
-@media (min-width: 320px) and (max-width: 767px){
-    width: 260px;
   }
   &.ReactModal__Overlay--after-open {
     border: none;
