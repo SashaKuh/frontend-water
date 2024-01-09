@@ -50,7 +50,7 @@ export const UserAuth = styled.button`
       content: '';
 
       width: 100%;
-      height: 2px;
+      height: 1px;
       border-radius: 1px;
       background-color: var(--secondaryOrange);
       transform-origin: left;
