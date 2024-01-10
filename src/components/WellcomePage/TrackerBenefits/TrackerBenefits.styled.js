@@ -64,10 +64,10 @@ export const MainTitle = styled.h1`
 `;
 
 export const SubTitle = styled.h2`
-  font-family: 'Roboto-Medium';
   font-size: var(--fontSizesMedium);
   line-height: 1.11;
   margin-bottom: 12px;
+  color: var(--Primery-Color-Black, #2F2F2F);
 `;
 
 export const Icon = styled.svg`

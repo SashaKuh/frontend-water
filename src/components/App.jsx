@@ -5,12 +5,11 @@ import ReactModal from 'react-modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PrivateRoute } from './privateRoute';
-import { PublicRoute } from './publicRoute';
+import {PrivateRoute, PublicRoute} from '../guards/index' 
 
 import { Layout } from './Layout/Layout.jsx';
 import { refreshUserThunk } from '../redux/users/usersOperations.js';
-import ResetPasswordPage from '../components/ResetPasswordPage.jsx';
+import ResetPasswordPage from '../pages/ResetPasswordPage/ResetPasswordPage.jsx';
 
 ReactModal.setAppElement('#modal-root');
 
@@ -18,7 +17,7 @@ const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const WelcomePage = lazy(() => import('../pages/WellcomePage/WellcomePage.jsx')); 
 const SignUpPage = lazy(() => import('../pages/SignUpPage/SignUpPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage/SignInPage'));
-const ForgotPasswordPage = lazy(() => import('../components/ForgotPasswordPage.jsx'));
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPasswordPage/ForgotPasswordPage.jsx'));
 
 export const App = () => {
   const dispatch = useDispatch();

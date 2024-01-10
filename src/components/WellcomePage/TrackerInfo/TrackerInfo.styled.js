@@ -17,11 +17,11 @@ export const TrackerInfoContainer = styled.div`
 `;
 
 export const SubTitle = styled.h2`
-  font-family: 'Roboto-Medium';
   font-size: 18px;
   line-height: 1.11;
 
   margin-bottom: 12px;
+  color: #2F2F2F;
 `;
 
 export const InfoItems = styled.li`
