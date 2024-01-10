@@ -70,7 +70,8 @@ export const ButtonRed = styled.button`
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   transition: box-shadow var(--animationCubicBezier);
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
   }
 
@@ -93,6 +94,13 @@ export const ButtonCancel = styled.button`
   border: none;
   background-color: var(--secondaryDarkGrey);
   color: var(--primaryBlue);
+
+  transition: box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
 
   @media screen and (min-width: 768px) {
     width: 160px;
