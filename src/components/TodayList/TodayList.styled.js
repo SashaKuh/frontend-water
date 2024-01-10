@@ -41,7 +41,7 @@ export const AddLink = styled.button`
   color: var(--primaryBlue);
   font-weight: 500;
   transition: color 0ms linear;
-
+  align-items: center;
   &:hover {
     color: var(--secondaryOrange);
   }
