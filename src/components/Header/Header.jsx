@@ -32,7 +32,7 @@ export const Header = () => {
 
   useEffect(() => {
         const body = document.body;
-        if (settingModalIsOpen) {
+        if (settingModalIsOpen || logoutModalIsOpen) {
             body.style.overflow = 'hidden';
         } else {
             body.style.overflow = 'auto';
@@ -40,7 +40,7 @@ export const Header = () => {
         return () => {
             body.style.overflow = 'auto';
         };
-    }, [settingModalIsOpen]);
+    }, [logoutModalIsOpen, settingModalIsOpen]);
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
