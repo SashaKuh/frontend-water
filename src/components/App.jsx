@@ -5,8 +5,7 @@ import ReactModal from 'react-modal';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PrivateRoute } from './privateRoute';
-import { PublicRoute } from './publicRoute';
+import {PrivateRoute, PublicRoute} from '../guards/index' 
 
 import { Layout } from './Layout/Layout.jsx';
 import { refreshUserThunk } from '../redux/users/usersOperations.js';
