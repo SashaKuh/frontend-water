@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -35,9 +35,21 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl }) => {
   const hours = startDate.getHours().toString().padStart(2, '0');
   const minutes = startDate.getMinutes().toString().padStart(2, '0');
 
-  const increment = () => {
-    setWaterVolume(state => state + 50);
-  };
+    useEffect(() => {
+        const body = document.body;
+        if (modalIsOpen) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+        return () => {
+            body.style.overflow = 'auto';
+        };
+    }, [modalIsOpen]);
+
+    const increment = () => {
+        setWaterVolume((state) => state + 50);
+    };
 
   const decrement = () => {
     setWaterVolume(state => state - 50);
