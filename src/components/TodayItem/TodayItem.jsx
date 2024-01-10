@@ -96,12 +96,13 @@ export const TodayItem = ({ id, water, date }) => {
         </ButtonTrash>
       </ConfigIcons>
 
-      <EditModal 
-         modalIsOpen={isEditModalOpen}
-         closeModal={closeModal('edit')}
-         id={id}
-         date={time}
-         waterMl={water} />
+      <EditModal
+        modalIsOpen={isEditModalOpen}
+        closeModal={closeModal('edit')}
+        id={id}
+        date={date}
+        waterMl={water}
+      />
 
       <DeleteModal
         isOpen={isDeleteModalOpen}
@@ -109,7 +110,7 @@ export const TodayItem = ({ id, water, date }) => {
         titleText="Delete entry"
       >
         <SecondTitleModal>
-        Are you sure you want to delete the entry?
+          Are you sure you want to delete the entry?
         </SecondTitleModal>
         <ButtonsWrapper>
           <ButtonCancel onClick={closeModal('delete')}>Cancel</ButtonCancel>
@@ -119,4 +120,3 @@ export const TodayItem = ({ id, water, date }) => {
     </WaterItem>
   );
 };
-
