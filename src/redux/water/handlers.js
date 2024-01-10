@@ -21,6 +21,13 @@ export const addWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.todayList.push(action.payload);
+        state.monthList = state.monthList.map(item => {
+                if (item._id === new Date().getDate()) {
+                        item.servings += 1;
+                        return item;
+                }
+                return item;
+        })
 };
 export const editWaterFulfilled = (state, action) => {
         const { _id, waterVolume, date } = action.payload; 
@@ -36,5 +43,14 @@ export const editWaterFulfilled = (state, action) => {
 export const deleteWaterFulfilled = (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.todayList = state.todayList.filter(element => element._id !== action.payload);  
+        state.todayList = state.todayList.filter(element => element._id !== action.payload);
+        console.log(state.monthList);
+        state.monthList = state.monthList.map(item => {
+                if (item._id === new Date().getDate()) {
+                        item.servings -= 1;
+                        return item;
+                }
+                return item;
+        })
+        console.log(state.monthList);
 };
