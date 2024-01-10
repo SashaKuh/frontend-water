@@ -43,9 +43,11 @@ import {
   updateAvatarThunk,
   updateThunk,
 } from '../../redux/users/usersOperations';
-
+import { selectIsLoading } from '../../redux/selectors';
 
 export const SettingModal = ({ modalIsOpen, closeModal }) => {
+  const isLoading = useSelector(selectIsLoading);
+
   const avatarUrl = useSelector(state => state.auth.user.avatarURL);
   const gender = useSelector(state => state.auth.user.gender);
   const username = useSelector(state => state.auth.user.username);
@@ -61,7 +63,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
     confirmPassword: false,
   });
   const dispatch = useDispatch();
-  
+
   const formik = useFormik({
     initialValues: {
       username,
@@ -196,6 +198,7 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
               </ImgWrapper>
               <UploadLabel>
                 <FileInput
+                  disabled={isLoading}
                   name="avatarUrl"
                   type="file"
                   accept="image/*"
@@ -373,7 +376,9 @@ export const SettingModal = ({ modalIsOpen, closeModal }) => {
                 </Label>
               </div>
             </WrapInfo>
-            <Button type="submit">Save</Button>
+            <Button type="submit" disabled={isLoading}>
+              Save
+            </Button>
           </form>
         </StModalWrap>
       </StModalBackdrope>

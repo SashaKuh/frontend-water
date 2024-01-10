@@ -29,8 +29,10 @@ import { DailyNormaModalSchema } from 'schemas/DailyNormaModalSchema';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateWaterThunk } from '../../redux/users/usersOperations';
+import { selectIsLoading } from '../../redux/selectors';
 
 export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
+  const isLoading = useSelector(selectIsLoading);
   const [formula, setFormula] = useState('');
   const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
     },
     validationSchema: DailyNormaModalSchema,
     onSubmit: async values => {
-      console.log(values.dailyNorma)
+      console.log(values.dailyNorma);
       let waterNorma = amount * 1000;
       if (values.dailyNorma > 0) {
         waterNorma = values.dailyNorma * 1000;
@@ -130,7 +132,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
   };
 
   const handleInputChange = evt => {
-    formik.handleChange(evt);    
+    formik.handleChange(evt);
   };
 
   return (
@@ -228,7 +230,7 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         <label>
           <TextInfo>
             The time of active participation in sports or other activities with
-            a high physical. load:
+            a high physical. load in hours:
           </TextInfo>
           <Input
             name="time"
@@ -260,7 +262,9 @@ export const DailyNormaModal = ({ modalIsOpen, closeModal }) => {
         {formik.touched.dailyNorma && formik.errors.dailyNorma ? (
           <MessageError>{formik.errors.dailyNorma}</MessageError>
         ) : null}
-        <Button type="submit">Save</Button>
+        <Button type="submit" disabled={isLoading}>
+          Save
+        </Button>
       </form>
     </StyledReactModal>
   );

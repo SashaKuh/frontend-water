@@ -20,8 +20,10 @@ import {
 } from 'components/Modal/DeleteModal.styled';
 import { ButtonsWrapperLogOut } from 'components/Modal/logOutModal.styled';
 import { signOutThunk } from '../../redux/users/usersOperations';
+import { selectIsLoading } from '../../redux/selectors';
 
 export const Header = () => {
+  const isLoading = useSelector(selectIsLoading);
   const headerNode = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,16 +33,16 @@ export const Header = () => {
   const [settingModalIsOpen, setSettingModalIsOpen] = useState(false);
 
   useEffect(() => {
-        const body = document.body;
-        if (settingModalIsOpen || logoutModalIsOpen) {
-            body.style.overflow = 'hidden';
-        } else {
-            body.style.overflow = 'auto';
-        }
-        return () => {
-            body.style.overflow = 'auto';
-        };
-    }, [logoutModalIsOpen, settingModalIsOpen]);
+    const body = document.body;
+    if (settingModalIsOpen || logoutModalIsOpen) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = 'auto';
+    }
+    return () => {
+      body.style.overflow = 'auto';
+    };
+  }, [logoutModalIsOpen, settingModalIsOpen]);
 
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const username = useSelector(state => state.auth.user.username);
@@ -104,6 +106,7 @@ export const Header = () => {
                 Cancel
               </ButtonCancel>
               <ButtonRed
+                disabled={isLoading}
                 onClick={() => {
                   dispatch(signOutThunk());
                   setLogoutModalIsOpen(false);
