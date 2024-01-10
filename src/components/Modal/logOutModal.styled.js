@@ -37,8 +37,6 @@ export const WrapHeader = styled.div`
   justify-content: space-between;
 `;
 
-
-
 export const SecondTitleModal = styled.h3`
   font-family: 'Roboto-regular';
   font-size: 18px;
