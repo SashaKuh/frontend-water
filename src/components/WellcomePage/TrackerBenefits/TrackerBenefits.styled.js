@@ -91,15 +91,17 @@ export const Button = styled.button`
   width: 100%;
   border-radius: 10px;
   border: none;
-  font-size: 16px;
   max-width: 280px;
   padding: 8px 30px;
   color: var(--primaryWhite);
   cursor: pointer;
   box-shadow: 0px 4px 8px 0px #407bff;
+  transition: box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
+
   &:hover,
   &:focus {
     box-shadow: 0px 4px 14px 0px #407bff;
+  
   }
   @media screen and (min-width: 768px) {
     padding: 10px 30px;

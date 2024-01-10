@@ -191,7 +191,6 @@ flex-basis:auto;
 export const ButtonAddWater = styled.button`
 width:100%;
 height:36px;
-padding: 6px 76px 6px 76px;
 border-radius: 10px;
 display:flex;
  justify-content: center;
@@ -209,6 +208,7 @@ box-shadow: 0px 4px 8px 0px #407BFF57;
 &:hover,
   &:focus {
     box-shadow: 0px 4px 14px 0px #407bff;}
+    transition: all 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98) 0s;
 @media (min-width: 320px) {
   width:280px;
     }

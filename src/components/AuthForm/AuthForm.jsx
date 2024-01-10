@@ -15,9 +15,9 @@ import {
   InputContainer,
   Background,
   BottleBackground,
-  // LinkNav,
   FormSection,
   Layout,
+  LabelDiv
 } from './AuthForm.styled';
 import { signInSchema } from 'schemas/SignInSchema';
 import { signInThunk } from '../../redux/users/usersOperations';
@@ -61,7 +61,7 @@ export const AuthForm = () => {
             {({ isSubmitting, errors, touched }) => (
               <MainForm>
                 <Title>Sign In</Title>
-                <div>
+                <LabelDiv>
                   <Label htmlFor="firstName">Enter your email</Label>
                   <Field
                     as={Input}
@@ -72,8 +72,8 @@ export const AuthForm = () => {
                     required
                   />
                   <ErrorMessage name="email" component={MessageError} />
-                </div>
-                <div>
+                </LabelDiv>
+                <LabelDiv>
                   <Label htmlFor="lastName">Enter your password </Label>
                   <InputContainer>
                     <Field
@@ -101,7 +101,7 @@ export const AuthForm = () => {
                     </span>
                   </InputContainer>
                   <ErrorMessage name="password" component={MessageError} />
-                </div>
+                </LabelDiv>
                 <SignInButton type="submit" disabled={isSubmitting}>
                   Sign In
                 </SignInButton>

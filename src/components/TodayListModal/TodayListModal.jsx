@@ -25,18 +25,19 @@ import { addWaterOperation } from '../../redux/water/waterOperations';
 import { disabledTime } from 'helpers/disabledTime';
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
-  const [waterVolume, setWaterVolume] = useState(0);
+  const [waterVolume, setWaterVolume] = useState(50);
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
 
   const hours = startDate.getHours().toString().padStart(2, '0');
   const minutes = startDate.getMinutes().toString().padStart(2, '0');
+
   const increment = () => {
     setWaterVolume(state => state + 50);
   };
 
   const decrement = () => {
-    setWaterVolume(state => state - 50);
+    setWaterVolume(state => Math.max(state - 50));
   };
 
   const handleChange = async evt => {
@@ -55,18 +56,19 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
 
   const handleCloseModal = () => {
     closeModal();
-    setWaterVolume(0);
+    setWaterVolume(50); 
     setStartDate(new Date());
   };
 
   const handleSubmit = async evt => {
     evt.preventDefault();
+    if (waterVolume === 0) {
+      return toast.error('You cannot send 0 ml');
+    }
     if (waterVolume < 0 || waterVolume > 1500) {
       return toast.error('You can enter value from 0 to 1500');
     }
-    if (waterVolume > 0) {
-      dispatch(addWaterOperation({ waterVolume, date: startDate }));
-    }
+    dispatch(addWaterOperation({ waterVolume, date: startDate }));
     handleCloseModal();
   };
 

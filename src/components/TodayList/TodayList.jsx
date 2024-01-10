@@ -37,13 +37,14 @@ export const TodayList = () => {
             id={item._id}
           />
         ))}
-        <AddLink onClick={() => dispatch(openModalAdd())}>
+        
+      </WaterList>
+      <AddLink onClick={() => dispatch(openModalAdd())}>
           <SvgPlus>
             <use xlinkHref={plusIcon}></use>
           </SvgPlus>
           <span>Add water</span>
         </AddLink>
-      </WaterList>
     </TodayListContainer>
   );
 };

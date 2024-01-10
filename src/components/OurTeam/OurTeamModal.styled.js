@@ -50,6 +50,7 @@ justify-content: space-between;
 export const WrapTeam = styled.ul`
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between;
-padding: 0;
+justify-content: center;
+gap: 20px;
+
 `;

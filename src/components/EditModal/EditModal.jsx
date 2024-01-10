@@ -30,6 +30,7 @@ import {
 import { disabledTime } from 'helpers/disabledTime';
 
 const glassIcon = `${sprite}#cup`;
+
 export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
     const [waterVolume, setWaterVolume] = useState(waterMl);
     const [startDate, setStartDate] = useState(new Date());
@@ -101,7 +102,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
                 <CupIcon>
                     <use href={glassIcon}></use>
                 </CupIcon>
-                <WaterText>{`${waterVolume} ml`}</WaterText>
+                <WaterText>{`${waterMl} ml`}</WaterText>
                 <TimeText>{date}</TimeText>
             </StyledContainer>
             <StyledForm onSubmit={handleSubmit}>
@@ -124,6 +125,7 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl}) => {
                 <label>
                     <TextInputTime>Recording time:</TextInputTime>
                     <StyledDatePicker
+                        selected={startDate}
                         placeholder={`${hours}:${minutes}`}
                         format="HH:mm"
                         onChange={onChange}
