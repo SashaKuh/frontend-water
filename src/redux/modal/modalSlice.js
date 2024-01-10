@@ -4,8 +4,8 @@ const Slice = createSlice({
     name: "modals",
     initialState: {
         modalDetails: "",
-        modalDelete: "null",
-        modalEdit: "null",
+        modalDelete: null,
+        modalEdit: null,
         modalAdd: false,
     },
     reducers: {
@@ -16,13 +16,13 @@ const Slice = createSlice({
             state.modalDelete = action.payload;
         },
         closeModalDelete(state, action) {
-            state.modalDelete = "null";
+            state.modalDelete = null;
         },
         openModalEdit(state, action) {
             state.modalEdit = action.payload;
         },
         closeModalEdit(state, action) {
-            state.modalEdit = "null";
+            state.modalEdit = null;
         },
         openModalAdd(state, action) {
             state.modalAdd = true;
