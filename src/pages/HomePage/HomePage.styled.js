@@ -225,11 +225,11 @@ export const SvgButton = styled.svg`
   stroke-width: 2;
 `;
 export const LeftSideDiv = styled.div`
-  @media (min-width: 1440px) {
-    // margin-right:30px;
-    width: 592px;
-  }
-`;
+@media (min-width: 1440px){
+  padding-bottom: 76px;
+  width:592px;
+}
+`
 export const AllSidesDiv = styled.div`
   @media (min-width: 1440px) {
     display: flex;

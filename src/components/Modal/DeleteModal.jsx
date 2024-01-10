@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import sprite from '../../images/SVG/symbol-defs.svg';
 import {
   ReactModalStyled,
@@ -11,6 +12,19 @@ export const DeleteModal = ({
   onRequestClose,
   children,
 }) => {
+
+  useEffect(() => {
+        const body = document.body;
+        if (isOpen) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+        return () => {
+            body.style.overflow = 'auto';
+        };
+  }, [isOpen]);
+  
   return (
     <ReactModalStyled
       isOpen={isOpen}
