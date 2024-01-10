@@ -20,7 +20,7 @@ export const Tracker = styled.div`
 `;
 
 export const WellcomeLayout = styled.section`
-  height: 100vh;
+  
   background-image: url(${bg_main_page});
   background-size: cover;
   background-position: center bottom;
@@ -28,6 +28,7 @@ export const WellcomeLayout = styled.section`
   background-size: 100%;
 
   @media screen and (min-width: 768px) {
+    height: 100vh;
     background-image: url(${bg_tabl});
   }
 

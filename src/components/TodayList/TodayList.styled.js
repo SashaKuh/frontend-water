@@ -32,22 +32,21 @@ export const TodayTitle = styled.h3`
 `
 
 export const AddLink = styled.button`
-display: inline-block;
-padding: 12px 0;
-border: 0;
-background-color: inherit;
-font-size: 16px;
-line-height: 1.25;
-color: var(--primaryBlue);
-font-weight: 500;
-transition: color 0ms linear;
+  display: flex;
+  padding-top: 12px;
+  border: 0;
+  background-color: inherit;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--primaryBlue);
+  font-weight: 500;
+  transition: color 0ms linear;
 
+  &:hover {
+    color: var(--secondaryOrange);
+  }
 
-&:hover {
-  color: var(--secondaryOrange);
-}
-
-& span {
+  & span {
     color: transparent;
     overflow: hidden;
     background: linear-gradient(
@@ -63,39 +62,39 @@ transition: color 0ms linear;
     background-clip: text;
     transition: background-position var(--animationCubicBezier);
   }
+
   &:hover {
     & span {
       background-position: 0 100%;
     }
   }
 
-@media screen and (min-width: 320px) {
-       width: 97px;
-        }
+  @media screen and (min-width: 320px) {
+    width: 111px;
+    font-size: 16px;
+  }
 
-        @media screen and (min-width: 768px) {
-        width: 114px;
-        }
-
-
-
-`
+  @media screen and (min-width: 768px) {
+    width: 129px;
+    font-size: 18px;
+  }
+`;
 
 export const SvgPlus = styled.svg`
-width: 8px;
-height: 8px;
+width: 16px;
+height: 16px;
 margin-right: 8px;
 stroke: currentColor;
 fill: currentColor;
 
 @media screen and (min-width: 768px) {
-       width: 12px;
-height: 12px;
+       width: 24px;
+height: 24px;
         }
 
     @media screen and (min-width: 1440px) {
-        width: 12px;
-height: 12px;
+        width: 24px;
+height: 24px;
     }
 
 

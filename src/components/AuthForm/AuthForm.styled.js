@@ -88,12 +88,13 @@ export const SignInButton = styled.button`
   padding: 8px 30px;
   color: var(--primaryWhite);
   cursor: pointer;
-  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  box-shadow: 0px 4px 8px 0px #407bff;
+  transition: box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
   &:hover {
-    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    box-shadow: 0px 4px 14px 0px #407bff;
   }
   &:focus {
-    box-shadow: none;
+    /* box-shadow: none; */
   }
   @media screen and (min-width: 768px) {
     min-width: 336px;
@@ -233,6 +234,17 @@ height: 100vh;
 
 export const LableContainer = styled.div`
 font-size: 18px;
+    line-height: calc(1.33333);
+    color: rgb(47, 47, 47);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+`;
+
+export const LabelDiv = styled.div`
+  font-size: 18px;
     line-height: calc(1.33333);
     color: rgb(47, 47, 47);
     display: flex;

@@ -25,13 +25,13 @@ export const WaterItem = styled.li`
 `
 
 export const CupIcon = styled.svg`
-   width: 17px;
-   height: 22px;
+   width: 26px;
+   height: 26px;
    fill: var(--primaryBlue);
 
   @media screen and (min-width: 768px) {
-       width: 23px;
-   height: 30px;
+       width: 36px;
+   height: 36px;
         }
 
 
