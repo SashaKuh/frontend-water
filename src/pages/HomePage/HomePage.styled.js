@@ -237,7 +237,7 @@ stroke: var(--primaryWhite);
 `
 export const LeftSideDiv = styled.div`
 @media (min-width: 1440px){
-  // margin-right:30px;
+  padding-bottom: 76px;
   width:592px;
 }
 `
