@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { editWaterOperation } from '../../redux/water/waterOperations';
@@ -24,10 +24,12 @@ import {
 import { CounterDiv, StyledContainer, StyledForm } from './EditModal.styled';
 import { CupIcon, WaterText, TimeText } from '../TodayItem/TodayItem.styled';
 import { disabledTime } from 'helpers/disabledTime';
+import { selectIsLoading } from '../../redux/selectors';
 
 const glassIcon = `${sprite}#cup`;
 
 export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl }) => {
+  const isLoading = useSelector(selectIsLoading);
   const [waterVolume, setWaterVolume] = useState(waterMl);
   const [startDate, setStartDate] = useState(new Date(date));
   const dispatch = useDispatch();
@@ -35,21 +37,21 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl }) => {
   const hours = startDate.getHours().toString().padStart(2, '0');
   const minutes = startDate.getMinutes().toString().padStart(2, '0');
 
-    useEffect(() => {
-        const body = document.body;
-        if (modalIsOpen) {
-            body.style.overflow = 'hidden';
-        } else {
-            body.style.overflow = 'auto';
-        }
-        return () => {
-            body.style.overflow = 'auto';
-        };
-    }, [modalIsOpen]);
-
-    const increment = () => {
-        setWaterVolume((state) => state + 50);
+  useEffect(() => {
+    const body = document.body;
+    if (modalIsOpen) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = 'auto';
+    }
+    return () => {
+      body.style.overflow = 'auto';
     };
+  }, [modalIsOpen]);
+
+  const increment = () => {
+    setWaterVolume(state => state + 50);
+  };
 
   const decrement = () => {
     setWaterVolume(state => state - 50);
@@ -157,7 +159,9 @@ export const EditModal = ({ modalIsOpen, closeModal, date, id, waterMl }) => {
         </label>
         <AmountWrap>
           <AmountDiv>{waterVolume} ml</AmountDiv>
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={isLoading}>
+            Save
+          </Button>
         </AmountWrap>
       </StyledForm>
     </StyledModal>
