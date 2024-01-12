@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import sprite from '../../images/SVG/symbol-defs.svg';
@@ -23,8 +23,10 @@ import {
 } from './TodayListModal.styled';
 import { addWaterOperation } from '../../redux/water/waterOperations';
 import { disabledTime } from 'helpers/disabledTime';
+import { selectIsLoading } from '../../redux/selectors';
 
 export const TodayListModal = ({ modalIsOpen, closeModal }) => {
+  const isLoading = useSelector(selectIsLoading);
   const [waterVolume, setWaterVolume] = useState(50);
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
 
   const handleCloseModal = () => {
     closeModal();
-    setWaterVolume(50); 
+    setWaterVolume(50);
     setStartDate(new Date());
   };
 
@@ -136,7 +138,9 @@ export const TodayListModal = ({ modalIsOpen, closeModal }) => {
         </label>
         <AmountWrap>
           <AmountDiv>{waterVolume} ml</AmountDiv>
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={isLoading}>
+            Save
+          </Button>
         </AmountWrap>
       </form>
     </StyledModal>

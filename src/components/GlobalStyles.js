@@ -28,8 +28,6 @@ ${modernNormalize}
 
     --animationDuration: 0.3s;
     --animationCubicBezier: 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
-
-   
   }
 
 body {
@@ -186,5 +184,11 @@ margin: 0
     &.ReactModal__Overlay--before-close {
       background-color: transparent;
     }
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    filter: blur(2px);
+    /* filter: grayscale(60%); */
   }
 `;

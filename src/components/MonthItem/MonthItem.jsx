@@ -9,6 +9,7 @@ import {
 } from './MonthItem.styled';
 import { DayDetails } from 'components/DayDetails/DayDetails';
 import { selectNewCompleted } from '../../redux/selectors';
+import { selectIsLoading } from '../../redux/selectors';
 
 export const MonthItem = ({
   date,
@@ -19,6 +20,8 @@ export const MonthItem = ({
   setModal,
   isCurrentMonth,
 }) => {
+  const isLoading = useSelector(selectIsLoading);
+
   const day = date.split(' ')[1];
   const isToday = day === new Date().getDate().toString() && isCurrentMonth;
   const newCompleted = useSelector(selectNewCompleted);
@@ -40,7 +43,11 @@ export const MonthItem = ({
           statusModal={modal}
         />
       )}
-      <Button onClick={() => dispatch(setModal(day))} className="dateButton">
+      <Button
+        disabled={isLoading}
+        onClick={() => dispatch(setModal(day))}
+        className="dateButton"
+      >
         {day}
       </Button>
       <DayCompleted>{`${
