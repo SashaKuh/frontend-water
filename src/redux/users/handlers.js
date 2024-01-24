@@ -17,6 +17,7 @@ export const handleSignUp = (state, { payload }) => {
 
 export const handleSignUpError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingSignUp = (state, { payload }) => {
@@ -61,10 +62,10 @@ export const handleSignOut = (state, { payload }) => {
 
 export const handleSignOutError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingSignOut = (state, { payload }) => {
-
   state.isRefreshing = true;
   state.isLoading = true;
 };
@@ -85,6 +86,7 @@ export const handleRefresh = (state, { payload }) => {
 
 export const handleRefreshError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingRefresh = (state, { payload }) => {
@@ -102,6 +104,7 @@ export const handleAvatar = (state, { payload }) => {
 
 export const handleAvatarError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingAvatar = (state, { payload }) => {
@@ -123,6 +126,7 @@ export const handleUpdate = (state, { payload }) => {
 
 export const handleUpdateError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingUpdate = (state, { payload }) => {
@@ -140,6 +144,7 @@ export const handleWaterRate = (state, { payload }) => {
 
 export const handleWaterRateError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingWaterRate = (state, { payload }) => {
