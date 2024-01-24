@@ -41,6 +41,7 @@ export const handleSignIn = (state, { payload }) => {
 
 export const handleSignInError = (state, { payload }) => {
   state.error = payload.message;
+  state.isLoading = false;
 };
 
 export const handlePendingSignIn = (state, { payload }) => {
